@@ -10,7 +10,7 @@ func _ready() -> void:
 	self.area_entered.connect(_on_hitbox_enter)
 	
 func _process(delta: float):
-	position -= bullet_direction * speed * delta
+	global_position -= bullet_direction * speed * delta
 
 func _on_hitbox_enter(other):
 	if other.is_in_group("enemies") or other.is_in_group("walls"):

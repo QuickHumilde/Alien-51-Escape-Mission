@@ -1,6 +1,7 @@
 extends CharacterBody2D
 class_name Character
 
+#region Variables	
 var cardinal_direction : Vector2 = Vector2.DOWN
 var direction : Vector2 = Vector2.ZERO
 @export var SPEED := 100
@@ -9,13 +10,26 @@ var state : String = "idle"
 @export var orbit_radius := 16.0
 @export var orbit_smoothness := 10.0 # cuanto más grande, más rápido sigue el ratón
 @onready var sprite := $AnimatedSprite2D
-@onready var bullet_scene = preload("res://scenes/weapons/player_bullet.tscn")
-@onready var arm := $Arm
+@onready var weapon_holder = $WeaponHolder
+var current_weapon = null
+var current_weapon_index = 0
 signal health_changed(new_health)
+
+var weapons=[]
+
+#endregion
+
+#region Weapons Scenes
+
+@onready var arm_scene = preload("res://scenes/weapons/arm_weapon.tscn")
+@onready var provisional_pistol_scene = preload("res://scenes/weapons/provisional_gun.tscn")
+
+#endregion
 
 func _ready():
 	$Detector.area_entered.connect(_on_hitbox_enter)
-
+	weapons = [arm_scene, provisional_pistol_scene,]
+	equip_weapon(arm_scene)
 # Se llama cada frame (delta es el tiempo que ha pasado desde el frame anterior)
 func _process(delta):
 		
@@ -44,19 +58,16 @@ func _process(delta):
 	var target_offset = Vector2.RIGHT.rotated(angle_to_mouse) * orbit_radius
 
 	# interpolar suavemente posición local del arma
-	arm.position = arm.position.lerp(target_offset, delta * orbit_smoothness)
+	current_weapon.position = current_weapon.position.lerp(target_offset, delta * orbit_smoothness)
 
 	# interpolar suavemente rotación del arma hacia el ratón
-	arm.rotation = lerp_angle(arm.rotation, angle_to_mouse, delta * orbit_smoothness)
-
-	 # Ataque manteniendo pulsado
-	var tiempo = arm.get_node("Timer")
-	if Input.is_action_pressed("shoot"):
-		if tiempo.is_stopped():
-			shoot()
-			tiempo.start(1)
+	current_weapon.rotation = lerp_angle(current_weapon.rotation, angle_to_mouse, delta * orbit_smoothness)
+	
+	if Input.is_action_just_pressed("shoot"):
+		shoot()
 		
-	pass	
+	if Input.is_action_just_pressed("next_weapon"):
+		next_weapon()
 
 func _physics_process(_delta):
 	move_and_slide()
@@ -113,15 +124,9 @@ func anim_direction() -> String:
 #IShoots
 func shoot():
 	
-	var bullet = bullet_scene.instantiate()
+	current_weapon.shoot()
 	
-	bullet.position=position
-	
-	bullet.bullet_direction = (position - get_global_mouse_position()).normalized()
-	
-	arm.get_node("AnimatedSprite2D").play("attacking")
-	
-	get_parent().add_child(bullet)
+	pass
 
 func take_damage(damage: int):
 	sprite.modulate = Color(1, 0, 0, 1)
@@ -139,3 +144,22 @@ func _on_hitbox_enter(area):
 	if area.is_in_group("damage_1"):
 		take_damage(1)
 		
+func equip_weapon(weapon_scene: PackedScene):
+	# borrar el arma actual
+	if current_weapon:
+		current_weapon.queue_free()
+
+	# instanciar la nueva
+	current_weapon = weapon_scene.instantiate()
+
+	# meterla en el WeaponHolder
+	weapon_holder.add_child(current_weapon)
+
+func next_weapon():
+	# Cambiar al siguiente índice
+	current_weapon_index += 1
+	if current_weapon_index >= weapons.size():
+		current_weapon_index = 0  # volver al principio
+
+	# Equipa la nueva arma
+	equip_weapon(weapons[current_weapon_index])

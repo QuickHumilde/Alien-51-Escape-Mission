@@ -98,6 +98,10 @@ tile_set = SubResource("TileSet_miqcv")
 [node name="Player" parent="." instance=ExtResource("2_bkx0u")]
 position = Vector2(-16, 21)
 collision_mask = 9
+SPEED = null
+health = null
+orbit_radius = null
+orbit_smoothness = null
 
 [node name="StalkerEnemy" parent="." instance=ExtResource("3_mvyeq")]
 position = Vector2(119, -64)
