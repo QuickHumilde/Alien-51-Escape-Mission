@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4oe7bbfjujrv"]
+
+[ext_resource type="Script" uid="uid://dmu6xagklf05g" path="res://src/hud.gd" id="1_kw0id"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_kw0id")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HealthBar" type="TextureProgressBar" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+max_value = 5.0

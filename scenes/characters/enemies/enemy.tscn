@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://byym4irhw1v80"]
+
+[ext_resource type="Script" uid="uid://cjwjc0gyypea5" path="res://src/entities/enemies/stalker_enemy.gd" id="1_35qgf"]
+
+[node name="Enemy" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 8
+collision_mask = 13
+script = ExtResource("1_35qgf")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+animation = &""
+
+[node name="PathTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="PathTimer" to="." method="_on_path_timer_timeout"]
