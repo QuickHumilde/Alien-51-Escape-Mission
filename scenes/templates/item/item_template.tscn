@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctdsnkjtbdqr3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rwhbg"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_47b0j"]
+radius = 47.042534
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Visual" type="Node2D" parent="."]
+
+[node name="Detector" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detector"]
+light_mask = 16
+visibility_layer = 4
+shape = SubResource("CircleShape2D_rwhbg")
+
+[node name="DescriptionDetector" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DescriptionDetector"]
+shape = SubResource("CircleShape2D_47b0j")

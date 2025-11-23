@@ -4,9 +4,10 @@ class_name Character
 #region Variables	
 var cardinal_direction : Vector2 = Vector2.DOWN
 var direction : Vector2 = Vector2.ZERO
-@export var SPEED := 100
-var state : String = "idle"
+@export var speed := 100
+@export var max_health: int = 5
 @export var health : int = 5
+var state : String = "idle"
 @export var orbit_radius := 16.0
 @export var orbit_smoothness := 10.0 # cuanto más grande, más rápido sigue el ratón
 @onready var sprite := $AnimatedSprite2D
@@ -36,7 +37,7 @@ func _process(delta):
 	direction.x= Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	direction.y= Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	
-	velocity = direction * SPEED
+	velocity = direction * speed
 	
 	# Actualiza la animacion si el estado o la direccion han cambiado
 	if set_state() || set_direction():
@@ -48,7 +49,7 @@ func _process(delta):
 		
 		#JAJAS
 	if Input.is_key_label_pressed(KEY_T):
-		SPEED=1000
+		speed=1000
 
 	# --- ROTACIÓN Y ÓRBITA SUAVES ---
 	var mouse_pos = get_global_mouse_position()
@@ -121,7 +122,7 @@ func anim_direction() -> String:
 	else:
 		return "side"
 
-#IShoots
+#IShoot
 func shoot():
 	
 	current_weapon.shoot()
@@ -163,3 +164,25 @@ func next_weapon():
 
 	# Equipa la nueva arma
 	equip_weapon(weapons[current_weapon_index])
+
+func get_item_increase(type: int, value:int):
+	#Speed
+	if type==1:
+		speed+=value
+	#MaxHealth
+	elif type==2:
+		max_health+=value
+	#Health
+	elif type==3:
+		health+=value
+
+func get_item_decrease(type: int, value:int):
+	#Speed
+	if type==1:
+		speed-=value
+	#MaxHealth
+	elif type==2:
+		max_health-=value
+	#Health
+	elif type==3:
+		health-=value
