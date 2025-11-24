@@ -1,12 +1,17 @@
-[gd_scene load_steps=44 format=3 uid="uid://jygsb42krc3q"]
+[gd_scene load_steps=49 format=3 uid="uid://jygsb42krc3q"]
 
-[ext_resource type="Script" uid="uid://c05bk0i1ljchi" path="res://src/entities/player/player.gd" id="1_t61fv"]
+[ext_resource type="Script" uid="uid://c05bk0i1ljchi" path="res://src/entities/player/character.gd" id="1_t61fv"]
 [ext_resource type="Texture2D" uid="uid://c8ja84sj6gue8" path="res://assets/sprites/player/PlayerDown-Idle.png" id="2_t61fv"]
 [ext_resource type="Texture2D" uid="uid://cud5di11g6xa" path="res://assets/sprites/player/PlayerSide-Idle.png" id="3_hss88"]
 [ext_resource type="Texture2D" uid="uid://cp2gse8w6ykhi" path="res://assets/sprites/player/PlayerDown-Walk.png" id="4_6avc5"]
 [ext_resource type="Texture2D" uid="uid://cmoo6cpnuhiqk" path="res://assets/sprites/player/PlayerUp-Idle.png" id="4_qd3e3"]
 [ext_resource type="Texture2D" uid="uid://dhspxwys2ryrr" path="res://assets/sprites/player/PlayerUp-Walk.png" id="6_6avc5"]
 [ext_resource type="Texture2D" uid="uid://12pfdyup11qh" path="res://assets/sprites/player/PlayerSide-Walk.png" id="6_mk55u"]
+[ext_resource type="Script" uid="uid://cf2ydjti0ya2t" path="res://src/entities/player/character_stats.gd" id="8_xuses"]
+[ext_resource type="Script" uid="uid://cqnfweq1nt5ki" path="res://src/entities/player/character_movement.gd" id="9_3xnwo"]
+[ext_resource type="Script" uid="uid://b2o031434leip" path="res://src/entities/player/character_animation.gd" id="9_42irl"]
+[ext_resource type="Script" uid="uid://b5vvjo7uwvnxw" path="res://src/entities/player/character_combat.gd" id="11_djydg"]
+[ext_resource type="Script" uid="uid://cpilx8lbp3x7t" path="res://src/entities/player/character_item_manager.gd" id="12_bsn6e"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8y75b"]
 atlas = ExtResource("2_t61fv")
@@ -306,3 +311,20 @@ collision_mask = 27
 shape = SubResource("CapsuleShape2D_xuses")
 
 [node name="WeaponHolder" type="Node2D" parent="."]
+
+[node name="Logic" type="Node" parent="."]
+
+[node name="Movement" type="Node" parent="Logic"]
+script = ExtResource("9_3xnwo")
+
+[node name="Animation" type="Node" parent="Logic"]
+script = ExtResource("9_42irl")
+
+[node name="Combat" type="Node" parent="Logic"]
+script = ExtResource("11_djydg")
+
+[node name="Items" type="Node" parent="Logic"]
+script = ExtResource("12_bsn6e")
+
+[node name="Stats" type="Node" parent="Logic"]
+script = ExtResource("8_xuses")

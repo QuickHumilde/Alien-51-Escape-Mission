@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://jygsb42krc3q" path="res://scenes/characters/player/player.tscn" id="2_bkx0u"]
 [ext_resource type="PackedScene" uid="uid://dw4em1kkdblnm" path="res://scenes/characters/enemies/StalkerEnemy/stalker_enemy.tscn" id="3_mvyeq"]
 [ext_resource type="PackedScene" uid="uid://dgokuxja87va7" path="res://scenes/items/provisional_item.tscn" id="4_bkx0u"]
-[ext_resource type="PackedScene" uid="uid://cc8qw2lwwn2bj" path="res://scenes/items/golden_apple_item.tscn" id="5_mvyeq"]
+[ext_resource type="PackedScene" uid="uid://cc8qw2lwwn2bj" path="res://scenes/items/golden_fruit_item.tscn" id="5_mvyeq"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_miqcv"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
