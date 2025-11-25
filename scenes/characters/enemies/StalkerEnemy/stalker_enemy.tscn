@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dw4em1kkdblnm"]
 
-[ext_resource type="PackedScene" uid="uid://byym4irhw1v80" path="res://scenes/templates/item/enemy.tscn" id="1_t2hn1"]
+[ext_resource type="PackedScene" uid="uid://byym4irhw1v80" path="res://scenes/templates/enemy/enemy.tscn" id="1_t2hn1"]
 [ext_resource type="Texture2D" uid="uid://b2u4vkiwrdqgd" path="res://assets/sprites/enemies/EnemyTest.png" id="2_mlthi"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gaafd"]
@@ -27,7 +27,7 @@ animations = [{
 [node name="Hitbox" parent="." index="0"]
 shape = SubResource("CapsuleShape2D_gaafd")
 
-[node name="Detector" type="Area2D" parent="." index="1" groups=["damage_1", "enemies"]]
+[node name="Detector" type="Area2D" parent="." index="1" groups=["damage_1", "enemy"]]
 collision_layer = 8
 collision_mask = 7
 

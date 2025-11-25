@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bfiycvbsqwwul"]
 
-[ext_resource type="Script" uid="uid://bqo51dxg4vaxu" path="res://scenes/weapons/provisional_gun.gd" id="1_0le7k"]
+[ext_resource type="Script" uid="uid://bqo51dxg4vaxu" path="res://src/weapons/provisional_gun.gd" id="1_0le7k"]
 [ext_resource type="Texture2D" uid="uid://juo1rqh87vuq" path="res://assets/sprites/weapons/ranged/notgun.png" id="1_wgi3f"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0le7k"]

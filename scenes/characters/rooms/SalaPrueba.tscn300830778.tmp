@@ -94,7 +94,7 @@ tile_set = SubResource("TileSet_miqcv")
 navigation_visibility_mode = 2
 
 [node name="Foreground" type="TileMapLayer" parent="." groups=["walls"]]
-tile_map_data = PackedByteArray("AAADAAQAAAAAAAIAAAAFAPv/AAABAAIAAAAFAPz/AAABAAIAAAAFAP3/AAABAAIAAAA=")
+tile_map_data = PackedByteArray("AAADAAQAAAAAAAIAAAAFAPz/AAABAAIAAAAFAPv/AAABAAIAAAAHAP7/AAABAAIAAAAGAP7/AAABAAIAAAAFAP7/AAABAAIAAAAFAP3/AAABAAIAAAA=")
 tile_set = SubResource("TileSet_miqcv")
 
 [node name="Player" parent="." instance=ExtResource("2_bkx0u")]

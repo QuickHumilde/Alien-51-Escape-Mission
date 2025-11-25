@@ -22,7 +22,7 @@ func _physics_process(_delta):
 	velocity = direction * speed
 	move_and_slide()
 
-func take_damage(damage : int):
+func take_damage(damage : float):
 	sprite.modulate = Color(1, 0, 0, 1) 
 	health -= damage
 	await get_tree().create_timer(0.2).timeout
@@ -34,6 +34,5 @@ func die():
 	queue_free()
 
 func _on_hitbox_enter(area):
-	if area.is_in_group("bullet_d1"):
-		take_damage(1)
+	pass
 		

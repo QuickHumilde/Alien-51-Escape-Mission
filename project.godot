@@ -26,9 +26,9 @@ window/stretch/mode="canvas_items"
 [global_group]
 
 bullet_d1=""
-enemies=""
 damage_1=""
 walls=""
+enemy=""
 
 [input]
 

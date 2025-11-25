@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cjwjc0gyypea5" path="res://src/entities/enemies/stalker_enemy.gd" id="1_35qgf"]
 
-[node name="Enemy" type="CharacterBody2D" groups=["enemies"]]
+[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 8
 collision_mask = 13
 script = ExtResource("1_35qgf")

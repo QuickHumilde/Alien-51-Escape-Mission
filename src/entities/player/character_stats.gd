@@ -6,6 +6,7 @@ var sprite: AnimatedSprite2D
 @export var health: int = 5
 @export var speed: float = 100.0
 @export var size: float = 1.0
+@export var damage_mult: float = 1.0
 
 func take_damage(amount: int):
 	sprite.modulate = Color(1, 0, 0, 1)
@@ -16,7 +17,6 @@ func take_damage(amount: int):
 		queue_free()
 
 func heal(amount: int, overheal: bool):
-	print(overheal)
 	if(!overheal):
 		health = min(health + amount, max_health)
 	else:
