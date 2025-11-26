@@ -5,11 +5,11 @@ var speed_increase = 500
 var max_health_increase = 2
 var scale_increase = 0.5
 
+var item_name = "You but bigger"
+var description = "Item that increases speed and life"
+
 func _ready():
 	id = 0
-	item_name = "You but bigger"
-	description = "Item that increases speed and life"
-	
 	$Detector.body_entered.connect(_on_hitbox_enter)
 	$DescriptionDetector.body_entered.connect(_on_hitbox_enter_description)
 

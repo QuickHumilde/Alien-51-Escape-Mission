@@ -3,8 +3,6 @@ extends Node2D
 class_name Item
 
 @export var id : int
-@export var item_name : String= "Generic name"
-@export var description : String= "Generic description"
 
 func _ready():
 	$Detector.body_entered.connect(_on_hitbox_enter)
