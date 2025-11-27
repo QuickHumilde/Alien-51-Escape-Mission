@@ -5,11 +5,11 @@ var speed_increase = 500
 var max_health_increase = 2
 var scale_increase = 0.5
 
-var item_name = "You but bigger"
-var description = "Item that increases speed and life"
-
 func _ready():
+	TranslationServer.set_locale("es")
 	id = 0
+	name_key="item_provisional_item_name"
+	desc_key="item_provisional_item_desc"
 	$Detector.body_entered.connect(_on_hitbox_enter)
 	$DescriptionDetector.body_entered.connect(_on_hitbox_enter_description)
 
@@ -23,5 +23,4 @@ func _on_hitbox_enter(body):
 
 func _on_hitbox_enter_description(body):
 	if body.is_in_group("player"):
-		print("Nombre: " + item_name)
-		print("Descripción: " + description)
+		show_description()
