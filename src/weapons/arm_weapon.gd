@@ -3,6 +3,7 @@ extends Node2D
 @onready var cooldown_timer = $ShootCooldown
 @onready var melee_hitbox = $Hitbox
 @export var damage: float = 1.0
+@export var knockback: Vector2
 
 func _ready():
 	$Hitbox.area_entered.connect(_on_hitbox_enter)

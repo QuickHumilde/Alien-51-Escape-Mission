@@ -6,9 +6,6 @@ extends CharacterBody2D
 @export var speed := 50.0
 @export var health := 3.0
 
-func _ready() -> void:
-	$Detector.area_entered.connect(_on_hitbox_enter)
-
 func _physics_process(_delta):
 	if player == null:
 		return
@@ -33,6 +30,7 @@ func take_damage(damage : float):
 func die():
 	queue_free()
 
-func _on_hitbox_enter(area):
-	pass
-		
+func _on_area_2d_body_entered(body: Node2D):
+	if body==player:
+		var knockback_direction=(body.global_position- global_position).normalized
+		body.apply_knockback(knockback_direction, 4)
