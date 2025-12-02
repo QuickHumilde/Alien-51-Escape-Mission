@@ -23,8 +23,6 @@ animations = [{
 }]
 
 [node name="StalkerEnemy" instance=ExtResource("1_t2hn1")]
-speed = null
-health = null
 
 [node name="Hitbox" parent="." index="0"]
 shape = SubResource("CapsuleShape2D_gaafd")

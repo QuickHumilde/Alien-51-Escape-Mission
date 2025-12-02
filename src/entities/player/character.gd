@@ -11,8 +11,9 @@ class_name Character
 
 func _ready():
 	$Detector.area_entered.connect(_on_hitbox_enter)
-	combat.init(weapon_holder)  
+	combat.init(weapon_holder)
 	stats.sprite = sprite
+	movement.character = self
 
 func _process(_delta):
 	movement.update(_delta, self)
