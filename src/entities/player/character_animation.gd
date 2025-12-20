@@ -1,8 +1,14 @@
 extends Node
 class_name CharacterAnimation
 
+var sprite: AnimatedSprite2D
 var cardinal_direction: Vector2 = Vector2.DOWN
 var state: String = "idle"
+var damage_timer: Timer
+
+func init(player_sprite: AnimatedSprite2D, timer: Timer):
+	sprite=player_sprite
+	damage_timer=timer
 
 func update(character):
 	if set_state(character) or set_direction(character):
@@ -36,3 +42,15 @@ func anim_direction() -> String:
 		return "up"
 	else:
 		return "side"
+
+func player_taking_damage():
+	sprite.modulate = Color(1, 0, 0, 1)
+	damage_timer.start()
+	
+	while (!damage_timer.is_stopped()):
+		await get_tree().create_timer(0.1).timeout
+		sprite.modulate = Color(0.431, 0.0, 0.0, 0.0)
+		await get_tree().create_timer(0.1).timeout
+		sprite.modulate = Color(1,1,1)
+	
+	damage_timer.stop()

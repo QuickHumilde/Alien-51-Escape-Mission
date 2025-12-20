@@ -9,18 +9,17 @@ var sprite: AnimatedSprite2D
 @export var size: float = 1.0
 @export var extra_damage: float = 1.0
 @onready var player_audio: CharacterAudio
+@onready var player_animation: CharacterAnimation
+var hitbox_detector: CollisionShape2D
 var abilities := {}
 
-func init(audio:CharacterAudio) -> void:
+func init(audio:CharacterAudio, animation: CharacterAnimation, hitbox_detector: CollisionShape2D) -> void:
 	player_audio = audio
+	player_animation = animation
+	self.hitbox_detector = hitbox_detector
 	pass
 
 func take_damage(amount: float):
-	player_audio.play_damage()
-	
-	sprite.modulate = Color(1, 0, 0, 1)
-	await get_tree().create_timer(0.2).timeout
-	sprite.modulate = Color(1,1,1)
 	
 	if (extra_health <= 0.0):
 		health -= amount

@@ -13,7 +13,7 @@ config_version=5
 config/name="Alien 51: Escape Mission"
 run/main_scene="uid://c0wyiru2g8jgf"
 config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://caturr8r28j3r"
 
 [display]
 
@@ -22,6 +22,7 @@ window/size/viewport_height=270
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
+mouse_cursor/stretch/mode="canvas_items"
 
 [global_group]
 
@@ -91,6 +92,10 @@ locale/translations=PackedStringArray("res://translations/items.csv", "res://tra
 2d_physics/layer_3="Player"
 2d_physics/layer_4="Enemy"
 2d_physics/layer_5="Item"
+
+[physics]
+
+common/physics_jitter_fix=2.0
 
 [rendering]
 

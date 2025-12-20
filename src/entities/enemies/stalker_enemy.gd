@@ -6,10 +6,12 @@ extends Enemy
 func _ready():
 	get_detector()
 	id=1
+	contact_damage=1.0
 	speed=50.0
 	health=3.0
 	knockback_force=200.0
 	knockback_time=0.0
+	knockback_resistance=50
 
 func _physics_process(delta):
 	if knockback_time > 0:
@@ -26,7 +28,7 @@ func _physics_process(delta):
 		velocity = direction * speed
 
 	move_and_slide()
-	
+
 func take_damage(damage : float):
 	sprite.modulate = Color(1, 0, 0, 1) 
 	health -= damage

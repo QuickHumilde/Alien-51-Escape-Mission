@@ -6,6 +6,9 @@ var knockback: Vector2
 var character: CharacterBody2D
 var knockback_time: float = 0.0
 
+func init(player: CharacterBody2D) -> void:
+	character=player
+
 func update(delta, character):
 	if knockback_time > 0:
 		knockback_time -= delta

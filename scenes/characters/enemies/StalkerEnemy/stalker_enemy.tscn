@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dw4em1kkdblnm"]
 
-[ext_resource type="PackedScene" uid="uid://byym4irhw1v80" path="res://scenes/templates/enemy/enemy.tscn" id="1_t2hn1"]
+[ext_resource type="PackedScene" uid="uid://byym4irhw1v80" path="res://scenes/templates/enemy/enemy_template.tscn" id="1_t2hn1"]
 [ext_resource type="Script" uid="uid://cjwjc0gyypea5" path="res://src/entities/enemies/stalker_enemy.gd" id="2_gaafd"]
 [ext_resource type="Texture2D" uid="uid://b2u4vkiwrdqgd" path="res://assets/sprites/enemies/EnemyTest.png" id="2_mlthi"]
 
@@ -8,7 +8,7 @@
 radius = 4.0
 height = 20.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1t8n1"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qgoh5"]
 radius = 5.0
 height = 22.0
 
@@ -29,15 +29,11 @@ script = ExtResource("2_gaafd")
 [node name="Hitbox" parent="." index="0"]
 shape = SubResource("CapsuleShape2D_gaafd")
 
-[node name="Detector" type="Area2D" parent="." index="1" groups=["damage_1", "enemy"]]
-collision_layer = 8
-collision_mask = 7
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Detector" index="0"]
-shape = SubResource("CapsuleShape2D_1t8n1")
+[node name="CollisionShape2D" parent="Detector" index="0" groups=["enemy"]]
+shape = SubResource("CapsuleShape2D_qgoh5")
 
 [node name="AnimatedSprite2D" parent="." index="2"]
 sprite_frames = SubResource("SpriteFrames_s4s3y")
 animation = &"default"
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." index="4"]
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." index="3"]

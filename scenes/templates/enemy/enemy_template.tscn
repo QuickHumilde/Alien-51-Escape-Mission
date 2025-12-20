@@ -1,15 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://byym4irhw1v80"]
-
-[ext_resource type="Script" uid="uid://dav5hpohti6a0" path="res://src/entities/enemies/template/enemy_template.gd" id="1_4jcjc"]
+[gd_scene format=3 uid="uid://byym4irhw1v80"]
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 8
 collision_mask = 13
-script = ExtResource("1_4jcjc")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 
-[node name="Detector" type="Area2D" parent="." groups=["damage_1", "enemy"]]
+[node name="Detector" type="Area2D" parent="." groups=["enemy"]]
 collision_layer = 8
 collision_mask = 7
 

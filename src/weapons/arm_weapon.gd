@@ -1,13 +1,13 @@
-extends Node2D
+extends Weapon
 
-@onready var cooldown_timer = $ShootCooldown
 @onready var melee_hitbox = $Hitbox
-@export var damage: float = 1.0
-@export var force:float = 150.0
-@export var knockback: Vector2
+var knockback: Vector2
 
 func _ready():
 	$Hitbox.area_entered.connect(_on_hitbox_enter)
+	id=1
+	damage=1
+	knockback_force=150.0
 
 func shoot():
 	if cooldown_timer.is_stopped() == false:
@@ -30,6 +30,4 @@ func _on_hitbox_enter(area):
 	
 		if enemy_node.has_method("apply_knockback"):
 			var knockback_direction = (enemy_node.global_position - global_position).normalized()
-			enemy_node.apply_knockback(knockback_direction, force)
-		
-		
+			enemy_node.apply_knockback(knockback_direction, knockback_force)
