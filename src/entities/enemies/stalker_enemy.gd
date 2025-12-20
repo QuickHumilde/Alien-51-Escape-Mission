@@ -1,27 +1,32 @@
-extends CharacterBody2D
+extends Enemy
 
 @onready var agent: NavigationAgent2D = $NavigationAgent2D
-@onready var player: CharacterBody2D = get_tree().current_scene.get_node("Player")
 @onready var sprite = $AnimatedSprite2D
-@export var speed := 50.0
-@export var health := 3.0
 
 func _ready():
-	$Detector.body_entered.connect(_on_area_2d_body_entered)
+	get_detector()
+	id=1
+	speed=50.0
+	health=3.0
+	knockback_force=200.0
+	knockback_time=0.0
 
-func _physics_process(_delta):
-	if player == null:
-		return
+func _physics_process(delta):
+	if knockback_time > 0:
+		knockback_time -= delta
+		velocity = knockback
+		
+	else:
+		if player == null:
+			return
+		
+		agent.target_position = player.global_position
+		var next_point = agent.get_next_path_position()
+		var direction = (next_point - global_position).normalized()
+		velocity = direction * speed
 
-	# Perfil del agente
-	agent.target_position = player.global_position
-
-	var next_point = agent.get_next_path_position()
-	var direction = (next_point - global_position).normalized()
-
-	velocity = direction * speed
 	move_and_slide()
-
+	
 func take_damage(damage : float):
 	sprite.modulate = Color(1, 0, 0, 1) 
 	health -= damage
@@ -32,8 +37,3 @@ func take_damage(damage : float):
 
 func die():
 	queue_free()
-
-func _on_area_2d_body_entered(body):
-	if body.is_in_group("player"):
-		var knockback_direction=(body.global_position- global_position).normalized
-		print(knockback_direction)

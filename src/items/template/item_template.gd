@@ -6,6 +6,7 @@ class_name Item
 @export var name_key : String
 @export var desc_key : String
 
+
 func _ready():
 	$Detector.body_entered.connect(_on_hitbox_enter)
 	$DescriptionDetector.body_entered.connect(_on_hitbox_enter_description)

@@ -2,7 +2,6 @@ extends Item
 class_name GoldenFruitItem
 
 var health_increase := 2
-var overheal := true
 
 func _ready():
 	id = 1
@@ -13,7 +12,7 @@ func _ready():
 
 func _on_hitbox_enter(body):
 	if body.is_in_group("player"):
-		body.items.apply_item(3, health_increase, overheal)
+		body.items.apply_item(4, 2)
 		queue_free()
 
 func _on_hitbox_enter_description(body):

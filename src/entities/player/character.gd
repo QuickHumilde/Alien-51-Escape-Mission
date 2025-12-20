@@ -7,13 +7,17 @@ class_name Character
 @onready var combat = $Logic/Combat
 @onready var stats = $Logic/Stats
 @onready var items = $Logic/Items
+@onready var audio = $Logic/Audio
+
 @onready var weapon_holder = $WeaponHolder
 
 func _ready():
 	$Detector.area_entered.connect(_on_hitbox_enter)
-	combat.init(weapon_holder)
+	combat.init(weapon_holder, stats)
+	items.init(self)
 	stats.sprite = sprite
 	movement.character = self
+	stats.init(audio)
 
 func _process(_delta):
 	movement.update(_delta, self)

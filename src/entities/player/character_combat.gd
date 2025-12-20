@@ -1,6 +1,7 @@
 extends Node
 class_name CharacterCombat
 
+var stats: CharacterStats = null
 var current_weapon: Node2D = null
 var current_weapon_index: int = 0
 var weapons: Array = []
@@ -12,8 +13,9 @@ var weapon_holder: Node2D = null   # referencia al WeaponHolder
 @onready var arm_scene: PackedScene = preload("res://scenes/weapons/arm_weapon.tscn")
 @onready var pistol_scene: PackedScene = preload("res://scenes/weapons/provisional_gun.tscn")
 
-func init(holder: Node2D):
+func init(holder: Node2D, character_stats: CharacterStats):
 	weapon_holder = holder
+	stats = character_stats
 	weapons = [arm_scene, pistol_scene]
 	equip_weapon(arm_scene)
 
@@ -30,6 +32,7 @@ func update(delta: float, character):
 
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
+		
 	if Input.is_action_just_pressed("next_weapon"):
 		next_weapon()
 

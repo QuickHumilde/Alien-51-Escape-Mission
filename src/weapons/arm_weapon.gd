@@ -3,6 +3,7 @@ extends Node2D
 @onready var cooldown_timer = $ShootCooldown
 @onready var melee_hitbox = $Hitbox
 @export var damage: float = 1.0
+@export var force:float = 150.0
 @export var knockback: Vector2
 
 func _ready():
@@ -26,5 +27,9 @@ func _on_hitbox_enter(area):
 		var enemy_node = area.get_parent()
 		if enemy_node.has_method("take_damage"):
 			enemy_node.take_damage(damage)
+	
+		if enemy_node.has_method("apply_knockback"):
+			var knockback_direction = (enemy_node.global_position - global_position).normalized()
+			enemy_node.apply_knockback(knockback_direction, force)
 		
 		
