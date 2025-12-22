@@ -40,7 +40,7 @@ func shoot():
 	if current_weapon and current_weapon.has_method("shoot"):
 		current_weapon.shoot()
 
-func equip_weapon(scene: PackedScene):
+func equip_weapon(scene: PackedScene, ):
 	if current_weapon:
 		current_weapon.queue_free()
 	current_weapon = scene.instantiate()

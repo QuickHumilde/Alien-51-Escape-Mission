@@ -1,11 +1,13 @@
 extends Weapon
 
-@onready var bullet_scene = preload("res://scenes/weapons/bullets/player_bullet.tscn")
+@onready var bullet_scene = preload("res://scenes/bullets/player_bullet.tscn")
 
 func _ready() -> void:
 	id=2
 	damage = 1.5
-	knockback_force = 50.0
+	knockback_force = 75.0
+	lifetime=3.0
+	speed = 100.0
 
 func shoot():
 	if cooldown_timer.is_stopped() == false:
@@ -14,14 +16,20 @@ func shoot():
 	self.get_node("AnimatedSprite2D").play("attacking")
 	
 	var bullet = bullet_scene.instantiate()
-	bullet.area_entered.connect(_on_hitbox_enter)
 	
-	bullet.global_position = global_position
-	bullet.bullet_direction = (global_position - get_global_mouse_position()).normalized()
+	give_bullet_values(bullet)
 
 	get_tree().current_scene.add_child(bullet)
 	
 	cooldown_timer.start()
+
+func give_bullet_values(bullet: Bullet):
+	bullet.global_position = global_position
+	bullet.bullet_direction = (global_position - get_global_mouse_position()).normalized()
+	bullet.damage = damage
+	bullet.knockback_force = knockback_force
+	bullet.lifetime = lifetime
+	bullet.speed = speed
 
 func _on_hitbox_enter(area):
 	if area.is_in_group("enemy"):

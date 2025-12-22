@@ -5,13 +5,11 @@
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_kw0id")
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_right = 149.0
+offset_bottom = 27.0
 
-[node name="Label" type="Label" parent="Control"]
+[node name="Label" type="Label" parent="HealthBar"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0

@@ -33,10 +33,8 @@ func take_damage(amount: float):
 		audio.play_damage()
 		animation.player_taking_damage()
 		stats.take_damage(amount)
-		hitbox_detector.disabled = true
 		damage_timer.start(damage_timer.wait_time)
 		await damage_timer.timeout
-		hitbox_detector.disabled = false
 		
 		await get_tree().create_timer(0.1).timeout
 		
