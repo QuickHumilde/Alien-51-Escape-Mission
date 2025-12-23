@@ -3,8 +3,8 @@ class_name CharacterItems
 
 @onready var player: Character
 
-func init(char: Character):
-	player = char
+func init(charac: Character):
+	player = charac
 
 func apply_item(type: int, value: int):
 	match type:

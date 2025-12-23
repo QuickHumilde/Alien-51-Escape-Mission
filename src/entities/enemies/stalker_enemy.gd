@@ -4,7 +4,7 @@ extends Enemy
 @onready var sprite = $AnimatedSprite2D
 
 func _ready():
-	get_detector()
+	_get_detector()
 	id=1
 	contact_damage=1.0
 	speed=50.0

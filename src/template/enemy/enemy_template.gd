@@ -30,11 +30,8 @@ func do_damage(body):
 	body.apply_knockback(knockback_direction, knockback_force)
 	body.take_damage(contact_damage)
 
-func dod_damage(body):
-	print("f3")
-
-func get_detector():
+func _get_detector():
 	$Detector.body_entered.connect(_on_area_2d_body_entered)
-
+  
 func get_damage():
 	return contact_damage

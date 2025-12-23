@@ -98,7 +98,6 @@ tile_map_data = PackedByteArray("AAADAAQAAAAAAAIAAAAFAPv/AAABAAIAAAAFAPz/AAABAAI
 tile_set = SubResource("TileSet_miqcv")
 
 [node name="Player" parent="." instance=ExtResource("2_bkx0u")]
-visible = false
 position = Vector2(-16, 21)
 collision_mask = 9
 
