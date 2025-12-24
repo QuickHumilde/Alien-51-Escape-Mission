@@ -103,6 +103,9 @@ collision_mask = 9
 
 [node name="Node2D" parent="." instance=ExtResource("4_bkx0u")]
 position = Vector2(118, 72)
+id = null
+name_key = null
+desc_key = null
 
 [node name="Node2D2" parent="." instance=ExtResource("5_mvyeq")]
 position = Vector2(-37, -75)
@@ -112,3 +115,7 @@ position = Vector2(1, -159)
 
 [node name="StalkerEnemy2" parent="." instance=ExtResource("3_mvyeq")]
 position = Vector2(113, -62)
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0

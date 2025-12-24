@@ -6,12 +6,11 @@ var max_health_increase = 2
 var scale_increase = 0.5
 
 func _ready():
-	TranslationServer.set_locale("es")
+	#TranslationServer.set_locale("es")
 	id = 0
 	name_key="item_provisional_item_name"
 	desc_key="item_provisional_item_desc"
-	$Detector.body_entered.connect(_on_hitbox_enter)
-	$DescriptionDetector.body_entered.connect(_on_hitbox_enter_description)
+	_initiate_detectors()
 
 # 1. Speed, 2. MaxHealt, 3. Health (+parameter bool), 4. Scale
 func _on_hitbox_enter(body):
@@ -20,7 +19,3 @@ func _on_hitbox_enter(body):
 		body.items.apply_item(2, max_health_increase)
 		body.items.apply_item(4, scale_increase)
 		queue_free()
-
-func _on_hitbox_enter_description(body):
-	if body.is_in_group("player"):
-		show_description()

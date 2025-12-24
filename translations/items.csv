@@ -1,5 +1,9 @@
 key,es,en
-item_golden_fruit_name,Fruta Dorada,Golden Fruit
-item_golden_fruit_desc,Da 2 de vida pero no aumenta la vida máxima.,Gives 2 life but does not increase maximum health.
-item_provisional_item_name,Tu pero mas grande,You but bigger
-item_provisional_item_desc,Objeto que incrementa tu vida y velocidad.,Item that increases speed and life.
+
+item_golden_fruit_name,"Fruta Dorada","Golden Fruit"
+
+item_golden_fruit_desc,"+2 de vida extra.","+2 of extra health."
+
+item_provisional_item_name,"Tu pero mas grande","You but bigger"
+
+item_provisional_item_desc,"Objeto que incrementa tu vida y velocidad".,"Item that increases speed and life."

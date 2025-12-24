@@ -6,7 +6,7 @@ radius = 8.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_47b0j"]
 radius = 47.042534
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" groups=["item"]]
 
 [node name="Visual" type="Node2D" parent="."]
 
