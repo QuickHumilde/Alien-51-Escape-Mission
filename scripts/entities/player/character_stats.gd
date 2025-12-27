@@ -12,7 +12,6 @@ var sprite: AnimatedSprite2D
 @onready var player_animation: CharacterAnimation
 static var abilities := {}
 
-
 func init(audio:CharacterAudio, animation: CharacterAnimation) -> void:
 	player_audio = audio
 	player_animation = animation
@@ -36,7 +35,7 @@ func take_damage(amount: float):
 	_emit_health_changed_signal()
 	
 	if health <= 0.0:
-		queue_free()
+		die()
 
 func heal(amount: float):
 	health = min(health + amount, max_health)
@@ -67,3 +66,6 @@ func has_ability(ability_name: String) -> bool:
 
 func _emit_health_changed_signal():
 	Signals.health_changed.emit(health, max_health, extra_health)
+
+func die():
+	Signals.player_death.emit()

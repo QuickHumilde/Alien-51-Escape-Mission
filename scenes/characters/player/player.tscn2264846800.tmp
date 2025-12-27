@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://jygsb42krc3q"]
+[gd_scene load_steps=52 format=3 uid="uid://jygsb42krc3q"]
 
 [ext_resource type="Script" uid="uid://c05bk0i1ljchi" path="res://scripts/entities/player/character.gd" id="1_t61fv"]
 [ext_resource type="Texture2D" uid="uid://c8ja84sj6gue8" path="res://assets/sprites/player/PlayerDown-Idle.png" id="2_t61fv"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://b5vvjo7uwvnxw" path="res://scripts/entities/player/character_combat.gd" id="11_djydg"]
 [ext_resource type="Script" uid="uid://cpilx8lbp3x7t" path="res://scripts/entities/player/character_item_manager.gd" id="12_bsn6e"]
 [ext_resource type="Script" uid="uid://cm8dyqwgpnapc" path="res://scripts/entities/player/character_audio.gd" id="13_blysn"]
+[ext_resource type="PackedScene" uid="uid://byrp3wtch5b76" path="res://scenes/ui/death_menu.tscn" id="15_ykrpk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8y75b"]
 atlas = ExtResource("2_t61fv")
@@ -342,3 +343,7 @@ script = ExtResource("13_blysn")
 
 [node name="DamageTimer" type="Timer" parent="Logic"]
 one_shot = true
+
+[node name="DeathMenu" type="CanvasLayer" parent="."]
+
+[node name="DeathMenu" parent="DeathMenu" instance=ExtResource("15_ykrpk")]

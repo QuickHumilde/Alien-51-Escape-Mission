@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://c0wyiru2g8jgf"]
+[gd_scene load_steps=12 format=4 uid="uid://c0wyiru2g8jgf"]
 
 [ext_resource type="Texture2D" uid="uid://xlto3ea6ja0d" path="res://assets/sprites/tileset/TileSet1.png" id="1_qbal3"]
 [ext_resource type="PackedScene" uid="uid://jygsb42krc3q" path="res://scenes/characters/player/player.tscn" id="2_bkx0u"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://dgokuxja87va7" path="res://scenes/items/provisional_item.tscn" id="4_bkx0u"]
 [ext_resource type="PackedScene" uid="uid://cc8qw2lwwn2bj" path="res://scenes/items/golden_fruit_item.tscn" id="5_mvyeq"]
 [ext_resource type="PackedScene" uid="uid://ddmkkd4lvgb5g" path="res://scenes/ui/pause_menu.tscn" id="6_jdx7j"]
-[ext_resource type="PackedScene" uid="uid://byrp3wtch5b76" path="res://scenes/ui/death_menu.tscn" id="7_laycw"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_miqcv"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -104,7 +103,7 @@ tile_map_data = PackedByteArray("AAADAAQAAAAAAAIAAAAFAPv/AAABAAIAAAAFAPz/AAABAAI
 tile_set = SubResource("TileSet_miqcv")
 
 [node name="Node2D" parent="." instance=ExtResource("4_bkx0u")]
-position = Vector2(117, 59)
+position = Vector2(118, 72)
 
 [node name="Node2D2" parent="." instance=ExtResource("5_mvyeq")]
 position = Vector2(-37, -75)
@@ -121,10 +120,4 @@ collision_mask = 9
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="DeathMenu" parent="CanvasLayer" instance=ExtResource("7_laycw")]
-
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("6_jdx7j")]
-offset_left = -1.0
-offset_top = -21.0
-offset_right = -1.0
-offset_bottom = -21.0

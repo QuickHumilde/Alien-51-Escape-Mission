@@ -93,12 +93,14 @@ func extra_apply_borders():
 	style_bg.corner_radius_bottom_right = 5
 	extra_health_bar.add_theme_stylebox_override("background", style_bg)
 
-func _show_item_info(name: String, desc: String):
+func _show_item_info(i_name: String, desc: String):
 	item_back.visible=true
 	item_desc.visible=true
 	item_name.visible=true
 	
-	item_name.text= str(name)
+	item_name.text= str(i_name)
+	item_name.modulate= Color(0.0, 0.789, 0.0, 1.0)
+	
 	item_desc.text= str(desc)
 
 func _hide_item_info():

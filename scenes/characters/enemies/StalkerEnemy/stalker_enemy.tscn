@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dw4em1kkdblnm"]
 
 [ext_resource type="PackedScene" uid="uid://byym4irhw1v80" path="res://scenes/templates/enemy/enemy_template.tscn" id="1_t2hn1"]
-[ext_resource type="Script" uid="uid://cjwjc0gyypea5" path="res://src/entities/enemies/stalker_enemy.gd" id="2_gaafd"]
+[ext_resource type="Script" uid="uid://cjwjc0gyypea5" path="res://scripts/entities/enemies/stalker_enemy.gd" id="2_gaafd"]
 [ext_resource type="Texture2D" uid="uid://b2u4vkiwrdqgd" path="res://assets/sprites/enemies/EnemyTest.png" id="2_mlthi"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gaafd"]

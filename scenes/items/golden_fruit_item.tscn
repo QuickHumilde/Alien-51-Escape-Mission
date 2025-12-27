@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cc8qw2lwwn2bj"]
 
 [ext_resource type="PackedScene" uid="uid://ctdsnkjtbdqr3" path="res://scenes/templates/item/item_template.tscn" id="1_srn0v"]
-[ext_resource type="Script" uid="uid://budb7l6u4cqk0" path="res://src/items/golden_fruit_item.gd" id="2_npc2y"]
+[ext_resource type="Script" uid="uid://budb7l6u4cqk0" path="res://scripts/items/golden_fruit_item.gd" id="2_npc2y"]
 [ext_resource type="Texture2D" uid="uid://bir1hiipjchqf" path="res://assets/sprites/items/GoldenFruit_Item.png" id="2_vqu8w"]
 
 [node name="Node2D" instance=ExtResource("1_srn0v")]
