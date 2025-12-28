@@ -1,5 +1,7 @@
 extends Node
 
+var player_is_dead = false
+
 signal show_item_information(item_name: String, item_description: String)
 signal hide_item_information()
 

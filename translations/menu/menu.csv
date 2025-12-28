@@ -1,0 +1,21 @@
+key,es,en
+
+menu_resume,"Reanudar","Resume"
+
+menu_restart,"Reiniciar","Restart"
+
+menu_options,"Opciones","Options"
+
+menu_quit,"Salir","Quit"
+
+death_message,"VAYA MALO","SKILL ISSUE?"
+
+master_volume,"Maestro","Master"
+
+sfx_volume,"Efectos","SFX"
+
+music_volume,"Música","Music"
+
+apply_settings,"Aplicar","Apply"
+
+back_settings,"Volver","Back"

@@ -12,7 +12,8 @@ var sprite: AnimatedSprite2D
 @onready var player_animation: CharacterAnimation
 static var abilities := {}
 
-func init(audio:CharacterAudio, animation: CharacterAnimation) -> void:
+func init(cSprite: AnimatedSprite2D, audio:CharacterAudio, animation: CharacterAnimation) -> void:
+	sprite= cSprite
 	player_audio = audio
 	player_animation = animation
 	pass
@@ -55,8 +56,7 @@ func modify_speed(amount: float):
 	speed += amount
 
 func modify_size(amount: float):
-	size += amount
-	get_parent().get_parent().sprite.scale = Vector2.ONE * size
+	sprite.scale *= 1.5
 
 func unlock_ability(ability_name: String):
 	abilities[ability_name] = true

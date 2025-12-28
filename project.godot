@@ -15,6 +15,10 @@ run/main_scene="uid://c0wyiru2g8jgf"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="uid://caturr8r28j3r"
 
+[audio]
+
+buses/default_bus_layout="uid://bvo8tevybdmjq"
+
 [autoload]
 
 Signals="*res://autoload/signals.gd"
@@ -89,7 +93,7 @@ escape={
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://translations/items.csv", "res://translations/items.en.translation", "res://translations/items.es.translation")
+locale/translations=PackedStringArray("res://translations/items/items.en.translation", "res://translations/items/items.es.translation", "res://translations/menu/menu.en.translation", "res://translations/menu/menu.es.translation")
 
 [layer_names]
 

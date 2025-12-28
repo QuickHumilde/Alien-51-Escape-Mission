@@ -3,6 +3,7 @@
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 8
 collision_mask = 13
+motion_mode = 1
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 

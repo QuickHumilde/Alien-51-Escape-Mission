@@ -17,8 +17,9 @@ func _ready():
 	combat.init(weapon_holder, stats)
 	items.init(self)
 	movement.init(self)
-	stats.init(audio, animation)
+	stats.init(sprite, audio, animation)
 	animation.init(sprite, damage_timer)
+	print(sprite)
 
 func _process(_delta):
 	movement.update(_delta, self)

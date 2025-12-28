@@ -5,8 +5,7 @@ var stats: CharacterStats = null
 var current_weapon: Node2D = null
 var current_weapon_index: int = 0
 var weapons: Array = []
-var weapon_holder: Node2D = null   # referencia al WeaponHolder
-
+var weapon_holder: Node2D = null
 @export var orbit_radius: float = 16.0
 @export var orbit_smoothness: float = 10.0
 

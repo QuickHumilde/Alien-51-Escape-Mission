@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://byrp3wtch5b76"]
+[gd_scene load_steps=9 format=3 uid="uid://byrp3wtch5b76"]
 
 [ext_resource type="Script" uid="uid://cxmua6aaimkfq" path="res://scripts/ui/death_menu.gd" id="1_pyvjv"]
 [ext_resource type="Shader" uid="uid://duf6wai1m54td" path="res://shaders/pause_menu.gdshader" id="2_dsday"]
 [ext_resource type="Theme" uid="uid://b380oga6tlya7" path="res://assets/themes/default.tres" id="4_23tc5"]
+[ext_resource type="Texture2D" uid="uid://cesihqbgg2ygv" path="res://assets/images/CursedCry.jpg" id="4_xroqq"]
 
 [sub_resource type="Animation" id="Animation_8uki6"]
 length = 0.001
@@ -115,6 +116,12 @@ process_mode = 3
 layout_mode = 2
 theme_override_constants/separation = 15
 
+[node name="CursedCry" type="Sprite2D" parent="PanelContainer/VBoxContainer"]
+modulate = Color(1, 1, 1, 0.14509805)
+position = Vector2(298, 163)
+scale = Vector2(0.96601075, 0.6167883)
+texture = ExtResource("4_xroqq")
+
 [node name="Control" type="Control" parent="PanelContainer/VBoxContainer"]
 process_mode = 3
 layout_mode = 2
@@ -150,10 +157,9 @@ offset_bottom = 110.0
 theme = ExtResource("4_23tc5")
 theme_override_font_sizes/normal_font_size = 79
 bbcode_enabled = true
-text = "SKILL ISUE?"
+text = "SKILL ISSUE?"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Control/Restart" to="." method="_on_restart_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/Control/Restart" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Control/Quit" to="." method="_on_quit_pressed"]

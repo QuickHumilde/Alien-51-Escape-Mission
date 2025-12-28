@@ -13,7 +13,8 @@ func _ready():
 func setup_audio():
 	sfx_player = AudioStreamPlayer2D.new()
 	sfx_player.name = "SFXPlayer"
-	sfx_player.max_polyphony = 8 
+	sfx_player.bus = "SFX"
+	sfx_player.max_polyphony = 16
 	add_child(sfx_player)
 
 func play_sound(sound_name: String, volume_db: float = 0.0, pitch: float = 1.0):
