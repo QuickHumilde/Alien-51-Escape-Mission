@@ -6,6 +6,8 @@ class_name HudPlayer
 @onready var item_name = $ItemName
 @onready var item_desc = $ItemDescription
 @onready var item_back = $ItemBackground
+var cache_item_name : String
+var cache_item_desc : String
 
 @onready var extra_health_bar = $ExtraHealthBar
 @onready var extra_health_label = $ExtraHealthBar/Label
@@ -15,6 +17,8 @@ var item: Item
 var stats: CharacterStats
 
 func _ready():
+	LanguageManager.language_changed.connect(update_texts)
+	add_to_group("localizable")
 	await get_tree().process_frame
 	player = get_tree().get_first_node_in_group("player")
 	item = get_tree().get_first_node_in_group("item")
@@ -29,6 +33,12 @@ func _ready():
 	connect_player_signals()
 	connect_item_signals()
 	update_health()
+
+func update_texts():
+	item_name.text= tr(cache_item_name)
+	item_name.modulate= Color(0.0, 0.789, 0.0, 1.0)
+	
+	item_desc.text= tr(cache_item_desc)
 
 func connect_player_signals():
 	Signals.health_changed.connect(_on_health_changed)
@@ -98,10 +108,13 @@ func _show_item_info(i_name: String, desc: String):
 	item_desc.visible=true
 	item_name.visible=true
 	
-	item_name.text= str(i_name)
+	cache_item_name=str(i_name)
+	cache_item_desc=str(desc)
+	
+	item_name.text= tr(str(i_name))
 	item_name.modulate= Color(0.0, 0.789, 0.0, 1.0)
 	
-	item_desc.text= str(desc)
+	item_desc.text= tr(str(desc))
 
 func _hide_item_info():
 	item_back.visible=false

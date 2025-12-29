@@ -1,9 +1,9 @@
 extends Item
 class_name ProvisionalItem
 
-var speed_increase = 500
-var max_health_increase = 2
-var scale_increase = 1.5
+var speed_increase : float = 500
+var max_health_increase : float = 2
+var scale_increase : float = 1.5
 
 func _ready():
 	#TranslationServer.set_locale("es")

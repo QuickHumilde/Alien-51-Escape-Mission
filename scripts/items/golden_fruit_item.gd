@@ -1,7 +1,7 @@
 extends Item
 class_name GoldenFruitItem
 
-var health_increase := 2
+var health_increase : float = 2
 
 func _ready():
 	id = 1
@@ -13,5 +13,3 @@ func _on_hitbox_enter(body):
 	if body.is_in_group("player"):
 		body.items.apply_item(4, 2)
 		queue_free()
-	if body.is_in_group("player"):
-		hide_information()

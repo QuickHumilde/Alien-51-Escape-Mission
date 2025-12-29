@@ -14,6 +14,7 @@ class_name Character
 @onready var weapon_holder = $WeaponHolder
 
 func _ready():
+	Signals.player_death.connect(player_death)
 	combat.init(weapon_holder, stats)
 	items.init(self)
 	movement.init(self)
@@ -30,16 +31,20 @@ func _physics_process(_delta):
 	move_and_slide()
 
 func take_damage(amount: float):
-	if damage_timer.is_stopped():
+	
+	if damage_timer.is_stopped() and !Signals.player_is_dead:
 		audio.play_damage()
-		animation.player_taking_damage()
 		stats.take_damage(amount)
-		damage_timer.start(damage_timer.wait_time)
+		animation.player_taking_damage()
+		damage_timer.start(stats.invulnerability_time)
 		await damage_timer.timeout
 		
-		await get_tree().create_timer(0.1).timeout
+		await get_tree().create_timer(0.25).timeout
 		
 		_check_overlapping_enemies()
+		
+func player_death():
+	weapon_holder.hide()
 
 func apply_knockback(dir: Vector2, force: float, duration: float = 0.2):
 	if damage_timer.is_stopped():

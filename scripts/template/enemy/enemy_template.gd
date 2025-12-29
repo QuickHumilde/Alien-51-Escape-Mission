@@ -3,14 +3,14 @@ extends CharacterBody2D
 class_name Enemy
 
 @export var id : int
-@export var speed := 50.0
-@export var health := 3.0
-@export var contact_damage:= 0.0
+@export var speed : float = 50.0
+@export var health : float = 3.0
+@export var contact_damage: float = 0.0
 @onready var player: CharacterBody2D = get_tree().current_scene.get_node("Player")
 var knockback: Vector2
-@export var knockback_force := 0.0
-var knockback_time := 0.0
-var knockback_resistance:=0.0
+@export var knockback_force : float = 0.0
+var knockback_time : float = 0.0
+var knockback_resistance : float =0.0
 
 func apply_knockback(dir: Vector2, force: float = 500.0, duration: float = 0.2):
 	if knockback_resistance < force:

@@ -8,10 +8,8 @@ func _ready() -> void:
 func _on_master_label_mouse_exited() -> void:
 	release_focus()
 
-
 func _on_music_label_mouse_exited() -> void:
 	release_focus()
-
 
 func _on_sfx_slider_mouse_exited() -> void:
 	release_focus()

@@ -13,6 +13,8 @@ config_version=5
 config/name="Alien 51: Escape Mission"
 run/main_scene="uid://c0wyiru2g8jgf"
 config/features=PackedStringArray("4.5", "Forward Plus")
+boot_splash/bg_color=Color(0.14117648, 0.1882353, 0.14117648, 1)
+boot_splash/image="uid://caturr8r28j3r"
 config/icon="uid://caturr8r28j3r"
 
 [audio]
@@ -22,6 +24,8 @@ buses/default_bus_layout="uid://bvo8tevybdmjq"
 [autoload]
 
 Signals="*res://autoload/signals.gd"
+LanguageManager="*res://autoload/language_manager.gd"
+AudioManager="*res://autoload/audio_manager.gd"
 
 [display]
 

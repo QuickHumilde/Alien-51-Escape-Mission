@@ -3,20 +3,24 @@ extends Control
 @onready var title_label = $RichTextLabel
 @onready var restart_label = $PanelContainer/VBoxContainer/Control/Restart
 @onready var quit_label = $PanelContainer/VBoxContainer/Control/Quit
-var music = preload("res://assets/audio/music/DeathMusic.mp3")
 @onready var bg_music: AudioStreamPlayer2D
 
 func _ready():
-	setup_audio()
-	title_label.text=tr("death_message")
-	restart_label.text=tr("menu_restart")
-	quit_label.text=tr("menu_quit")
+	add_to_group("localizable")
+	LanguageManager.language_changed.connect(update_texts)
+	update_texts()
 	$AnimationPlayer.play("blur")
 	_connect_player_signals()
 	hide()
 
+func update_texts():
+	title_label.text=tr("death_message")
+	restart_label.text=tr("menu_restart")
+	quit_label.text=tr("menu_quit")
+
 func _connect_player_signals():
 	Signals.player_death.connect(pause)
+	Signals.show_death_menu.connect(show_menu)
 
 func resume():
 	Signals.player_is_dead = false	
@@ -24,9 +28,11 @@ func resume():
 	hide()
 
 func pause():
-	play_music()
 	Signals.player_is_dead = true
 	get_tree().paused = true
+
+func show_menu():
+	play_music()
 	show()
 
 func _on_quit_pressed():
@@ -35,16 +41,7 @@ func _on_quit_pressed():
 func _on_restart_pressed():
 	resume()
 	get_tree().reload_current_scene()
-
-func setup_audio():
-	bg_music = AudioStreamPlayer2D.new()
-	bg_music.name = "BackgroundMusic"
-	bg_music.bus = "Music"
-	bg_music.max_polyphony = 16
-	add_child(bg_music)
+	AudioManager.stop_music()
 
 func play_music():
-	bg_music.stream = music
-	bg_music.volume_db = 0.0
-	bg_music.pitch_scale = 1.0
-	bg_music.play()
+	AudioManager.play_music("death_menu")

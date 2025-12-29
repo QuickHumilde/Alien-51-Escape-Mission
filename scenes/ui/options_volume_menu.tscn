@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://chwsh56hnmg3b"]
 
-[ext_resource type="Script" uid="uid://cfrmko5ukwftt" path="res://scripts/ui/options_menu.gd" id="1_imaij"]
-[ext_resource type="Theme" uid="uid://b380oga6tlya7" path="res://assets/themes/default.tres" id="1_ta2k2"]
-[ext_resource type="Script" uid="uid://clo6m2qlkql5q" path="res://scripts/ui/audio_options.gd" id="2_c4822"]
+[ext_resource type="Script" uid="uid://cfrmko5ukwftt" path="res://scripts/ui/options_menu.gd" id="1_qlva7"]
+[ext_resource type="Script" uid="uid://clo6m2qlkql5q" path="res://scripts/ui/audio_options.gd" id="2_bmyee"]
+[ext_resource type="Theme" uid="uid://b380oga6tlya7" path="res://assets/themes/default.tres" id="3_l1rcc"]
 
 [node name="OptionsMenu" type="Control"]
 process_mode = 3
@@ -12,14 +12,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_imaij")
+script = ExtResource("1_qlva7")
 
 [node name="AudioOptions" type="Control" parent="."]
 process_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("2_c4822")
+script = ExtResource("2_bmyee")
 
 [node name="PanelContainer" type="PanelContainer" parent="AudioOptions"]
 layout_mode = 1
@@ -46,7 +46,7 @@ offset_bottom = 213.0
 [node name="MasterLabel" type="RichTextLabel" parent="AudioOptions/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme = ExtResource("1_ta2k2")
+theme = ExtResource("3_l1rcc")
 theme_override_font_sizes/normal_font_size = 24
 text = "Master"
 fit_content = true
@@ -60,7 +60,7 @@ step = 0.05
 [node name="SFXLabel" type="RichTextLabel" parent="AudioOptions/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme = ExtResource("1_ta2k2")
+theme = ExtResource("3_l1rcc")
 theme_override_font_sizes/normal_font_size = 24
 text = "SFX"
 fit_content = true
@@ -74,7 +74,7 @@ step = 0.05
 [node name="MusicLabel" type="RichTextLabel" parent="AudioOptions/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme = ExtResource("1_ta2k2")
+theme = ExtResource("3_l1rcc")
 theme_override_font_sizes/normal_font_size = 24
 text = "Music"
 fit_content = true
@@ -92,7 +92,7 @@ offset_left = 376.0
 offset_top = 238.0
 offset_right = 413.0
 offset_bottom = 264.0
-theme = ExtResource("1_ta2k2")
+theme = ExtResource("3_l1rcc")
 text = "Apply"
 
 [node name="Back" type="Button" parent="."]
@@ -102,7 +102,7 @@ offset_left = 430.0
 offset_top = 238.0
 offset_right = 467.0
 offset_bottom = 264.0
-theme = ExtResource("1_ta2k2")
+theme = ExtResource("3_l1rcc")
 text = "Back
 "
 

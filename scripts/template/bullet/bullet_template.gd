@@ -4,7 +4,7 @@ class_name Bullet
 
 var speed: float = 0.0
 var damage: float = 0.0
-var knockback_force = 0.0
+var knockback_force : float = 0.0
 var lifetime: float = 5.0
 var bullet_direction = Vector2.RIGHT
 @onready var background_tilemap = get_tree().get_current_scene().get_node("Background")

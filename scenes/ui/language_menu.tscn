@@ -1,0 +1,72 @@
+[gd_scene load_steps=3 format=3 uid="uid://g0mc15qol1na"]
+
+[ext_resource type="Script" uid="uid://cabfvetonmhqn" path="res://scripts/ui/language_menu.gd" id="1_linch"]
+[ext_resource type="Theme" uid="uid://b380oga6tlya7" path="res://assets/themes/default.tres" id="2_3o8lb"]
+
+[node name="LanguageMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_linch")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -138.0
+offset_top = -87.0
+offset_right = 117.5
+offset_bottom = 105.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 15
+
+[node name="English" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme = ExtResource("2_3o8lb")
+theme_override_font_sizes/font_size = 24
+text = "English"
+language = "menu_resume"
+
+[node name="Spanish" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme = ExtResource("2_3o8lb")
+theme_override_font_sizes/font_size = 24
+text = "Spanish"
+language = "menu_resume"
+
+[node name="Select" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 105.0
+offset_top = 58.0
+offset_right = 355.0
+offset_bottom = 88.0
+theme = ExtResource("2_3o8lb")
+theme_override_font_sizes/normal_font_size = 24
+text = "Select Language"
+horizontal_alignment = 1
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 0
+offset_left = 265.0
+offset_top = 199.0
+offset_right = 352.0
+offset_bottom = 234.0
+size_flags_horizontal = 4
+theme = ExtResource("2_3o8lb")
+theme_override_font_sizes/font_size = 24
+text = "Back"

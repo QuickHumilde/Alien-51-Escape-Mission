@@ -12,7 +12,7 @@ func init(player_sprite: AnimatedSprite2D, timer: Timer):
 
 func update(character):
 	if set_state(character) or set_direction(character):
-		character.sprite.play(state + "_" + anim_direction())
+		sprite.play(state + "_" + anim_direction())
 
 func set_direction(character) -> bool:
 	var new_direction: Vector2 = cardinal_direction
@@ -44,13 +44,21 @@ func anim_direction() -> String:
 		return "side"
 
 func player_taking_damage():
-	sprite.modulate = Color(1, 0, 0, 1)
-	damage_timer.start()
-	
-	while (!damage_timer.is_stopped()):
-		await get_tree().create_timer(0.1).timeout
-		sprite.modulate = Color(0.431, 0.0, 0.0, 0.0)
-		await get_tree().create_timer(0.1).timeout
-		sprite.modulate = Color(1,1,1)
-	
-	damage_timer.stop()
+	if !Signals.player_is_dead:
+		sprite.modulate = Color(1, 0, 0, 1)
+		damage_timer.start()
+		
+		while (!damage_timer.is_stopped()):
+			await get_tree().create_timer(0.1).timeout
+			sprite.modulate = Color(0.431, 0.0, 0.0, 0.0)
+			await get_tree().create_timer(0.1).timeout
+			sprite.modulate = Color(1,1,1)
+		
+		damage_timer.stop()
+
+func player_dying():
+	sprite.process_mode = Node.PROCESS_MODE_ALWAYS
+	sprite.play("dying")
+	await sprite.animation_finished
+	Signals.show_death_menu.emit()
+	sprite.process_mode = Node.PROCESS_MODE_INHERIT

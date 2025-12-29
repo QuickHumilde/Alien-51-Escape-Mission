@@ -8,6 +8,12 @@ menu_options,"Opciones","Options"
 
 menu_quit,"Salir","Quit"
 
+menu_back,"Volver","Back"
+
+menu_audio,"Audio","Audio"
+
+menu_language,"Idioma","Language"
+
 death_message,"VAYA MALO","SKILL ISSUE?"
 
 master_volume,"Maestro","Master"
@@ -18,4 +24,8 @@ music_volume,"Música","Music"
 
 apply_settings,"Aplicar","Apply"
 
-back_settings,"Volver","Back"
+menu_select_language,"Seleccionar Idioma","Select Language"
+
+menu_language_en,"Inglés","English"
+
+menu_language_es,"Español","Spanish"

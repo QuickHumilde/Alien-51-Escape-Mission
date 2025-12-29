@@ -21,7 +21,7 @@ func _on_hitbox_exit_description(body):
 		hide_information()
 
 func get_item_name() -> String:
-	return tr(name_key)
+	return (name_key)
 
 func get_description() -> String:
 	return (desc_key)

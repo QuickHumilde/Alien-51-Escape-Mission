@@ -1,16 +1,19 @@
 extends Node
 class_name CharacterStats
 
-var sprite: AnimatedSprite2D
+@export_category("Player Character")
+@export_group("Stats")
 @export var max_health: float = 5
 @export var health: float = 5
 @export var extra_health: float = 0
 @export var speed: float = 100.0
 @export var size: float = 1.0
 @export var extra_damage: float = 1.0
+@export var invulnerability_time: float = 1.0
 @onready var player_audio: CharacterAudio
 @onready var player_animation: CharacterAnimation
 static var abilities := {}
+var sprite: AnimatedSprite2D
 
 func init(cSprite: AnimatedSprite2D, audio:CharacterAudio, animation: CharacterAnimation) -> void:
 	sprite= cSprite
@@ -68,4 +71,6 @@ func _emit_health_changed_signal():
 	Signals.health_changed.emit(health, max_health, extra_health)
 
 func die():
+	player_audio.play_death()
+	player_animation.player_dying()
 	Signals.player_death.emit()

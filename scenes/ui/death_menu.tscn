@@ -72,6 +72,7 @@ shader_parameter/lod = 0.0
 
 [node name="DeathMenu" type="Control"]
 process_mode = 3
+auto_translate_mode = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -81,6 +82,7 @@ grow_vertical = 2
 script = ExtResource("1_pyvjv")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+process_mode = 3
 libraries = {
 &"": SubResource("AnimationLibrary_0bnpd")
 }
@@ -150,6 +152,7 @@ theme_override_font_sizes/font_size = 34
 text = "Quit"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
+process_mode = 3
 layout_mode = 0
 offset_top = 24.0
 offset_right = 480.0
