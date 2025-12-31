@@ -9,6 +9,7 @@ class_name Character
 @onready var items = $Logic/Items
 @onready var audio = $Logic/Audio
 @onready var damage_timer = $Logic/DamageTimer
+@onready var hitbox : CollisionShape2D = $Hitbox
 @onready var hitbox_detector : CollisionShape2D = $Detector/HitboxDetector
 @onready var detector_area : Area2D = $Detector
 @onready var weapon_holder = $WeaponHolder
@@ -18,9 +19,8 @@ func _ready():
 	combat.init(weapon_holder, stats)
 	items.init(self)
 	movement.init(self)
-	stats.init(sprite, audio, animation)
+	stats.init(sprite, audio, animation, hitbox_detector, hitbox)
 	animation.init(sprite, damage_timer)
-	print(sprite)
 
 func _process(_delta):
 	movement.update(_delta, self)

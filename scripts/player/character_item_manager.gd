@@ -6,7 +6,7 @@ class_name CharacterItems
 func init(charac: Character):
 	player = charac
 
-func apply_item(type: int, value: int):
+func apply_item(type: int, value: float):
 	match type:
 		1: player.stats.modify_speed(value)
 		2: player.stats.increase_max_health(value)

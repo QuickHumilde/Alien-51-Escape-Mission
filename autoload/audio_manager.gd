@@ -25,11 +25,11 @@ func _ready():
 	sfx_player.autoplay = false
 	add_child(sfx_player)
 
-func play_music(name: String, loop := true, volume_db := 0.0):
-	if not music.has(name):
-		push_warning("Música '" + name + "' no encontrada.")
+func play_music(music_name: String, loop := true, volume_db := 0.0):
+	if not music.has(music_name):
+		push_warning("Música '" + music_name + "' no encontrada.")
 		return
-	music_player.stream = music[name]
+	music_player.stream = music[music_name]
 	music_player.stream.loop = loop
 	music_player.volume_db = volume_db
 	music_player.play()
@@ -37,11 +37,11 @@ func play_music(name: String, loop := true, volume_db := 0.0):
 func stop_music():
 	music_player.stop()
 
-func play_sfx(name: String, volume_db := 0.0, pitch := 1.0):
-	if not sfx.has(name):
-		push_warning("SFX '" + name + "' no encontrado.")
+func play_sfx(sfx_name: String, volume_db := 0.0, pitch := 1.0):
+	if not sfx.has(sfx_name):
+		push_warning("SFX '" + sfx_name + "' no encontrado.")
 		return
-	sfx_player.stream = sfx[name]
+	sfx_player.stream = sfx[sfx_name]
 	sfx_player.volume_db = volume_db
 	sfx_player.pitch_scale = pitch
 	sfx_player.play()

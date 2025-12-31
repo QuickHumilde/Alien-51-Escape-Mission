@@ -25,7 +25,7 @@ func set_direction(character) -> bool:
 	if new_direction == cardinal_direction:
 		return false
 	cardinal_direction = new_direction
-	character.sprite.scale.x = -1 if cardinal_direction == Vector2.LEFT else 1
+	character.sprite.flip_h = (cardinal_direction == Vector2.LEFT)
 	return true
 
 func set_state(character) -> bool:

@@ -4,7 +4,7 @@ extends Enemy
 @onready var sprite = $AnimatedSprite2D
 @onready var sfx_enemy: AudioStreamPlayer2D
 
-@export var stopping_distance : float = 8.0
+@export var stopping_distance : float = 0.0
 
 var sounds  := {
 	"damage": preload("res://assets/audio/sfx/enemies/stalkerenemy/StalkerDamage.mp3")

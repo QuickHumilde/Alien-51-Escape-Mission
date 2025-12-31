@@ -46,7 +46,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 3
 theme = ExtResource("2_3o8lb")
 theme_override_font_sizes/font_size = 24
-text = "Spanish"
+text = "Español"
 language = "menu_resume"
 
 [node name="Select" type="RichTextLabel" parent="."]

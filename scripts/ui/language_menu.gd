@@ -20,8 +20,6 @@ func change_language(locale: String):
 
 func update_texts():
 	$Select.text = tr("menu_select_language")
-	$PanelContainer/VBoxContainer/English.text = tr("menu_language_en")
-	$PanelContainer/VBoxContainer/Spanish.text = tr("menu_language_es")
 	$Back.text = tr("menu_back")
 
 func update_button_colors():

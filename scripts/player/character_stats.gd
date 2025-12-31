@@ -14,11 +14,15 @@ class_name CharacterStats
 @onready var player_animation: CharacterAnimation
 static var abilities := {}
 var sprite: AnimatedSprite2D
+var player_collision_detector: CollisionShape2D
+var player_hitbox: CollisionShape2D
 
-func init(cSprite: AnimatedSprite2D, audio:CharacterAudio, animation: CharacterAnimation) -> void:
+func init(cSprite: AnimatedSprite2D, audio:CharacterAudio, animation: CharacterAnimation, detector: CollisionShape2D, hitbox: CollisionShape2D) -> void:
 	sprite= cSprite
 	player_audio = audio
 	player_animation = animation
+	player_collision_detector = detector
+	player_hitbox=hitbox
 	pass
 	
 func _ready() -> void:
@@ -59,7 +63,10 @@ func modify_speed(amount: float):
 	speed += amount
 
 func modify_size(amount: float):
-	sprite.scale *= 1.5
+	size += amount
+	sprite.scale = Vector2(size, size)
+	player_collision_detector.scale = Vector2(size, size)
+	player_hitbox.scale = Vector2(size, size)
 
 func unlock_ability(ability_name: String):
 	abilities[ability_name] = true
