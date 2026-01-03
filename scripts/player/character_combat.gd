@@ -4,19 +4,35 @@ class_name CharacterCombat
 var stats: CharacterStats = null
 var current_weapon: Node2D = null
 @export var current_weapon_index: int = 0
-var weapons: Array = []
 var weapon_holder: Node2D = null
+
 @export var orbit_radius: float = 16.0
 @export var orbit_smoothness: float = 10.0
+@export var orbit_radius2: float = 16.0
 
-@onready var arm_scene: PackedScene = preload("res://scenes/weapons/arm_weapon.tscn")
-@onready var pistol_scene: PackedScene = preload("res://scenes/weapons/provisional_gun.tscn")
+
+var arm_scene: PackedScene = preload("res://scenes/weapons/arm_weapon.tscn")
+var pistol_scene: PackedScene = preload("res://scenes/weapons/pistol_gun.tscn")
+
+var weapon_scenes := {}
+@export var weapon_instances := {} 
+var weapon_order := ["arm"]
+
+func _ready():
+	weapon_scenes = {
+		"arm": arm_scene,
+		"pistol": pistol_scene,
+	}
 
 func init(holder: Node2D, character_stats: CharacterStats):
 	weapon_holder = holder
 	stats = character_stats
-	weapons = [arm_scene, pistol_scene]
-	equip_weapon(arm_scene)
+
+	if weapon_scenes.is_empty():
+		_ready()
+
+	var initial_id = weapon_order[current_weapon_index]
+	equip_weapon(initial_id)
 
 func update(delta: float, character):
 	if not current_weapon:
@@ -29,9 +45,16 @@ func update(delta: float, character):
 	current_weapon.position = current_weapon.position.lerp(target_offset, delta * orbit_smoothness)
 	current_weapon.rotation = lerp_angle(current_weapon.rotation, angle_to_mouse, delta * orbit_smoothness)
 
+	# Flip cuando mira a la izquierda
+	if abs(angle_to_mouse) > PI/2:
+		current_weapon.scale.y = -1
+	else:
+		current_weapon.scale.y = 1
+
+
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
-		
+
 	if Input.is_action_just_pressed("next_weapon"):
 		next_weapon()
 
@@ -39,14 +62,42 @@ func shoot():
 	if current_weapon and current_weapon.has_method("shoot"):
 		current_weapon.shoot()
 
-func equip_weapon(scene: PackedScene, ):
+func equip_weapon(id: String):
+	if not weapon_scenes.has(id):
+		push_error("Weapon id '%s' no está en weapon_scenes" % id)
+		return
+
+	# Ocultar arma actual
 	if current_weapon:
-		current_weapon.queue_free()
-	current_weapon = scene.instantiate()
-	weapon_holder.add_child(current_weapon)
+		current_weapon.visible = false
+		current_weapon.set_process(false)
+
+	# Instanciar solo si no existe aún
+	if not weapon_instances.has(id):
+		var scene: PackedScene = weapon_scenes[id]
+		var instance = scene.instantiate()
+		weapon_holder.add_child(instance)
+		weapon_instances[id] = instance
+
+	current_weapon = weapon_instances[id]
+	current_weapon.visible = true
+	current_weapon.set_process(true)
 
 func next_weapon():
 	current_weapon_index += 1
-	if current_weapon_index >= weapons.size():
+	if current_weapon_index >= weapon_order.size():
 		current_weapon_index = 0
-	equip_weapon(weapons[current_weapon_index])
+
+	var next_id = weapon_order[current_weapon_index]
+	equip_weapon(next_id)
+
+func add_weapon(id: String):
+	if not weapon_scenes.has(id):
+		return
+
+	if id not in weapon_order:
+		weapon_order.append(id)
+		
+	if current_weapon == null:
+		current_weapon_index = weapon_order.size() - 1
+		equip_weapon(id)

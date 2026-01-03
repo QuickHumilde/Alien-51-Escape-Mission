@@ -13,3 +13,6 @@ func apply_item(type: int, value: float):
 		3: player.stats.heal(value)
 		4: player.stats.increase_extra_health(value)
 		5: player.stats.modify_size(value)
+
+func give_weapon(weapon_name: String):
+	player.combat.add_weapon(weapon_name)

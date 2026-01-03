@@ -1,9 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://b4oe7bbfjujrv"]
+[gd_scene load_steps=3 format=3 uid="uid://b4oe7bbfjujrv"]
 
-[ext_resource type="Script" uid="uid://dmu6xagklf05g" path="res://scripts/ui/hud.gd" id="1_kw0id"]
+[ext_resource type="Script" uid="uid://dmu6xagklf05g" path="res://scripts/ui/hud.gd" id="1_hqnrr"]
+[ext_resource type="Theme" uid="uid://b380oga6tlya7" path="res://assets/themes/default.tres" id="2_bo48s"]
 
 [node name="HUD" type="CanvasLayer" groups=["player_ui"]]
-script = ExtResource("1_kw0id")
+script = ExtResource("1_hqnrr")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 anchors_preset = -1
@@ -15,6 +16,7 @@ offset_left = 0.23999977
 offset_top = 1.8999987
 offset_right = -0.040008545
 offset_bottom = 1.8999977
+theme = ExtResource("2_bo48s")
 theme_override_constants/outline_size = 0
 show_percentage = false
 metadata/_edit_use_anchors_ = true
@@ -23,13 +25,15 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.36600003
-anchor_top = 0.074
+anchor_top = -7.407312e-05
 anchor_right = 0.634
-anchor_bottom = 0.92600006
+anchor_bottom = 1.0000741
 offset_left = -0.024002075
 offset_top = 0.002000928
 offset_right = 0.04399872
 offset_bottom = -0.0020008087
+theme_override_font_sizes/font_size = 24
+text = "HP"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
@@ -44,6 +48,7 @@ offset_left = -0.16000366
 offset_top = 1.98
 offset_right = 0.19999695
 offset_bottom = 1.9799995
+theme = ExtResource("2_bo48s")
 theme_override_constants/outline_size = 0
 show_percentage = false
 metadata/_edit_use_anchors_ = true
@@ -51,16 +56,19 @@ metadata/_edit_use_anchors_ = true
 [node name="Label" type="Label" parent="ExtraHealthBar"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.31647372
-anchor_top = 0.07399996
-anchor_right = 0.68760806
-anchor_bottom = 0.9669286
+anchor_left = 0.23911105
+anchor_top = 0.03828571
+anchor_right = 0.7649707
+anchor_bottom = 1.0740715
 offset_left = -0.039001465
 offset_top = 0.002000928
 offset_right = -0.013004303
 offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_bo48s")
+theme_override_font_sizes/font_size = 24
+text = "+HP"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
@@ -82,6 +90,9 @@ offset_left = 0.11999512
 offset_top = -0.069999695
 offset_right = 3.8399658
 offset_bottom = 0.11999512
+theme = ExtResource("2_bo48s")
+theme_override_font_sizes/font_size = 24
+text = "ITEM NAME"
 vertical_alignment = 1
 autowrap_mode = 3
 metadata/_edit_use_anchors_ = true
@@ -96,5 +107,8 @@ offset_left = 0.039978027
 offset_top = -0.010002136
 offset_right = 3.8799744
 offset_bottom = 5.0599976
+theme = ExtResource("2_bo48s")
+theme_override_font_sizes/font_size = 16
+text = "ITEM DESC"
 autowrap_mode = 3
 metadata/_edit_use_anchors_ = true

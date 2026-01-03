@@ -4,8 +4,16 @@
 [ext_resource type="Script" uid="uid://budb7l6u4cqk0" path="res://scripts/items/golden_fruit_item.gd" id="2_npc2y"]
 [ext_resource type="Texture2D" uid="uid://bir1hiipjchqf" path="res://assets/sprites/items/GoldenFruit_Item.png" id="2_vqu8w"]
 
-[node name="Node2D" instance=ExtResource("1_srn0v")]
+[node name="GoldenFruitItem" instance=ExtResource("1_srn0v")]
 script = ExtResource("2_npc2y")
 
 [node name="Sprite2D" type="Sprite2D" parent="Visual" index="0"]
 texture = ExtResource("2_vqu8w")
+
+[node name="Detector" parent="." index="1"]
+light_mask = 16
+visibility_layer = 4
+
+[node name="DescriptionDetector" parent="." index="2"]
+light_mask = 16
+visibility_layer = 4

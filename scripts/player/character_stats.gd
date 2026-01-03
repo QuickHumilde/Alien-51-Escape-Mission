@@ -66,7 +66,6 @@ func modify_size(amount: float):
 	size += amount
 	sprite.scale = Vector2(size, size)
 	player_collision_detector.scale = Vector2(size, size)
-	player_hitbox.scale = Vector2(size, size)
 
 func unlock_ability(ability_name: String):
 	abilities[ability_name] = true

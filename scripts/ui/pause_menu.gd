@@ -117,5 +117,5 @@ func _on_language_closed():
 	update_texts()
 	options_panel.show()
 	
-func _process(delta):
+func _process(_delta):
 	testEsc()

@@ -24,9 +24,6 @@ func _ready():
 	item = get_tree().get_first_node_in_group("item")
 	stats=player.get_stats()
 	
-	$ItemName.add_theme_font_size_override("font_size", 14)
-	$ItemDescription.add_theme_font_size_override("font_size", 10)
-	
 	_hide_item_info()
 	apply_borders()
 	extra_apply_borders()

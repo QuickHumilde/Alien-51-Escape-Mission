@@ -9,7 +9,7 @@ func _ready():
 	desc_key = "item_golden_fruit_desc"
 	_initiate_detectors()
 
-func _on_hitbox_enter(body):
-	if body.is_in_group("player"):
-		body.items.apply_item(4, 2)
-		queue_free()
+# 1. Speed, 2. MaxHealth, 3. Health, 4. ExtraHealth, 5. Size
+func give_changes(body):
+	body.items.apply_item(4, 2)
+	queue_free()

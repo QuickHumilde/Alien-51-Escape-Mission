@@ -303,3 +303,5 @@ visibility_layer = 9
 position = Vector2(2.9150662, 0.031089783)
 shape = SubResource("RectangleShape2D_u8737")
 disabled = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

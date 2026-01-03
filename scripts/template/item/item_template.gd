@@ -9,8 +9,11 @@ class_name Item
 func _ready():
 	_initiate_detectors()
 
-# 1. Speed, 2. Health, 3. Scale
-@abstract func _on_hitbox_enter(_body)
+func _on_hitbox_enter(_body):
+	if _body.is_in_group("player"):
+		give_changes(_body)
+
+@abstract func give_changes(body)
 
 func _on_hitbox_enter_description(body):
 	if body.is_in_group("player"):

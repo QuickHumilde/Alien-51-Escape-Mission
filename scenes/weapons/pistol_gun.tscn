@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://bfiycvbsqwwul"]
 
-[ext_resource type="Script" uid="uid://bqo51dxg4vaxu" path="res://scripts/weapons/provisional_gun.gd" id="1_0le7k"]
-[ext_resource type="Texture2D" uid="uid://juo1rqh87vuq" path="res://assets/sprites/weapons/ranged/notgun.png" id="1_wgi3f"]
+[ext_resource type="Script" uid="uid://bqo51dxg4vaxu" path="res://scripts/weapons/pistol_gun.gd" id="1_0le7k"]
+[ext_resource type="Texture2D" uid="uid://b2iwo7ebnkmdj" path="res://assets/sprites/weapons/ranged/PistolGun.png" id="2_ih7fq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0le7k"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_wgi3f")
+"texture": ExtResource("2_ih7fq")
 }],
 "loop": false,
 "name": &"attacking",
@@ -18,9 +18,13 @@ animations = [{
 script = ExtResource("1_0le7k")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(3.576279e-07, -5.9604645e-08)
+scale = Vector2(0.625, 0.625)
 sprite_frames = SubResource("SpriteFrames_0le7k")
 animation = &"attacking"
 
 [node name="ShootCooldown" type="Timer" parent="."]
 wait_time = 0.25
 one_shot = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

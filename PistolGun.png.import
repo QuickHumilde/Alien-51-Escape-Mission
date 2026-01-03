@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://juo1rqh87vuq"
-path="res://.godot/imported/notgun.png-b054599df6727752c81d2937c7d71afe.ctex"
+uid="uid://cey00cbtfv6mi"
+path="res://.godot/imported/PistolGun.png-9bf1a16441a89db805dd67bc7b320a75.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/weapons/ranged/notgun.png"
-dest_files=["res://.godot/imported/notgun.png-b054599df6727752c81d2937c7d71afe.ctex"]
+source_file="res://PistolGun.png"
+dest_files=["res://.godot/imported/PistolGun.png-9bf1a16441a89db805dd67bc7b320a75.ctex"]
 
 [params]
 
