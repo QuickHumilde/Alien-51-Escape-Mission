@@ -1,13 +1,13 @@
 extends CharacterBody2D
 class_name Character
 
-@onready var sprite = $AnimatedSprite2D
-@onready var movement = $Logic/Movement
-@onready var animation = $Logic/Animation
-@onready var combat = $Logic/Combat
-@onready var stats = $Logic/Stats
-@onready var items = $Logic/Items
-@onready var audio = $Logic/Audio
+@onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
+@onready var movement : CharacterMovement = $Logic/Movement
+@onready var animation : CharacterAnimation = $Logic/Animation
+@onready var combat : CharacterCombat = $Logic/Combat
+@onready var stats : CharacterStats = $Logic/Stats
+@onready var items : CharacterItems = $Logic/Items
+@onready var audio : CharacterAudio = $Logic/Audio
 @onready var damage_timer = $Logic/DamageTimer
 @onready var hitbox : CollisionShape2D = $Hitbox
 @onready var hitbox_detector : CollisionShape2D = $Detector/HitboxDetector

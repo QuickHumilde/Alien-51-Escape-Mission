@@ -6,6 +6,7 @@ class_name HudPlayer
 @onready var item_name = $ItemName
 @onready var item_desc = $ItemDescription
 @onready var item_back = $ItemBackground
+@onready var item_texture = $ItemImage
 var cache_item_name : String
 var cache_item_desc : String
 
@@ -100,11 +101,14 @@ func extra_apply_borders():
 	style_bg.corner_radius_bottom_right = 5
 	extra_health_bar.add_theme_stylebox_override("background", style_bg)
 
-func _show_item_info(i_name: String, desc: String):
-	item_back.visible=true
+func _show_item_info(i_name: String, desc: String, image: String):
+	item_back.visible=false
 	item_desc.visible=true
 	item_name.visible=true
 	
+	set_item_icon(image)
+	item_texture.visible=true
+	item_texture.size = Vector2(8,8)
 	cache_item_name=str(i_name)
 	cache_item_desc=str(desc)
 	
@@ -117,3 +121,7 @@ func _hide_item_info():
 	item_back.visible=false
 	item_desc.visible=false
 	item_name.visible=false
+	item_texture.visible=false
+
+func set_item_icon(image: String):
+	item_texture.texture = load(image)

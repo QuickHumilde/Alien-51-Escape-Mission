@@ -7,7 +7,8 @@ var sfx := {
 }
 
 var music := {
-	"death_menu": preload("res://assets/audio/music/DeathMusic.mp3")
+	"death_menu": preload("res://assets/audio/music/DeathMusic.mp3"),
+	"barbie": preload("res://assets/audio/music/barbie.mp3")
 }
 
 func _ready():

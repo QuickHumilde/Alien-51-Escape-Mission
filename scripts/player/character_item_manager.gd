@@ -14,5 +14,20 @@ func apply_item(type: int, value: float):
 		4: player.stats.increase_extra_health(value)
 		5: player.stats.modify_size(value)
 
+func modify_speed(value: float):
+	apply_item(1, value)
+	
+func increase_max_health(value: float):
+	apply_item(2, value)
+
+func heal(value: float):
+	apply_item(3, value)
+
+func increase_extra_health(value: float):
+	apply_item(4, value)
+	
+func modify_size(value: float):
+	apply_item(5, value)
+
 func give_weapon(weapon_name: String):
 	player.combat.add_weapon(weapon_name)

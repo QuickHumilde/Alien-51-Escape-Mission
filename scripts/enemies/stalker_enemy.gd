@@ -77,14 +77,14 @@ func take_damage(damage : float):
 	if health <= 0:
 		die()
 	else:
-		play_sound("damage")
+		play_damage_sound()
 
 func die():
 	queue_free()
 
 func setup_audio():
 	sfx_enemy = AudioStreamPlayer2D.new()
-	sfx_enemy.name = "SFXEnemy"
+	sfx_enemy.name = "SFXStalkerEnemy"
 	sfx_enemy.bus = "SFX"
 	sfx_enemy.max_polyphony = 16
 	add_child(sfx_enemy)
@@ -95,3 +95,8 @@ func play_sound(sound_name: String, volume_db: float = 0.0, pitch: float = 1.0):
 	sfx_enemy.volume_db = volume_db
 	sfx_enemy.pitch_scale = pitch
 	sfx_enemy.play()
+
+func play_damage_sound():
+	var pitch := randf_range(0.9, 1.1)
+	var volume := randf_range(-1.0, 0.0)
+	play_sound("damage", volume, pitch)

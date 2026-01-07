@@ -37,8 +37,9 @@ func shoot():
 	cooldown_timer.start()
 
 func give_bullet_values(bullet: Bullet):
+	var forward := Vector2.LEFT.rotated(global_rotation)
 	bullet.global_position = global_position
-	bullet.bullet_direction = (global_position - get_global_mouse_position()).normalized()
+	bullet.bullet_direction = forward
 	bullet.damage = damage
 	bullet.knockback_force = knockback_force
 	bullet.lifetime = lifetime

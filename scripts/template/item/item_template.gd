@@ -5,6 +5,7 @@ class_name Item
 @export var id : int
 @export var name_key : String
 @export var desc_key : String
+var item_texture: String
 
 func _ready():
 	_initiate_detectors()
@@ -30,7 +31,7 @@ func get_description() -> String:
 	return (desc_key)
 
 func show_information():
-	Signals.show_item_information.emit(get_item_name(), get_description())
+	Signals.show_item_information.emit(get_item_name(), get_description(), item_texture)
 
 func hide_information():
 	Signals.hide_item_information.emit()

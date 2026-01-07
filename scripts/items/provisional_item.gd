@@ -9,11 +9,11 @@ func _ready():
 	id = 0
 	name_key="item_provisional_item_name"
 	desc_key="item_provisional_item_desc"
+	item_texture = "res://assets/sprites/provisional/Player1-Front.png"
 	_initiate_detectors()
 
-# 1. Speed, 2. MaxHealth, 3. Health, 4. ExtraHealth, 5. Size
-func give_changes(body):
-	body.items.apply_item(1, speed_increase)
-	body.items.apply_item(2, max_health_increase)
-	body.items.apply_item(5, scale_increase)
+func give_changes(body: Character):
+	body.items.modify_speed(speed_increase)
+	body.items.increase_max_health(max_health_increase)
+	body.items.modify_size(scale_increase)
 	queue_free()

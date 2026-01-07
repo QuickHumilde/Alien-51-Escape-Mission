@@ -98,6 +98,4 @@ func add_weapon(id: String):
 	if id not in weapon_order:
 		weapon_order.append(id)
 		
-	if current_weapon == null:
-		current_weapon_index = weapon_order.size() - 1
-		equip_weapon(id)
+	next_weapon()

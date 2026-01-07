@@ -91,6 +91,8 @@ offset_top = -0.069999695
 offset_right = 3.8399658
 offset_bottom = 0.11999512
 theme = ExtResource("2_bo48s")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 24
 text = "ITEM NAME"
 vertical_alignment = 1
@@ -108,7 +110,15 @@ offset_top = -0.010002136
 offset_right = 3.8799744
 offset_bottom = 5.0599976
 theme = ExtResource("2_bo48s")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 16
 text = "ITEM DESC"
 autowrap_mode = 3
 metadata/_edit_use_anchors_ = true
+
+[node name="ItemImage" type="TextureRect" parent="."]
+offset_left = 256.0
+offset_top = 43.0
+offset_right = 274.0
+offset_bottom = 61.0
