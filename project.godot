@@ -26,6 +26,7 @@ buses/default_bus_layout="uid://bvo8tevybdmjq"
 Signals="*res://autoload/signals.gd"
 LanguageManager="*res://autoload/language_manager.gd"
 AudioManager="*res://autoload/audio_manager.gd"
+ItemManager="*res://autoload/item_manager.gd"
 
 [display]
 
