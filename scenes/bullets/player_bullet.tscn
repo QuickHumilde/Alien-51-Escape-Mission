@@ -16,3 +16,6 @@ texture = ExtResource("1_h31n7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_v3byq")
+
+[node name="Lifetime" type="Timer" parent="."]
+physics_interpolation_mode = 1

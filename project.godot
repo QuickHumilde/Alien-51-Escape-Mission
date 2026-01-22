@@ -23,10 +23,10 @@ buses/default_bus_layout="uid://bvo8tevybdmjq"
 
 [autoload]
 
-Signals="*res://autoload/signals.gd"
-LanguageManager="*res://autoload/language_manager.gd"
-AudioManager="*res://autoload/audio_manager.gd"
-ItemManager="*res://autoload/item_manager.gd"
+Signals="*res://global/signals.gd"
+LanguageManager="*res://global/language_manager.gd"
+AudioManager="*res://global/audio_manager.gd"
+ItemManager="*res://global/item_manager.gd"
 
 [display]
 
@@ -37,14 +37,26 @@ window/size/window_height_override=720
 window/stretch/mode="canvas_items"
 mouse_cursor/stretch/mode="canvas_items"
 
+[file_customization]
+
+folder_colors={
+"res://assets/": "blue",
+"res://global/": "yellow",
+"res://scenes/": "purple",
+"res://scripts/": "red",
+"res://shaders/": "gray",
+"res://translations/": "pink"
+}
+
 [global_group]
 
 bullet_d1=""
 damage_1=""
-walls=""
 enemy=""
 player_ui=""
 item=""
+obstacle=""
+wall=""
 
 [input]
 

@@ -1,8 +1,6 @@
 extends Item
 class_name PistolGunItem
 
-var weapon_name : String = "pistol"
-
 func _ready() -> void:
 	id=2
 	name_key="item_pistol_gun_name"
@@ -11,5 +9,5 @@ func _ready() -> void:
 	_initiate_detectors()
 
 func give_changes(body: Character):
-	body.items.give_weapon(weapon_name)
+	body.items.give_weapon(id)
 	queue_free()

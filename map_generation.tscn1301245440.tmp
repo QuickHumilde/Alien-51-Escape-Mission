@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://clqflfp7kkgq"]
+
+[ext_resource type="Script" uid="uid://bhsswvnp5ga4n" path="res://map_generator.gd" id="1_dgbp0"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_dgbp0")
+map_width = null
+map_height = null
+min_rooms = null
+max_rooms = null
+item_rooms_count = null
+shop_rooms_count = null
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.085, 0.085)
+limit_enabled = false

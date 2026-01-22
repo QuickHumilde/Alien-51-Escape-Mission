@@ -29,5 +29,5 @@ func increase_extra_health(value: float):
 func modify_size(value: float):
 	apply_item(5, value)
 
-func give_weapon(weapon_name: String):
-	player.combat.add_weapon(weapon_name)
+func give_weapon(weapon_id: int):
+	player.combat.add_weapon(weapon_id)

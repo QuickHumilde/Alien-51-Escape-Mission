@@ -6,22 +6,21 @@ var current_weapon: Node2D = null
 @export var current_weapon_index: int = 0
 var weapon_holder: Node2D = null
 
-@export var orbit_radius: float = 16.0
+@export var orbit_radius: float = 13.5
+@export var weapon_orbit_radius : float = 0
 @export var orbit_smoothness: float = 10.0
-@export var orbit_radius2: float = 16.0
-
 
 var arm_scene: PackedScene = preload("res://scenes/weapons/arm_weapon.tscn")
 var pistol_scene: PackedScene = preload("res://scenes/weapons/pistol_gun.tscn")
 
 var weapon_scenes := {}
 @export var weapon_instances := {} 
-var weapon_order := ["arm"]
+@export var weapon_order := [1,2]
 
 func _ready():
 	weapon_scenes = {
-		"arm": arm_scene,
-		"pistol": pistol_scene,
+		1: arm_scene,
+		2: pistol_scene,
 	}
 
 func init(holder: Node2D, character_stats: CharacterStats):
@@ -30,9 +29,12 @@ func init(holder: Node2D, character_stats: CharacterStats):
 
 	if weapon_scenes.is_empty():
 		_ready()
-
-	var initial_id = weapon_order[current_weapon_index]
-	equip_weapon(initial_id)
+		
+	if weapon_order.is_empty():
+		pass
+	else:
+		var initial_id = weapon_order[current_weapon_index]
+		equip_weapon(initial_id)
 
 func update(delta: float, character):
 	if not current_weapon:
@@ -51,7 +53,6 @@ func update(delta: float, character):
 	else:
 		current_weapon.scale.y = 1
 
-
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
 
@@ -62,7 +63,7 @@ func shoot():
 	if current_weapon and current_weapon.has_method("shoot"):
 		current_weapon.shoot()
 
-func equip_weapon(id: String):
+func equip_weapon(id: int):
 	if not weapon_scenes.has(id):
 		push_error("Weapon id '%s' no está en weapon_scenes" % id)
 		return
@@ -91,7 +92,7 @@ func next_weapon():
 	var next_id = weapon_order[current_weapon_index]
 	equip_weapon(next_id)
 
-func add_weapon(id: String):
+func add_weapon(id: int):
 	if not weapon_scenes.has(id):
 		return
 

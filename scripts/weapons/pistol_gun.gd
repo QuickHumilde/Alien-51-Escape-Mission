@@ -38,12 +38,7 @@ func shoot():
 
 func give_bullet_values(bullet: Bullet):
 	var forward := Vector2.LEFT.rotated(global_rotation)
-	bullet.global_position = global_position
-	bullet.bullet_direction = forward
-	bullet.damage = damage
-	bullet.knockback_force = knockback_force
-	bullet.lifetime = lifetime
-	bullet.speed = speed
+	bullet.init(forward, global_position, damage, knockback_force, lifetime, speed)
 
 func _on_hitbox_enter(area):
 	if area.is_in_group("enemy"):

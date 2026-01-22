@@ -5,6 +5,9 @@ collision_layer = 8
 collision_mask = 13
 motion_mode = 1
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+animation = &""
+
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 
 [node name="Detector" type="Area2D" parent="." groups=["enemy"]]
@@ -12,9 +15,6 @@ collision_layer = 8
 collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detector"]
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-animation = &""
 
 [node name="PathTimer" type="Timer" parent="."]
 wait_time = 0.5

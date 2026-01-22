@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjrdowcqpn37l"
-path="res://.godot/imported/VoidHand.png-8d683119eeb49edddc9839ba0a3713b3.ctex"
+uid="uid://c2g552o1dmkt5"
+path="res://.godot/imported/PlayerDown-Idle2.png-ba0158ad977a7ff77fe5e82204af8138.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://VoidHand.png"
-dest_files=["res://.godot/imported/VoidHand.png-8d683119eeb49edddc9839ba0a3713b3.ctex"]
+source_file="res://assets/sprites/player/tests/PlayerDown-Idle2.png"
+dest_files=["res://.godot/imported/PlayerDown-Idle2.png-ba0158ad977a7ff77fe5e82204af8138.ctex"]
 
 [params]
 

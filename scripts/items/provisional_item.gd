@@ -1,7 +1,7 @@
 extends Item
 class_name ProvisionalItem
 
-var speed_increase : float = 100
+var speed_increase : float = 25
 var max_health_increase : float = 2
 var scale_increase : float = 0.25
 

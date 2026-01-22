@@ -1,0 +1,146 @@
+[gd_scene load_steps=15 format=4 uid="uid://c0wyiru2g8jgf"]
+
+[ext_resource type="Texture2D" uid="uid://xlto3ea6ja0d" path="res://assets/sprites/tileset/TileSet1.png" id="1_qbal3"]
+[ext_resource type="Script" uid="uid://dmccp7lddki73" path="res://scripts/rooms/sala_prueba.gd" id="1_ypwf5"]
+[ext_resource type="PackedScene" uid="uid://jygsb42krc3q" path="res://scenes/player/player.tscn" id="2_bkx0u"]
+[ext_resource type="PackedScene" uid="uid://dw4em1kkdblnm" path="res://scenes/enemies/StalkerEnemy/stalker_enemy.tscn" id="3_mvyeq"]
+[ext_resource type="PackedScene" uid="uid://dgokuxja87va7" path="res://scenes/items/provisional_item.tscn" id="4_bkx0u"]
+[ext_resource type="PackedScene" uid="uid://cc8qw2lwwn2bj" path="res://scenes/items/golden_fruit_item.tscn" id="5_mvyeq"]
+[ext_resource type="PackedScene" uid="uid://ddmkkd4lvgb5g" path="res://scenes/ui/pause_menu.tscn" id="6_jdx7j"]
+[ext_resource type="PackedScene" uid="uid://byrp3wtch5b76" path="res://scenes/ui/death_menu.tscn" id="7_laycw"]
+[ext_resource type="PackedScene" uid="uid://ci201gjy0h5il" path="res://scenes/items/weapons/piston_gun_item.tscn" id="8_ppu0c"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_miqcv"]
+vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
+agent_radius = 0.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_0lu74"]
+vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
+agent_radius = 0.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_d3sbb"]
+vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
+agent_radius = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ipspw"]
+texture = ExtResource("1_qbal3")
+1:0/0 = 0
+1:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_miqcv")
+2:0/0 = 0
+2:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_miqcv")
+3:0/0 = 0
+3:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_0lu74")
+4:0/0 = 0
+4:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_0lu74")
+5:0/0 = 0
+5:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_0lu74")
+6:0/0 = 0
+6:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_0lu74")
+3:1/0 = 0
+3:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_0lu74")
+4:1/0 = 0
+4:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_0lu74")
+5:1/0 = 0
+5:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_0lu74")
+6:1/0 = 0
+6:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_0lu74")
+7:1/0 = 0
+7:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_0lu74")
+3:2/0 = 0
+3:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_d3sbb")
+4:2/0 = 0
+4:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_0lu74")
+5:2/0 = 0
+5:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_0lu74")
+1:4/0 = 0
+2:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+6:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:5/0 = 0
+1:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(3, -8, 12, -8, 12, 8, 3, 8)
+4:5/0 = 0
+4:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 4, -8, 4)
+5:5/0 = 0
+5:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:5/0 = 0
+6:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -1.9289856, -8, -1.8274593, 8, -8, 8)
+1:6/0 = 0
+2:6/0 = 0
+2:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -10, 8, -10, 8, -3, -8, -3)
+5:6/0 = 0
+6:6/0 = 0
+3:5/0 = 0
+3:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 4, -8, 4)
+7:0/0 = 0
+7:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_0lu74")
+0:2/0 = 0
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 4, 8, 4, 8, -8, -8, -8)
+2:5/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_miqcv"]
+physics_layer_0/collision_layer = 1
+navigation_layer_0/layers = 1
+sources/0 = SubResource("TileSetAtlasSource_ipspw")
+
+[node name="SalaPrueba" type="Node2D"]
+script = ExtResource("1_ypwf5")
+
+[node name="Background" type="TileMapLayer" parent="." groups=["wall"]]
+z_index = -3
+z_as_relative = false
+tile_map_data = PackedByteArray("AAD+//3/AAADAAAAAAD+//7/AAADAAAAAAD+/wIAAAADAAAAAAD+/wMAAAADAAAAAAD///3/AAAEAAAAAAD//wIAAAADAAAAAAAAAAIAAAADAAAAAAABAPz/AAADAAAAAAD///z/AAAEAAAAAAD+//z/AAADAAAAAAD+//v/AAADAAAAAAD///v/AAAEAAAAAAD+/wQAAAADAAAAAAAAAAQAAAADAAAAAAABAAQAAAADAAAAAAD+//r/AAAEAAUAAAD+//n/AAACAAQAAAABAPn/AAACAAQAAAD+/wUAAAACAAYAAAD//wUAAAACAAYAAAAAAAUAAAACAAYAAAABAAUAAAACAAYAAAACAPv/AAADAAAAAAACAPz/AAADAAAAAAD9//v/AAADAAAAAAD9//z/AAADAAAAAAD9//3/AAADAAAAAAD9//7/AAADAAAAAAD9/wAAAAADAAAAAAD9/wEAAAADAAAAAAD9/wIAAAADAAAAAAD9/wMAAAADAAAAAAD9/wQAAAADAAAAAAD8//v/AAABAAUAAAD8//z/AAABAAUAAAD8//3/AAABAAUAAAD8//7/AAABAAUAAAD8////AAABAAUAAAD8/wAAAAABAAUAAAD8/wEAAAABAAUAAAD8/wIAAAABAAUAAAD8/wMAAAABAAUAAAD8/wQAAAABAAUAAAD8//r/AAABAAUAAAD9//r/AAADAAUAAAACAPr/AAADAAUAAAD9//n/AAAFAAQAAAACAPn/AAAFAAQAAAD9/wUAAAACAAYAAAACAAUAAAACAAYAAAD8//n/AAABAAQAAAD8/wUAAAABAAYAAAADAAUAAAACAAYAAAADAPr/AAAEAAUAAAAEAPr/AAADAAUAAAAFAPr/AAAEAAUAAAAGAPr/AAAEAAUAAAAHAPr/AAADAAUAAAADAPn/AAAFAAQAAAAEAPn/AAAFAAQAAAAFAPn/AAAFAAQAAAAGAPn/AAAFAAQAAAAHAPn/AAAFAAQAAAADAPv/AAADAAAAAAAEAPz/AAADAAAAAAAEAP3/AAADAAAAAAAEAPv/AAADAAAAAAAGAPv/AAADAAAAAAAHAPv/AAACAAAAAAAEAAIAAAADAAAAAAAEAAMAAAADAAAAAAAEAAQAAAADAAAAAAAFAP//AAADAAAAAAAFAAAAAAADAAAAAAAFAAEAAAADAAAAAAAFAAIAAAADAAAAAAAFAAMAAAADAAAAAAAFAAQAAAADAAAAAAAGAPz/AAADAAAAAAAGAP3/AAADAAAAAAAGAP//AAADAAAAAAAGAAAAAAADAAAAAAAGAAEAAAADAAAAAAAGAAIAAAADAAAAAAAGAAMAAAADAAAAAAAGAAQAAAADAAAAAAAHAPz/AAACAAAAAAAHAP3/AAADAAAAAAAHAP//AAADAAAAAAAHAAAAAAADAAAAAAAHAAEAAAADAAAAAAAHAAIAAAADAAAAAAAHAAMAAAADAAAAAAAHAAQAAAADAAAAAAAEAAUAAAACAAYAAAAFAAUAAAACAAYAAAAGAAUAAAACAAYAAAAHAAUAAAACAAYAAAAIAAQAAAAGAAUAAAAIAAMAAAAGAAUAAAAIAAIAAAAGAAUAAAAIAAEAAAAGAAUAAAAIAP7/AAAGAAUAAAAIAP3/AAAGAAUAAAAIAPz/AAAGAAUAAAAIAPv/AAAGAAUAAAAIAPr/AAAGAAUAAAAIAPn/AAAGAAQAAAAIAAUAAAAGAAYAAAABAPr/AAAEAAUAAAABAPv/AAADAAAAAAD///r/AAADAAAAAAD///n/AAADAAAAAAD///j/AAABAAUAAAD+//j/AAABAAUAAAD///f/AAADAAAAAAD+//f/AAADAAAAAAD+//b/AAADAAAAAAD///b/AAADAAAAAAAAAPb/AAADAAAAAAAAAPf/AAADAAAAAAABAPf/AAADAAAAAAABAPb/AAADAAAAAAD9//b/AAADAAAAAAD9//f/AAADAAAAAAD9//X/AAADAAAAAAD9//T/AAADAAAAAAD+//T/AAADAAAAAAD///T/AAADAAAAAAD///X/AAADAAAAAAD+//X/AAADAAAAAAAAAPT/AAADAAAAAAAAAPX/AAADAAAAAAABAPX/AAADAAAAAAABAPT/AAADAAAAAAACAPT/AAADAAAAAAACAPX/AAADAAAAAAACAPb/AAADAAAAAAACAPf/AAADAAAAAAD9//P/AAACAAUAAAD+//P/AAADAAUAAAD///P/AAAEAAUAAAAAAPP/AAAEAAUAAAABAPP/AAAEAAUAAAD8//L/AAABAAQAAAACAPL/AAAFAAQAAAAAAPn/AAADAAAAAAACAPP/AAAFAAUAAAADAPT/AAAGAAUAAAADAPX/AAAGAAUAAAADAPb/AAAGAAUAAAADAPf/AAAGAAUAAAADAPP/AAAGAAUAAAABAPL/AAAFAAQAAAAAAPL/AAAFAAQAAAD///L/AAAFAAQAAAD+//L/AAAFAAQAAAD9//L/AAAFAAQAAAADAPL/AAAGAAQAAAACAPj/AAACAAYAAAADAPj/AAAGAAYAAAABAPj/AAAGAAUAAAAAAPj/AAAGAAUAAAAEAAEAAAADAAAAAAD8//X/AAADAAAAAAD7//X/AAADAAAAAAD6//X/AAADAAAAAAD5//X/AAADAAAAAAD2//X/AAADAAAAAAD3//X/AAADAAAAAAD4//X/AAADAAAAAAAEAP7/AAADAAAAAAAEAP//AAADAAAAAAAEAAAAAAADAAAAAAAHAP7/AAADAAAAAAAFAP7/AAADAAAAAAAGAP7/AAADAAAAAAAIAP//AAAGAAUAAAAIAAAAAAAGAAUAAAACAAQAAAADAAAAAAACAAMAAAADAAAAAAABAAAAAAADAAAAAAACAP//AAAHAAEAAAACAP7/AAADAAAAAAACAAAAAAADAAAAAAACAAEAAAADAAAAAAACAAIAAAADAAAAAAACAP3/AAADAAAAAAABAP3/AAADAAAAAAABAP7/AAADAAAAAAD///7/AAAEAAAAAAD/////AAADAAEAAAD//wAAAAADAAAAAAAAAAAAAAADAAAAAAADAPz/AAADAAAAAAAAAPr/AAADAAAAAAADAP7/AAADAAAAAAADAP3/AAADAAAAAAADAP//AAAGAAAAAAADAAAAAAAEAAAAAAADAAEAAAAEAAAAAAADAAIAAAAEAAAAAAADAAMAAAAEAAAAAAADAAQAAAAEAAAAAAAAAAEAAAADAAAAAAABAAEAAAADAAAAAAABAAIAAAADAAAAAAABAAMAAAADAAAAAAAAAAMAAAADAAAAAAD//wMAAAADAAAAAAD//wQAAAADAAAAAAD9////AAADAAAAAAD+////AAADAAAAAAD+/wAAAAADAAAAAAD+/wEAAAADAAAAAAD//wEAAAADAAAAAAAAAPv/AAADAAAAAAAAAPz/AAADAAAAAAAAAP3/AAADAAAAAAAAAP7/AAADAAAAAAAAAP//AAAHAAEAAAABAP//AAAHAAEAAAA=")
+tile_set = SubResource("TileSet_miqcv")
+navigation_visibility_mode = 2
+
+[node name="Foreground" type="TileMapLayer" parent="." groups=["obstacle"]]
+z_index = -2
+z_as_relative = false
+tile_map_data = PackedByteArray("AAADAAQAAAAAAAIAAAAFAPv/AAADAAAAAAAFAPz/AAADAAAAAAAFAP3/AAADAAAAAAA=")
+tile_set = SubResource("TileSet_miqcv")
+navigation_enabled = false
+
+[node name="Obstacles" type="TileMapLayer" parent="Foreground" groups=["obstacle"]]
+z_index = -2
+z_as_relative = false
+tile_map_data = PackedByteArray("AAADAAQAAAAAAAIAAAAFAPv/AAABAAIAAAAFAPz/AAABAAIAAAAFAP3/AAABAAIAAAA=")
+tile_set = SubResource("TileSet_miqcv")
+navigation_enabled = false
+
+[node name="Player" parent="." instance=ExtResource("2_bkx0u")]
+position = Vector2(35, -53)
+collision_mask = 9
+
+[node name="StalkerEnemy" parent="." instance=ExtResource("3_mvyeq")]
+position = Vector2(1, -159)
+motion_mode = 0
+
+[node name="StalkerEnemy2" parent="." instance=ExtResource("3_mvyeq")]
+position = Vector2(113, -62)
+motion_mode = 0
+
+[node name="GoldenFruitItem" parent="." instance=ExtResource("5_mvyeq")]
+position = Vector2(-23, -60)
+
+[node name="ProvisionalItem" parent="." instance=ExtResource("4_bkx0u")]
+position = Vector2(117, 61)
+
+[node name="PistolGunItem" parent="." instance=ExtResource("8_ppu0c")]
+position = Vector2(-23, 69)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DeathMenu" parent="CanvasLayer" instance=ExtResource("7_laycw")]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("6_jdx7j")]
+offset_left = -1.0
+offset_top = -21.0
+offset_right = -1.0
+offset_bottom = -21.0
