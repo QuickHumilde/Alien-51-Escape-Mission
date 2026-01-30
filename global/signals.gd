@@ -13,7 +13,7 @@ signal player_death()
 signal show_death_menu()
 #endregion
 
-func emit_all():
+func _emit_all():
 	show_item_information.emit()
 	hide_item_information.emit()
 	health_changed.emit()

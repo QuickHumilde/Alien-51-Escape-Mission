@@ -15,7 +15,7 @@ var pistol_scene: PackedScene = preload("res://scenes/weapons/pistol_gun.tscn")
 
 var weapon_scenes := {}
 @export var weapon_instances := {} 
-@export var weapon_order := [1,2]
+@export var weapon_order := [1]
 
 func _ready():
 	weapon_scenes = {
