@@ -13,4 +13,4 @@ func _ready():
 # 1. Speed, 2. MaxHealth, 3. Health, 4. ExtraHealth, 5. Size
 func give_changes(body: Character):
 	body.items.increase_extra_health(health_increase)
-	queue_free()
+	destroy_on_pickup()

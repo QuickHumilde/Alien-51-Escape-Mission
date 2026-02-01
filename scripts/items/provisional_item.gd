@@ -16,4 +16,4 @@ func give_changes(body: Character):
 	body.items.modify_speed(speed_increase)
 	body.items.increase_max_health(max_health_increase)
 	body.items.modify_size(scale_increase)
-	queue_free()
+	destroy_on_pickup()

@@ -1,9 +1,8 @@
-[gd_scene load_steps=20 format=4 uid="uid://c0wyiru2g8jgf"]
+[gd_scene load_steps=15 format=4 uid="uid://c0wyiru2g8jgf"]
 
-[ext_resource type="Texture2D" uid="uid://xlto3ea6ja0d" path="res://assets/sprites/tileset/TileSet.png" id="1_qbal3"]
+[ext_resource type="Texture2D" uid="uid://xlto3ea6ja0d" path="res://assets/sprites/tileset/TileSet1.png" id="1_qbal3"]
 [ext_resource type="Script" uid="uid://dmccp7lddki73" path="res://scripts/rooms/sala_prueba.gd" id="1_ypwf5"]
 [ext_resource type="PackedScene" uid="uid://jygsb42krc3q" path="res://scenes/player/player.tscn" id="2_bkx0u"]
-[ext_resource type="Texture2D" uid="uid://dko4hcv0xy3dv" path="res://assets/sprites/tileset/Obstacle_TileSet.png" id="3_4ieoh"]
 [ext_resource type="PackedScene" uid="uid://dw4em1kkdblnm" path="res://scenes/enemies/StalkerEnemy/stalker_enemy.tscn" id="3_mvyeq"]
 [ext_resource type="PackedScene" uid="uid://cc8qw2lwwn2bj" path="res://scenes/items/golden_fruit_item.tscn" id="5_mvyeq"]
 [ext_resource type="PackedScene" uid="uid://ddmkkd4lvgb5g" path="res://scenes/ui/pause_menu.tscn" id="6_jdx7j"]
@@ -30,7 +29,6 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, -8, 8, 8, 8, 8,
 agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ipspw"]
-resource_name = "Background"
 texture = ExtResource("1_qbal3")
 1:0/0 = 0
 1:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_miqcv")
@@ -56,6 +54,8 @@ texture = ExtResource("1_qbal3")
 6:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:5/0 = 0
 1:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(3, -8, 10.285715, -8, 10.285715, 8, 3, 8)
+4:5/0 = 0
+4:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 6:5/0 = 0
 6:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-10.285714, -8, -1.9289856, -8, -1.8274593, 8, -10.285714, 8)
 2:6/0 = 0
@@ -66,6 +66,11 @@ texture = ExtResource("1_qbal3")
 3:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 7:0/0 = 0
 7:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_0lu74")
+0:2/0 = 0
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 4, 8, 4, 8, -8, -8, -8)
+4:6/0 = 0
+4:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, 1.6000004, 8, 1.6000004, 8, -8)
 3:6/0 = 0
 3:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, -8, -8, -8, 1.6000004, 8, 1.6000004)
 2:7/0 = 0
@@ -83,68 +88,11 @@ texture = ExtResource("1_qbal3")
 5:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:5/0 = 0
 2:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
-4:6/0 = 0
-4:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, 1.6000004, 8, 1.6000004, 8, -8)
-4:5/0 = 0
-4:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSet" id="TileSet_miqcv"]
 physics_layer_0/collision_layer = 1
 navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_ipspw")
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5lslb"]
-resource_name = "Foreground"
-texture = ExtResource("1_qbal3")
-1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
-4:0/0 = 0
-5:0/0 = 0
-6:0/0 = 0
-7:0/0 = 0
-5:1/0 = 0
-6:1/0 = 0
-7:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-1:4/0 = 0
-2:4/0 = 0
-3:4/0 = 0
-4:4/0 = 0
-6:4/0 = 0
-1:5/0 = 0
-2:5/0 = 0
-3:5/0 = 0
-4:5/0 = 0
-5:5/0 = 0
-6:5/0 = 0
-7:5/0 = 0
-2:6/0 = 0
-3:6/0 = 0
-4:6/0 = 0
-5:6/0 = 0
-7:6/0 = 0
-1:7/0 = 0
-2:7/0 = 0
-6:7/0 = 0
-7:7/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_4ieoh"]
-physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_5lslb")
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a2tj1"]
-texture = ExtResource("3_4ieoh")
-0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.714286, -5.714286, 5.714287, -5.714286, 5.714287, 5.714287, -5.714286, 5.714287, -5.714286, -5.714286)
-1:0/0 = 0
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, 5.714287, 8, 5.714287, 8, -8)
-
-[sub_resource type="TileSet" id="TileSet_a2tj1"]
-physics_layer_0/collision_layer = 32
-physics_layer_0/collision_mask = 32
-sources/1 = SubResource("TileSetAtlasSource_a2tj1")
 
 [node name="SalaPrueba" type="Node2D"]
 script = ExtResource("1_ypwf5")
@@ -157,34 +105,25 @@ tile_set = SubResource("TileSet_miqcv")
 navigation_visibility_mode = 2
 
 [node name="Foreground" type="TileMapLayer" parent="." groups=["obstacle"]]
-light_mask = 32
 z_index = -2
 z_as_relative = false
 tile_map_data = PackedByteArray("AAADAAQAAAAAAAIAAAA=")
-tile_set = SubResource("TileSet_4ieoh")
+tile_set = SubResource("TileSet_miqcv")
 navigation_enabled = false
 
 [node name="Obstacles" type="TileMapLayer" parent="Foreground" groups=["obstacle"]]
-light_mask = 32
-visibility_layer = 32
 z_index = -2
 z_as_relative = false
-tile_map_data = PackedByteArray("AAADAAQAAQAAAAAAAAAFAPz/AQABAAAAAAAFAP3/AQABAAAAAAAFAP7/AQABAAAAAAAFAP//AQABAAAAAAA=")
-tile_set = SubResource("TileSet_a2tj1")
+tile_map_data = PackedByteArray("AAADAAQAAAAAAAIAAAAFAPz/AAABAAIAAAAFAP3/AAABAAIAAAAFAP7/AAABAAIAAAAFAP//AAABAAIAAAA=")
+tile_set = SubResource("TileSet_miqcv")
 navigation_enabled = false
 
 [node name="Player" parent="." instance=ExtResource("2_bkx0u")]
-position = Vector2(5, 14)
+position = Vector2(35, -53)
+collision_mask = 9
 
 [node name="StalkerEnemy" parent="." instance=ExtResource("3_mvyeq")]
-z_index = 9
-position = Vector2(-17, -164)
-motion_mode = 0
-
-[node name="StalkerEnemy2" parent="." instance=ExtResource("3_mvyeq")]
-z_index = 9
-position = Vector2(111, -44)
-collision_mask = 45
+position = Vector2(20, -154)
 motion_mode = 0
 
 [node name="GoldenFruitItem" parent="." instance=ExtResource("5_mvyeq")]

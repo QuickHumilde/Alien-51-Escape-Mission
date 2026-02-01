@@ -16,6 +16,9 @@ func _on_hitbox_enter(_body):
 
 @abstract func give_changes(body)
 
+func destroy_on_pickup():
+	queue_free()
+
 func _on_hitbox_enter_description(body):
 	if body.is_in_group("player"):
 		show_information()

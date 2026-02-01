@@ -10,6 +10,8 @@ class_name CharacterStats
 @export var size: float = 1.0
 @export var extra_damage: float = 1.0
 @export var invulnerability_time: float = 1.0
+@export var is_flying: bool = false
+
 @onready var player_audio: CharacterAudio
 @onready var player_animation: CharacterAnimation
 static var abilities := {}
@@ -66,6 +68,13 @@ func modify_size(amount: float):
 	size += amount
 	sprite.scale = Vector2(size, size)
 	player_collision_detector.scale = Vector2(size, size)
+
+func player_fly(fly : bool):
+	if fly and !is_flying:
+		is_flying=true
+		player_animation.is_flying=true
+	elif !fly and is_flying:
+		is_flying=false
 
 func unlock_ability(ability_name: String):
 	abilities[ability_name] = true

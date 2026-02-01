@@ -10,4 +10,4 @@ func _ready() -> void:
 
 func give_changes(body: Character):
 	body.items.give_weapon(id)
-	queue_free()
+	destroy_on_pickup()

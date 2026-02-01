@@ -31,3 +31,7 @@ func modify_size(value: float):
 
 func give_weapon(weapon_id: int):
 	player.combat.add_weapon(weapon_id)
+
+func give_fly(allow_flying: bool):
+	player.stats.player_fly(allow_flying)
+	player.set_flying()

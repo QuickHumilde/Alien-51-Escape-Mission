@@ -5,6 +5,7 @@ var sprite: AnimatedSprite2D
 var cardinal_direction: Vector2 = Vector2.DOWN
 var state: String = "idle"
 var damage_timer: Timer
+var is_flying: bool = false
 
 func init(player_sprite: AnimatedSprite2D, timer: Timer):
 	sprite=player_sprite
@@ -29,7 +30,11 @@ func set_direction(character) -> bool:
 	return true
 
 func set_state(character) -> bool:
-	var new_state: String = "idle" if character.velocity == Vector2.ZERO else "walk"
+	var new_state: String
+	if is_flying:
+		new_state = "fly"
+	else:
+		new_state = "idle" if character.velocity == Vector2.ZERO else "walk"
 	if new_state == state:
 		return false
 	state = new_state

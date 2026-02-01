@@ -61,3 +61,6 @@ func _check_overlapping_enemies():
 
 func get_stats() -> CharacterStats:
 	return stats
+
+func set_flying():
+	collision_mask &= ~(1 << 5)

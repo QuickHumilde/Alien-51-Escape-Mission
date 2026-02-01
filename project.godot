@@ -14,8 +14,8 @@ config/name="Alien 51: Escape Mission"
 run/main_scene="uid://c0wyiru2g8jgf"
 config/features=PackedStringArray("4.5", "Forward Plus")
 boot_splash/bg_color=Color(0.14117648, 0.1882353, 0.14117648, 1)
-boot_splash/image="uid://caturr8r28j3r"
-config/icon="uid://caturr8r28j3r"
+boot_splash/image="uid://btog1hgjp6uno"
+config/icon="uid://btog1hgjp6uno"
 
 [audio]
 
@@ -35,7 +35,7 @@ window/size/viewport_height=270
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
-mouse_cursor/stretch/mode="canvas_items"
+mouse_cursor/custom_image="uid://blt1rsoh1d4w7"
 
 [file_customization]
 
@@ -119,11 +119,13 @@ locale/translations=PackedStringArray("res://translations/items/items.en.transla
 2d_render/layer_3="Player"
 2d_render/layer_4="Enemy"
 2d_render/layer_5="Item"
+2d_render/layer_6="Obstacles"
 2d_physics/layer_1="World"
 2d_physics/layer_2="Damage"
 2d_physics/layer_3="Player"
 2d_physics/layer_4="Enemy"
 2d_physics/layer_5="Item"
+2d_physics/layer_6="Obstacle"
 
 [physics]
 
