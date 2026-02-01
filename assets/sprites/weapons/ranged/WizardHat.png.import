@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c166k21ry6otk"
-path="res://.godot/imported/PlayerUp-Fly.png-f16c3ce59a748a3ea85b1c92a2994a9b.ctex"
+uid="uid://dg3o641heeou6"
+path="res://.godot/imported/WizardHat.png-607d848a705920249a24920ba8cfbfe2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://PlayerUp-Fly.png"
-dest_files=["res://.godot/imported/PlayerUp-Fly.png-f16c3ce59a748a3ea85b1c92a2994a9b.ctex"]
+source_file="res://assets/sprites/weapons/ranged/WizardHat.png"
+dest_files=["res://.godot/imported/WizardHat.png-607d848a705920249a24920ba8cfbfe2.ctex"]
 
 [params]
 

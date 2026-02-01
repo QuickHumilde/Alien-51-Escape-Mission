@@ -9,7 +9,7 @@ var sounds := {
 }
 
 func _ready() -> void:
-	id=2
+	id=3
 	damage = 1.5
 	knockback_force = 75.0
 	lifetime=3.0

@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://qnbuxkg52vws"]
+
+[ext_resource type="Script" uid="uid://bqo51dxg4vaxu" path="res://scripts/weapons/pistol_gun.gd" id="1_ykpwj"]
+[ext_resource type="Texture2D" uid="uid://dg3o641heeou6" path="res://assets/sprites/weapons/ranged/WizardHat.png" id="2_ykpwj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ykpwj"]
+atlas = ExtResource("2_ykpwj")
+region = Rect2(0, 0, 19, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0le7k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ykpwj")
+}],
+"loop": false,
+"name": &"attacking",
+"speed": 22.0
+}]
+
+[node name="WizardHatWeapon" type="Node2D"]
+script = ExtResource("1_ykpwj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(3.576279e-07, -5.9604645e-08)
+rotation = -1.5707964
+scale = Vector2(0.625, 0.625)
+sprite_frames = SubResource("SpriteFrames_0le7k")
+animation = &"attacking"
+
+[node name="ShootCooldown" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

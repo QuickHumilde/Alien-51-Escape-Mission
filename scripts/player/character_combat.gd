@@ -12,15 +12,17 @@ var weapon_holder: Node2D = null
 
 var arm_scene: PackedScene = preload("res://scenes/weapons/arm_weapon.tscn")
 var pistol_scene: PackedScene = preload("res://scenes/weapons/pistol_gun.tscn")
+var wizard_hat_scene: PackedScene = preload("res://scenes/weapons/wizard_hat_weapon.tscn")
 
 var weapon_scenes := {}
 @export var weapon_instances := {} 
-@export var weapon_order := [1]
+@export var weapon_order := [1,3]
 
 func _ready():
 	weapon_scenes = {
 		1: arm_scene,
 		2: pistol_scene,
+		3: wizard_hat_scene
 	}
 
 func init(holder: Node2D, character_stats: CharacterStats):
