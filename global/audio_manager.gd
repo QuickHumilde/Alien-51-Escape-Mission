@@ -3,7 +3,7 @@ var music_player: AudioStreamPlayer
 var sfx_player: AudioStreamPlayer
 
 var sfx := {
-	
+	"big_shot_laugh":preload("res://assets/audio/sfx/items/BigShot_Laugh.mp3")
 }
 
 var music := {

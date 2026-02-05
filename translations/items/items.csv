@@ -1,5 +1,8 @@
 key,es,en
 
+item_default_name,"Predeterminado","Default"
+item_default_desc,"Descripción del objeto predeterminado.","Default item description."
+
 item_golden_fruit_name,"Fruta Dorada","Golden Fruit"
 item_golden_fruit_desc,"• +2 de vida extra.","• +2 of extra health."
 
@@ -11,3 +14,15 @@ item_pistol_gun_desc,"• Un arma basica que dispara balas de bajo daño.","• 
 
 item_ufo_name,"OVNI","UFO"
 item_ufo_desc,"• Un objeto volador no identificado.\n• Te permite volar.","• An unidentified flying object. \n• Allows you to fly."
+
+item_ninja_headband_name,"Bandana Ninja","Ninja Headband"
+item_ninja_headband_desc,"• Una bandana que te permite moverte más rápido.","• A headband that allows you to move faster."
+
+item_ant_man_helmet_name,"Casco Hormiga","Ant Helmet"
+item_ant_man_helmet_desc,"• Un casco que te hace más pequeño.","• A helmet that makes you smaller."
+
+item_dai_name,"DAI","ICD"
+item_dai_desc,"• Desfribilador Automatico Implantable","• Implantable Cardioverter-Defibrillator"
+
+item_business_glasses_name,"Gafas de Negocio","Business Glasses"
+item_business_glasses_desc,"• BIG SHOT","• BIG SHOT"

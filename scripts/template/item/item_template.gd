@@ -2,19 +2,19 @@
 extends Node2D
 class_name Item
 
-@export var id : int
 @export var name_key : String
 @export var desc_key : String
 var item_texture: String
 
 func _ready():
 	_initiate_detectors()
+	_initiate_animations()
 
 func _on_hitbox_enter(_body):
 	if _body.is_in_group("player"):
 		give_changes(_body)
 
-@abstract func give_changes(body)
+@abstract func give_changes(body: Character)
 
 func destroy_on_pickup():
 	queue_free()
@@ -43,3 +43,7 @@ func _initiate_detectors():
 	$Detector.body_entered.connect(_on_hitbox_enter)
 	$DescriptionDetector.body_entered.connect(_on_hitbox_enter_description)
 	$DescriptionDetector.body_exited.connect(_on_hitbox_exit_description)
+
+func _initiate_animations():
+	$Pedestal/AnimatedSprite2D.play("default")
+	$Visual/AnimationPlayer.play("oscillate")

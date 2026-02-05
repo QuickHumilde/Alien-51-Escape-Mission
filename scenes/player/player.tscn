@@ -728,6 +728,9 @@ script = ExtResource("1_t61fv")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.75, 1.75)
+process_callback = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
 
 [node name="WeaponHolder" type="Node2D" parent="."]
 

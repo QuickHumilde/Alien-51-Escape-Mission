@@ -11,7 +11,7 @@ var weapon_holder: Node2D = null
 @export var orbit_smoothness: float = 10.0
 
 var arm_scene: PackedScene = preload("res://scenes/weapons/arm_weapon.tscn")
-var pistol_scene: PackedScene = preload("res://scenes/weapons/pistol_gun.tscn")
+var pistol_scene: PackedScene = preload("res://scenes/weapons/pistol_weapon.tscn")
 var wizard_hat_scene: PackedScene = preload("res://scenes/weapons/wizard_hat_weapon.tscn")
 
 var weapon_scenes := {}
@@ -100,5 +100,14 @@ func add_weapon(id: int):
 
 	if id not in weapon_order:
 		weapon_order.append(id)
+	
+	equip_last_weapon()
+
+func equip_last_weapon():
+	
+	var last_id: int=0
+	
+	for item_id in weapon_order:
+		last_id=item_id
 		
-	next_weapon()
+	equip_weapon(last_id)

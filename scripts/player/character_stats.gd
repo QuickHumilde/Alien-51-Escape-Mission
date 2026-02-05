@@ -6,11 +6,12 @@ class_name CharacterStats
 @export var max_health: float = 5
 @export var health: float = 5
 @export var extra_health: float = 0
-@export var speed: float = 100.0
+@export var speed: float = 75.0
 @export var size: float = 1.0
 @export var extra_damage: float = 1.0
 @export var invulnerability_time: float = 1.0
 @export var is_flying: bool = false
+@export var modifiers: Array = []
 
 @onready var player_audio: CharacterAudio
 @onready var player_animation: CharacterAnimation
@@ -18,6 +19,8 @@ static var abilities := {}
 var sprite: AnimatedSprite2D
 var player_collision_detector: CollisionShape2D
 var player_hitbox: CollisionShape2D
+
+
 
 func init(cSprite: AnimatedSprite2D, audio:CharacterAudio, animation: CharacterAnimation, detector: CollisionShape2D, hitbox: CollisionShape2D) -> void:
 	sprite= cSprite
@@ -68,6 +71,10 @@ func modify_size(amount: float):
 	size += amount
 	sprite.scale = Vector2(size, size)
 	player_collision_detector.scale = Vector2(size, size)
+	if size <=	 1:
+		player_hitbox.scale = Vector2(size, size)
+	else:
+		Vector2(1, 1)
 
 func player_fly(fly : bool):
 	if fly and !is_flying:
