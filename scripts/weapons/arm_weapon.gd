@@ -5,6 +5,7 @@ extends Weapon
 @onready var cooldown = $ShootCooldown
 @onready var audio_player = $AudioStreamPlayer2D
 
+
 var sounds := {
 	"shoot" : preload("res://assets/audio/sfx/player/uiuiuiADuque.mp3")
 }
@@ -17,7 +18,8 @@ func _ready():
 	knockback_force = 150.0
 	setup_audio()
 
-func shoot():
+func shoot(damage: float):
+	extra_damage =damage
 	if not $ShootCooldown.is_stopped():
 		return
 	
@@ -35,7 +37,7 @@ func _on_hitbox_enter(area):
 		var enemy_node = area.get_parent()
 
 		if enemy_node.has_method("take_damage"):
-			enemy_node.take_damage(damage)
+			enemy_node.take_damage(damage+extra_damage)
 
 		if enemy_node.has_method("apply_knockback"):
 			var knockback_direction = (enemy_node.global_position - global_position).normalized()

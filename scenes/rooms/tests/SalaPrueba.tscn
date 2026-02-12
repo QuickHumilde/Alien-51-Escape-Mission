@@ -277,6 +277,9 @@ position = Vector2(91, -47)
 
 [node name="DAIItem" parent="." instance=ExtResource("12_fuxfh")]
 position = Vector2(200, 55)
+id = null
+name_key = null
+desc_key = null
 
 [node name="BusinessGlassesItem" parent="." instance=ExtResource("13_otkra")]
 position = Vector2(244, 16)

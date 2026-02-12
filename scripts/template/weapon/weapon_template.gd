@@ -5,9 +5,11 @@ class_name Weapon
 @onready var player= get_tree()
 @onready var cooldown_timer = $ShootCooldown
 @export var damage : float = 1.5
+@export var extra_damage: float = 0.0
 @export var knockback_force : float = 50.0
 @export var self_knockback_force : float = 50.0
 var is_attacking : bool = false
+var flip : bool = true
 var id : int = 0
 var lifetime: float = 0.0
 var speed: float = 0.0

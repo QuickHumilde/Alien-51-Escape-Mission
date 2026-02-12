@@ -5,6 +5,7 @@ extends Weapon
 @onready var audio_player = $AudioStreamPlayer2D
 @onready var melee_hitbox = $Hitbox
 
+
 var sounds := {
 	"shoot" : preload("res://assets/audio/sfx/player/uiuiuiADuque.mp3")
 }
@@ -15,10 +16,12 @@ func _ready():
 	damage = 1
 	knockback_force = 150.0
 	self_knockback_force=125.0
+	flip = false
 	setup_audio()
 
-func shoot():
-	if not $ShootCooldown.is_stopped():
+func shoot(damage: float):
+	extra_damage =damage
+	if not $ShootCooldown.is_stopped() and not is_attacking:
 		return
 		
 	is_attacking = true
@@ -28,8 +31,13 @@ func shoot():
 		var volume := randf_range(-4.0, -2.5)
 		play_sound("shoot", volume, pitch)
 
-	anim.play("attack")
+	if self.position.x > 0: 
+		anim.play("attack")
+	else:
+		anim.play("attack_left")
+		
 	await anim.animation_finished
+	anim.play("RESET")
 	is_attacking = false
 	$ShootCooldown.start()
 
@@ -38,7 +46,7 @@ func _on_hitbox_enter(area):
 		var enemy_node = area.get_parent()
 
 		if enemy_node.has_method("take_damage"):
-			enemy_node.take_damage(damage)
+			enemy_node.take_damage(damage+extra_damage)
 			give_knocback()
 
 		if enemy_node.has_method("apply_knockback"):

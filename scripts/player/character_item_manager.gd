@@ -35,3 +35,6 @@ func give_weapon(weapon_id: int):
 func give_fly(allow_flying: bool):
 	player.stats.player_fly(allow_flying)
 	player.set_flying()
+
+func give_modifiers(modifier: ItemModifier):
+	player.stats.modifiers.append(modifier)

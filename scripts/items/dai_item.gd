@@ -10,5 +10,6 @@ func _ready():
 	super._ready()
 
 func give_changes(body: Character):
-	body.stats.increase_max_health(health)
+	var dai_modifier = DaiModifierItem.new()
+	body.items.give_modifiers(dai_modifier)
 	destroy_on_pickup()

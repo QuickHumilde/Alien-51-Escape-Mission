@@ -18,7 +18,7 @@ func update(delta, charac):
 	direction.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	direction.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	direction = direction.normalized()
-	charac.velocity = direction * charac.stats.speed
+	charac.velocity = direction * charac.stats.get_speed()
 
 func apply_knockback(dir: Vector2, force: float, duration: float = 0.2):
 	knockback = dir * force

@@ -6,7 +6,7 @@ class_name PistolGunItem
 func _ready() -> void:
 	name_key="item_pistol_gun_name"
 	desc_key="item_pistol_gun_desc"
-	item_texture = "res://assets/sprites/weapons/ranged/PistolGun.png"
+	item_texture = "res://assets/sprites/weapons/PistolGun.png"
 	super._ready()
 
 func give_changes(body: Character):

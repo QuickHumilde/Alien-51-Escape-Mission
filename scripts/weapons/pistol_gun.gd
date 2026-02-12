@@ -18,7 +18,9 @@ func _ready() -> void:
 	cooldown.wait_time = 1.0
 	setup_audio()
 
-func shoot():
+func shoot(damage: float):
+	extra_damage =damage
+	
 	if cooldown_timer.is_stopped() == false:
 		return
 		
@@ -47,7 +49,7 @@ func _on_hitbox_enter(area):
 	if area.is_in_group("enemy"):
 		var enemy_node = area.get_parent()
 		if enemy_node.has_method("take_damage"):
-			enemy_node.take_damage(damage)
+			enemy_node.take_damage(damage+extra_damage)
 		if enemy_node.has_method("apply_knockback"):
 			var knockback_direction = (enemy_node.global_position - global_position).normalized()
 			enemy_node.apply_knockback(knockback_direction, knockback_force)

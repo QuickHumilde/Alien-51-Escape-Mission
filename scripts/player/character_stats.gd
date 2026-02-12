@@ -20,8 +20,6 @@ var sprite: AnimatedSprite2D
 var player_collision_detector: CollisionShape2D
 var player_hitbox: CollisionShape2D
 
-
-
 func init(cSprite: AnimatedSprite2D, audio:CharacterAudio, animation: CharacterAnimation, detector: CollisionShape2D, hitbox: CollisionShape2D) -> void:
 	sprite= cSprite
 	player_audio = audio
@@ -29,7 +27,7 @@ func init(cSprite: AnimatedSprite2D, audio:CharacterAudio, animation: CharacterA
 	player_collision_detector = detector
 	player_hitbox=hitbox
 	pass
-	
+
 func _ready() -> void:
 	Signals.health_changed.emit(health, max_health, extra_health)
 
@@ -88,6 +86,34 @@ func unlock_ability(ability_name: String):
 	
 func has_ability(ability_name: String) -> bool:
 	return abilities.has(ability_name)
+
+func get_speed() -> float:
+	var value = speed
+	for mod in modifiers:
+		if mod.has_method("get_bonus"):
+			value += mod.get_bonus("speed", self)
+	return value
+
+func get_damage() -> float:
+	var value = extra_damage
+	for mod in modifiers:
+		if mod.has_method("get_bonus"):
+			value += mod.get_bonus("damage", self)
+	return value
+
+func get_size() -> float:
+	var value = size
+	for mod in modifiers:
+		if mod.has_method("get_bonus"):
+			value += mod.get_bonus("size", self)
+	return value
+
+func get_max_health() -> float:
+	var value = max_health
+	for mod in modifiers:
+		if mod.has_method("get_bonus"):
+			value += mod.get_bonus("max_health", self)
+	return value
 
 func _emit_health_changed_signal():
 	Signals.health_changed.emit(health, max_health, extra_health)
