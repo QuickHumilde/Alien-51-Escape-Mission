@@ -13,16 +13,18 @@ var weapon_holder: Node2D = null
 var arm_scene: PackedScene = preload("res://scenes/weapons/arm_weapon.tscn")
 var pistol_scene: PackedScene = preload("res://scenes/weapons/pistol_weapon.tscn")
 var wizard_hat_scene: PackedScene = preload("res://scenes/weapons/wizard_hat_weapon.tscn")
+var nail_scene: PackedScene = preload("res://scenes/weapons/nail_weapon.tscn")
 
 var weapon_scenes := {}
 @export var weapon_instances := {} 
-@export var weapon_order := [1,3]
+@export var weapon_order := [1,4]
 
 func _ready():
 	weapon_scenes = {
 		1: arm_scene,
 		2: pistol_scene,
-		3: wizard_hat_scene
+		3: wizard_hat_scene,
+		4: nail_scene
 	}
 
 func init(holder: Node2D, character_stats: CharacterStats):
@@ -46,11 +48,13 @@ func update(delta: float, character):
 	var angle_to_mouse = (mouse_pos - character.global_position).angle()
 	var target_offset = Vector2.RIGHT.rotated(angle_to_mouse) * orbit_radius
 
-	current_weapon.position = current_weapon.position.lerp(target_offset, delta * orbit_smoothness)
-	current_weapon.rotation = lerp_angle(current_weapon.rotation, angle_to_mouse, delta * orbit_smoothness)
+	if not current_weapon.is_attacking:
+		current_weapon.position = current_weapon.position.lerp(target_offset, delta * orbit_smoothness)
+		current_weapon.rotation = lerp_angle(current_weapon.rotation, angle_to_mouse, delta * orbit_smoothness)
+
 
 	# Flip cuando mira a la izquierda
-	if abs(angle_to_mouse) > PI/2:
+	if abs(angle_to_mouse) > PI/2 and not current_weapon.is_attacking:
 		current_weapon.scale.y = -1
 	else:
 		current_weapon.scale.y = 1
@@ -86,6 +90,14 @@ func equip_weapon(id: int):
 	current_weapon.visible = true
 	current_weapon.set_process(true)
 
+func remove_weapon(id: int):
+	var current_id = weapon_order[current_weapon_index]
+	if current_id == id:
+		weapon_order.erase(id)
+		equip_last_weapon()
+	else:
+		weapon_order.erase(id)
+		
 func next_weapon():
 	current_weapon_index += 1
 	if current_weapon_index >= weapon_order.size():

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://qnbuxkg52vws"]
 
 [ext_resource type="Script" uid="uid://bqo51dxg4vaxu" path="res://scripts/weapons/pistol_gun.gd" id="1_ykpwj"]
-[ext_resource type="Texture2D" uid="uid://dg3o641heeou6" path="res://assets/sprites/weapons/ranged/WizardHat.png" id="2_ykpwj"]
+[ext_resource type="Texture2D" uid="uid://dg3o641heeou6" path="res://assets/sprites/weapons/WizardHat.png" id="2_ykpwj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ykpwj"]
 atlas = ExtResource("2_ykpwj")

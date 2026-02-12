@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dg3o641heeou6"
-path="res://.godot/imported/WizardHat.png-607d848a705920249a24920ba8cfbfe2.ctex"
+uid="uid://mxh5axbxns87"
+path="res://.godot/imported/Nail.png-4b009b9b2eb801396c1b6c675864ccb0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/weapons/ranged/WizardHat.png"
-dest_files=["res://.godot/imported/WizardHat.png-607d848a705920249a24920ba8cfbfe2.ctex"]
+source_file="res://assets/sprites/weapons/Nail.png"
+dest_files=["res://.godot/imported/Nail.png-4b009b9b2eb801396c1b6c675864ccb0.ctex"]
 
 [params]
 

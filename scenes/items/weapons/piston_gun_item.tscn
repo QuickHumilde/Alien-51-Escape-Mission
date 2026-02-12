@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ctdsnkjtbdqr3" path="res://scenes/templates/item/item_template.tscn" id="1_jfw46"]
 [ext_resource type="Script" uid="uid://bvpscyjb17du7" path="res://scripts/items/weapons/pistol_gun_item.gd" id="2_3qr4r"]
-[ext_resource type="Texture2D" uid="uid://b2iwo7ebnkmdj" path="res://assets/sprites/weapons/ranged/PistolGun.png" id="3_3qr4r"]
+[ext_resource type="Texture2D" uid="uid://b2iwo7ebnkmdj" path="res://assets/sprites/weapons/PistolGun.png" id="3_3qr4r"]
 
 [node name="PistolGunItem" instance=ExtResource("1_jfw46")]
 script = ExtResource("2_3qr4r")

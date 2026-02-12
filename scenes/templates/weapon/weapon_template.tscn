@@ -1,12 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://dyjyit2bbrpm4"]
-
-[ext_resource type="Script" uid="uid://bs5228qggqfka" path="res://scripts/template/weapon/weapon_template.gd" id="1_ky0dx"]
+[gd_scene format=3 uid="uid://dyjyit2bbrpm4"]
 
 [node name="WeaponTemplate" type="Node2D"]
-script = ExtResource("1_ky0dx")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-animation = &""
+[node name="Visual" type="Node2D" parent="."]
 
 [node name="ShootCooldown" type="Timer" parent="."]
 one_shot = true

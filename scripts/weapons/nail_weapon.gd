@@ -1,60 +1,53 @@
 extends Weapon
 
-@onready var bullet_scene = preload("res://scenes/bullets/player_bullet.tscn")
+@onready var anim = $Visual/AnimationPlayer
 @onready var cooldown = $ShootCooldown
 @onready var audio_player = $AudioStreamPlayer2D
+@onready var melee_hitbox = $Hitbox
 
 var sounds := {
-	"shoot": preload("res://assets/audio/sfx/weapons/pistol/PistolGunShoot.mp3"),
+	"shoot" : preload("res://assets/audio/sfx/player/uiuiuiADuque.mp3")
 }
 
-func _ready() -> void:
-	id=3
-	damage = 1.5
-	knockback_force = 75.0
-	self_knockback_force=25.0
-	lifetime=3.0
-	speed = 100.0
-	cooldown.wait_time = 1.0
+func _ready():
+	melee_hitbox.area_entered.connect(_on_hitbox_enter)
+	id = 4
+	damage = 1
+	knockback_force = 150.0
+	self_knockback_force=125.0
 	setup_audio()
 
 func shoot():
-	if cooldown_timer.is_stopped() == false:
+	if not $ShootCooldown.is_stopped():
 		return
 		
-	self.get_node("AnimatedSprite2D").play("attacking")
+	is_attacking = true
 	
-	var bullet = bullet_scene.instantiate()
-	
-	give_bullet_values(bullet)
+	if anim.current_animation != "attack":
+		var pitch := randf_range(0.9, 1.5)
+		var volume := randf_range(-4.0, -2.5)
+		play_sound("shoot", volume, pitch)
 
-	get_tree().current_scene.add_child(bullet)
-	
-	var pitch := randf_range(0.9, 1.5)
-	var volume := randf_range(-4.0, -2.5)
-	
-	give_knocback()
-	
-	play_sound("shoot", volume, pitch)
-	
-	cooldown_timer.start()
-
-func give_bullet_values(bullet: Bullet):
-	var forward := Vector2.LEFT.rotated(global_rotation)
-	bullet.init(forward, global_position, damage, knockback_force, lifetime, speed)
+	anim.play("attack")
+	await anim.animation_finished
+	is_attacking = false
+	$ShootCooldown.start()
 
 func _on_hitbox_enter(area):
 	if area.is_in_group("enemy"):
 		var enemy_node = area.get_parent()
+
 		if enemy_node.has_method("take_damage"):
 			enemy_node.take_damage(damage)
+			give_knocback()
+
 		if enemy_node.has_method("apply_knockback"):
 			var knockback_direction = (enemy_node.global_position - global_position).normalized()
 			enemy_node.apply_knockback(knockback_direction, knockback_force)
 
 func setup_audio():
 	audio_player = AudioStreamPlayer2D.new()
-	audio_player.name = "SFXPistolGun"
+	audio_player.name = "SFXArmWeapon"
 	audio_player.bus = "SFX"
 	audio_player.max_polyphony = 16
 	add_child(audio_player)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2iwo7ebnkmdj"
-path="res://.godot/imported/PistolGun.png-4d5449ddf09b9059002e9c86d09e203a.ctex"
+uid="uid://dg3o641heeou6"
+path="res://.godot/imported/WizardHat.png-b71daa0c4b1c5303707a47d810158758.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/weapons/ranged/PistolGun.png"
-dest_files=["res://.godot/imported/PistolGun.png-4d5449ddf09b9059002e9c86d09e203a.ctex"]
+source_file="res://assets/sprites/weapons/WizardHat.png"
+dest_files=["res://.godot/imported/WizardHat.png-b71daa0c4b1c5303707a47d810158758.ctex"]
 
 [params]
 

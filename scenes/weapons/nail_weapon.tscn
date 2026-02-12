@@ -1,0 +1,146 @@
+[gd_scene load_steps=9 format=3 uid="uid://bf7af8noo4e71"]
+
+[ext_resource type="PackedScene" uid="uid://dyjyit2bbrpm4" path="res://scenes/templates/weapon/weapon_template.tscn" id="1_kug5q"]
+[ext_resource type="Script" uid="uid://dohwi2yfqltml" path="res://scripts/weapons/nail_weapon.gd" id="2_1btkj"]
+[ext_resource type="Texture2D" uid="uid://mxh5axbxns87" path="res://assets/sprites/weapons/Nail.png" id="2_6aeiv"]
+[ext_resource type="Texture2D" uid="uid://dfbcst7xyth7y" path="res://assets/sprites/effects/NailSlash-Effect.png" id="4_1g631"]
+
+[sub_resource type="Animation" id="Animation_1btkj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.1920929e-07, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.6440265]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Hitbox/Sprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Hitbox/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_6aeiv"]
+resource_name = "attack"
+length = 0.65
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.34651592, 0.62765145),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1.1920929e-07, 0), Vector2(0, 5), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.34651592, 0.62765145),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.6440265, 1.813397092822108, 0.6440265]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Hitbox/Sprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.22, 0.51),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Hitbox/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.22, 0.51),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1g631"]
+_data = {
+&"RESET": SubResource("Animation_1btkj"),
+&"attack": SubResource("Animation_6aeiv")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1g631"]
+size = Vector2(28, 20)
+
+[node name="NailWeapon" instance=ExtResource("1_kug5q")]
+script = ExtResource("2_1btkj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Visual" index="0"]
+position = Vector2(1.1920929e-07, 0)
+rotation = 0.6440265
+texture = ExtResource("2_6aeiv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Visual" index="1"]
+libraries = {
+&"": SubResource("AnimationLibrary_1g631")
+}
+
+[node name="Hitbox" type="Area2D" parent="." index="1"]
+collision_layer = 2
+collision_mask = 9
+
+[node name="Sprite2D" type="Sprite2D" parent="Hitbox" index="0"]
+visible = false
+position = Vector2(11.000002, 1.0000007)
+scale = Vector2(2.625, 1.6250001)
+texture = ExtResource("4_1g631")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="1"]
+position = Vector2(9, 0)
+shape = SubResource("RectangleShape2D_1g631")
+disabled = true

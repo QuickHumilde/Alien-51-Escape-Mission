@@ -9,10 +9,9 @@ var sounds := {
 	"shoot" : preload("res://assets/audio/sfx/player/uiuiuiADuque.mp3")
 }
 
-var knockback: Vector2
 
 func _ready():
-	$Hitbox.area_entered.connect(_on_hitbox_enter)
+	melee_hitbox.area_entered.connect(_on_hitbox_enter)
 	id = 1
 	damage = 1
 	knockback_force = 150.0
