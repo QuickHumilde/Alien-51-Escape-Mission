@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://c0wyiru2g8jgf"]
+[gd_scene load_steps=27 format=4 uid="uid://c0wyiru2g8jgf"]
 
 [ext_resource type="Texture2D" uid="uid://xlto3ea6ja0d" path="res://assets/sprites/tileset/TileSet.png" id="1_qbal3"]
 [ext_resource type="Script" uid="uid://dmccp7lddki73" path="res://scripts/rooms/sala_prueba.gd" id="1_ypwf5"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bmbav0qodanb7" path="res://scenes/items/dai_item.tscn" id="12_fuxfh"]
 [ext_resource type="PackedScene" uid="uid://c2c03fmvpi3jy" path="res://scenes/items/business_glasses_item.tscn" id="13_otkra"]
 [ext_resource type="PackedScene" uid="uid://dw4em1kkdblnm" path="res://scenes/enemies/StalkerEnemy/stalker_enemy.tscn" id="14_84wfm"]
+[ext_resource type="PackedScene" uid="uid://cpaq7yaxwkrir" path="res://scenes/items/divisor_3_item.tscn" id="15_hvcyd"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_miqcv"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -277,12 +278,12 @@ position = Vector2(91, -47)
 
 [node name="DAIItem" parent="." instance=ExtResource("12_fuxfh")]
 position = Vector2(200, 55)
-id = null
-name_key = null
-desc_key = null
 
 [node name="BusinessGlassesItem" parent="." instance=ExtResource("13_otkra")]
 position = Vector2(244, 16)
 
 [node name="StalkerEnemy" parent="." instance=ExtResource("14_84wfm")]
 position = Vector2(219, -20)
+
+[node name="Divisor3Item" parent="." instance=ExtResource("15_hvcyd")]
+position = Vector2(-146, -46)

@@ -17,7 +17,7 @@ var nail_scene: PackedScene = preload("res://scenes/weapons/nail_weapon.tscn")
 
 var weapon_scenes := {}
 @export var weapon_instances := {} 
-@export var weapon_order := [1,4]
+@export var weapon_order := [1,3,4]
 
 func _ready():
 	weapon_scenes = {

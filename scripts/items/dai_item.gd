@@ -1,4 +1,5 @@
 extends Item
+class_name DaiItem
 
 var health : float = 1
 @export var id: int = 7
