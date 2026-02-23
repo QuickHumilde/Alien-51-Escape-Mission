@@ -13,13 +13,14 @@ func _ready() -> void:
 	damage = 1.5
 	knockback_force = 75.0
 	self_knockback_force=25.0
-	lifetime=3.0
+	lifetime=2.0
 	speed = 100.0
 	cooldown.wait_time = 1.0
 	setup_audio()
 
-func shoot(damage: float):
-	extra_damage =damage
+func shoot(player_damage: float, player_lifetime: float):
+	extra_damage = player_damage
+	extra_lifetime = player_lifetime
 	
 	if cooldown_timer.is_stopped() == false:
 		return
@@ -43,16 +44,7 @@ func shoot(damage: float):
 
 func give_bullet_values(bullet: Bullet):
 	var forward := Vector2.LEFT.rotated(global_rotation)
-	bullet.init(forward, global_position, damage, knockback_force, lifetime, speed)
-
-func _on_hitbox_enter(area):
-	if area.is_in_group("enemy"):
-		var enemy_node = area.get_parent()
-		if enemy_node.has_method("take_damage"):
-			enemy_node.take_damage(damage+extra_damage)
-		if enemy_node.has_method("apply_knockback"):
-			var knockback_direction = (enemy_node.global_position - global_position).normalized()
-			enemy_node.apply_knockback(knockback_direction, knockback_force)
+	bullet.init(forward, global_position, damage+extra_damage, knockback_force, lifetime+extra_lifetime, speed)
 
 func setup_audio():
 	audio_player = AudioStreamPlayer2D.new()

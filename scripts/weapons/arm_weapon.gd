@@ -18,8 +18,8 @@ func _ready():
 	knockback_force = 150.0
 	setup_audio()
 
-func shoot(damage: float):
-	extra_damage =damage
+func shoot(player_damage: float, player_lifetime: float):
+	extra_damage = player_damage
 	if not $ShootCooldown.is_stopped():
 		return
 	

@@ -9,6 +9,7 @@ class_name CharacterStats
 @export var speed: float = 75.0
 @export var size: float = 1.0
 @export var extra_damage: float = 0.0
+@export var extra_lifetime: float = 0.0
 @export var invulnerability_time: float = 1.0
 @export var is_flying: bool = false
 @export var modifiers: Array = []
@@ -113,6 +114,13 @@ func get_max_health() -> float:
 	for mod in modifiers:
 		if mod.has_method("get_bonus"):
 			value += mod.get_bonus("max_health", self)
+	return value
+
+func get_lifetime() -> float:
+	var value = extra_lifetime
+	for mod in modifiers:
+		if mod.has_method("get_bonus"):
+			value += mod.get_bonus("lifetime", self)
 	return value
 
 func _emit_health_changed_signal():

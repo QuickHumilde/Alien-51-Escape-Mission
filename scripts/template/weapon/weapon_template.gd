@@ -6,6 +6,7 @@ class_name Weapon
 @onready var cooldown_timer = $ShootCooldown
 @export var damage : float = 1.5
 @export var extra_damage: float = 0.0
+@export var extra_lifetime: float = 0.0
 @export var knockback_force : float = 50.0
 @export var self_knockback_force : float = 50.0
 var is_attacking : bool = false

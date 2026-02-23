@@ -1,8 +1,8 @@
 extends ItemModifier
 class_name Divisor3ModifierItem
 
-var divisor_activation : int = 3
-var bonus_speed := 10.0
+var divisor_activation: int = 3
+var bonus_speed: float = 10.0
 
 func get_bonus(stat_name: String, player) -> float:
 

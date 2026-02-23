@@ -1,9 +1,9 @@
 extends ItemModifier
 class_name DaiModifierItem
 
-var percentage_activation := 0.35
-var bonus_speed := 20.0
-var bonus_damage := 2.0
+var percentage_activation: float = 0.35
+var bonus_speed: float = 20.0
+var bonus_damage: float= 2.0
 
 func get_bonus(stat_name: String, player) -> float:
 	var hp_percent : float = player.health / player.max_health

@@ -67,7 +67,7 @@ func update(delta: float, character):
 
 func shoot():
 	if current_weapon and current_weapon.has_method("shoot"):
-		current_weapon.shoot(stats.get_damage())
+		current_weapon.shoot(stats.get_damage(), stats.get_lifetime())
 
 func equip_weapon(id: int):
 	if not weapon_scenes.has(id):
