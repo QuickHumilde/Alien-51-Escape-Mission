@@ -18,7 +18,7 @@ func _ready():
 	flip = false
 	setup_audio()
 
-func shoot(player_damage: float, player_lifetime: float):
+func shoot(player_damage: float, _player_lifetime: float):
 	extra_damage =player_damage
 	if not $ShootCooldown.is_stopped() and not is_attacking:
 		return

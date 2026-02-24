@@ -6,6 +6,7 @@ class_name Character
 @onready var animation : CharacterAnimation = $Logic/Animation
 @onready var combat : CharacterCombat = $Logic/Combat
 @onready var stats : CharacterStats = $Logic/Stats
+@onready var abilities : CharacterAbilities = $Logic/Abilities
 @onready var items : CharacterItems = $Logic/Items
 @onready var audio : CharacterAudio = $Logic/Audio
 @onready var damage_timer = $Logic/DamageTimer
@@ -19,6 +20,7 @@ func _ready():
 	combat.init(weapon_holder, stats)
 	items.init(self)
 	movement.init(self)
+	abilities.init(self)
 	stats.init(sprite, audio, animation, hitbox_detector, hitbox)
 	animation.init(sprite, damage_timer)
 

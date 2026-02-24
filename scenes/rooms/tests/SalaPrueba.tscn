@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://c0wyiru2g8jgf"]
+[gd_scene load_steps=28 format=4 uid="uid://c0wyiru2g8jgf"]
 
 [ext_resource type="Texture2D" uid="uid://xlto3ea6ja0d" path="res://assets/sprites/tileset/TileSet.png" id="1_qbal3"]
 [ext_resource type="Script" uid="uid://dmccp7lddki73" path="res://scripts/rooms/sala_prueba.gd" id="1_ypwf5"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://c2c03fmvpi3jy" path="res://scenes/items/business_glasses_item.tscn" id="13_otkra"]
 [ext_resource type="PackedScene" uid="uid://dw4em1kkdblnm" path="res://scenes/enemies/StalkerEnemy/stalker_enemy.tscn" id="14_84wfm"]
 [ext_resource type="PackedScene" uid="uid://cpaq7yaxwkrir" path="res://scenes/items/divisor_3_item.tscn" id="15_hvcyd"]
+[ext_resource type="PackedScene" uid="uid://8rdt5yow22lo" path="res://scenes/items/dash_ability_item.tscn" id="16_8wn8x"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_miqcv"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -287,3 +288,8 @@ position = Vector2(219, -20)
 
 [node name="Divisor3Item" parent="." instance=ExtResource("15_hvcyd")]
 position = Vector2(-146, -46)
+
+[node name="DashAbilityItem" parent="." instance=ExtResource("16_8wn8x")]
+position = Vector2(-113, 23)
+name_key = ""
+desc_key = ""

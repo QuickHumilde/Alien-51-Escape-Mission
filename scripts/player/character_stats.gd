@@ -16,7 +16,6 @@ class_name CharacterStats
 
 @onready var player_audio: CharacterAudio
 @onready var player_animation: CharacterAnimation
-static var abilities := {}
 var sprite: AnimatedSprite2D
 var player_collision_detector: CollisionShape2D
 var player_hitbox: CollisionShape2D
@@ -81,12 +80,6 @@ func player_fly(fly : bool):
 		player_animation.is_flying=true
 	elif !fly and is_flying:
 		is_flying=false
-
-func unlock_ability(ability_name: String):
-	abilities[ability_name] = true
-	
-func has_ability(ability_name: String) -> bool:
-	return abilities.has(ability_name)
 
 func get_speed() -> float:
 	var value = speed
