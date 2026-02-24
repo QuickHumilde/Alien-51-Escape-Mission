@@ -5,9 +5,9 @@ var revive : float = 1.0
 var id = 9
 
 func _ready():
-	name_key = "item_dai_name"
-	desc_key = "item_dai_name"
-	item_texture = "res://assets/sprites/extras/ItemPedestal.png"
+	name_key = "item_the_cross_name"
+	desc_key = "item_the_cross_desc"
+	item_texture = "res://assets/sprites/items/TheCross_Item.png"
 	
 	super._ready()
 

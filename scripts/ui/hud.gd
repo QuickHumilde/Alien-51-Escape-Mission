@@ -24,7 +24,7 @@ func _ready():
 	await get_tree().process_frame
 	player = get_tree().get_first_node_in_group("player")
 	item = get_tree().get_first_node_in_group("item")
-	stats=player.get_stats()
+	stats = player.get_stats()
 	
 	_hide_item_info()
 	apply_borders()
@@ -75,9 +75,9 @@ func update_health():
 		revives_label.visible=true
 		revives_label.text= "x" + str(int(revives))
 		if extra == 0:
-			revives_label.set_position(Vector2(127.0,14.0), false)
+			revives_label.set_position(Vector2(129.0,11.0), false)
 		else:
-			revives_label.set_position(Vector2(192.0,14.0), false)
+			revives_label.set_position(Vector2(189.0,11.0), false)
 		
 	if current / maximum < 0.3:
 		health_bar.modulate = Color(0.686, 0.0, 0.0, 1.0)

@@ -9,7 +9,6 @@ signal hide_item_information()
 
 #region Player
 signal health_changed(current: float, maximum: float, extra: float, revives: float)
-signal revive_changed(total: float)
 signal player_death()
 signal show_death_menu()
 signal player_revive()

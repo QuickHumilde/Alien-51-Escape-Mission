@@ -74,11 +74,13 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="ReviveCount" type="Label" parent="."]
-offset_left = 127.0
-offset_top = 14.0
-offset_right = 167.0
-offset_bottom = 37.0
+offset_left = 128.0
+offset_top = 11.0
+offset_right = 168.0
+offset_bottom = 34.0
 theme = ExtResource("2_bo48s")
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 20
 text = "x?"
 
 [node name="ItemBackground" type="PanelContainer" parent="." groups=["player_ui"]]

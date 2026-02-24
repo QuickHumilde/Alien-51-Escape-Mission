@@ -30,7 +30,7 @@ func init(cSprite: AnimatedSprite2D, audio:CharacterAudio, animation: CharacterA
 	pass
 
 func _ready() -> void:
-	Signals.health_changed.emit(health, max_health, extra_health)
+	Signals.health_changed.emit(health, max_health, extra_health, revives)
 
 func take_damage(amount: float):
 	
@@ -76,7 +76,7 @@ func modify_size(amount: float):
 		Vector2(1, 1)
 
 func modify_revives(amount: float):
-	revives += amount
+	revives += int(amount)
 	_emit_health_changed_signal()
 
 func player_fly(fly : bool):

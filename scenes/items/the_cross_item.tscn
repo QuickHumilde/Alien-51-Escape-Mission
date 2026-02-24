@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ctdsnkjtbdqr3" path="res://scenes/templates/item/item_template.tscn" id="1_cp1mu"]
 [ext_resource type="Script" uid="uid://b14kgtpw31wq5" path="res://scripts/items/the_cross_item.gd" id="2_cue3w"]
-[ext_resource type="Texture2D" uid="uid://bkb1imot6dffr" path="res://assets/sprites/extras/ItemPedestal.png" id="3_1iys8"]
+[ext_resource type="Texture2D" uid="uid://u7tgdrophwqb" path="res://assets/sprites/items/TheCross_Item.png" id="3_1iys8"]
 
 [node name="TheCrossItem" instance=ExtResource("1_cp1mu")]
 script = ExtResource("2_cue3w")
