@@ -25,6 +25,8 @@ func _ready():
 	setup_audio()
 
 func _physics_process(delta):
+	if not is_inside_tree():
+		return
 	if knockback_time > 0:
 		knockback_time -= delta
 		velocity = knockback
@@ -70,7 +72,7 @@ func _update_animation():
 			sprite.play("default")
 
 func take_damage(damage : float):
-	sprite.modulate = Color(1, 0, 0, 1)
+	sprite.modulate = Color(1.0, 0.0, 0.0, 1.0)
 	health -= damage
 	await get_tree().create_timer(0.2).timeout
 	sprite.modulate = Color(1,1,1)

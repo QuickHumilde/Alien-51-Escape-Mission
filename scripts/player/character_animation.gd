@@ -61,9 +61,18 @@ func player_taking_damage():
 		
 		damage_timer.stop()
 
-func player_dying():
+func player_dying(player_revives: int):
 	sprite.process_mode = Node.PROCESS_MODE_ALWAYS
 	sprite.play("dying")
 	await sprite.animation_finished
-	Signals.show_death_menu.emit()
-	sprite.process_mode = Node.PROCESS_MODE_INHERIT
+	
+	if player_revives > 0:
+		player_revive()
+	else:
+		Signals.show_death_menu.emit()
+		sprite.process_mode = Node.PROCESS_MODE_INHERIT
+
+func player_revive():
+	Signals.player_revive.emit()
+	sprite.play("idle_down")
+	pass

@@ -13,6 +13,7 @@ class_name CharacterStats
 @export var invulnerability_time: float = 1.0
 @export var is_flying: bool = false
 @export var modifiers: Array = []
+@export var revives: int = 0
 
 @onready var player_audio: CharacterAudio
 @onready var player_animation: CharacterAnimation
@@ -74,6 +75,10 @@ func modify_size(amount: float):
 	else:
 		Vector2(1, 1)
 
+func modify_revives(amount: float):
+	revives += amount
+	_emit_health_changed_signal()
+
 func player_fly(fly : bool):
 	if fly and !is_flying:
 		is_flying=true
@@ -117,9 +122,15 @@ func get_lifetime() -> float:
 	return value
 
 func _emit_health_changed_signal():
-	Signals.health_changed.emit(health, max_health, extra_health)
+	Signals.health_changed.emit(health, max_health, extra_health, revives)
 
 func die():
 	player_audio.play_death()
-	player_animation.player_dying()
+	player_animation.player_dying(revives)
 	Signals.player_death.emit()
+	
+	if (revives > 0):
+		await player_animation.sprite.animation_finished
+		Signals.player_revive.emit()
+		revives -= 1
+		heal(2)

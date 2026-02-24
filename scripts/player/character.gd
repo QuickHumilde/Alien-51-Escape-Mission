@@ -17,6 +17,7 @@ class_name Character
 
 func _ready():
 	Signals.player_death.connect(player_death)
+	Signals.player_revive.connect(player_revive)
 	combat.init(weapon_holder, stats)
 	items.init(self)
 	movement.init(self)
@@ -33,7 +34,6 @@ func _physics_process(_delta):
 	move_and_slide()
 
 func take_damage(amount: float):
-	
 	if damage_timer.is_stopped() and !Signals.player_is_dead:
 		audio.play_damage()
 		stats.take_damage(amount)
@@ -66,3 +66,13 @@ func get_stats() -> CharacterStats:
 
 func set_flying():
 	collision_mask &= ~(1 << 5)
+
+func player_revive():
+	weapon_holder.show()
+	animation.player_taking_damage()
+	damage_timer.start(stats.invulnerability_time)
+	await damage_timer.timeout
+	
+	await get_tree().create_timer(0.25).timeout
+	
+	_check_overlapping_enemies()

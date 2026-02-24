@@ -8,14 +8,18 @@ signal hide_item_information()
 #endregion
 
 #region Player
-signal health_changed(current: float, maximum: float, extra: float)
+signal health_changed(current: float, maximum: float, extra: float, revives: float)
+signal revive_changed(total: float)
 signal player_death()
 signal show_death_menu()
+signal player_revive()
 #endregion
 
+#Made for remove the warning
 func _emit_all():
 	show_item_information.emit()
 	hide_item_information.emit()
 	health_changed.emit()
 	player_death.emit()
 	show_death_menu.emit()
+	player_revive.emit()

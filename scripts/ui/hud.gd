@@ -3,6 +3,7 @@ class_name HudPlayer
 
 @onready var health_bar = $HealthBar
 @onready var health_label = $HealthBar/Label
+@onready var revives_label = $ReviveCount
 @onready var item_name = $ItemName
 @onready var item_desc = $ItemDescription
 @onready var item_back = $ItemBackground
@@ -45,14 +46,14 @@ func connect_item_signals():
 	Signals.show_item_information.connect(_show_item_info)
 	Signals.hide_item_information.connect(_hide_item_info)
 
-func _on_health_changed(current_health: float, max_health: float, extra_health: float):
-	print(current_health, max_health, extra_health)
+func _on_health_changed(current_health: float, max_health: float, extra_health: float, revives: float):
 	update_health()
 
 func update_health():
 	var current = player.stats.health
 	var maximum = player.stats.max_health
 	var extra = player.stats.extra_health
+	var revives = player.stats.revives
 	
 	health_bar.max_value = maximum
 	health_bar.value = current
@@ -67,6 +68,16 @@ func update_health():
 		extra_health_label.visible=true
 		extra_health_label.text = str(int(extra))
 		extra_health_bar.modulate = Color(0.313, 0.522, 1.0, 1.0)
+		
+	if revives == 0:
+		revives_label.visible=false
+	else:
+		revives_label.visible=true
+		revives_label.text= "x" + str(int(revives))
+		if extra == 0:
+			revives_label.set_position(Vector2(127.0,14.0), false)
+		else:
+			revives_label.set_position(Vector2(192.0,14.0), false)
 		
 	if current / maximum < 0.3:
 		health_bar.modulate = Color(0.686, 0.0, 0.0, 1.0)

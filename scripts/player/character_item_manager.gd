@@ -13,10 +13,11 @@ func apply_item(type: int, value: float):
 		3: player.stats.heal(value)
 		4: player.stats.increase_extra_health(value)
 		5: player.stats.modify_size(value)
+		6: player.stats.modify_revives(value)
 
 func modify_speed(value: float):
 	apply_item(1, value)
-	
+
 func increase_max_health(value: float):
 	apply_item(2, value)
 
@@ -28,6 +29,10 @@ func increase_extra_health(value: float):
 	
 func modify_size(value: float):
 	apply_item(5, value)
+
+func modify_revives(value: float):
+	apply_item(6, value)
+
 
 func give_weapon(weapon_id: int):
 	player.combat.add_weapon(weapon_id)

@@ -21,9 +21,10 @@ func update_texts():
 func _connect_player_signals():
 	Signals.player_death.connect(pause)
 	Signals.show_death_menu.connect(show_menu)
+	Signals.player_revive.connect(resume)
 
 func resume():
-	Signals.player_is_dead = false	
+	Signals.player_is_dead = false
 	get_tree().paused = false
 	hide()
 
