@@ -27,7 +27,7 @@ func start_cooldown_timer(player: Character):
 	var elapsed := 0.0
 
 	while elapsed < cooldown:
-		await player.get_tree().physics_frame
+		await player.get_tree().process_frame
 		elapsed += player.get_process_delta_time()
 		emit_signal("cooldown_progress", elapsed / cooldown)
 	emit_signal("cooldown_finished")

@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://8rdt5yow22lo"]
 
 [ext_resource type="PackedScene" uid="uid://ctdsnkjtbdqr3" path="res://scenes/templates/item/item_template.tscn" id="1_gq1d6"]
-[ext_resource type="Texture2D" uid="uid://cjrdowcqpn37l" path="res://assets/sprites/items/VoidHand.png" id="2_numh3"]
 [ext_resource type="Script" uid="uid://6n5tbv7cwwyb" path="res://scripts/items/dash_ability_item.gd" id="2_s4j2a"]
+[ext_resource type="Texture2D" uid="uid://dixlofp6gwsxa" path="res://assets/sprites/items/Dash1_Item.png" id="3_s4j2a"]
 
 [node name="DashAbilityItem" instance=ExtResource("1_gq1d6")]
 script = ExtResource("2_s4j2a")
@@ -10,4 +10,4 @@ name_key = null
 desc_key = null
 
 [node name="Sprite2D" type="Sprite2D" parent="Visual" index="1"]
-texture = ExtResource("2_numh3")
+texture = ExtResource("3_s4j2a")
