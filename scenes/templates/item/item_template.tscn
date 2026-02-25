@@ -2,44 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://bkb1imot6dffr" path="res://assets/sprites/extras/ItemPedestal.png" id="1_k2xhr"]
 
-[sub_resource type="Animation" id="Animation_f4lgc"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -11)]
-}
-
-[sub_resource type="Animation" id="Animation_scykp"]
-resource_name = "oscillate"
-length = 2.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 2.0333333),
-"transitions": PackedFloat32Array(1, 1, 1e-05),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, -6), Vector2(0, -3.1651268)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_x145m"]
-_data = {
-&"RESET": SubResource("Animation_f4lgc"),
-&"oscillate": SubResource("Animation_scykp")
-}
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_k2xhr"]
 atlas = ExtResource("1_k2xhr")
 region = Rect2(0, 0, 16, 16)
@@ -104,6 +66,44 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="Animation" id="Animation_f4lgc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -11)]
+}
+
+[sub_resource type="Animation" id="Animation_scykp"]
+resource_name = "oscillate"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2.0333333),
+"transitions": PackedFloat32Array(1, 1, 1e-05),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -6), Vector2(0, -3.1651268)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x145m"]
+_data = {
+&"RESET": SubResource("Animation_f4lgc"),
+&"oscillate": SubResource("Animation_scykp")
+}
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_rwhbg"]
 radius = 8.0
 
@@ -112,21 +112,21 @@ radius = 47.042534
 
 [node name="ItemTemplate" type="Node2D" groups=["item"]]
 
+[node name="Pedestal" type="Node2D" parent="."]
+z_index = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Pedestal"]
+position = Vector2(0, 9)
+sprite_frames = SubResource("SpriteFrames_be6va")
+frame_progress = 0.5619147
+
 [node name="Visual" type="Node2D" parent="."]
-z_index = 11
 position = Vector2(0, -11)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Visual"]
 libraries = {
 &"": SubResource("AnimationLibrary_x145m")
 }
-
-[node name="Pedestal" type="Node2D" parent="."]
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Pedestal"]
-position = Vector2(0, 9)
-sprite_frames = SubResource("SpriteFrames_be6va")
-frame_progress = 0.5619147
 
 [node name="Detector" type="Area2D" parent="."]
 collision_layer = 16

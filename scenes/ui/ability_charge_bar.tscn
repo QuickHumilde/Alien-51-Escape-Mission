@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://c28e2pqwwccu2"]
+
+[ext_resource type="Script" uid="uid://cofbr5gyn0rws" path="res://scenes/ui/ability_charge_bar.gd" id="1_iyds8"]
+[ext_resource type="Texture2D" uid="uid://c7x46usakvpoj" path="res://assets/sprites/ui/progress-bar-circle.png" id="1_je4v0"]
+[ext_resource type="Texture2D" uid="uid://btgjfj56ur01g" path="res://assets/sprites/ui/progress-bar-frame.png" id="2_o1fel"]
+
+[node name="AbilityChargeBar" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_iyds8")
+
+[node name="AbilityCooldownBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = 425.99994
+offset_top = 215.99997
+offset_right = 554.0
+offset_bottom = 344.0
+scale = Vector2(0.36, 0.36)
+max_value = 1.0
+step = 0.01
+fill_mode = 4
+texture_under = ExtResource("1_je4v0")
+texture_over = ExtResource("2_o1fel")
+texture_progress = ExtResource("1_je4v0")
+tint_under = Color(0, 0, 0, 0.30980393)
+tint_progress = Color(1.6845763e-06, 0.81261605, 0.07205834, 1)
+
+[node name="AbilityImage" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 441.0
+offset_top = 231.0
+offset_right = 457.0
+offset_bottom = 247.0
+expand_mode = 1

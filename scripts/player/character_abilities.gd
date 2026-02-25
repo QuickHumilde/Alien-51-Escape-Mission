@@ -20,4 +20,5 @@ func use_ability():
 			ability.activate_with_player(player)
 		
 func change_ability(new_ability):
+	abilities.clear()
 	abilities.append(new_ability)

@@ -46,7 +46,7 @@ func connect_item_signals():
 	Signals.show_item_information.connect(_show_item_info)
 	Signals.hide_item_information.connect(_hide_item_info)
 
-func _on_health_changed(current_health: float, max_health: float, extra_health: float, revives: float):
+func _on_health_changed(_current_health: float, _max_health: float, _extra_health: float, _revives: float):
 	update_health()
 
 func update_health():

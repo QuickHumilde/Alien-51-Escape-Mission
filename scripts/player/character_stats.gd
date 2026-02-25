@@ -3,8 +3,8 @@ class_name CharacterStats
 
 @export_category("Player Character")
 @export_group("Stats")
-@export var max_health: float = 5
-@export var health: float = 5
+@export var max_health: float = 5.0
+@export var health: float = 0.0
 @export var extra_health: float = 0
 @export var speed: float = 75.0
 @export var size: float = 1.0
@@ -22,6 +22,7 @@ var player_collision_detector: CollisionShape2D
 var player_hitbox: CollisionShape2D
 
 func init(cSprite: AnimatedSprite2D, audio:CharacterAudio, animation: CharacterAnimation, detector: CollisionShape2D, hitbox: CollisionShape2D) -> void:
+	health = max_health
 	sprite= cSprite
 	player_audio = audio
 	player_animation = animation
@@ -130,7 +131,14 @@ func die():
 	Signals.player_death.emit()
 	
 	if (revives > 0):
-		await player_animation.sprite.animation_finished
-		Signals.player_revive.emit()
-		revives -= 1
-		heal(2)
+		revive()
+
+func revive():
+	await player_animation.sprite.animation_finished
+	Signals.player_revive.emit()
+	revives -= 1
+	
+	if max_health >= 3:
+		max_health -= 1
+	
+	heal(2)
