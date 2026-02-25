@@ -288,7 +288,7 @@ position = Vector2(219, -20)
 position = Vector2(-128, -49)
 
 [node name="DashAbilityItem" parent="." instance=ExtResource("16_8wn8x")]
-position = Vector2(-20, 58)
+position = Vector2(-129, 61)
 name_key = ""
 desc_key = ""
 
@@ -296,4 +296,4 @@ desc_key = ""
 position = Vector2(-234, -53)
 
 [node name="PistolGunItem" parent="." instance=ExtResource("8_ppu0c")]
-position = Vector2(-127, 57)
+position = Vector2(-8, 60)

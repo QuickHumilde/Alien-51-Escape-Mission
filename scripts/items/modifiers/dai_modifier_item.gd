@@ -5,9 +5,9 @@ var percentage_activation: float = 0.35
 var bonus_speed: float = 20.0
 var bonus_damage: float= 2.0
 
-func get_bonus(stat_name: String, player) -> float:
+func get_bonus(stat_name: String, player: CharacterStats) -> float:
 	var hp_percent : float = player.health / player.max_health
-
+		
 	if hp_percent > percentage_activation:
 		return 0.0
 
@@ -18,3 +18,4 @@ func get_bonus(stat_name: String, player) -> float:
 			return bonus_damage
 		_:
 			return 0.0
+			

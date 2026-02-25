@@ -39,3 +39,5 @@ func start_dash(player: Character):
 	await player.get_tree().create_timer(dash_time).timeout
 
 	player.stats.speed = normal_speed
+	
+	await player.get_tree().create_timer(dash_time+0.2).timeout

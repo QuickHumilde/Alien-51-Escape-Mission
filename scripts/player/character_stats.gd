@@ -28,6 +28,7 @@ func init(cSprite: AnimatedSprite2D, audio:CharacterAudio, animation: CharacterA
 	player_animation = animation
 	player_collision_detector = detector
 	player_hitbox=hitbox
+	modify_size(0.0)
 	pass
 
 func _ready() -> void:

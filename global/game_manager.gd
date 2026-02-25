@@ -1,6 +1,6 @@
 extends Node
 
-var rng := RandomNumberGenerator.new()
+var game_time_scale : float = 1.0
 
-func set_seed(seed_value: int):
-	rng.seed = seed_value
+func _ready() -> void:
+	Engine.time_scale = game_time_scale

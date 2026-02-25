@@ -73,7 +73,7 @@ func update_health():
 		revives_label.visible=false
 	else:
 		revives_label.visible=true
-		revives_label.text= "x" + str(int(revives))
+		revives_label.text= "×" + str(int(revives))
 		if extra == 0:
 			revives_label.set_position(Vector2(129.0,11.0), false)
 		else:
