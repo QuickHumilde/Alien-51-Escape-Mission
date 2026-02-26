@@ -737,6 +737,7 @@ position_smoothing_enabled = true
 position_smoothing_speed = 8.0
 
 [node name="WeaponHolder" type="Node2D" parent="."]
+light_mask = 4
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_xuses")
@@ -746,6 +747,7 @@ animation = &"idle_down"
 light_mask = 4
 position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_xuses")
+debug_color = Color(0.8564939, 3.657937e-06, 8.663535e-07, 0.41960785)
 
 [node name="Detector" type="Area2D" parent="." groups=["player"]]
 collision_layer = 4

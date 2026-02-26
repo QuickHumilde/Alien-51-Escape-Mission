@@ -38,7 +38,8 @@ func start_dash(player: Character):
 
 	player.change_player_damagable_timer(false, dash_time+0.2)
 	
+	player.animation.player_and_weapon_changing_color(Color(0.842, 2.433, 2.285, 0.549), Color(0.842, 2.433, 2.285, 0.549))
 	await player.get_tree().create_timer(dash_time).timeout
-
+	player.animation.player_and_weapon_changing_color(Color(1,1,1), Color(1,1,1))
 	player.stats.speed = normal_speed
 	

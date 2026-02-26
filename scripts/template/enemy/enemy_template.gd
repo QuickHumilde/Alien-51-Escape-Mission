@@ -36,7 +36,6 @@ func do_damage(body):
 
 func _get_detector():
 	$Detector.body_entered.connect(_on_area_2d_body_entered)
-	$Detector.body_entered.connect(_on_area_2d_body_entered)
   
 func get_damage():
 	return contact_damage

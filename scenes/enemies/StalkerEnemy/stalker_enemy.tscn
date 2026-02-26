@@ -37,18 +37,20 @@ script = ExtResource("2_gaafd")
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 z_index = 11
+position = Vector2(-0.5, 0)
 sprite_frames = SubResource("SpriteFrames_s4s3y")
 animation = &"default"
 
 [node name="Hitbox" parent="." index="1"]
-position = Vector2(0.5, 6)
+top_level = false
+position = Vector2(0, 6)
 shape = SubResource("CapsuleShape2D_gaafd")
 
 [node name="Detector" parent="." index="2"]
 position = Vector2(0, 3)
 
 [node name="CollisionShape2D" parent="Detector" index="0" groups=["enemy"]]
-position = Vector2(0.5, 3)
+position = Vector2(0, 3)
 shape = SubResource("CapsuleShape2D_qgoh5")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." index="3"]

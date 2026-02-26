@@ -47,10 +47,8 @@ func _physics_process(delta):
 
 	_update_animation()
 
-	var collision = move_and_collide(velocity * delta)
-	if collision:
-		velocity = velocity.slide(collision.get_normal())
-		move_and_collide(velocity * delta)
+	move_and_slide()
+
 
 func _update_animation():
 	if velocity == Vector2.ZERO:

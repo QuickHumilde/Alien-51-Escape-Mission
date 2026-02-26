@@ -23,7 +23,7 @@ func _ready():
 	movement.init(self)
 	abilities.init(self)
 	stats.init(sprite, audio, animation, hitbox_detector, hitbox)
-	animation.init(sprite, damage_timer)
+	animation.init(sprite, damage_timer, weapon_holder)
 
 func _process(_delta):
 	movement.update(_delta, self)
