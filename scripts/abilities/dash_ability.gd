@@ -18,7 +18,7 @@ func activate_with_player(player: Character):
 
 		last_use = now
 
-		emit_signal("cooldown_started", cooldown)
+		emit_signal("cooldown_started")
 
 		start_dash(player)
 		start_cooldown_timer(player)
@@ -36,8 +36,9 @@ func start_dash(player: Character):
 	var normal_speed = player.stats.speed
 	player.stats.speed += dash_speed
 
+	player.change_player_damagable_timer(false, dash_time+0.2)
+	
 	await player.get_tree().create_timer(dash_time).timeout
 
 	player.stats.speed = normal_speed
 	
-	await player.get_tree().create_timer(dash_time+0.2).timeout

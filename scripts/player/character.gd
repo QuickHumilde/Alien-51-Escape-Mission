@@ -35,6 +35,7 @@ func _physics_process(_delta):
 
 func take_damage(amount: float):
 	if damage_timer.is_stopped() and !Signals.player_is_dead:
+		detector_area.monitorable = false
 		audio.play_damage()
 		stats.take_damage(amount)
 		animation.player_taking_damage()
@@ -42,6 +43,7 @@ func take_damage(amount: float):
 		await damage_timer.timeout
 		
 		await get_tree().create_timer(0.25).timeout
+		detector_area.monitorable = true
 		
 		_check_overlapping_enemies()
 		
@@ -76,3 +78,15 @@ func player_revive():
 	await get_tree().create_timer(0.25).timeout
 	
 	_check_overlapping_enemies()
+
+func change_player_damagable_timer(state: bool, timer: float):
+	if state and damage_timer.is_stopped():
+		detector_area.monitorable=true
+		_check_overlapping_enemies()
+	else:
+		detector_area.monitorable=false
+		await get_tree().create_timer(timer).timeout
+		change_player_damagable_timer(true, 0.0)
+
+func is_player_damagable():
+	return detector_area.monitorable

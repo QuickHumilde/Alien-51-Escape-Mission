@@ -24,14 +24,22 @@ func apply_knockback(dir: Vector2, force: float = 500.0, duration: float = 0.2):
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("player"):
 		do_damage(body)
+		
+
 
 func do_damage(body):
 	var knockback_direction = (body.global_position - global_position).normalized()
-	body.apply_knockback(knockback_direction, knockback_force)
-	body.take_damage(contact_damage)
+	if body.is_in_group("player"):
+		if is_player_damagable(body):
+			body.apply_knockback(knockback_direction, knockback_force)
+			body.take_damage(contact_damage)
 
 func _get_detector():
+	$Detector.body_entered.connect(_on_area_2d_body_entered)
 	$Detector.body_entered.connect(_on_area_2d_body_entered)
   
 func get_damage():
 	return contact_damage
+
+func is_player_damagable(body: Character):
+	return body.is_player_damagable()

@@ -6,6 +6,7 @@ var knockback: Vector2
 var character: CharacterBody2D
 var current_speed : float = 0.0
 static var knockback_time: float = 0.0
+var test:=false
 
 func init(player: CharacterBody2D) -> void:
 	character=player
@@ -22,6 +23,14 @@ func update(delta, charac):
 	direction.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	direction = direction.normalized()
 	charac.velocity = direction * current_speed
+	
+	if Input.get_action_strength("tests"):
+		if test:
+			print("tests_off")
+			test=false
+		else:
+			print("tests_on")
+			test=true
 
 func apply_knockback(dir: Vector2, force: float, duration: float = 0.2):
 	knockback = dir * force

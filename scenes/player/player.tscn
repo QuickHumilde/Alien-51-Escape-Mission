@@ -1,4 +1,4 @@
-[gd_scene load_steps=114 format=3 uid="uid://jygsb42krc3q"]
+[gd_scene load_steps=115 format=3 uid="uid://jygsb42krc3q"]
 
 [ext_resource type="Script" uid="uid://c05bk0i1ljchi" path="res://scripts/player/character.gd" id="1_t61fv"]
 [ext_resource type="Texture2D" uid="uid://maoxh7al31bo" path="res://assets/sprites/player/PlayerDying.png" id="2_fcs02"]
@@ -718,8 +718,11 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xuses"]
+radius = 3.0
+height = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lgqa7"]
 radius = 4.0
-height = 8.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 z_index = 10
@@ -740,6 +743,7 @@ sprite_frames = SubResource("SpriteFrames_xuses")
 animation = &"idle_down"
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
+light_mask = 4
 position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_xuses")
 
@@ -747,14 +751,12 @@ shape = SubResource("CapsuleShape2D_xuses")
 collision_layer = 4
 collision_mask = 27
 
-[node name="HitboxDetector" type="CollisionShape2D" parent="Detector" groups=["player"]]
-light_mask = 4
-visibility_layer = 59
+[node name="HitboxDetector" type="CollisionShape2D" parent="Detector"]
 position = Vector2(0, 2)
-shape = SubResource("CapsuleShape2D_xuses")
-debug_color = Color(1.8049032e-08, 0.28287852, 0.108724125, 0.42)
+shape = SubResource("CircleShape2D_lgqa7")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, 1)
 
 [node name="HUD" parent="." instance=ExtResource("8_hv5x3")]
 

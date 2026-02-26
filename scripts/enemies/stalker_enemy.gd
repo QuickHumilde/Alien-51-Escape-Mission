@@ -4,7 +4,7 @@ extends Enemy
 @onready var sprite = $AnimatedSprite2D
 @onready var sfx_enemy: AudioStreamPlayer2D
 
-@export var stopping_distance : float = 0.0
+@export var stopping_distance : float = 1.5
 
 var sounds  := {
 	"damage": preload("res://assets/audio/sfx/enemies/stalkerenemy/StalkerDamage.mp3")
@@ -92,7 +92,6 @@ func setup_audio():
 	add_child(sfx_enemy)
 
 func play_sound(sound_name: String, volume_db: float = 0.0, pitch: float = 1.0):
-	
 	sfx_enemy.stream = sounds[sound_name]
 	sfx_enemy.volume_db = volume_db
 	sfx_enemy.pitch_scale = pitch
