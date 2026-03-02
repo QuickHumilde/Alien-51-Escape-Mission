@@ -1,15 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://dw4em1kkdblnm"]
+[gd_scene load_steps=9 format=3 uid="uid://dw4em1kkdblnm"]
 
 [ext_resource type="PackedScene" uid="uid://byym4irhw1v80" path="res://scenes/templates/enemy/enemy_template.tscn" id="1_t2hn1"]
 [ext_resource type="Script" uid="uid://cjwjc0gyypea5" path="res://scripts/enemies/stalker_enemy.gd" id="2_gaafd"]
 [ext_resource type="Texture2D" uid="uid://b2u4vkiwrdqgd" path="res://assets/sprites/enemies/EnemyTest.png" id="2_mlthi"]
 [ext_resource type="Texture2D" uid="uid://dcrw3qw7ghecb" path="res://assets/sprites/enemies/EnemyTestLeft.png" id="4_qgoh5"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_s4s3y"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ran3u"]
+atlas = ExtResource("2_mlthi")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6e6d2"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_mlthi")
+"texture": SubResource("AtlasTexture_ran3u")
 }],
 "loop": true,
 "name": &"default",
@@ -35,22 +39,20 @@ height = 12.0
 [node name="StalkerEnemy" instance=ExtResource("1_t2hn1")]
 script = ExtResource("2_gaafd")
 
-[node name="AnimatedSprite2D" parent="." index="0"]
-z_index = 11
-position = Vector2(-0.5, 0)
-sprite_frames = SubResource("SpriteFrames_s4s3y")
-animation = &"default"
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visual" index="0"]
+position = Vector2(9.536743e-07, -9.536743e-07)
+sprite_frames = SubResource("SpriteFrames_6e6d2")
+animation = &"left"
 
 [node name="Hitbox" parent="." index="1"]
-top_level = false
 position = Vector2(0, 6)
 shape = SubResource("CapsuleShape2D_gaafd")
 
-[node name="Detector" parent="." index="2"]
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." index="2"]
+
+[node name="Detector" parent="." index="3"]
 position = Vector2(0, 3)
 
 [node name="CollisionShape2D" parent="Detector" index="0" groups=["enemy"]]
 position = Vector2(0, 3)
 shape = SubResource("CapsuleShape2D_qgoh5")
-
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." index="3"]

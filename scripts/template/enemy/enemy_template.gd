@@ -24,8 +24,6 @@ func apply_knockback(dir: Vector2, force: float = 500.0, duration: float = 0.2):
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("player"):
 		do_damage(body)
-		
-
 
 func do_damage(body):
 	var knockback_direction = (body.global_position - global_position).normalized()

@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://b07bo16m56htg"]
+
+[ext_resource type="PackedScene" uid="uid://byym4irhw1v80" path="res://scenes/templates/enemy/enemy_template.tscn" id="1_oj22f"]
+[ext_resource type="Script" uid="uid://dpu6hxrute2e3" path="res://scenes/enemies/enemy_2.gd" id="2_4m1wf"]
+[ext_resource type="Texture2D" uid="uid://c2g552o1dmkt5" path="res://assets/sprites/player/tests/PlayerDown-Idle2.png" id="2_ngklj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4m1wf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ngklj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ngklj"]
+radius = 6.0827627
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4m1wf"]
+radius = 7.0
+
+[node name="Enemy2" instance=ExtResource("1_oj22f")]
+script = ExtResource("2_4m1wf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visual" index="0"]
+sprite_frames = SubResource("SpriteFrames_4m1wf")
+
+[node name="Hitbox" parent="." index="1"]
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_ngklj")
+
+[node name="CollisionShape2D" parent="Detector" index="0"]
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_4m1wf")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." index="4"]

@@ -1,20 +1,25 @@
 extends Enemy
 
 @onready var agent: NavigationAgent2D = $NavigationAgent2D
-@onready var sprite = $Visual/AnimatedSprite2D
+@onready var sprite: AnimatedSprite2D = $Visual/AnimatedSprite2D
 @onready var sfx_enemy: AudioStreamPlayer2D
+@onready var bullet_scene = preload("res://scenes/bullets/player_bullet.tscn")
 
-@export var stopping_distance : float = 1.5
-
+@export var stopping_distance : float = 35.0
+var damage: float = 1.0
+var lifetime: float = 2.0
+var shoot_cooldown : float = 1.5
+var can_shoot := true
 var sounds  := {
 	"damage": preload("res://assets/audio/sfx/enemies/stalkerenemy/StalkerDamage.mp3")
 }
 
 func _ready():
 	_get_detector()
-	id = 1
+	id = 2
 	contact_damage = 1.0
-	speed = 50.0
+	
+	speed = 40.0
 	health = 3.0
 	knockback_force = 200.0
 	knockback_time = 0.0
@@ -44,11 +49,28 @@ func _physics_process(delta):
 			velocity = direction * speed
 		else:
 			velocity = Vector2.ZERO
+			shoot_player()
 
 	_update_animation()
 
 	move_and_slide()
 
+func shoot_player():
+	if not can_shoot:
+		return
+
+	can_shoot = false
+
+	var bullet = bullet_scene.instantiate()
+	give_bullet_values(bullet)
+	get_tree().current_scene.add_child(bullet)
+
+	await get_tree().create_timer(shoot_cooldown).timeout
+	can_shoot = true
+
+func give_bullet_values(bullet: Bullet):
+	var forward := (player.global_position - global_position).normalized() * -1
+	bullet.init(forward, global_position, damage, 75.0, lifetime, 60.0, "enemy")
 
 func _update_animation():
 	if velocity == Vector2.ZERO:
@@ -57,21 +79,18 @@ func _update_animation():
 
 	var dir = velocity.normalized()
 
-	# Movimiento horizontal dominante
 	if abs(dir.x) > abs(dir.y):
-		sprite.play("left")
+		sprite.play("default")
 		sprite.flip_h = dir.x > 0
-
-	# Movimiento vertical dominante
 	else:
 		if dir.y > 0:
 			sprite.play("default")
 		else:
 			sprite.play("default")
 
-func take_damage(damage : float):
+func take_damage(s_damage : float):
 	sprite.modulate = Color(1.0, 0.0, 0.0, 1.0)
-	health -= damage
+	health -= s_damage
 	await get_tree().create_timer(0.2).timeout
 	sprite.modulate = Color(1,1,1)
 	if health <= 0:

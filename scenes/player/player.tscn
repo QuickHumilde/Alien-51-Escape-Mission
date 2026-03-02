@@ -743,7 +743,7 @@ light_mask = 4
 sprite_frames = SubResource("SpriteFrames_xuses")
 animation = &"idle_down"
 
-[node name="Hitbox" type="CollisionShape2D" parent="."]
+[node name="Hitbox" type="CollisionShape2D" parent="." groups=["player"]]
 light_mask = 4
 position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_xuses")
@@ -753,7 +753,7 @@ debug_color = Color(0.8564939, 3.657937e-06, 8.663535e-07, 0.41960785)
 collision_layer = 4
 collision_mask = 27
 
-[node name="HitboxDetector" type="CollisionShape2D" parent="Detector"]
+[node name="HitboxDetector" type="CollisionShape2D" parent="Detector" groups=["player"]]
 position = Vector2(0, 2)
 shape = SubResource("CircleShape2D_lgqa7")
 

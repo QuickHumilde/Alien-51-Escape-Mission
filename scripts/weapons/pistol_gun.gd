@@ -44,7 +44,7 @@ func shoot(player_damage: float, player_lifetime: float):
 
 func give_bullet_values(bullet: Bullet):
 	var forward := Vector2.LEFT.rotated(global_rotation)
-	bullet.init(forward, global_position, damage+extra_damage, knockback_force, lifetime+extra_lifetime, speed)
+	bullet.init(forward, global_position, damage+extra_damage, knockback_force, lifetime+extra_lifetime, speed, "player")
 
 func setup_audio():
 	audio_player = AudioStreamPlayer2D.new()

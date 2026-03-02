@@ -6,9 +6,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v3byq"]
 size = Vector2(4, 4)
 
-[node name="Detector" type="Area2D" groups=["bullet_d1"]]
+[node name="Detector" type="Area2D" groups=["bullet"]]
 collision_layer = 4
-collision_mask = 41
+collision_mask = 45
 script = ExtResource("1_v3byq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

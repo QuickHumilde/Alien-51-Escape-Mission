@@ -50,13 +50,14 @@ folder_colors={
 
 [global_group]
 
-bullet_d1=""
-damage_1=""
 enemy=""
 player_ui=""
 item=""
 obstacle=""
 wall=""
+player=""
+bullet=""
+damage=""
 
 [input]
 

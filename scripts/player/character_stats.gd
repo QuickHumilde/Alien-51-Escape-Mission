@@ -142,4 +142,5 @@ func revive():
 	if max_health >= 3:
 		max_health -= 1
 	
-	heal(2)
+	health = 2
+	Signals.health_changed.emit(health, max_health, extra_health, revives)
