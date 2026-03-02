@@ -14,7 +14,7 @@ func _ready():
 	_get_detector()
 	id = 1
 	contact_damage = 1.0
-	speed = 50.0
+	speed = 60.0
 	health = 3.0
 	knockback_force = 200.0
 	knockback_time = 0.0
