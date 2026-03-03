@@ -10,14 +10,16 @@ var weapon_holder: Node2D = null
 @export var weapon_orbit_radius : float = 0
 @export var orbit_smoothness: float = 10.0
 
+#region Weapons Scenes
 var arm_scene: PackedScene = preload("res://scenes/weapons/arm_weapon.tscn")
 var pistol_scene: PackedScene = preload("res://scenes/weapons/pistol_weapon.tscn")
 var wizard_hat_scene: PackedScene = preload("res://scenes/weapons/wizard_hat_weapon.tscn")
 var nail_scene: PackedScene = preload("res://scenes/weapons/nail_weapon.tscn")
+#endregion
 
 var weapon_scenes := {}
-@export var weapon_instances := {} 
-@export var weapon_order := [1,3,4]
+@export var weapon_instances : Dictionary = {} 
+@export var weapon_order : Array = [1, 3, 4]
 
 func _ready():
 	weapon_scenes = {
@@ -26,6 +28,8 @@ func _ready():
 		3: wizard_hat_scene,
 		4: nail_scene
 	}
+	
+	#random_weapon()
 
 func init(holder: Node2D, character_stats: CharacterStats):
 	weapon_holder = holder
@@ -123,3 +127,9 @@ func equip_last_weapon():
 		last_id=item_id
 		
 	equip_weapon(last_id)
+
+func random_weapon():
+	var rng: RandomNumberGenerator = RandomNumberGenerator.new()
+	var choosen_weapon = rng.randi_range(1, weapon_scenes.size())
+	weapon_order.append(choosen_weapon)
+	

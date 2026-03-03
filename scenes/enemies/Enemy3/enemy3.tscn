@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://byym4irhw1v80" path="res://scenes/templates/enemy/enemy_template.tscn" id="1_wuuy8"]
 [ext_resource type="Texture2D" uid="uid://cesihqbgg2ygv" path="res://assets/images/CursedCry.jpg" id="2_rcqq4"]
-[ext_resource type="Script" uid="uid://d1gywih66rvdh" path="res://scenes/templates/enemy/enemy_3.gd" id="2_skcte"]
+[ext_resource type="Script" uid="uid://d1gywih66rvdh" path="res://scenes/enemies/Enemy3/enemy_3.gd" id="2_skcte"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_skcte"]
 animations = [{
@@ -20,14 +20,8 @@ radius = 9.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_skcte"]
 
-[node name="Enemy" instance=ExtResource("1_wuuy8")]
+[node name="Enemy3" instance=ExtResource("1_wuuy8")]
 script = ExtResource("2_skcte")
-stopping_distance = null
-id = null
-speed = null
-health = null
-contact_damage = null
-knockback_force = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visual" index="0"]
 position = Vector2(-9.536743e-07, 0)

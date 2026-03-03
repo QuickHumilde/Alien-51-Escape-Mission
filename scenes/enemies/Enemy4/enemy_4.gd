@@ -3,10 +3,9 @@ extends Enemy
 @onready var agent: NavigationAgent2D = $NavigationAgent2D
 @onready var sprite = $Visual/AnimatedSprite2D
 @onready var sfx_enemy: AudioStreamPlayer2D
-
 @export var stopping_distance : float = 1.5
 @onready var enemy = preload("res://scenes/enemies/StalkerEnemy/stalker_enemy.tscn")
-
+@export var children_spawn: int = 3
 
 var sounds  := {
 	"damage": preload("res://assets/audio/sfx/enemies/stalkerenemy/StalkerDamage.mp3")
@@ -16,9 +15,9 @@ func _ready():
 	_get_detector()
 	id = 1
 	contact_damage = 1.0
-	speed = 50.0
-	health = 3.0
-	knockback_force = 200.0
+	speed = 25.0
+	health = 1.0
+	knockback_force = 50.0
 	knockback_time = 0.0
 	knockback_resistance = 50.0
 
@@ -82,14 +81,7 @@ func take_damage(damage : float):
 		play_damage_sound()
 
 func die():
-	for i in range(6):
-		var perro = enemy.instantiate()
-		var offset = Vector2(randf_range(-20, 20), randf_range(-20, 20))
-		perro.global_position = global_position + offset
-		get_tree().current_scene.add_child(perro)
-
 	queue_free()
-
 
 func setup_audio():
 	sfx_enemy = AudioStreamPlayer2D.new()
