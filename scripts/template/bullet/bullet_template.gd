@@ -46,7 +46,7 @@ func _on_hitbox_enter(area):
 			enemy_node.apply_knockback(knockback_direction, knockback_force)
 		if enemy_node.has_method("take_damage"):
 			enemy_node.take_damage(damage)
-		_against_enemy()
+		_against_enemy(area)
 		
 	if area.is_in_group("player") and bullet_owner != "player":
 		var player_node = area.get_parent()
@@ -55,7 +55,7 @@ func _on_hitbox_enter(area):
 			player_node.apply_knockback(knockback_direction, knockback_force)
 		if player_node.has_method("take_damage"):
 			player_node.take_damage(damage)
-		_against_enemy()
+		_against_enemy(area)
 
 func _against_obstacle():
 	destroy_bullet()
@@ -63,7 +63,7 @@ func _against_obstacle():
 func _against_wall():
 	destroy_bullet()
 		
-func _against_enemy():
+func _against_enemy(area):
 	if not modifiers.has("piercing"):
 		destroy_bullet()
 

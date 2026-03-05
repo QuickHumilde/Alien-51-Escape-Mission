@@ -1,6 +1,7 @@
 extends Bullet
 
 @onready var sprite: Sprite2D
+var paint_color : Color = Color(0.156, 0.333, 0.603, 1.0)
 
 func _ready():
 	super._ready()
@@ -19,3 +20,9 @@ func init(new_forward, new_position, new_damage, new_knockback_force, new_lifeti
 func _process(delta: float):
 	global_position -= bullet_direction * speed * delta
 	rotation_degrees += speed_rotation * delta
+	
+func _against_enemy(area):
+	var enemy_node = area.get_parent()
+	if enemy_node.has_method("change_color"):
+		enemy_node.change_color(paint_color)
+	super._against_enemy(area)

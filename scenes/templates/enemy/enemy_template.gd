@@ -7,10 +7,14 @@ class_name Enemy
 @export var health : float = 3.0
 @export var contact_damage: float = 0.0
 @onready var player: CharacterBody2D = get_tree().current_scene.get_node("Player")
+@onready var visuals : Node2D = $Visual
 var knockback: Vector2
+var color_time : float = 3.0
+var color_time_cooldown : float = 9.0
 @export var knockback_force : float = 0.0
 var knockback_time : float = 0.0
 var knockback_resistance : float =0.0
+var can_change_color : bool = true
 
 func apply_knockback(dir: Vector2, force: float = 500.0, duration: float = 0.2):
 	if knockback_resistance < force:
@@ -40,3 +44,12 @@ func get_damage():
 
 func is_player_damagable(body: Character):
 	return body.is_player_damagable()
+
+func change_color(new_color: Color):
+	if can_change_color:
+		visuals.modulate = new_color
+		can_change_color=false
+		await get_tree().create_timer(color_time).timeout
+		visuals.modulate = Color(1,1,1)
+		await get_tree().create_timer(color_time_cooldown).timeout
+		can_change_color = true
