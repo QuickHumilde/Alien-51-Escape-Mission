@@ -1,7 +1,7 @@
 [gd_scene load_steps=32 format=3 uid="uid://yifinvrixjix"]
 
 [ext_resource type="Texture2D" uid="uid://cyspj8bavmr4m" path="res://assets/sprites/weapons/Arm1.png" id="1_fstsm"]
-[ext_resource type="Script" uid="uid://b4bg02nevoekp" path="res://scripts/weapons/arm_weapon.gd" id="1_u8737"]
+[ext_resource type="Script" uid="uid://b4bg02nevoekp" path="res://scenes/weapons/arm_weapon.gd" id="1_u8737"]
 [ext_resource type="Texture2D" uid="uid://2vcukej8qtxd" path="res://assets/sprites/provisional/Slash-Effect.png" id="3_efyvt"]
 
 [sub_resource type="Animation" id="Animation_7gogf"]

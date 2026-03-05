@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=4 uid="uid://641t0oysglvl"]
 
-[ext_resource type="Script" uid="uid://ddhsit4w7ckjx" path="res://scripts/rooms/room_template.gd" id="1_p4obn"]
+[ext_resource type="Script" uid="uid://ddhsit4w7ckjx" path="res://scenes/rooms/template/room_template.gd" id="1_p4obn"]
 [ext_resource type="Texture2D" uid="uid://xlto3ea6ja0d" path="res://assets/sprites/tileset/TileSet.png" id="1_tric1"]
 [ext_resource type="Texture2D" uid="uid://dko4hcv0xy3dv" path="res://assets/sprites/tileset/Obstacle_TileSet.png" id="2_fd5pa"]
 

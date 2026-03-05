@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ctdsnkjtbdqr3" path="res://scenes/templates/item/item_template.tscn" id="1_3a5kq"]
 [ext_resource type="Texture2D" uid="uid://ysq5dmn100gj" path="res://assets/sprites/items/DAI_Item.png" id="2_phlct"]
-[ext_resource type="Script" uid="uid://cb4yb88xiee04" path="res://scripts/items/dai_item.gd" id="2_yeem5"]
+[ext_resource type="Script" uid="uid://cb4yb88xiee04" path="res://scenes/items/dai_item.gd" id="2_yeem5"]
 
 [node name="DAIItem" instance=ExtResource("1_3a5kq")]
 script = ExtResource("2_yeem5")

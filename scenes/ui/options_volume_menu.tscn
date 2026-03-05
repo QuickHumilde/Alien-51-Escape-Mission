@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://chwsh56hnmg3b"]
 
-[ext_resource type="Script" uid="uid://cfrmko5ukwftt" path="res://scripts/ui/options_menu.gd" id="1_qlva7"]
-[ext_resource type="Script" uid="uid://clo6m2qlkql5q" path="res://scripts/ui/audio_options.gd" id="2_bmyee"]
+[ext_resource type="Script" uid="uid://cfrmko5ukwftt" path="res://scenes/ui/options_menu.gd" id="1_qlva7"]
+[ext_resource type="Script" uid="uid://clo6m2qlkql5q" path="res://scenes/ui/audio_options.gd" id="2_bmyee"]
 [ext_resource type="Theme" uid="uid://b380oga6tlya7" path="res://assets/themes/default.tres" id="3_l1rcc"]
 
 [node name="OptionsMenu" type="Control"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://g0mc15qol1na"]
 
-[ext_resource type="Script" uid="uid://cabfvetonmhqn" path="res://scripts/ui/language_menu.gd" id="1_linch"]
+[ext_resource type="Script" uid="uid://cabfvetonmhqn" path="res://scenes/ui/language_menu.gd" id="1_linch"]
 [ext_resource type="Theme" uid="uid://b380oga6tlya7" path="res://assets/themes/default.tres" id="2_3o8lb"]
 
 [node name="LanguageMenu" type="Control"]

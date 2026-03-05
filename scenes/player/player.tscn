@@ -1,6 +1,6 @@
 [gd_scene load_steps=115 format=3 uid="uid://jygsb42krc3q"]
 
-[ext_resource type="Script" uid="uid://c05bk0i1ljchi" path="res://scripts/player/character.gd" id="1_t61fv"]
+[ext_resource type="Script" uid="uid://c05bk0i1ljchi" path="res://scenes/player/character.gd" id="1_t61fv"]
 [ext_resource type="Texture2D" uid="uid://maoxh7al31bo" path="res://assets/sprites/player/PlayerDying.png" id="2_fcs02"]
 [ext_resource type="Texture2D" uid="uid://c8ja84sj6gue8" path="res://assets/sprites/player/PlayerDown-Idle.png" id="2_t61fv"]
 [ext_resource type="Texture2D" uid="uid://cud5di11g6xa" path="res://assets/sprites/player/PlayerSide-Idle.png" id="3_hss88"]
@@ -12,13 +12,13 @@
 [ext_resource type="Texture2D" uid="uid://dhspxwys2ryrr" path="res://assets/sprites/player/PlayerUp-Walk.png" id="6_6avc5"]
 [ext_resource type="Texture2D" uid="uid://12pfdyup11qh" path="res://assets/sprites/player/PlayerSide-Walk.png" id="6_mk55u"]
 [ext_resource type="PackedScene" uid="uid://b4oe7bbfjujrv" path="res://scenes/ui/HUD.tscn" id="8_hv5x3"]
-[ext_resource type="Script" uid="uid://cf2ydjti0ya2t" path="res://scripts/player/character_stats.gd" id="8_xuses"]
-[ext_resource type="Script" uid="uid://cqnfweq1nt5ki" path="res://scripts/player/character_movement.gd" id="9_3xnwo"]
-[ext_resource type="Script" uid="uid://b2o031434leip" path="res://scripts/player/character_animation.gd" id="9_42irl"]
-[ext_resource type="Script" uid="uid://b5vvjo7uwvnxw" path="res://scripts/player/character_combat.gd" id="11_djydg"]
-[ext_resource type="Script" uid="uid://cpilx8lbp3x7t" path="res://scripts/player/character_item_manager.gd" id="12_bsn6e"]
-[ext_resource type="Script" uid="uid://cm8dyqwgpnapc" path="res://scripts/player/character_audio.gd" id="13_blysn"]
-[ext_resource type="Script" uid="uid://b56hgobt7k6xa" path="res://scripts/player/character_abilities.gd" id="19_lgqa7"]
+[ext_resource type="Script" uid="uid://cf2ydjti0ya2t" path="res://scenes/player/character_stats.gd" id="8_xuses"]
+[ext_resource type="Script" uid="uid://cqnfweq1nt5ki" path="res://scenes/player/character_movement.gd" id="9_3xnwo"]
+[ext_resource type="Script" uid="uid://b2o031434leip" path="res://scenes/player/character_animation.gd" id="9_42irl"]
+[ext_resource type="Script" uid="uid://b5vvjo7uwvnxw" path="res://scenes/player/character_combat.gd" id="11_djydg"]
+[ext_resource type="Script" uid="uid://cpilx8lbp3x7t" path="res://scenes/player/character_item_manager.gd" id="12_bsn6e"]
+[ext_resource type="Script" uid="uid://cm8dyqwgpnapc" path="res://scenes/player/character_audio.gd" id="13_blysn"]
+[ext_resource type="Script" uid="uid://b56hgobt7k6xa" path="res://scenes/player/character_abilities.gd" id="19_lgqa7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_myrg7"]
 atlas = ExtResource("2_fcs02")

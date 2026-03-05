@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://byrp3wtch5b76"]
 
-[ext_resource type="Script" uid="uid://cxmua6aaimkfq" path="res://scripts/ui/death_menu.gd" id="1_pyvjv"]
+[ext_resource type="Script" uid="uid://cxmua6aaimkfq" path="res://scenes/ui/death_menu.gd" id="1_pyvjv"]
 [ext_resource type="Shader" uid="uid://duf6wai1m54td" path="res://shaders/pause_menu.gdshader" id="2_dsday"]
 [ext_resource type="Theme" uid="uid://b380oga6tlya7" path="res://assets/themes/default.tres" id="4_23tc5"]
 [ext_resource type="Texture2D" uid="uid://cesihqbgg2ygv" path="res://assets/images/CursedCry.jpg" id="4_xroqq"]

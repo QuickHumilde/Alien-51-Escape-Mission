@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://c28e2pqwwccu2"]
 
-[ext_resource type="Script" uid="uid://cofbr5gyn0rws" path="res://scripts/ui/ability_charge_bar.gd" id="1_iyds8"]
+[ext_resource type="Script" uid="uid://cofbr5gyn0rws" path="res://scenes/ui/ability_charge_bar.gd" id="1_iyds8"]
 [ext_resource type="Texture2D" uid="uid://c7x46usakvpoj" path="res://assets/sprites/ui/progress-bar-circle.png" id="1_je4v0"]
 [ext_resource type="Texture2D" uid="uid://btgjfj56ur01g" path="res://assets/sprites/ui/progress-bar-frame.png" id="2_o1fel"]
 

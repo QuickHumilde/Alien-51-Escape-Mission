@@ -1,7 +1,7 @@
 [gd_scene load_steps=31 format=4 uid="uid://c0wyiru2g8jgf"]
 
 [ext_resource type="Texture2D" uid="uid://xlto3ea6ja0d" path="res://assets/sprites/tileset/TileSet.png" id="1_qbal3"]
-[ext_resource type="Script" uid="uid://dmccp7lddki73" path="res://scripts/rooms/sala_prueba.gd" id="1_ypwf5"]
+[ext_resource type="Script" uid="uid://dmccp7lddki73" path="res://scenes/rooms/tests/sala_prueba.gd" id="1_ypwf5"]
 [ext_resource type="PackedScene" uid="uid://jygsb42krc3q" path="res://scenes/player/player.tscn" id="2_bkx0u"]
 [ext_resource type="Texture2D" uid="uid://dko4hcv0xy3dv" path="res://assets/sprites/tileset/Obstacle_TileSet.png" id="3_4ieoh"]
 [ext_resource type="PackedScene" uid="uid://cc8qw2lwwn2bj" path="res://scenes/items/golden_fruit_item.tscn" id="5_mvyeq"]
