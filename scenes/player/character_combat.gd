@@ -13,8 +13,9 @@ var weapon_holder: Node2D = null
 #region Weapons Scenes
 var arm_scene: PackedScene = preload("res://scenes/weapons/arm_weapon.tscn")
 var pistol_scene: PackedScene = preload("res://scenes/weapons/pistol_weapon.tscn")
-var wizard_hat_scene: PackedScene = preload("res://scenes/weapons/wizard_hat_weapon.tscn")
+#var wizard_hat_scene: PackedScene = preload("res://scenes/weapons/wizard_hat_weapon.tscn")
 var nail_scene: PackedScene = preload("res://scenes/weapons/nail_weapon.tscn")
+var blue_marker_scene: PackedScene = preload("res://scenes/weapons/blue_marker_weapon.tscn")
 #endregion
 
 var weapon_scenes := {}
@@ -25,8 +26,8 @@ func _ready():
 	weapon_scenes = {
 		1: arm_scene,
 		2: pistol_scene,
-		3: wizard_hat_scene,
-		4: nail_scene
+		3: blue_marker_scene,
+		4: nail_scene,
 	}
 	
 	#random_weapon()

@@ -1,7 +1,8 @@
 extends CharacterBody2D
 class_name Character
 
-@onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
+@onready var visuals : Node2D = $Visual
+@onready var sprite : AnimatedSprite2D = $Visual/AnimatedSprite2D
 @onready var movement : CharacterMovement = $Logic/Movement
 @onready var animation : CharacterAnimation = $Logic/Animation
 @onready var combat : CharacterCombat = $Logic/Combat
@@ -22,7 +23,7 @@ func _ready():
 	items.init(self)
 	movement.init(self)
 	abilities.init(self)
-	stats.init(sprite, audio, animation, hitbox_detector, hitbox)
+	stats.init(sprite, audio, animation, hitbox_detector, hitbox, visuals)
 	animation.init(sprite, damage_timer, weapon_holder)
 
 func _process(_delta):
@@ -35,7 +36,6 @@ func _physics_process(_delta):
 
 func take_damage(amount: float):
 	if damage_timer.is_stopped() and !Signals.player_is_dead:
-		detector_area.monitorable = false
 		audio.play_damage()
 		stats.take_damage(amount)
 		animation.player_taking_damage()
@@ -43,7 +43,6 @@ func take_damage(amount: float):
 		await damage_timer.timeout
 		
 		await get_tree().create_timer(0.25).timeout
-		detector_area.monitorable = true
 		
 		_check_overlapping_enemies()
 		
@@ -81,12 +80,11 @@ func player_revive():
 
 func change_player_damagable_timer(state: bool, timer: float):
 	if state and damage_timer.is_stopped():
-		detector_area.monitorable=true
 		_check_overlapping_enemies()
 	else:
-		detector_area.monitorable=false
-		await get_tree().create_timer(timer).timeout
-		change_player_damagable_timer(true, 0.0)
+		damage_timer.start(timer)
+		await damage_timer.timeout
+		_check_overlapping_enemies()
 
 func is_player_damagable():
-	return detector_area.monitorable
+	return damage_timer.is_stopped()

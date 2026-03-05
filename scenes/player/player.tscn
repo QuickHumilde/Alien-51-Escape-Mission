@@ -1,4 +1,4 @@
-[gd_scene load_steps=115 format=3 uid="uid://jygsb42krc3q"]
+[gd_scene load_steps=116 format=3 uid="uid://jygsb42krc3q"]
 
 [ext_resource type="Script" uid="uid://c05bk0i1ljchi" path="res://scenes/player/character.gd" id="1_t61fv"]
 [ext_resource type="Texture2D" uid="uid://maoxh7al31bo" path="res://assets/sprites/player/PlayerDying.png" id="2_fcs02"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://cqnfweq1nt5ki" path="res://scenes/player/character_movement.gd" id="9_3xnwo"]
 [ext_resource type="Script" uid="uid://b2o031434leip" path="res://scenes/player/character_animation.gd" id="9_42irl"]
 [ext_resource type="Script" uid="uid://b5vvjo7uwvnxw" path="res://scenes/player/character_combat.gd" id="11_djydg"]
+[ext_resource type="Texture2D" uid="uid://wyftcn2xgr0m" path="res://assets/sprites/extras/Shadow.png" id="12_8ydkj"]
 [ext_resource type="Script" uid="uid://cpilx8lbp3x7t" path="res://scenes/player/character_item_manager.gd" id="12_bsn6e"]
 [ext_resource type="Script" uid="uid://cm8dyqwgpnapc" path="res://scenes/player/character_audio.gd" id="13_blysn"]
 [ext_resource type="Script" uid="uid://b56hgobt7k6xa" path="res://scenes/player/character_abilities.gd" id="19_lgqa7"]
@@ -739,9 +740,18 @@ position_smoothing_speed = 8.0
 [node name="WeaponHolder" type="Node2D" parent="."]
 light_mask = 4
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Visual" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visual"]
 sprite_frames = SubResource("SpriteFrames_xuses")
 animation = &"idle_down"
+
+[node name="Sprite2D" type="Sprite2D" parent="Visual"]
+self_modulate = Color(0, 0, 0, 0.13725491)
+show_behind_parent = true
+position = Vector2(1.1920929e-07, 6.46875)
+scale = Vector2(0.71289057, 0.98750013)
+texture = ExtResource("12_8ydkj")
 
 [node name="Hitbox" type="CollisionShape2D" parent="." groups=["player"]]
 light_mask = 4

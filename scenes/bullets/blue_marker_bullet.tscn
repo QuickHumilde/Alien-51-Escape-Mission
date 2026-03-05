@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://br1sr2ekji2cs"]
+
+[ext_resource type="Texture2D" uid="uid://cfkwxyk2jyx6t" path="res://assets/sprites/weapons/BlueMarker.png" id="1_td6ou"]
+[ext_resource type="Script" uid="uid://cqbmpen3rvvqd" path="res://scenes/bullets/blue_marker_bullet.gd" id="1_w1e1c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_td6ou"]
+size = Vector2(11, 2)
+
+[node name="Area2D" type="Area2D"]
+collision_mask = 13
+script = ExtResource("1_w1e1c")
+
+[node name="Visual" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visual"]
+rotation = 3.1415927
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_td6ou")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_td6ou")

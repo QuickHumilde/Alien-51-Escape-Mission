@@ -5,7 +5,7 @@ extends Enemy
 @onready var sfx_enemy: AudioStreamPlayer2D
 
 @export var stopping_distance : float = 1.5
-@onready var enemy = preload("res://scenes/enemies/Enemy4/enemy4.tscn")
+@onready var enemy = preload("res://scenes/enemies/SpawnEnemy/enemy4.tscn")
 @export var children_spawn: int = 3
 
 var sounds  := {

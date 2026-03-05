@@ -1,5 +1,12 @@
 extends Bullet
 
+@onready var sprite: Sprite2D
+
+func _ready():
+	super._ready()
+	speed_rotation = 500.0
+	sprite = $Visual/Sprite2D
+
 func init(new_forward, new_position, new_damage, new_knockback_force, new_lifetime, new_speed, new_bullet_owner) -> void:
 	self.global_position = new_position
 	self.bullet_direction = new_forward
@@ -8,3 +15,7 @@ func init(new_forward, new_position, new_damage, new_knockback_force, new_lifeti
 	self.lifetime = new_lifetime
 	self.speed = new_speed
 	self.bullet_owner = new_bullet_owner
+
+func _process(delta: float):
+	global_position -= bullet_direction * speed * delta
+	rotation_degrees += speed_rotation * delta

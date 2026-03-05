@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://45k8kt4s1uvb"]
 
 [ext_resource type="PackedScene" uid="uid://byym4irhw1v80" path="res://scenes/templates/enemy/enemy_template.tscn" id="1_gdee5"]
-[ext_resource type="Script" uid="uid://crym51cv1hwhw" path="res://scenes/enemies/Enemy4/enemy_4.gd" id="2_303uw"]
+[ext_resource type="Script" uid="uid://crym51cv1hwhw" path="res://scenes/enemies/SpawnEnemy/enemy_4.gd" id="2_303uw"]
 [ext_resource type="Texture2D" uid="uid://btog1hgjp6uno" path="res://assets/images/alien_.png" id="3_4jg4f"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4lujc"]

@@ -10,7 +10,7 @@ var bullet_direction = Vector2.RIGHT
 var time_left: float
 var modifiers: Array = []
 var bullet_owner : String = "-"
-
+var speed_rotation: float = 0.0
 @onready var background_tilemap = get_tree().get_current_scene().get_node("Background")
 @onready var foreground_tilemap = get_tree().get_current_scene().get_node("Foreground")
 
@@ -19,11 +19,15 @@ func _ready():
 	self.area_entered.connect(_on_hitbox_enter)
 	
 	time_left = lifetime
-	
+
+@abstract func init(new_forward, new_position, new_damage, new_knockback_force, new_lifetime, new_speed, new_owner) -> void
+
+
 func _process(delta: float):
 	if get_tree().paused:
 		return
 	global_position -= bullet_direction * speed * delta
+	rotation_degrees += speed_rotation * delta
 	time_left -= delta
 	if time_left <= 0.0:
 		queue_free()

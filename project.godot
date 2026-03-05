@@ -37,6 +37,10 @@ window/size/window_height_override=720
 window/stretch/mode="canvas_items"
 mouse_cursor/custom_image="uid://blt1rsoh1d4w7"
 
+[editor]
+
+run/main_run_args="csc"
+
 [file_customization]
 
 folder_colors={

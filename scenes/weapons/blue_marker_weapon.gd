@@ -1,30 +1,22 @@
 extends Weapon
 
-@onready var bullet_scene = preload("res://scenes/bullets/player_bullet.tscn")
-@onready var cooldown = $ShootCooldown
+@onready var bullet_scene = preload("res://scenes/bullets/blue_marker_bullet.tscn")
 
-func _ready() -> void:
-	id=3
-	damage = 1.5
-	knockback_force = 75.0
-	self_knockback_force=25.0
-	lifetime=2.0
+func _ready():
+	id=4
+	damage = 2
+	knockback_force = 400.0
+	self_knockback_force=0.0
+	lifetime=500.0
 	speed = 100.0
-	cooldown.wait_time = 1.0
-	audio_player = $AudioStreamPlayer2D
-	sounds = {
-		"shoot": preload("res://assets/audio/sfx/weapons/pistol/PistolGunShoot.mp3"),
-	}
 	setup_audio()
-
-func shoot(player_damage: float, player_lifetime: float):
+	
+func shoot(player_damage: float, _player_lifetime: float):
 	extra_damage = player_damage
-	extra_lifetime = player_lifetime
+	extra_lifetime = _player_lifetime
 	
 	if cooldown_timer.is_stopped() == false:
 		return
-		
-	self.get_node("AnimatedSprite2D").play("attacking")
 	
 	var bullet = bullet_scene.instantiate()
 	

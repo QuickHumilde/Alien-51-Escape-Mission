@@ -3,19 +3,16 @@ extends Weapon
 @onready var melee_hitbox = $Hitbox
 @onready var anim = $AnimationPlayer
 @onready var cooldown = $ShootCooldown
-@onready var audio_player = $AudioStreamPlayer2D
-
-
-var sounds := {
-	"shoot" : preload("res://assets/audio/sfx/player/uiuiuiADuque.mp3")
-}
-
 
 func _ready():
 	melee_hitbox.area_entered.connect(_on_hitbox_enter)
 	id = 1
 	damage = 1
 	knockback_force = 150.0
+	audio_player = $AudioStreamPlayer2D
+	sounds = {
+		"shoot" : preload("res://assets/audio/sfx/player/uiuiuiADuque.mp3")
+	}
 	setup_audio()
 
 func shoot(player_damage: float, _player_lifetime: float):

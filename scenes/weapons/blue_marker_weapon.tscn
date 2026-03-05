@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5ets8s225bh2"]
+
+[ext_resource type="PackedScene" uid="uid://dyjyit2bbrpm4" path="res://scenes/templates/weapon/weapon_template.tscn" id="1_rmqrf"]
+[ext_resource type="Script" uid="uid://dol0fp1a8biro" path="res://scenes/weapons/blue_marker_weapon.gd" id="2_8eajf"]
+[ext_resource type="Texture2D" uid="uid://cfkwxyk2jyx6t" path="res://assets/sprites/weapons/BlueMarker.png" id="2_67jmm"]
+
+[node name="BlueMarkerWeapon" instance=ExtResource("1_rmqrf")]
+script = ExtResource("2_8eajf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Visual" index="0"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visual" index="1"]
+rotation = 3.1415927
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_67jmm")

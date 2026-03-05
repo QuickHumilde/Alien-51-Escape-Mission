@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://ciivslj5tpajr"]
+
+[ext_resource type="PackedScene" uid="uid://ctdsnkjtbdqr3" path="res://scenes/templates/item/item_template.tscn" id="1_jwea3"]
+[ext_resource type="Texture2D" uid="uid://cfkwxyk2jyx6t" path="res://assets/sprites/weapons/BlueMarker.png" id="2_c3a0i"]
+
+[node name="ItemTemplate" instance=ExtResource("1_jwea3")]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visual" index="1"]
+rotation = 1.5707964
+texture = ExtResource("2_c3a0i")

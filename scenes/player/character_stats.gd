@@ -17,17 +17,19 @@ class_name CharacterStats
 
 @onready var player_audio: CharacterAudio
 @onready var player_animation: CharacterAnimation
-var sprite: AnimatedSprite2D
-var player_collision_detector: CollisionShape2D
-var player_hitbox: CollisionShape2D
+@onready var sprite: AnimatedSprite2D
+@onready var player_collision_detector: CollisionShape2D
+@onready var player_hitbox: CollisionShape2D
+@onready var visuals: Node2D
 
-func init(cSprite: AnimatedSprite2D, audio:CharacterAudio, animation: CharacterAnimation, detector: CollisionShape2D, hitbox: CollisionShape2D) -> void:
+func init(cSprite: AnimatedSprite2D, audio:CharacterAudio, animation: CharacterAnimation, detector: CollisionShape2D, hitbox: CollisionShape2D, cVisuals: Node2D) -> void:
 	health = max_health
 	sprite= cSprite
 	player_audio = audio
 	player_animation = animation
 	player_collision_detector = detector
 	player_hitbox=hitbox
+	visuals=cVisuals
 	modify_size(0.0)
 	pass
 
@@ -35,7 +37,6 @@ func _ready() -> void:
 	Signals.health_changed.emit(health, max_health, extra_health, revives)
 
 func take_damage(amount: float):
-	
 	if (extra_health <= 0.0):
 		health -= amount
 		
@@ -70,7 +71,7 @@ func modify_speed(amount: float):
 
 func modify_size(amount: float):
 	size += amount
-	sprite.scale = Vector2(size, size)
+	visuals.scale = Vector2(size, size)
 	player_collision_detector.scale = Vector2(size, size)
 	if size <=	 1:
 		player_hitbox.scale = Vector2(size, size)
