@@ -1,6 +1,7 @@
 extends Weapon
 
 @onready var bullet_scene = preload("res://scenes/bullets/blue_marker_bullet.tscn")
+@onready var animation: AnimationPlayer = $Visual/AnimationPlayer
 
 func _ready():
 	id=4
@@ -27,11 +28,11 @@ func shoot(player_damage: float, _player_lifetime: float):
 	var pitch := randf_range(0.9, 1.5)
 	var volume := randf_range(-4.0, -2.5)
 	
-	give_knocback()
-	
 	play_sound("shoot", volume, pitch)
 	
 	cooldown_timer.start()
+	
+	animation.play("reload")
 
 func give_bullet_values(bullet: Bullet):
 	var forward := Vector2.LEFT.rotated(global_rotation)

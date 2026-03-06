@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://4dtulb50pl52"]
+
+[ext_resource type="Script" uid="uid://bw6v5lylkfjfd" path="res://scenes/bullets/laser_test.gd" id="1_v7g0a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g6f71"]
+size = Vector2(421, 6)
+
+[node name="Area2D" type="Area2D"]
+collision_layer = 2
+collision_mask = 44
+script = ExtResource("1_v7g0a")
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Visuals"]
+offset_left = -81.0
+offset_top = -3.0
+offset_right = 340.0
+offset_bottom = 3.0
+color = Color(1, 1, 0.32156864, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(129.5, 0)
+shape = SubResource("RectangleShape2D_g6f71")

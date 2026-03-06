@@ -42,7 +42,6 @@ script = ExtResource("2_gaafd")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visual" index="0"]
 position = Vector2(9.536743e-07, -9.536743e-07)
 sprite_frames = SubResource("SpriteFrames_6e6d2")
-animation = &"left"
 
 [node name="Hitbox" parent="." index="1"]
 position = Vector2(0, 6)

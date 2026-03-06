@@ -285,7 +285,7 @@ position = Vector2(200, 55)
 position = Vector2(244, 16)
 
 [node name="StalkerEnemy" parent="." instance=ExtResource("14_84wfm")]
-position = Vector2(313, -28)
+position = Vector2(318, -3)
 
 [node name="Divisor3Item" parent="." instance=ExtResource("15_hvcyd")]
 position = Vector2(-128, -49)
@@ -302,10 +302,10 @@ position = Vector2(-234, -53)
 position = Vector2(-238, 60)
 
 [node name="Enemy2" parent="." instance=ExtResource("18_5suce")]
-position = Vector2(299, -66)
+position = Vector2(314, -67)
 
-[node name="Enemy3" parent="." instance=ExtResource("19_7y8ym")]
-position = Vector2(224, -37)
+[node name="Enemy" parent="." instance=ExtResource("19_7y8ym")]
+position = Vector2(238, -49)
 
 [node name="BlueMarkerWeaponItem" parent="." instance=ExtResource("20_f0phr")]
 position = Vector2(-17, -46)

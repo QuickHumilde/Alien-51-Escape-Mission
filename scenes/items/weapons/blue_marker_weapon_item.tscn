@@ -8,5 +8,5 @@
 script = ExtResource("2_uaigm")
 
 [node name="Sprite2D" type="Sprite2D" parent="Visual" index="1"]
-rotation = 1.5707964
+scale = Vector2(0.75, 0.75)
 texture = ExtResource("3_18j0g")

@@ -41,9 +41,14 @@ mouse_cursor/custom_image="uid://blt1rsoh1d4w7"
 
 run/main_run_args="csc"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/AutoKey_SpriteFrames/plugin.cfg")
+
 [file_customization]
 
 folder_colors={
+"res://addons/": "green",
 "res://assets/": "blue",
 "res://global/": "yellow",
 "res://scenes/": "purple",

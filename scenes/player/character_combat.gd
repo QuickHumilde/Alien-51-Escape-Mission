@@ -16,11 +16,12 @@ var pistol_scene: PackedScene = preload("res://scenes/weapons/pistol_weapon.tscn
 #var wizard_hat_scene: PackedScene = preload("res://scenes/weapons/wizard_hat_weapon.tscn")
 var nail_scene: PackedScene = preload("res://scenes/weapons/nail_weapon.tscn")
 var blue_marker_scene: PackedScene = preload("res://scenes/weapons/blue_marker_weapon.tscn")
+var laser_test_scene : PackedScene = preload("res://scenes/weapons/laser_test_weapon.tscn")
 #endregion
 
 var weapon_scenes := {}
 @export var weapon_instances : Dictionary = {} 
-@export var weapon_order : Array = [1, 3, 4]
+@export var weapon_order : Array = [1, 3, 4, 5]
 
 func _ready():
 	weapon_scenes = {
@@ -28,6 +29,7 @@ func _ready():
 		2: pistol_scene,
 		3: blue_marker_scene,
 		4: nail_scene,
+		5: laser_test_scene,
 	}
 	
 	#random_weapon()
@@ -64,7 +66,7 @@ func update(delta: float, character):
 	else:
 		current_weapon.scale.y = 1
 
-	if Input.is_action_just_pressed("shoot"):
+	if Input.is_action_pressed("shoot"):
 		shoot()
 
 	if Input.is_action_just_pressed("next_weapon"):

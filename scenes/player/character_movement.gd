@@ -5,7 +5,7 @@ var direction: Vector2 = Vector2.ZERO
 var knockback: Vector2
 var character: CharacterBody2D
 var current_speed : float = 0.0
-static var knockback_time: float = 0.0
+var knockback_time: float = 0.0
 var test:=false
 
 func init(player: CharacterBody2D) -> void:
@@ -13,16 +13,20 @@ func init(player: CharacterBody2D) -> void:
 	current_speed = character.stats.get_speed()
 
 func update(delta, charac):
-	if knockback_time > 0:
-		knockback_time -= delta
-		charac.velocity = knockback
-		return
-	
 	current_speed = character.stats.get_speed()
 	direction.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	direction.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	direction = direction.normalized()
-	charac.velocity = direction * current_speed
+	
+	var move_velocity = direction * current_speed
+	
+	if knockback_time > 0:
+		knockback_time -= delta
+		charac.velocity = move_velocity + knockback
+		knockback = knockback.move_toward(Vector2.ZERO, (knockback.length() / max(knockback_time, 0.01)) * delta)
+	else:
+		knockback = Vector2.ZERO
+		charac.velocity = move_velocity
 	
 	if Input.get_action_strength("tests"):
 		if test:

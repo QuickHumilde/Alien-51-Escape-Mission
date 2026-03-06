@@ -8,6 +8,7 @@ class_name Enemy
 @export var contact_damage: float = 0.0
 @onready var player: CharacterBody2D = get_tree().current_scene.get_node("Player")
 @onready var visuals : Node2D = $Visual
+@onready var sfx_enemy: AudioStreamPlayer2D
 var knockback: Vector2
 var color_time : float = 3.0
 var color_time_cooldown : float = 9.0
@@ -15,15 +16,30 @@ var color_time_cooldown : float = 9.0
 var knockback_time : float = 0.0
 var knockback_resistance : float =0.0
 var can_change_color : bool = true
+var sounds  : Dictionary = {
+	"damage": preload("res://assets/audio/sfx/enemies/stalkerenemy/StalkerDamage.mp3")
+}
+
+func _ready():
+	setup_audio()
 
 func apply_knockback(dir: Vector2, force: float = 500.0, duration: float = 0.2):
 	if knockback_resistance < force:
 		knockback = dir * (force - knockback_resistance)
 		knockback_time = duration
 
-@abstract func take_damage(damage : float)
+func take_damage(damage : float):
+	visuals.modulate = Color(1.0, 0.0, 0.0, 1.0)
+	health -= damage
+	await get_tree().create_timer(0.2).timeout
+	visuals.modulate = Color(1,1,1)
+	if health <= 0:
+		die()
+	else:
+		_on_damage()
 
-@abstract func die()
+func die():
+	queue_free()
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("player"):
@@ -53,3 +69,18 @@ func change_color(new_color: Color):
 		visuals.modulate = Color(1,1,1)
 		await get_tree().create_timer(color_time_cooldown).timeout
 		can_change_color = true
+
+func setup_audio():
+	sfx_enemy = AudioStreamPlayer2D.new()
+	sfx_enemy.name = "SFXEnemy"
+	sfx_enemy.bus = "SFX"
+	sfx_enemy.max_polyphony = 16
+	add_child(sfx_enemy)
+
+func play_sound(sound_name: String, volume_db: float = 0.0, pitch: float = 1.0):
+	sfx_enemy.stream = sounds[sound_name]
+	sfx_enemy.volume_db = volume_db
+	sfx_enemy.pitch_scale = pitch
+	sfx_enemy.play()
+
+@abstract func _on_damage()

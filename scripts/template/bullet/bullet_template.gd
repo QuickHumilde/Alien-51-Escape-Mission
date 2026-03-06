@@ -22,7 +22,6 @@ func _ready():
 
 @abstract func init(new_forward, new_position, new_damage, new_knockback_force, new_lifetime, new_speed, new_owner) -> void
 
-
 func _process(delta: float):
 	if get_tree().paused:
 		return
@@ -31,6 +30,10 @@ func _process(delta: float):
 	time_left -= delta
 	if time_left <= 0.0:
 		queue_free()
+	for area in get_overlapping_areas():
+		_on_hitbox_enter(area)
+	for body in get_overlapping_bodies():
+		_on_hitbox_enter(body)
   
 func _on_hitbox_enter(area):
 	if area.is_in_group("obstacle"):
@@ -63,7 +66,7 @@ func _against_obstacle():
 func _against_wall():
 	destroy_bullet()
 		
-func _against_enemy(area):
+func _against_enemy(_area):
 	if not modifiers.has("piercing"):
 		destroy_bullet()
 
