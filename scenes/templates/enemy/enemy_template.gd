@@ -19,6 +19,7 @@ var can_change_color : bool = true
 var sounds  : Dictionary = {
 	"damage": preload("res://assets/audio/sfx/enemies/stalkerenemy/StalkerDamage.mp3")
 }
+var damage_ticks : int = 0
 
 func _ready():
 	setup_audio()
@@ -29,14 +30,20 @@ func apply_knockback(dir: Vector2, force: float = 500.0, duration: float = 0.2):
 		knockback_time = duration
 
 func take_damage(damage : float):
+	damage_ticks += 1 
 	visuals.modulate = Color(1.0, 0.0, 0.0, 1.0)
 	health -= damage
 	await get_tree().create_timer(0.2).timeout
-	visuals.modulate = Color(1,1,1)
+	damage_ticks -= 1 
+
+	if damage_ticks <= 0:
+		visuals.modulate = Color(1,1,1)
+
 	if health <= 0:
 		die()
 	else:
 		_on_damage()
+
 
 func die():
 	queue_free()

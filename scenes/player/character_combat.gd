@@ -19,9 +19,9 @@ var blue_marker_scene: PackedScene = preload("res://scenes/weapons/blue_marker_w
 var laser_test_scene : PackedScene = preload("res://scenes/weapons/laser_test_weapon.tscn")
 #endregion
 
-var weapon_scenes := {}
+var weapon_scenes : Dictionary = {}
 @export var weapon_instances : Dictionary = {} 
-@export var weapon_order : Array = [1, 3, 4, 5]
+@export var weapon_order : Array = [1, 4, 5]
 
 func _ready():
 	weapon_scenes = {
@@ -59,7 +59,6 @@ func update(delta: float, character):
 		current_weapon.position = current_weapon.position.lerp(target_offset, delta * orbit_smoothness)
 		current_weapon.rotation = lerp_angle(current_weapon.rotation, angle_to_mouse, delta * orbit_smoothness)
 
-
 	# Flip cuando mira a la izquierda
 	if abs(angle_to_mouse) > PI/2 and not current_weapon.is_attacking:
 		current_weapon.scale.y = -1
@@ -68,12 +67,20 @@ func update(delta: float, character):
 
 	if Input.is_action_pressed("shoot"):
 		shoot()
+		
+	if Input.is_action_just_released("shoot"):
+		if current_weapon and current_weapon.has_method("stop_shooting"):
+			current_weapon.stop_shooting()
 
 	if Input.is_action_just_pressed("next_weapon"):
+		if current_weapon and current_weapon.has_method("stop_shooting"):
+			current_weapon.stop_shooting()
 		next_weapon()
 
 func shoot():
-	if current_weapon and current_weapon.has_method("shoot"):
+	if current_weapon.has_method("start_shooting"):
+		current_weapon.start_shooting(stats.get_damage(), stats.get_lifetime())
+	elif current_weapon.has_method("shoot"):
 		current_weapon.shoot(stats.get_damage(), stats.get_lifetime())
 
 func equip_weapon(id: int):

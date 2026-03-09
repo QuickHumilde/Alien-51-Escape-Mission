@@ -24,6 +24,7 @@ func _process(delta: float):
 func _against_enemy(area):
 	var enemy_node = area.get_parent()
 	await get_tree().create_timer(0.21).timeout
-	if enemy_node.has_method("change_color"):
-		enemy_node.change_color(paint_color)
-	super._against_enemy(area)
+	if enemy_node != null:
+		if enemy_node.has_method("change_color"):
+			enemy_node.change_color(paint_color)
+	destroy_bullet()

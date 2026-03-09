@@ -135,11 +135,11 @@ position = Vector2(0, 9)
 sprite_frames = SubResource("SpriteFrames_be6va")
 frame_progress = 0.5619147
 
-[node name="Hitbox" type="StaticBody2D" parent="."]
+[node name="Hitbox" type="StaticBody2D" parent="." groups=["item"]]
 collision_mask = 13
 physics_material_override = SubResource("PhysicsMaterial_k2xhr")
 
-[node name="HitboxCollider" type="CollisionShape2D" parent="Hitbox"]
+[node name="HitboxCollider" type="CollisionShape2D" parent="Hitbox" groups=["item"]]
 visibility_layer = 13
 position = Vector2(0, 8)
 shape = SubResource("CapsuleShape2D_k2xhr")

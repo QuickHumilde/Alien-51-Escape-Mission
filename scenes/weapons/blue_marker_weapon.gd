@@ -10,6 +10,9 @@ func _ready():
 	self_knockback_force=0.0
 	lifetime=500.0
 	speed = 100.0
+	sounds = {
+		"shoot" : preload("res://assets/audio/sfx/player/uiuiuiADuque.mp3")
+	}
 	setup_audio()
 	
 func shoot(player_damage: float, _player_lifetime: float):
