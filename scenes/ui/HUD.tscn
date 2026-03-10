@@ -25,9 +25,9 @@ metadata/_edit_use_anchors_ = true
 [node name="Label" type="Label" parent="HealthBar"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.36600003
+anchor_left = 0.00020169812
 anchor_top = -7.407312e-05
-anchor_right = 0.634
+anchor_right = 0.9996303
 anchor_bottom = 1.0000741
 offset_left = -0.024002075
 offset_top = 0.002000928
@@ -57,9 +57,9 @@ metadata/_edit_use_anchors_ = true
 [node name="Label" type="Label" parent="ExtraHealthBar"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.23911105
+anchor_left = 0.0006841693
 anchor_top = 0.03828571
-anchor_right = 0.7649707
+anchor_right = 1.000228
 anchor_bottom = 1.0740715
 offset_left = -0.039001465
 offset_top = 0.002000928

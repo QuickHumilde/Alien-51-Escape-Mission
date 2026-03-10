@@ -8,12 +8,16 @@ extends Control
 @onready var audio_label = $OptionsContainer/VBoxContainer/Audio
 @onready var language_label = $OptionsContainer/VBoxContainer/Language
 @onready var back_label = $OptionsContainer/VBoxContainer/Back
+@onready var mouse_warning_container = $MouseWarningContainer
+@onready var mouse_warning_label = $MouseWarningContainer/MouseWarning
+@onready var mouse_last_position_sprite = $MousePosition
 
 var options_instance: Control
 var languages_instance: Control
 var in_options :bool = false
 var in_language:bool=false
 var in_audio:bool=false
+var last_mouse_position: Vector2
 
 @onready var options_scene := preload("res://scenes/ui/options_volume_menu.tscn")
 @onready var languages_scene := preload("res://scenes/ui/language_menu.tscn")
@@ -32,13 +36,17 @@ func update_texts():
 	audio_label.text=tr("menu_audio")
 	language_label.text=tr("menu_language")
 	back_label.text=tr("menu_back")
+	mouse_warning_label.text=tr("mouse_warning")
 
 func resume():
 	get_tree().paused = false
+	MouseController.teleport_mouse(last_mouse_position)
 	$AnimationPlayer.play_backwards("blur")
 	hide()
 	
 func pause():
+	last_mouse_position = get_global_mouse_position()
+	mouse_last_position_sprite.position = last_mouse_position - Vector2(-8.0, -28.0)
 	get_tree().paused = true
 	show()
 	$AnimationPlayer.play("blur")
@@ -75,11 +83,13 @@ func _on_quit_pressed():
 
 func _on_options_pressed():
 	in_options=true
+	mouse_warning_container.hide()
 	options_panel.show()
 	pause_panel.hide()
 
 func _on_options_closed():
 	in_options = false
+	mouse_warning_container.show()
 	if options_instance:
 		options_instance.queue_free()
 		

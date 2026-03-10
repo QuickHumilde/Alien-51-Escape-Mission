@@ -19,6 +19,7 @@ class_name Character
 func _ready():
 	Signals.player_death.connect(player_death)
 	Signals.player_revive.connect(player_revive)
+	Signals.player_take_damage.connect(take_damage)
 	combat.init(weapon_holder, stats)
 	items.init(self)
 	movement.init(self)
@@ -39,10 +40,8 @@ func take_damage(amount: float):
 		audio.play_damage()
 		stats.take_damage(amount)
 		animation.player_taking_damage()
-		damage_timer.start(stats.invulnerability_time)
+		damage_timer.start(stats.invulnerability_time+0.30)
 		await damage_timer.timeout
-		
-		await get_tree().create_timer(0.25).timeout
 		
 		_check_overlapping_enemies()
 		

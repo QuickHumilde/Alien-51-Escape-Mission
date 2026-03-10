@@ -6,7 +6,6 @@ extends Enemy
 @onready var enemy = preload("res://scenes/enemies/SpawnEnemy/enemy4.tscn")
 @export var children_spawn: int = 3
 
-
 func _ready():
 	_get_detector()
 	id = 1

@@ -40,7 +40,7 @@ func _process(delta):
 		hit_pos_global = global_position + global_transform.x * max_length
 
 	var hit_pos_local : Vector2 = to_local(hit_pos_global)
-	var jitter = Vector2(randf_range(-1.5, 1.5), randf_range(-1.5, 1.5))
+	var jitter = Vector2(randf_range(-2.5, 2.5), randf_range(-2.5, 2.5))
 	line.points = [
 		Vector2.ZERO,
 		hit_pos_local + jitter
@@ -52,6 +52,7 @@ func _process(delta):
 			var enemy_collider = collider.get_parent()
 			if enemy_collider.has_method("take_damage"):
 				enemy_collider.take_damage(damage_per_second * delta)
+				enemy_collider.apply_knockback(hit_pos_local, 3.0)
 				
 	$ImpactParticles.global_position = hit_pos_global
 	$ImpactParticles.emitting = ray_cast.is_colliding()

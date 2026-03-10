@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://ddmkkd4lvgb5g"]
+[gd_scene load_steps=9 format=3 uid="uid://ddmkkd4lvgb5g"]
 
 [ext_resource type="Script" uid="uid://csjr3as3wgpmx" path="res://scenes/ui/pause_menu.gd" id="1_0lmf7"]
 [ext_resource type="Shader" uid="uid://duf6wai1m54td" path="res://shaders/pause_menu.gdshader" id="1_6tw0m"]
 [ext_resource type="Theme" uid="uid://b380oga6tlya7" path="res://assets/themes/default.tres" id="3_f6eus"]
+[ext_resource type="Texture2D" uid="uid://blt1rsoh1d4w7" path="res://assets/sprites/cursor/cursor1.png" id="4_8uki6"]
 
 [sub_resource type="Animation" id="Animation_8uki6"]
 length = 0.001
@@ -101,7 +102,7 @@ anchor_bottom = 0.5
 offset_left = -104.5
 offset_top = -83.5
 offset_right = 104.5
-offset_bottom = 109.5
+offset_bottom = 94.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -132,6 +133,22 @@ size_flags_horizontal = 4
 theme = ExtResource("3_f6eus")
 theme_override_font_sizes/font_size = 24
 text = "Quit"
+
+[node name="MouseWarningContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = -4.0
+offset_top = 233.99998
+offset_right = 506.0
+offset_bottom = 264.0
+scale = Vector2(0.96000004, 1.04)
+
+[node name="MouseWarning" type="RichTextLabel" parent="MouseWarningContainer"]
+layout_mode = 2
+theme = ExtResource("3_f6eus")
+theme_override_font_sizes/normal_font_size = 12
+text = "Mouse warning"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="OptionsContainer" type="PanelContainer" parent="."]
 visible = false
@@ -177,6 +194,11 @@ size_flags_horizontal = 4
 theme = ExtResource("3_f6eus")
 theme_override_font_sizes/font_size = 24
 text = "Back"
+
+[node name="MousePosition" type="Sprite2D" parent="."]
+modulate = Color(0.29499128, 1, 0.99879223, 0.63529414)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_8uki6")
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]

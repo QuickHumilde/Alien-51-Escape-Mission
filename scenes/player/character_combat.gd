@@ -76,6 +76,9 @@ func update(delta: float, character):
 		if current_weapon and current_weapon.has_method("stop_shooting"):
 			current_weapon.stop_shooting()
 		next_weapon()
+		
+	if Input.is_action_just_pressed("tests"):
+		Input.warp_mouse(Vector2(500, 500))
 
 func shoot():
 	if current_weapon.has_method("start_shooting"):

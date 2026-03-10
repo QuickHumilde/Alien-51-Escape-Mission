@@ -29,3 +29,5 @@ menu_select_language,"Seleccionar Idioma","Select Language"
 menu_language_en,"Inglés","English"
 
 menu_language_es,"Español","Spanish"
+
+mouse_warning,"Ten cuidado, cuando reanudes el juego tu raton aparecera en su ultima posicion antes de pausar", "Be careful, when you resume the game your mouse will appear in the position it was in before pausing."
