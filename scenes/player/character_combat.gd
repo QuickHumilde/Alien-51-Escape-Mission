@@ -16,7 +16,7 @@ var pistol_scene: PackedScene = preload("res://scenes/weapons/pistol_weapon.tscn
 #var wizard_hat_scene: PackedScene = preload("res://scenes/weapons/wizard_hat_weapon.tscn")
 var nail_scene: PackedScene = preload("res://scenes/weapons/nail_weapon.tscn")
 var blue_marker_scene: PackedScene = preload("res://scenes/weapons/blue_marker_weapon.tscn")
-var laser_test_scene : PackedScene = preload("res://scenes/weapons/laser_test_weapon.tscn")
+var laser_test_scene : PackedScene = preload("res://scenes/weapons/continous_laser.tscn")
 #endregion
 
 var weapon_scenes : Dictionary = {}

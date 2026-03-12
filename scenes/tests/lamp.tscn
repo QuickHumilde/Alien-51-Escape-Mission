@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://chrgijw2gs6eb"]
+
+[ext_resource type="Texture2D" uid="uid://dhb578tgpap3a" path="res://assets/sprites/extras/LampLight.png" id="1_glyoy"]
+[ext_resource type="Texture2D" uid="uid://bibukcsq2hg25" path="res://assets/sprites/extras/Lamp.png" id="2_x8p5s"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dpjwg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_x8p5s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Lamp" type="PointLight2D"]
+energy = 0.55
+shadow_enabled = true
+texture = ExtResource("1_glyoy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -3)
+sprite_frames = SubResource("SpriteFrames_dpjwg")

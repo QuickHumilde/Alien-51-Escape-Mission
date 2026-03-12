@@ -11,7 +11,7 @@ func _ready():
 func set_language(locale: String):
 	current_locale = locale
 	TranslationServer.set_locale(locale)
-	language_changed.emit(locale)
+	language_changed.emit()
 	
 	for node in get_tree().get_nodes_in_group("localizable"):
 		if node.has_method("update_texts"):

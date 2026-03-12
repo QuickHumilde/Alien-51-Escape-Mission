@@ -1,15 +1,16 @@
 [gd_scene load_steps=4 format=3 uid="uid://bov0f47oirrmv"]
 
 [ext_resource type="PackedScene" uid="uid://dyjyit2bbrpm4" path="res://scenes/templates/weapon/weapon_template.tscn" id="1_p61qk"]
-[ext_resource type="Script" uid="uid://byavd0gdbx3c5" path="res://scenes/weapons/laser_test_weapon.gd" id="2_p61qk"]
-[ext_resource type="Texture2D" uid="uid://d11tlq1kvdou1" path="res://assets/images/logo_empresa.png" id="3_0herr"]
+[ext_resource type="Script" uid="uid://byavd0gdbx3c5" path="res://scenes/weapons/continous_laser.gd" id="2_p61qk"]
+[ext_resource type="Texture2D" uid="uid://lxbt8h045ktg" path="res://assets/sprites/provisional/LaserWeaponTest1.png" id="3_q2gqx"]
 
 [node name="LaserTest" instance=ExtResource("1_p61qk")]
 script = ExtResource("2_p61qk")
 
 [node name="Sprite2D" type="Sprite2D" parent="Visual" index="0"]
-scale = Vector2(0.008, 0.008)
-texture = ExtResource("3_0herr")
+position = Vector2(-2, 2)
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("3_q2gqx")
 
 [node name="ShootCooldown" parent="." index="1"]
 wait_time = 0.001

@@ -746,11 +746,11 @@ light_mask = 4
 sprite_frames = SubResource("SpriteFrames_xuses")
 animation = &"idle_down"
 
-[node name="Sprite2D" type="Sprite2D" parent="Visual"]
+[node name="Shadow" type="Sprite2D" parent="Visual"]
 self_modulate = Color(0, 0, 0, 0.13725491)
 show_behind_parent = true
-position = Vector2(1.1920929e-07, 6.46875)
-scale = Vector2(0.71289057, 0.98750013)
+position = Vector2(0, 7)
+scale = Vector2(0.95947266, 0.98750013)
 texture = ExtResource("12_8ydkj")
 
 [node name="Hitbox" type="CollisionShape2D" parent="." groups=["player"]]

@@ -1,12 +1,12 @@
 [gd_scene load_steps=4 format=3 uid="uid://doywx78bcdk8u"]
 
-[ext_resource type="Script" uid="uid://cesl5nw0eecwg" path="res://scenes/tests/mouse_follower.gd" id="1_iptfg"]
+[ext_resource type="Script" uid="uid://cesl5nw0eecwg" path="res://scenes/enemies/Ghosty/ghosty.gd" id="1_iptfg"]
 [ext_resource type="Texture2D" uid="uid://dkyt6h84cc0yf" path="res://assets/sprites/enemies/Ghost.png" id="2_iptfg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l1vxs"]
 radius = 0.0
 
-[node name="MouseFollower" type="CharacterBody2D"]
+[node name="Ghosty" type="CharacterBody2D"]
 modulate = Color(1, 1, 1, 0.7372549)
 z_index = 13
 script = ExtResource("1_iptfg")

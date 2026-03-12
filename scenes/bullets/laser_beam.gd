@@ -3,8 +3,9 @@ class_name LaserBeam
 
 @onready var line : Line2D = $Line2D
 @onready var ray_cast : RayCast2D = $RayCast2D
-@export var max_length : float = 500.0
-@export var damage_per_second : float = 1.5
+@export var max_length : float = 0.0
+@export var damage_per_second : float = 1.0
+@export var knockback_force : float = 0.0
 
 var laser_owner = ""
 var firing : bool = true
@@ -15,7 +16,7 @@ func _ready():
 
 	var mat : ShaderMaterial = ShaderMaterial.new()
 	mat.shader = preload("res://shaders/laser_shader.gdshader")
-	mat.set_shader_parameter("tint_color", Color("ff6eb4"))
+	mat.set_shader_parameter("tint_color", Color("ff82f8"))
 	line.material = mat
 
 func setup(owner_node):
@@ -52,7 +53,8 @@ func _process(delta):
 			var enemy_collider = collider.get_parent()
 			if enemy_collider.has_method("take_damage"):
 				enemy_collider.take_damage(damage_per_second * delta)
-				enemy_collider.apply_knockback(hit_pos_local, 3.0)
+			if enemy_collider.has_method("apply_knockback"):
+				enemy_collider.apply_knockback(hit_pos_local, knockback_force * delta)
 				
 	$ImpactParticles.global_position = hit_pos_global
 	$ImpactParticles.emitting = ray_cast.is_colliding()

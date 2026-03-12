@@ -14,7 +14,7 @@ func _ready():
 	health = 1.0
 	knockback_force = 50.0
 	knockback_time = 0.0
-	knockback_resistance = 50.0
+	knockback_resistance = 0.0
 	agent.path_desired_distance = 4.0
 	agent.target_desired_distance = stopping_distance
 	sounds = {

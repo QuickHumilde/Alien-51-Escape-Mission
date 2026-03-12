@@ -13,8 +13,8 @@ config_version=5
 config/name="Alien 51: Escape Mission"
 run/main_scene="uid://c0wyiru2g8jgf"
 config/features=PackedStringArray("4.5", "Forward Plus")
-boot_splash/bg_color=Color(0.14117648, 0.1882353, 0.14117648, 1)
-boot_splash/image="uid://btog1hgjp6uno"
+boot_splash/bg_color=Color(1, 1, 1, 1)
+boot_splash/image="uid://4w8ox45pa6q"
 config/icon="uid://btog1hgjp6uno"
 
 [audio]

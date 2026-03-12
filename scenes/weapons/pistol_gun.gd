@@ -7,8 +7,8 @@ func _ready() -> void:
 	id=3
 	damage = 1.5
 	knockback_force = 75.0
-	self_knockback_force=25.0
-	lifetime=2.0
+	self_knockback_force= 50.0
+	lifetime= 2.0
 	speed = 100.0
 	cooldown.wait_time = 1.0
 	audio_player = $AudioStreamPlayer2D

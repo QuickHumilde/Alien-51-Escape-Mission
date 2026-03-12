@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jotpgb114abv"
-path="res://.godot/imported/BlueMarkerReload-sheet.png-28cd308a50f8eba57aa9e136f3189dbe.ctex"
+uid="uid://4w8ox45pa6q"
+path="res://.godot/imported/AlienCanon.png-669bf0f2b7b113e10f502705905e2438.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/weapons/BlueMarkerReload-sheet.png"
-dest_files=["res://.godot/imported/BlueMarkerReload-sheet.png-28cd308a50f8eba57aa9e136f3189dbe.ctex"]
+source_file="res://assets/images/AlienCanon.png"
+dest_files=["res://.godot/imported/AlienCanon.png-669bf0f2b7b113e10f502705905e2438.ctex"]
 
 [params]
 

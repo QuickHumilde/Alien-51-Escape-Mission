@@ -197,4 +197,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_iirtn")
 }
 
+[node name="ShootCooldown" parent="." index="2"]
+wait_time = 0.5
+
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="3"]
