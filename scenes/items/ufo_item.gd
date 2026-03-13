@@ -2,7 +2,7 @@ extends Item
 class_name UFOItem
 
 var fly: bool =true
-@export var id: int = 3
+@export var id: int = 10
 
 func _ready():
 	name_key = "item_ufo_name"

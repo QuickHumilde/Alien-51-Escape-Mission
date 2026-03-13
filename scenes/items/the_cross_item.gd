@@ -2,7 +2,7 @@ extends Item
 class_name TheCrossItem
 
 var revive : float = 1.0
-var id = 9
+@export var id = 9
 
 func _ready():
 	name_key = "item_the_cross_name"

@@ -6,9 +6,6 @@
 
 [node name="UFOItem" instance=ExtResource("1_lq6dh")]
 script = ExtResource("2_vinct")
-id = null
-name_key = null
-desc_key = null
 
 [node name="Sprite2D" type="Sprite2D" parent="Visual" index="0"]
 texture = ExtResource("2_fsmfi")

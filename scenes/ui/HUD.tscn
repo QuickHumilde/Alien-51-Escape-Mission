@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c28e2pqwwccu2" path="res://scenes/ui/ability_charge_bar.tscn" id="3_6ll6g"]
 
 [node name="HUD" type="CanvasLayer" groups=["player_ui"]]
+layer = 129
 script = ExtResource("1_hqnrr")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
@@ -91,7 +92,6 @@ offset_left = 272.0
 offset_top = 31.0
 offset_right = 474.0
 offset_bottom = 151.0
-metadata/_edit_use_anchors_ = true
 
 [node name="ItemName" type="Label" parent="."]
 anchors_preset = -1
@@ -110,7 +110,6 @@ theme_override_font_sizes/font_size = 24
 text = "ITEM NAME"
 vertical_alignment = 1
 autowrap_mode = 3
-metadata/_edit_use_anchors_ = true
 
 [node name="ItemDescription" type="Label" parent="."]
 anchors_preset = -1
@@ -128,7 +127,6 @@ theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 16
 text = "ITEM DESC"
 autowrap_mode = 3
-metadata/_edit_use_anchors_ = true
 
 [node name="ItemImage" type="TextureRect" parent="."]
 offset_left = 256.0

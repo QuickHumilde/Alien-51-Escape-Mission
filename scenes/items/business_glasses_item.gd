@@ -2,7 +2,7 @@ extends Item
 
 var health : float = 1
 @onready var sprite = $Visual/AnimatedSprite2D
-@export var id: int = 7
+@export var id: int = 6
 
 func _ready():
 	name_key = "item_business_glasses_name"

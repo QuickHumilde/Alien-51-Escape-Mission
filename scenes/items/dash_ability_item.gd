@@ -1,9 +1,11 @@
 extends Item
 class_name DashAbilityItem
 
+@export var id: int = 999
+
 func _ready():
-	name_key = "item_dai_name"
-	desc_key = "item_dai_desc"
+	name_key = "item_dash_name"
+	desc_key = "item_dash_desc"
 	item_texture = "res://assets/sprites/items/Dash1_Item.png"
 	super._ready()
 

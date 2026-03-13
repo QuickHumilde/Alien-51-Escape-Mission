@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://clqflfp7kkgq"]
+
+[ext_resource type="Script" uid="uid://ndh2cfjl4r4k" path="res://scenes/map/map_generator.gd" id="1_gbbns"]
+[ext_resource type="PackedScene" uid="uid://jygsb42krc3q" path="res://scenes/player/player.tscn" id="2_gbbns"]
+
+[node name="MapGeneration" type="Node2D"]
+script = ExtResource("1_gbbns")
+room_slot_size = null
+transition_duration = null
+seed_value = null
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("2_gbbns")]
+
+[node name="Camera2D" type="Camera2D" parent="."]

@@ -10,10 +10,10 @@ script = ExtResource("2_npc2y")
 [node name="Sprite2D" type="Sprite2D" parent="Visual" index="0"]
 texture = ExtResource("2_vqu8w")
 
-[node name="Detector" parent="." index="2"]
+[node name="Detector" parent="." index="3"]
 light_mask = 16
 visibility_layer = 4
 
-[node name="DescriptionDetector" parent="." index="3"]
+[node name="DescriptionDetector" parent="." index="4"]
 light_mask = 16
 visibility_layer = 4
