@@ -1,9 +1,27 @@
-[gd_scene load_steps=30 format=4 uid="uid://641t0oysglvl"]
+[gd_scene load_steps=48 format=4 uid="uid://c0wyiru2g8jgf"]
 
-[ext_resource type="Script" uid="uid://fqqsyfqss1er" path="res://scenes/rooms/template/room.gd" id="1_npk0r"]
-[ext_resource type="Texture2D" uid="uid://xlto3ea6ja0d" path="res://assets/sprites/tileset/TileSet.png" id="1_tric1"]
-[ext_resource type="Texture2D" uid="uid://dko4hcv0xy3dv" path="res://assets/sprites/tileset/Obstacle_TileSet.png" id="2_fd5pa"]
-[ext_resource type="PackedScene" uid="uid://b136fo0oyrifh" path="res://scenes/doors/door.tscn" id="4_npk0r"]
+[ext_resource type="Texture2D" uid="uid://xlto3ea6ja0d" path="res://assets/sprites/tileset/TileSet.png" id="1_qbal3"]
+[ext_resource type="Script" uid="uid://dmccp7lddki73" path="res://scenes/rooms/tests/sala_prueba.gd" id="1_ypwf5"]
+[ext_resource type="PackedScene" uid="uid://jygsb42krc3q" path="res://scenes/player/player.tscn" id="2_bkx0u"]
+[ext_resource type="Texture2D" uid="uid://dko4hcv0xy3dv" path="res://assets/sprites/tileset/Obstacle_TileSet.png" id="3_4ieoh"]
+[ext_resource type="PackedScene" uid="uid://cc8qw2lwwn2bj" path="res://scenes/items/golden_fruit_item.tscn" id="5_mvyeq"]
+[ext_resource type="PackedScene" uid="uid://ddmkkd4lvgb5g" path="res://scenes/ui/pause_menu.tscn" id="6_jdx7j"]
+[ext_resource type="PackedScene" uid="uid://byrp3wtch5b76" path="res://scenes/ui/death_menu.tscn" id="7_laycw"]
+[ext_resource type="PackedScene" uid="uid://ci201gjy0h5il" path="res://scenes/items/weapons/piston_gun_item.tscn" id="8_ppu0c"]
+[ext_resource type="PackedScene" uid="uid://bsbw3w70gbpyf" path="res://scenes/items/ufo_item.tscn" id="9_5lslb"]
+[ext_resource type="PackedScene" uid="uid://cbvlm8p85dkk3" path="res://scenes/items/ninja_headband_item.tscn" id="11_a2tj1"]
+[ext_resource type="PackedScene" uid="uid://bo3j44bwha26a" path="res://scenes/items/ant_man_helmet_item.tscn" id="11_fuxfh"]
+[ext_resource type="PackedScene" uid="uid://bmbav0qodanb7" path="res://scenes/items/dai_item.tscn" id="12_fuxfh"]
+[ext_resource type="PackedScene" uid="uid://c2c03fmvpi3jy" path="res://scenes/items/business_glasses_item.tscn" id="13_otkra"]
+[ext_resource type="PackedScene" uid="uid://dw4em1kkdblnm" path="res://scenes/enemies/StalkerEnemy/stalker_enemy.tscn" id="14_84wfm"]
+[ext_resource type="PackedScene" uid="uid://cpaq7yaxwkrir" path="res://scenes/items/divisor_3_item.tscn" id="15_hvcyd"]
+[ext_resource type="PackedScene" uid="uid://8rdt5yow22lo" path="res://scenes/items/dash_ability_item.tscn" id="16_8wn8x"]
+[ext_resource type="PackedScene" uid="uid://d1qge3djlvi1u" path="res://scenes/items/the_cross_item.tscn" id="17_3xu2y"]
+[ext_resource type="PackedScene" uid="uid://b07bo16m56htg" path="res://scenes/enemies/Enemy2/enemy_2.tscn" id="18_5suce"]
+[ext_resource type="PackedScene" uid="uid://cy1pdn0ydx5qy" path="res://scenes/enemies/Enemy3/enemy3.tscn" id="19_7y8ym"]
+[ext_resource type="PackedScene" uid="uid://ciivslj5tpajr" path="res://scenes/items/weapons/blue_marker_weapon_item.tscn" id="20_f0phr"]
+[ext_resource type="PackedScene" uid="uid://doywx78bcdk8u" path="res://scenes/enemies/Ghosty/ghosty.tscn" id="21_3s4b3"]
+[ext_resource type="PackedScene" uid="uid://chrgijw2gs6eb" path="res://scenes/tests/lamp.tscn" id="22_0bciu"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_e1ecg"]
 polygon = PackedVector2Array(8, 0, 4, 0, 4, 4, 8, 4)
@@ -74,9 +92,9 @@ polygon = PackedVector2Array(0, -8, -4, -8, -4, 8, 0, 8, 0, -8)
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_cg3i8"]
 polygon = PackedVector2Array(0, -8, -4, -8, -4, 8, 0, 8)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_npk0r"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ipspw"]
 resource_name = "Background"
-texture = ExtResource("1_tric1")
+texture = ExtResource("1_qbal3")
 2:0/0 = 0
 2:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_miqcv")
 3:0/0 = 0
@@ -199,15 +217,15 @@ texture = ExtResource("1_tric1")
 2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -5.714286, 8, 8, -8, 8)
 2:4/1 = 1
 
-[sub_resource type="TileSet" id="TileSet_kv71q"]
+[sub_resource type="TileSet" id="TileSet_miqcv"]
 occlusion_layer_0/light_mask = 1
 physics_layer_0/collision_layer = 1
 navigation_layer_0/layers = 1
-sources/0 = SubResource("TileSetAtlasSource_npk0r")
+sources/0 = SubResource("TileSetAtlasSource_ipspw")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tcgfj"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5lslb"]
 resource_name = "Foreground"
-texture = ExtResource("1_tric1")
+texture = ExtResource("1_qbal3")
 1:0/0 = 0
 2:0/0 = 0
 3:0/0 = 0
@@ -242,35 +260,35 @@ texture = ExtResource("1_tric1")
 6:7/0 = 0
 7:7/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_mwidr"]
+[sub_resource type="TileSet" id="TileSet_4ieoh"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_tcgfj")
+sources/0 = SubResource("TileSetAtlasSource_5lslb")
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_k4wyj"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 6.2222223, -8, 6.2222223)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_clwv3"]
-texture = ExtResource("2_fd5pa")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a2tj1"]
+texture = ExtResource("3_4ieoh")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.714286, -5.714286, 5.714287, -5.714286, 5.714287, 5.714287, -5.714286, 5.714287, -5.714286, -5.714286)
 1:0/0 = 0
 1:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_k4wyj")
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, 4, 8, 4, 8, -8)
 
-[sub_resource type="TileSet" id="TileSet_pk6yb"]
+[sub_resource type="TileSet" id="TileSet_a2tj1"]
 occlusion_layer_0/light_mask = 1
 physics_layer_0/collision_layer = 32
 physics_layer_0/collision_mask = 32
-sources/1 = SubResource("TileSetAtlasSource_clwv3")
+sources/1 = SubResource("TileSetAtlasSource_a2tj1")
 
-[node name="RoomTemplate" type="Node2D"]
-script = ExtResource("1_npk0r")
+[node name="SalaPrueba" type="Node2D"]
+script = ExtResource("1_ypwf5")
 
 [node name="Background" type="TileMapLayer" parent="." groups=["wall"]]
 z_index = -3
 z_as_relative = false
-tile_map_data = PackedByteArray("AAD+/wMAAAAGAAEAAAD+/wQAAAAGAAEAAAAAAAQAAAAGAAEAAAABAAQAAAAGAAEAAAD+//r/AAAFAAUAAAD+/wUAAAAFAAcAAAD//wUAAAAEAAcAAAAAAAUAAAAFAAcAAAABAAUAAAAGAAcAAAD9/wMAAAAGAAEAAAD9/wQAAAAGAAEAAAD8/wMAAAACAAcAAAD8/wQAAAACAAYAAAD9//r/AAAEAAUAAAADAAUAAAADAAcAAAADAPr/AAADAAUAAAAEAPr/AAAFAAUAAAAFAPr/AAAEAAUAAAAGAPr/AAAFAAUAAAAEAAMAAAAGAAEAAAAEAAQAAAAGAAEAAAAFAAMAAAAGAAEAAAAFAAQAAAAGAAEAAAAGAAMAAAAGAAEAAAAGAAQAAAAGAAEAAAAHAAMAAAAGAAEAAAAHAAQAAAAGAAEAAAAEAAUAAAAFAAcAAAAFAAUAAAAEAAcAAAAGAAUAAAAFAAcAAAABAPr/AAAGAAUAAAACAAQAAAAGAAEAAAACAAMAAAAGAAEAAAABAAMAAAAGAAEAAAAAAAMAAAAGAAEAAAD//wMAAAAGAAEAAAD//wQAAAAGAAEAAAD7/wMAAAABAAcAAAD7/wQAAAABAAYAAAD+/wYAAAAFAAgAAAD//wYAAAAEAAgAAAAAAAYAAAAFAAgAAAABAAYAAAAGAAgAAAADAAYAAAADAAgAAAAEAAYAAAAFAAgAAAAFAAYAAAAEAAgAAAAGAAYAAAAFAAgAAAAHAAUAAAAEAAcAAAAHAAYAAAAEAAgAAAD7//r/AAABAAMAAAD8//r/AAACAAMAAAAHAPr/AAAEAAUAAAD8/wUAAAACAAkAAAD8/wYAAAACAAoAAAD9/wYAAAACAAoAAAD7/wYAAAABAAoAAAD7/wUAAAABAAYAAAD9/wUAAAAEAAcAAAD///r/AAAEAAUAAAAAAPr/AAAFAAUAAAAIAAMAAAAHAAcAAAAIAAQAAAAHAAYAAAAIAAUAAAAHAAkAAAAJAAUAAAAIAAkAAAAIAAYAAAAHAAoAAAAJAAYAAAAIAAoAAAAIAPr/AAAHAAMAAAAJAPr/AAAIAAMAAAACAAUAAAAGAAEAAAD7//v/AAABAAYAAAD7//z/AAABAAYAAAD7//3/AAABAAcAAAD7//7/AAABAAYAAAD7////AAABAAgAAAD8//v/AAACAAQAAAD8//z/AAACAAYAAAD8//3/AAACAAcAAAD8//7/AAACAAYAAAD8////AAACAAgAAAD8/wAAAAAGAAEAAAD9//v/AAAEAAYAAAD9//z/AAAGAAEAAAD9//3/AAAGAAEAAAD9//7/AAAGAAEAAAD9////AAAGAAEAAAD9/wAAAAAGAAEAAAD+//v/AAAFAAYAAAD+//z/AAAGAAEAAAD+//3/AAAGAAEAAAD+//7/AAAHAAEAAAD+////AAAGAAEAAAD+/wAAAAAGAAEAAAD///v/AAAEAAYAAAD///z/AAAGAAEAAAD///3/AAAGAAEAAAD///7/AAAHAAEAAAD/////AAAHAAEAAAD//wAAAAAHAAEAAAAAAPv/AAAFAAYAAAAAAPz/AAAGAAEAAAAAAP3/AAAGAAEAAAAAAP7/AAAHAAEAAAAAAP//AAAGAAEAAAAAAAAAAAAGAAEAAAD7/wEAAAABAAUAAAD7/wIAAAABAAYAAAD8/wEAAAACAAUAAAD8/wIAAAACAAYAAAD9/wEAAAAGAAEAAAD9/wIAAAAGAAEAAAD+/wEAAAAHAAEAAAD+/wIAAAAGAAEAAAD//wEAAAAHAAEAAAD//wIAAAAGAAEAAAAAAAEAAAAHAAEAAAAAAAIAAAAGAAEAAAABAPv/AAAGAAYAAAABAPz/AAAGAAEAAAABAP3/AAAGAAEAAAABAP7/AAAGAAEAAAABAP//AAAGAAEAAAABAAAAAAAGAAEAAAABAAEAAAAGAAEAAAABAAIAAAAGAAEAAAACAPv/AAAGAAEAAAACAPz/AAAGAAEAAAACAP3/AAAGAAEAAAACAP7/AAAHAAEAAAACAP//AAAHAAEAAAACAAAAAAAHAAEAAAACAAEAAAAHAAEAAAACAAIAAAAGAAEAAAADAPv/AAADAAYAAAADAPz/AAAGAAEAAAADAP3/AAAGAAEAAAADAP7/AAAGAAEAAAADAP//AAAHAAEAAAAEAPv/AAAFAAYAAAAEAPz/AAAGAAEAAAAEAP3/AAAGAAEAAAAEAP7/AAAGAAEAAAAEAP//AAAGAAEAAAAEAAAAAAAHAAEAAAAEAAEAAAAGAAEAAAAEAAIAAAAGAAEAAAAFAPv/AAAEAAYAAAAFAPz/AAAGAAEAAAAFAP3/AAAGAAEAAAAFAP7/AAAHAAEAAAAFAP//AAAHAAEAAAAFAAAAAAAHAAEAAAAFAAEAAAAHAAEAAAAFAAIAAAAGAAEAAAAGAPv/AAAFAAYAAAAGAPz/AAAGAAEAAAAGAP3/AAAGAAEAAAAGAP7/AAAGAAEAAAAGAP//AAAGAAEAAAAGAAAAAAAGAAEAAAAGAAEAAAAGAAEAAAAGAAIAAAAGAAEAAAAHAPv/AAAEAAYAAAAHAPz/AAAGAAEAAAAHAP3/AAAGAAEAAAAHAP7/AAAGAAEAAAAHAP//AAAGAAEAAAAHAAAAAAAGAAEAAAAHAAEAAAAGAAEAAAAHAAIAAAAGAAEAAAAIAPv/AAAHAAQAAAAIAPz/AAAHAAYAAAAIAP3/AAAHAAcAAAAIAP7/AAAHAAYAAAAIAP//AAAHAAYAAAAIAAAAAAAGAAEAAAAIAAEAAAAHAAYAAAAIAAIAAAAHAAYAAAAJAPv/AAAIAAQAAAAJAPz/AAAIAAYAAAAJAP3/AAAIAAcAAAAJAP7/AAAIAAYAAAAJAP//AAAIAAYAAAAJAAEAAAAIAAYAAAAJAAIAAAAIAAYAAAAJAAMAAAAIAAcAAAAJAAQAAAAIAAYAAAADAAAAAAAGAAEAAAADAAEAAAAGAAEAAAADAAIAAAAGAAEAAAADAAMAAAAGAAEAAAADAAQAAAAGAAEAAAA=")
-tile_set = SubResource("TileSet_kv71q")
+tile_map_data = PackedByteArray("AAD+/wMAAAAGAAEAAAD+/wQAAAAGAAEAAAAAAAQAAAAGAAEAAAABAAQAAAAGAAEAAAD+//r/AAAFAAUAAAD+/wUAAAAFAAcAAAD//wUAAAAEAAcAAAAAAAUAAAAFAAcAAAABAAUAAAAGAAcAAAD9/wMAAAAGAAEAAAD9/wQAAAAGAAEAAAD8/wMAAAACAAcAAAD8/wQAAAACAAYAAAD9//r/AAAEAAUAAAADAAUAAAADAAcAAAADAPr/AAADAAUAAAAEAPr/AAAEAAUAAAAFAPr/AAAEAAUAAAAGAPr/AAAEAAUAAAAEAAMAAAAGAAEAAAAEAAQAAAAEAAAAAAAFAAMAAAAGAAEAAAAFAAQAAAAGAAEAAAAGAAMAAAAGAAEAAAAGAAQAAAAGAAEAAAAHAAMAAAAGAAEAAAAHAAQAAAAGAAEAAAAEAAUAAAAFAAcAAAAFAAUAAAAEAAcAAAAGAAUAAAAFAAcAAAABAPr/AAAGAAUAAAACAAQAAAAGAAEAAAACAAMAAAAGAAEAAAABAAMAAAAGAAEAAAAAAAMAAAAGAAEAAAD//wMAAAAGAAEAAAD//wQAAAAGAAEAAAD7/wMAAAABAAcAAAD7/wQAAAABAAYAAAD+/wYAAAAFAAgAAAD//wYAAAAEAAgAAAAAAAYAAAAFAAgAAAABAAYAAAAGAAgAAAADAAYAAAADAAgAAAAEAAYAAAAFAAgAAAAFAAYAAAAEAAgAAAAGAAYAAAAFAAgAAAAHAAUAAAAEAAcAAAAHAAYAAAAEAAgAAAD7//r/AAABAAMAAAD8//r/AAACAAMAAAAHAPr/AAAEAAUAAAD8/wUAAAACAAkAAAD8/wYAAAACAAoAAAD9/wYAAAACAAoAAAD7/wYAAAABAAoAAAD7/wUAAAABAAYAAAD9/wUAAAAEAAcAAAD///r/AAAEAAUAAAAAAPr/AAAFAAUAAAAIAAMAAAAEAAAAAAAIAAQAAAAEAAAAAAAKAAMAAAAEAAAAAAAKAAQAAAAEAAAAAAALAAMAAAAEAAAAAAALAAQAAAAEAAAAAAAMAAMAAAAEAAAAAAAMAAQAAAAEAAAAAAANAAMAAAAEAAAAAAANAAQAAAAEAAAAAAAOAAMAAAAEAAAAAAAOAAQAAAAEAAAAAAAPAAMAAAAEAAAAAAAPAAQAAAAEAAAAAAAIAAUAAAAFAAcAAAAJAAUAAAAEAAcAAAAKAAUAAAAFAAcAAAALAAUAAAAEAAcAAAAMAAUAAAAFAAcAAAANAAUAAAAEAAcAAAAOAAUAAAAFAAcAAAAPAAUAAAAEAAcAAAAIAAYAAAAFAAgAAAAJAAYAAAAEAAgAAAAKAAYAAAAFAAgAAAALAAYAAAAEAAgAAAAMAAYAAAAFAAgAAAANAAYAAAAEAAgAAAAOAAYAAAAFAAgAAAAPAAYAAAAEAAgAAAAIAPr/AAAEAAUAAAAJAPr/AAAEAAUAAAAKAPr/AAAEAAUAAAALAPr/AAAEAAUAAAAMAPr/AAAEAAUAAAANAPr/AAAEAAUAAAAOAPr/AAAEAAUAAAAPAPr/AAAEAAUAAAARAPz/AAAIAAYAAAARAP3/AAAIAAcAAAARAP7/AAAIAAYAAAARAP//AAAIAAcAAAARAAAAAAAIAAYAAAARAAEAAAAIAAcAAAARAAIAAAAIAAYAAAARAAMAAAAIAAcAAAARAAQAAAAIAAYAAAAQAAMAAAAHAAcAAAAQAAQAAAAHAAYAAAAQAPr/AAAHAAMAAAARAPr/AAAIAAMAAAARAPv/AAAIAAQAAAAQAAUAAAAHAAkAAAARAAYAAAAIAAoAAAARAAUAAAAIAAkAAAAQAAYAAAAHAAoAAAACAAUAAAAGAAEAAAD7//v/AAABAAYAAAD7//z/AAABAAYAAAD7//3/AAABAAcAAAD7//7/AAABAAYAAAD7////AAABAAgAAAD8//v/AAACAAQAAAD8//z/AAACAAYAAAD8//3/AAACAAcAAAD8//7/AAACAAYAAAD8////AAACAAgAAAD8/wAAAAAGAAEAAAD9//v/AAAEAAYAAAD9//z/AAAGAAEAAAD9//3/AAAGAAEAAAD9//7/AAAGAAEAAAD9////AAAGAAEAAAD9/wAAAAAGAAEAAAD+//v/AAAFAAYAAAD+//z/AAAGAAEAAAD+//3/AAAGAAEAAAD+//7/AAAGAAEAAAD+////AAAGAAEAAAD+/wAAAAAGAAEAAAD///v/AAAEAAYAAAD///z/AAAGAAEAAAD///3/AAAGAAEAAAD///7/AAAGAAEAAAD/////AAAGAAEAAAD//wAAAAAGAAEAAAAAAPv/AAAFAAYAAAAAAPz/AAAGAAEAAAAAAP3/AAAGAAEAAAAAAP7/AAAGAAEAAAAAAP//AAAGAAEAAAAAAAAAAAAGAAEAAAD7/wEAAAABAAUAAAD7/wIAAAABAAYAAAD8/wEAAAACAAUAAAD8/wIAAAACAAYAAAD9/wEAAAAGAAEAAAD9/wIAAAAGAAEAAAD+/wEAAAAGAAEAAAD+/wIAAAAGAAEAAAD//wEAAAAGAAEAAAD//wIAAAAGAAEAAAAAAAEAAAAGAAEAAAAAAAIAAAAGAAEAAAABAPv/AAAGAAYAAAABAPz/AAAGAAEAAAABAP3/AAAGAAEAAAABAP7/AAAGAAEAAAABAP//AAAGAAEAAAABAAAAAAAGAAEAAAABAAEAAAAGAAEAAAABAAIAAAAGAAEAAAACAPv/AAAGAAEAAAACAPz/AAAGAAEAAAACAP3/AAAGAAEAAAACAP7/AAAGAAEAAAACAP//AAAGAAEAAAACAAAAAAAGAAEAAAACAAEAAAAGAAEAAAACAAIAAAAGAAEAAAADAPv/AAADAAYAAAADAPz/AAAGAAEAAAADAP3/AAAGAAEAAAADAP7/AAAGAAEAAAADAP//AAAGAAEAAAAEAPv/AAAEAAYAAAAEAPz/AAAGAAEAAAAEAP3/AAAGAAEAAAAEAP7/AAAGAAEAAAAEAP//AAAGAAEAAAAEAAAAAAAGAAEAAAAEAAEAAAAGAAEAAAAEAAIAAAAGAAEAAAAFAPv/AAAEAAYAAAAFAPz/AAAGAAEAAAAFAP3/AAAGAAEAAAAFAP7/AAAGAAEAAAAFAP//AAAGAAEAAAAFAAAAAAAGAAEAAAAFAAEAAAAGAAEAAAAFAAIAAAAGAAEAAAAGAPv/AAAEAAYAAAAGAPz/AAAGAAEAAAAGAP3/AAAGAAEAAAAGAP7/AAAGAAEAAAAGAP//AAAGAAEAAAAGAAAAAAAGAAEAAAAGAAEAAAAGAAEAAAAGAAIAAAAGAAEAAAAHAPv/AAAEAAYAAAAHAPz/AAAGAAEAAAAHAP3/AAAGAAEAAAAHAP7/AAAEAAAAAAAHAP//AAAGAAEAAAAHAAAAAAAGAAEAAAAHAAEAAAAGAAEAAAAHAAIAAAAGAAEAAAAIAPv/AAAEAAYAAAAIAPz/AAAEAAAAAAAIAP3/AAAEAAAAAAAIAP7/AAAEAAAAAAAIAP//AAAEAAAAAAAIAAAAAAAEAAAAAAAIAAEAAAAEAAAAAAAIAAIAAAAEAAAAAAAJAPv/AAAEAAYAAAAKAPv/AAAEAAYAAAAKAPz/AAAEAAAAAAAKAP3/AAAEAAAAAAAKAP7/AAAEAAAAAAAKAP//AAAEAAAAAAAKAAAAAAAEAAAAAAAKAAEAAAAEAAAAAAAKAAIAAAAEAAAAAAALAPv/AAAEAAYAAAALAPz/AAAEAAAAAAALAP3/AAAEAAAAAAALAP7/AAAEAAAAAAALAP//AAAEAAAAAAALAAAAAAAEAAAAAAALAAEAAAAEAAAAAAALAAIAAAAEAAAAAAAMAPv/AAAEAAYAAAAMAPz/AAAEAAAAAAAMAP3/AAAEAAAAAAAMAP7/AAAEAAAAAAAMAP//AAAEAAAAAAAMAAAAAAAEAAAAAAAMAAEAAAAEAAAAAAAMAAIAAAAEAAAAAAANAPv/AAAEAAYAAAANAPz/AAAEAAAAAAANAP3/AAAEAAAAAAANAP7/AAAEAAAAAAANAP//AAAEAAAAAAANAAAAAAAEAAAAAAANAAEAAAAEAAAAAAANAAIAAAAEAAAAAAAOAPv/AAAEAAYAAAAOAPz/AAAEAAAAAAAOAP3/AAAEAAAAAAAOAP7/AAAEAAAAAAAOAP//AAAEAAAAAAAOAAAAAAAEAAAAAAAOAAEAAAAEAAAAAAAOAAIAAAAEAAAAAAAPAPv/AAAEAAYAAAAPAPz/AAAEAAAAAAAPAP3/AAAEAAAAAAAPAP7/AAAEAAAAAAAPAP//AAAEAAAAAAAPAAAAAAAEAAAAAAAPAAEAAAAEAAAAAAAPAAIAAAAEAAAAAAAQAPv/AAAHAAQAAAAQAPz/AAAHAAYAAAAQAP3/AAAHAAcAAAAQAP7/AAAHAAYAAAAQAP//AAAHAAcAAAAQAAAAAAAHAAYAAAAQAAEAAAAHAAcAAAAQAAIAAAAHAAYAAAAJAPz/AAAEAAAAAAAJAP3/AAAEAAAAAAAJAP7/AAAEAAAAAAAJAP//AAAEAAAAAAAJAAAAAAAEAAAAAAAJAAEAAAAEAAAAAAAJAAIAAAAEAAAAAAAJAAMAAAAEAAAAAAAJAAQAAAAEAAAAAAADAAAAAAAGAAEAAAADAAEAAAAGAAEAAAADAAIAAAAGAAEAAAA=")
+tile_set = SubResource("TileSet_miqcv")
 navigation_visibility_mode = 2
 
 [node name="Foreground" type="TileMapLayer" parent="." groups=["obstacle"]]
@@ -278,7 +296,7 @@ light_mask = 32
 z_index = -2
 z_as_relative = false
 tile_map_data = PackedByteArray("AAADAAQAAAAAAAIAAAA=")
-tile_set = SubResource("TileSet_mwidr")
+tile_set = SubResource("TileSet_4ieoh")
 navigation_enabled = false
 
 [node name="Obstacles" type="TileMapLayer" parent="Foreground" groups=["obstacle"]]
@@ -287,50 +305,70 @@ visibility_layer = 32
 z_index = -2
 z_as_relative = false
 tile_map_data = PackedByteArray("AAADAAQAAQABAAAAAAADAAMAAQABAAAAAAA=")
-tile_set = SubResource("TileSet_pk6yb")
+tile_set = SubResource("TileSet_a2tj1")
 navigation_enabled = false
 
-[node name="Doors" type="Node2D" parent="."]
-visibility_layer = 5
+[node name="Player" parent="." instance=ExtResource("2_bkx0u")]
+position = Vector2(38, 1)
 
-[node name="Up" parent="Doors" instance=ExtResource("4_npk0r")]
-visibility_layer = 5
-position = Vector2(40, -76)
-dir = "Up"
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Down" parent="Doors" instance=ExtResource("4_npk0r")]
-visibility_layer = 5
-position = Vector2(40, 92)
-rotation = 3.1415927
-dir = "down"
+[node name="DeathMenu" parent="CanvasLayer" instance=ExtResource("7_laycw")]
+visible = false
 
-[node name="Left" parent="Doors" instance=ExtResource("4_npk0r")]
-visibility_layer = 5
-position = Vector2(-60, 8)
-rotation = -1.5707964
-dir = "left"
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("6_jdx7j")]
+visible = false
+offset_left = -1.0
+offset_top = -21.0
+offset_right = -1.0
+offset_bottom = -21.0
 
-[node name="Right" parent="Doors" instance=ExtResource("4_npk0r")]
-visibility_layer = 5
-position = Vector2(140, 8)
-rotation = 1.5707964
-dir = "right"
+[node name="GoldenFruitItem" parent="." instance=ExtResource("5_mvyeq")]
+position = Vector2(-127, 60)
 
-[node name="Spawns" type="Node2D" parent="."]
+[node name="NinjaHeadbandItem" parent="." instance=ExtResource("11_a2tj1")]
+position = Vector2(201, -46)
 
-[node name="Center" type="Marker2D" parent="Spawns"]
-position = Vector2(40, 0)
+[node name="UFOItem" parent="." instance=ExtResource("9_5lslb")]
+position = Vector2(91, 63)
+id = 3
 
-[node name="FromUp" type="Marker2D" parent="Spawns"]
-position = Vector2(40, -66)
+[node name="Ant-ManHelmetItem" parent="." instance=ExtResource("11_fuxfh")]
+position = Vector2(91, -47)
 
-[node name="FromDown" type="Marker2D" parent="Spawns"]
-position = Vector2(40, 79)
+[node name="DAIItem" parent="." instance=ExtResource("12_fuxfh")]
+position = Vector2(200, 55)
 
-[node name="FromLeft" type="Marker2D" parent="Spawns"]
-position = Vector2(-44, 8)
+[node name="BusinessGlassesItem" parent="." instance=ExtResource("13_otkra")]
+position = Vector2(244, 16)
 
-[node name="FromRight" type="Marker2D" parent="Spawns"]
-position = Vector2(122, 8)
+[node name="StalkerEnemy" parent="." instance=ExtResource("14_84wfm")]
+position = Vector2(317, -14)
 
-[node name="Enemies" type="Node2D" parent="."]
+[node name="Divisor3Item" parent="." instance=ExtResource("15_hvcyd")]
+position = Vector2(-128, -49)
+
+[node name="DashAbilityItem" parent="." instance=ExtResource("16_8wn8x")]
+position = Vector2(-20, 58)
+
+[node name="TheCrossItem" parent="." instance=ExtResource("17_3xu2y")]
+position = Vector2(-234, -53)
+
+[node name="PistolGunItem" parent="." instance=ExtResource("8_ppu0c")]
+position = Vector2(-238, 60)
+
+[node name="Enemy2" parent="." instance=ExtResource("18_5suce")]
+position = Vector2(371, 0)
+
+[node name="Enemy3" parent="." instance=ExtResource("19_7y8ym")]
+position = Vector2(224, -37)
+
+[node name="BlueMarkerWeaponItem" parent="." instance=ExtResource("20_f0phr")]
+position = Vector2(-17, -46)
+
+[node name="Ghosty" parent="." instance=ExtResource("21_3s4b3")]
+process_mode = 4
+position = Vector2(297, -46)
+
+[node name="Lamp" parent="." instance=ExtResource("22_0bciu")]
+position = Vector2(152, -77)

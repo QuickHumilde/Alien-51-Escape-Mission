@@ -21,7 +21,7 @@ var laser_test_scene : PackedScene = preload("res://scenes/weapons/continous_las
 
 var weapon_scenes : Dictionary = {}
 @export var weapon_instances : Dictionary = {} 
-@export var weapon_order : Array = [1, 4, 5]
+@export var weapon_order : Array = []
 
 func _ready():
 	weapon_scenes = {
@@ -31,8 +31,6 @@ func _ready():
 		4: nail_scene,
 		5: laser_test_scene,
 	}
-	
-	#random_weapon()
 
 func init(holder: Node2D, character_stats: CharacterStats):
 	weapon_holder = holder
@@ -40,13 +38,13 @@ func init(holder: Node2D, character_stats: CharacterStats):
 
 	if weapon_scenes.is_empty():
 		_ready()
-		
+
 	if weapon_order.is_empty():
-		pass
+		random_weapon()
 	else:
 		var initial_id = weapon_order[current_weapon_index]
 		equip_weapon(initial_id)
-
+	
 func update(delta: float, character):
 	if not current_weapon:
 		return
@@ -59,7 +57,6 @@ func update(delta: float, character):
 		current_weapon.position = current_weapon.position.lerp(target_offset, delta * orbit_smoothness)
 		current_weapon.rotation = lerp_angle(current_weapon.rotation, angle_to_mouse, delta * orbit_smoothness)
 
-	# Flip cuando mira a la izquierda
 	if abs(angle_to_mouse) > PI/2 and not current_weapon.is_attacking:
 		current_weapon.scale.y = -1
 	else:
@@ -88,15 +85,12 @@ func shoot():
 
 func equip_weapon(id: int):
 	if not weapon_scenes.has(id):
-		push_error("Weapon id '%s' no está en weapon_scenes" % id)
 		return
 
-	# Ocultar arma actual
 	if current_weapon:
 		current_weapon.visible = false
 		current_weapon.set_process(false)
 
-	# Instanciar solo si no existe aún
 	if not weapon_instances.has(id):
 		var scene: PackedScene = weapon_scenes[id]
 		var instance = scene.instantiate()
@@ -142,7 +136,10 @@ func equip_last_weapon():
 	equip_weapon(last_id)
 
 func random_weapon():
-	var rng: RandomNumberGenerator = RandomNumberGenerator.new()
-	var choosen_weapon = rng.randi_range(1, weapon_scenes.size())
-	weapon_order.append(choosen_weapon)
+	var rng := RandomNumberGenerator.new()
+	var keys := weapon_scenes.keys()
+	var chosen_weapon: int = int(keys[rng.randi_range(0, keys.size() - 1)])
+	weapon_order.append(chosen_weapon)
+	current_weapon_index = weapon_order.size() - 1
+	equip_weapon(chosen_weapon)
 	

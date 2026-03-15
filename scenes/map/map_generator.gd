@@ -297,7 +297,7 @@ func _create_start_item_branch(start_pos: Vector2) -> void:
 		(start_data["doors"] as Dictionary)[d] = true
 		return
 
-func _create_main_normals(start_pos: Vector2, target_normals: int) -> void:
+func _create_main_normals(_start_pos: Vector2, target_normals: int) -> void:
 	var normals_created := 0
 	var attempts := 0
 
@@ -330,7 +330,7 @@ func _create_main_normals(start_pos: Vector2, target_normals: int) -> void:
 			normals_created += 1
 			break
 
-func _create_extra_item_branches(start_pos: Vector2, count: int) -> void:
+func _create_extra_item_branches(_start_pos: Vector2, count: int) -> void:
 	for i in range(max(0, count)):
 		if not _create_dead_end_branch("item", Vector2.ZERO, 25):
 			print("No se pudieron crear todas las salas de item")

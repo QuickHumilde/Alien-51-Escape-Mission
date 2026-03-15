@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://x4vtdaxsj8o1"]
+
+[ext_resource type="Texture2D" uid="uid://b4ugn4da6cjfk" path="res://assets/sprites/extras/Wall.png" id="1_a5sw3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_47kcb"]
+size = Vector2(16, 24)
+
+[node name="Wall" type="Node2D"]
+
+[node name="WallVisual" type="Sprite2D" parent="."]
+texture = ExtResource("1_a5sw3")
+
+[node name="BlockerWall" type="StaticBody2D" parent="."]
+visibility_layer = 5
+collision_mask = 13
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlockerWall"]
+visibility_layer = 13
+shape = SubResource("RectangleShape2D_47kcb")

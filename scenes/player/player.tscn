@@ -1,4 +1,4 @@
-[gd_scene load_steps=116 format=3 uid="uid://jygsb42krc3q"]
+[gd_scene load_steps=123 format=3 uid="uid://jygsb42krc3q"]
 
 [ext_resource type="Script" uid="uid://c05bk0i1ljchi" path="res://scenes/player/character.gd" id="1_t61fv"]
 [ext_resource type="Texture2D" uid="uid://maoxh7al31bo" path="res://assets/sprites/player/PlayerDying.png" id="2_fcs02"]
@@ -15,11 +15,14 @@
 [ext_resource type="Script" uid="uid://cf2ydjti0ya2t" path="res://scenes/player/character_stats.gd" id="8_xuses"]
 [ext_resource type="Script" uid="uid://cqnfweq1nt5ki" path="res://scenes/player/character_movement.gd" id="9_3xnwo"]
 [ext_resource type="Script" uid="uid://b2o031434leip" path="res://scenes/player/character_animation.gd" id="9_42irl"]
+[ext_resource type="Texture2D" uid="uid://c88vhmg4n716n" path="res://assets/sprites/player/VesselPlayer.png" id="9_ioxgp"]
 [ext_resource type="Script" uid="uid://b5vvjo7uwvnxw" path="res://scenes/player/character_combat.gd" id="11_djydg"]
 [ext_resource type="Texture2D" uid="uid://wyftcn2xgr0m" path="res://assets/sprites/extras/Shadow.png" id="12_8ydkj"]
 [ext_resource type="Script" uid="uid://cpilx8lbp3x7t" path="res://scenes/player/character_item_manager.gd" id="12_bsn6e"]
 [ext_resource type="Script" uid="uid://cm8dyqwgpnapc" path="res://scenes/player/character_audio.gd" id="13_blysn"]
 [ext_resource type="Script" uid="uid://b56hgobt7k6xa" path="res://scenes/player/character_abilities.gd" id="19_lgqa7"]
+[ext_resource type="PackedScene" uid="uid://ddmkkd4lvgb5g" path="res://scenes/ui/pause_menu.tscn" id="21_yj68g"]
+[ext_resource type="PackedScene" uid="uid://byrp3wtch5b76" path="res://scenes/ui/death_menu.tscn" id="22_ioxgp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_myrg7"]
 atlas = ExtResource("2_fcs02")
@@ -307,6 +310,22 @@ region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2v4cy"]
 atlas = ExtResource("4_qd3e3")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2wy34"]
+atlas = ExtResource("9_ioxgp")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ymths"]
+atlas = ExtResource("9_ioxgp")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3p0jd"]
+atlas = ExtResource("9_ioxgp")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7nf13"]
+atlas = ExtResource("9_ioxgp")
 region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t61fv"]
@@ -644,6 +663,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_2wy34")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ymths")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3p0jd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7nf13")
+}],
+"loop": true,
+"name": &"vessel_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_t61fv")
 }, {
 "duration": 1.0,
@@ -771,6 +807,12 @@ shape = SubResource("CircleShape2D_lgqa7")
 position = Vector2(0, 1)
 
 [node name="HUD" parent="." instance=ExtResource("8_hv5x3")]
+
+[node name="Menus" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="Menus" instance=ExtResource("21_yj68g")]
+
+[node name="DeathMenu" parent="Menus" instance=ExtResource("22_ioxgp")]
 
 [node name="Logic" type="Node" parent="."]
 

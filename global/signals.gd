@@ -15,6 +15,8 @@ signal show_death_menu()
 signal player_revive()
 #endregion
 
+signal vessel_code()
+
 #Made for removing the warning
 func _emit_all():
 	show_item_information.emit()

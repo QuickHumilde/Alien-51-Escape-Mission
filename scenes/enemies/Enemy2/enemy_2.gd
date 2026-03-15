@@ -26,6 +26,10 @@ func _ready():
 	super._ready()
 
 func _physics_process(delta):
+	if is_frozen():
+		process_frozen()
+		return
+
 	if not is_inside_tree():
 		return
 	if player == null:

@@ -46,7 +46,9 @@ func resume():
 	
 func pause():
 	last_mouse_position = get_global_mouse_position()
-	mouse_last_position_sprite.position = last_mouse_position - Vector2(-8.0, -28.0)
+	
+	# He estado desde el numero 4 probando decima a decima para saber cual era exactamente
+	mouse_last_position_sprite.position = last_mouse_position - Vector2(-6.8, -6.8) 
 	get_tree().paused = true
 	show()
 	$AnimationPlayer.play("blur")
@@ -79,7 +81,8 @@ func _on_resume_pressed():
 	resume()
 
 func _on_quit_pressed():
-	get_tree().quit()
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")
 
 func _on_options_pressed():
 	in_options=true

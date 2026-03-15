@@ -11,8 +11,6 @@ var time_left: float
 var modifiers: Array = []
 var bullet_owner : String = "-"
 var speed_rotation: float = 0.0
-@onready var background_tilemap = get_tree().get_current_scene().get_node("Background")
-@onready var foreground_tilemap = get_tree().get_current_scene().get_node("Foreground")
 
 func _ready():
 	self.body_entered.connect(_on_hitbox_enter)

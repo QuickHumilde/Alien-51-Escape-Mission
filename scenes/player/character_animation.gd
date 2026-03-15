@@ -7,12 +7,14 @@ var cardinal_direction: Vector2 = Vector2.DOWN
 var state: String = "idle"
 var damage_timer: Timer
 var is_flying: bool = false
+var vessel : bool = false
 var smooth_dir : Vector2 = Vector2.ZERO
 
 func init(player_sprite: AnimatedSprite2D, timer: Timer, weaponholder: Node2D):
 	sprite=player_sprite
 	damage_timer=timer
 	weapon_holder=weaponholder
+	Signals.vessel_code.connect(vessel_code)
 
 func update(character):
 	if set_state(character) or set_direction(character):
@@ -35,7 +37,9 @@ func set_direction(character) -> bool:
 
 func set_state(character) -> bool:
 	var new_state: String
-	if is_flying:
+	if vessel:
+		new_state = "vessel"
+	elif is_flying:
 		new_state = "fly"
 	else:
 		new_state = "idle" if character.velocity == Vector2.ZERO else "walk"
@@ -87,3 +91,7 @@ func player_changing_color(player_color: Color):
 func player_and_weapon_changing_color(player_color: Color, weapon_holder_color: Color):
 	sprite.modulate = player_color
 	weapon_holder.modulate = weapon_holder_color
+
+func vessel_code():
+	print("dweidi")
+	vessel=true
