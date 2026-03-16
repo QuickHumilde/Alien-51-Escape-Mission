@@ -5,7 +5,6 @@ class_name ProductSpawner
 @onready var buy_area: Area2D = $BuyArea
 @export var use_global_random: bool = true
 @export var timer= 2.0
-
 var inst = null
 var price: int = 10
 var can_buy := false
@@ -23,9 +22,7 @@ func _spawn_item_deferred() -> void:
 	if ItemManager.item_pool.is_empty():
 		return
 
-	var rng := RandomNumberGenerator.new()
-	if use_global_random:
-		rng.randomize()
+	var rng := GameManager.rng
 
 	var item_id: int = ItemManager.pick_random_item_id(rng)
 	if item_id < 0:

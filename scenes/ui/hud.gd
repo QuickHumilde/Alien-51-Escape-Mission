@@ -9,6 +9,7 @@ class_name HudPlayer
 @onready var item_back = $ItemBackground
 @onready var item_texture = $ItemImage
 @onready var money_amount = $MoneyAmount
+@onready var items_amount = $ItemAmount
 var cache_item_name : String
 var cache_item_desc : String
 
@@ -44,6 +45,8 @@ func update_texts():
 func connect_player_signals():
 	Signals.health_changed.connect(_on_health_changed)
 	Signals.money_changed.connect(_on_money_changed)
+	Signals.show_death_menu.connect(_on_death)
+	Signals.items_changed.connect(_on_item_changed)
 
 func connect_item_signals():
 	Signals.show_item_information.connect(_show_item_info)
@@ -55,6 +58,8 @@ func _on_health_changed(_current_health: float, _max_health: float, _extra_healt
 func _on_money_changed(_amount: int):
 	update_inventory()
 
+func _on_item_changed():
+	update_inventory()
 
 func update_health():
 	var current = player.stats.health
@@ -96,6 +101,9 @@ func update_health():
 func update_inventory():
 	var money = player.inventory.get_money()
 	money_amount.text = str(money)
+	
+	var items = player.inventory.get_items()
+	items_amount.text = str(items)
 
 func apply_borders():
 	var style_bg = StyleBoxFlat.new()
@@ -147,3 +155,6 @@ func _hide_item_info():
 
 func set_item_icon(image: String):
 	item_texture.texture = load(image)
+
+func _on_death():
+	self.hide()

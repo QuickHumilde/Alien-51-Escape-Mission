@@ -17,6 +17,8 @@ signal player_revive()
 
 #region Inventory
 signal money_changed(money: int)
+signal item_picked()
+signal items_changed()
 #endregion
 
 #region Map
@@ -41,3 +43,5 @@ func _emit_all():
 	money_changed.emit()
 	room_changed.emit()
 	room_cleared.emit()
+	item_picked.emit()
+	items_changed.emit()

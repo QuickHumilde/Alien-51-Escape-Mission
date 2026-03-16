@@ -2,6 +2,10 @@ extends Node
 class_name PlayerInventory
 
 @export var money: int = 15
+@export var items: int = 0
+
+func _ready() -> void:
+	Signals.item_picked.connect(_on_item_picked)
 
 func add_money(amount: int):
 	if amount > 0:
@@ -18,3 +22,10 @@ func spend_money(amount: int) -> bool:
 
 func get_money() -> int:
 	return money
+	
+func get_items() -> int:
+	return items
+
+func _on_item_picked():
+	items+=1
+	Signals.items_changed.emit()

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b4oe7bbfjujrv"]
+[gd_scene load_steps=6 format=3 uid="uid://b4oe7bbfjujrv"]
 
 [ext_resource type="Script" uid="uid://dmu6xagklf05g" path="res://scenes/ui/hud.gd" id="1_hqnrr"]
 [ext_resource type="Theme" uid="uid://b380oga6tlya7" path="res://assets/themes/default.tres" id="2_bo48s"]
 [ext_resource type="PackedScene" uid="uid://c28e2pqwwccu2" path="res://scenes/ui/ability_charge_bar.tscn" id="3_6ll6g"]
 [ext_resource type="Texture2D" uid="uid://xtkrsksxu7ei" path="res://assets/sprites/extras/Destiny2_Item.png" id="4_ig75s"]
+[ext_resource type="Texture2D" uid="uid://bq8pwdk7q8ahx" path="res://assets/images/schoolbag.png" id="5_4ed8p"]
 
 [node name="HUD" type="CanvasLayer" groups=["player_ui"]]
 layer = 129
@@ -153,3 +154,22 @@ offset_top = 52.0
 offset_right = 25.0
 offset_bottom = 68.0
 texture = ExtResource("4_ig75s")
+
+[node name="ItemAmount" type="Label" parent="."]
+offset_left = 32.0
+offset_top = 75.0
+offset_right = 221.0
+offset_bottom = 93.0
+theme = ExtResource("2_bo48s")
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 16
+text = "Items"
+vertical_alignment = 1
+
+[node name="ItemImage2" type="TextureRect" parent="."]
+offset_left = 7.0
+offset_top = 72.0
+offset_right = 28.0
+offset_bottom = 95.520004
+texture = ExtResource("5_4ed8p")
+expand_mode = 1

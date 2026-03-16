@@ -6,8 +6,6 @@
 
 [node name="MapGeneration" type="Node2D"]
 script = ExtResource("1_gbbns")
-min_rooms = 8
-max_rooms = 14
 
 [node name="World" type="Node2D" parent="."]
 

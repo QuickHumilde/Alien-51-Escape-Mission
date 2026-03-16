@@ -19,6 +19,7 @@ func _on_hitbox_enter(_body):
 @abstract func give_changes(body: Character)
 
 func destroy_on_pickup():
+	Signals.item_picked.emit()
 	queue_free()
 
 func _on_hitbox_enter_description(body):

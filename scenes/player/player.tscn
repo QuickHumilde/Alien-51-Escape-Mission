@@ -776,10 +776,12 @@ position_smoothing_speed = 8.0
 
 [node name="WeaponHolder" type="Node2D" parent="."]
 light_mask = 4
+z_index = 1
 
 [node name="Visual" type="Node2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visual"]
+z_index = 2
 sprite_frames = SubResource("SpriteFrames_xuses")
 animation = &"idle_down"
 
