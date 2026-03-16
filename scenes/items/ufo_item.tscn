@@ -1,11 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://bsbw3w70gbpyf"]
+[gd_scene load_steps=4 format=3 uid="uid://bfusponyjei61"]
 
-[ext_resource type="PackedScene" uid="uid://ctdsnkjtbdqr3" path="res://scenes/templates/item/item_template.tscn" id="1_lq6dh"]
-[ext_resource type="Texture2D" uid="uid://ditsoqubvvl5v" path="res://assets/sprites/items/UFO_Item.png" id="2_fsmfi"]
-[ext_resource type="Script" uid="uid://bg75nva0bkqgr" path="res://scenes/items/ufo_item.gd" id="2_vinct"]
+[ext_resource type="PackedScene" uid="uid://ctdsnkjtbdqr3" path="res://scenes/templates/item/item_template.tscn" id="1_fgon5"]
+[ext_resource type="Texture2D" uid="uid://ditsoqubvvl5v" path="res://assets/sprites/items/UFO_Item.png" id="2_ki4cd"]
+[ext_resource type="Script" uid="uid://bg75nva0bkqgr" path="res://scenes/items/ufo_item.gd" id="2_rin74"]
 
-[node name="UFOItem" instance=ExtResource("1_lq6dh")]
-script = ExtResource("2_vinct")
+[node name="UFOItem" instance=ExtResource("1_fgon5")]
+script = ExtResource("2_rin74")
 
-[node name="Sprite2D" type="Sprite2D" parent="Visual" index="0"]
-texture = ExtResource("2_fsmfi")
+[node name="Sprite2D" type="Sprite2D" parent="Visual" index="1"]
+texture = ExtResource("2_ki4cd")

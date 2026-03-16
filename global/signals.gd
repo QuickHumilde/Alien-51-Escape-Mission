@@ -15,7 +15,14 @@ signal show_death_menu()
 signal player_revive()
 #endregion
 
+#region Inventory
 signal money_changed(money: int)
+#endregion
+
+#region Map
+signal room_changed()
+signal room_cleared()
+#endregion
 
 #region Secrets
 signal vessel_code()
@@ -31,3 +38,6 @@ func _emit_all():
 	player_revive.emit()
 	player_take_damage.emit()
 	vessel_code.emit()
+	money_changed.emit()
+	room_changed.emit()
+	room_cleared.emit()

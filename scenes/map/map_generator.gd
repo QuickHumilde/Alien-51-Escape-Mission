@@ -52,6 +52,8 @@ func _ready() -> void:
 
 	print("Seed usada: ", GameManager.seed_value)
 
+	_watch_room_cleared(current_room)
+
 func _print_map_type_counts() -> void:
 	var counts := {"start":0, "normal":0, "item":0, "shop":0, "boss":0}
 	for k in map.keys():
@@ -115,12 +117,11 @@ func _on_door_entered(dir: String) -> void:
 
 	transitioning = true
 	call_deferred("_start_transition_deferred", next_pos, d)
-	
+
 func _start_transition_deferred(next_pos: Vector2, exit_dir: String) -> void:
 	await _transition_to(next_pos, exit_dir)
 
 func _transition_to(next_pos: Vector2, exit_dir: String) -> void:
-
 	var prev_room: Node2D = current_room
 	var next_room: Node2D = await _spawn_room_at(next_pos)
 
@@ -145,6 +146,9 @@ func _transition_to(next_pos: Vector2, exit_dir: String) -> void:
 		minimap.call("set_data", map, current_room_pos)
 
 	transitioning = false
+
+	Signals.room_changed.emit()
+	_watch_room_cleared(current_room)
 
 func _place_player(room: Node2D, entered_from_dir: String) -> void:
 	if room.has_method("get_spawn_global"):
@@ -353,7 +357,7 @@ func _create_boss_branch(start_pos: Vector2) -> void:
 	for base in bases:
 		if _create_dead_end_branch("boss", base, 50):
 			return
-	
+
 func _create_dead_end_branch(room_type: String, preferred_base: Vector2, max_attempts: int) -> bool:
 	var start_pos := Vector2.ZERO
 
@@ -401,3 +405,28 @@ func _cleanup_doors_against_missing_neighbors() -> void:
 			var np := p + dir_to_vector(d)
 			if not map.has(pos_to_key(np)):
 				doors[d] = false
+
+# ----------------- ROOM CLEARED WATCHER -----------------
+
+func _watch_room_cleared(room: Node) -> void:
+	var enemies := room.get_node_or_null("Enemies")
+	if enemies == null:
+		Signals.room_cleared.emit()
+		return
+
+	_emit_room_cleared_if_empty(enemies)
+
+	for e in enemies.get_children():
+		if e.is_in_group("enemy"):
+			e.tree_exited.connect(_on_enemy_exited.bind(room), CONNECT_ONE_SHOT)
+
+func _on_enemy_exited(room: Node) -> void:
+	if room != current_room:
+		return
+	_watch_room_cleared(current_room)
+
+func _emit_room_cleared_if_empty(enemies: Node) -> void:
+	for e in enemies.get_children():
+		if e.is_in_group("enemy"):
+			return
+	Signals.room_cleared.emit()

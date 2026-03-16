@@ -1,11 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://cbvlm8p85dkk3"]
 
-[ext_resource type="PackedScene" uid="uid://ctdsnkjtbdqr3" path="res://scenes/templates/item/item_template.tscn" id="1_vklol"]
+[ext_resource type="PackedScene" uid="uid://ctdsnkjtbdqr3" path="res://scenes/templates/item/item_template.tscn" id="1_bnnrg"]
 [ext_resource type="Script" uid="uid://cs47jd3l5l0u7" path="res://scenes/items/ninja_headband_item.gd" id="2_bhfnq"]
 [ext_resource type="Texture2D" uid="uid://cc3aibuvsgmy4" path="res://assets/sprites/items/NinjaHeadband_Item.png" id="2_bnnrg"]
 
-[node name="NinjaHeadbandItem" instance=ExtResource("1_vklol")]
+[node name="NinjaHeadbandItem" instance=ExtResource("1_bnnrg")]
 script = ExtResource("2_bhfnq")
 
-[node name="Sprite2D" type="Sprite2D" parent="Visual" index="0"]
+[node name="Sprite2D" type="Sprite2D" parent="Visual" index="1"]
 texture = ExtResource("2_bnnrg")

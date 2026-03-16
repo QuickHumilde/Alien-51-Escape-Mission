@@ -11,7 +11,7 @@ func _on_area_entered(body):
 		var player: Character = body.get_parent()
 		_on_pick_up(player)
 
-func _on_pick_up(player : Character):
+func _on_pick_up(_player : Character):
 	pass
 
 func destroy():

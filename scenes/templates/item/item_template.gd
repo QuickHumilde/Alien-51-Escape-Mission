@@ -2,8 +2,10 @@
 extends Node2D
 class_name Item
 
+@onready var hitbox: CollisionShape2D = $Detector/CollisionShape2D
 @export var name_key : String
 @export var desc_key : String
+@export var price: int = 10
 var item_texture: String
 
 func _ready():
@@ -33,11 +35,20 @@ func get_item_name() -> String:
 func get_description() -> String:
 	return (desc_key)
 
+func get_price() -> int:
+	return price
+
 func show_information():
 	Signals.show_item_information.emit(get_item_name(), get_description(), item_texture)
 
 func hide_information():
 	Signals.hide_item_information.emit()
+
+func enable_hitbox():
+	hitbox.set_deferred("disabled" ,false)
+
+func disable_hitbox():
+	hitbox.set_deferred("disabled" ,true)
 
 func _initiate_detectors():
 	$Detector.body_entered.connect(_on_hitbox_enter)

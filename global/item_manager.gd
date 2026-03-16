@@ -47,7 +47,7 @@ func get_weapon_id_from_item(item_id: int) -> int:
 
 func fill_item_pool():
 	register_item(1, preload("res://scenes/items/golden_fruit_item.tscn"))
-	register_item(2, preload("res://scenes/items/weapons/piston_gun_item.tscn"))
+	register_item(2, preload("res://scenes/items/weapons/pistol_gun_item.tscn"))
 	register_item(3, preload("res://scenes/items/weapons/blue_marker_weapon_item.tscn"))
 	register_item(4, preload("res://scenes/items/ninja_headband_item.tscn"))
 	register_item(5, preload("res://scenes/items/ant_man_helmet_item.tscn"))

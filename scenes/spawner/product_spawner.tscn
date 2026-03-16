@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://lgbybxtpsdem"]
+
+[ext_resource type="Script" uid="uid://hamou7hk83p3" path="res://scenes/spawner/product_spawner.gd" id="1_s6xop"]
+[ext_resource type="Theme" uid="uid://b380oga6tlya7" path="res://assets/themes/default.tres" id="2_tfuul"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tfuul"]
+radius = 10.049875
+
+[node name="ProductSpawner" type="Node2D"]
+script = ExtResource("1_s6xop")
+
+[node name="Item" type="Node2D" parent="."]
+
+[node name="BuyArea" type="Area2D" parent="."]
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuyArea"]
+position = Vector2(0, 8)
+shape = SubResource("CircleShape2D_tfuul")
+
+[node name="PriceLabel" type="Label" parent="."]
+offset_left = -215.0
+offset_top = 16.0
+offset_right = 217.0
+offset_bottom = 39.0
+theme = ExtResource("2_tfuul")
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 14
+text = "?$"
+horizontal_alignment = 1

@@ -21,7 +21,7 @@ var laser_test_scene : PackedScene = preload("res://scenes/weapons/continous_las
 
 var weapon_scenes : Dictionary = {}
 @export var weapon_instances : Dictionary = {} 
-@export var weapon_order : Array = [1,2,3,4,5]
+@export var weapon_order : Array = [1]
 
 func _ready():
 	weapon_scenes = {
