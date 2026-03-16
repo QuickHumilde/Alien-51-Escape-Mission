@@ -18,10 +18,8 @@ func _enter_tree() -> void:
 	doors = get_node_or_null("Doors")
 	spawns = get_node_or_null("Spawns")
 	enemies_root = get_node_or_null(enemies_node_path)
-	print("[ROOM]", name, "_enter_tree doors=", doors != null, " spawns=", spawns != null, " enemies_root=", enemies_root != null)
 
 func _ready() -> void:
-	print("[ROOM]", name, "_ready lock_doors_until_clear=", lock_doors_until_clear, " enemies_path=", enemies_node_path)
 	call_deferred("_recount_enemies_and_update_doors")
 
 func get_door_caps() -> Dictionary:
@@ -33,8 +31,6 @@ func get_door_caps() -> Dictionary:
 	}
 
 func setup(room_data: Dictionary) -> void:
-	print("[ROOM]", name, "setup() type=", room_data.get("type"), " doors_data=", room_data.get("doors", {}))
-
 	if doors == null:
 		doors = get_node_or_null("Doors")
 	if spawns == null:
@@ -42,10 +38,8 @@ func setup(room_data: Dictionary) -> void:
 	if enemies_root == null:
 		enemies_root = get_node_or_null(enemies_node_path)
 
-	print("[ROOM]", name, "setup resolved: doors=", doors != null, " enemies_root=", enemies_root != null)
 
 	if doors == null:
-		print("[ROOM]", name, "NO Doors node -> abort setup")
 		return
 
 	_set_door_enabled("Up", "up", room_data)
@@ -77,11 +71,9 @@ func _connect_doors_recursive(n: Node, cb: Callable) -> void:
 		if c.has_signal("entered"):
 			if not c.is_connected("entered", cb):
 				c.connect("entered", cb)
-				print("[ROOM]", name, "connected door.entered from node:", c.get_path())
 		_connect_doors_recursive(c, cb)
 
 func _on_door_wrapper_entered(dir: String) -> void:
-	print("[ROOM]", name, "received Door.entered -> re-emitting door_entered(", dir, ")")
 	emit_signal("door_entered", dir)
 
 # ----------------- Enable doors based on map -----------------
@@ -89,11 +81,9 @@ func _on_door_wrapper_entered(dir: String) -> void:
 func _set_door_enabled(node_name: String, key: String, room_data: Dictionary) -> void:
 	var door_node := doors.get_node_or_null(node_name)
 	if door_node == null:
-		print("[ROOM]", name, "missing door node:", node_name)
 		return
 
 	var enabled: bool = bool(room_data.get("doors", {}).get(key, false)) and bool(door_caps.get(key, true))
-	print("[ROOM]", name, "door", node_name, "key=", key, " enabled=", enabled, " door_node_type=", door_node.get_class())
 
 	if door_node.has_method("set_enabled"):
 		door_node.call("set_enabled", enabled)
@@ -101,7 +91,6 @@ func _set_door_enabled(node_name: String, key: String, room_data: Dictionary) ->
 
 	var a := door_node as Area2D
 	if a == null:
-		print("[ROOM]", name, "door node is neither Door wrapper nor Area2D:", door_node)
 		return
 	a.set_deferred("monitoring", enabled)
 	a.set_deferred("monitorable", enabled)
@@ -115,17 +104,14 @@ func _connect_enemy_signals_if_possible() -> void:
 	if enemies_root == null:
 		enemies_root = get_node_or_null(enemies_node_path)
 	if enemies_root == null:
-		print("[ROOM]", name, "no Enemies node found at path:", enemies_node_path)
 		return
 
 	enemies_root.child_entered_tree.connect(Callable(self, "_on_enemy_child_entered"))
 	enemies_root.child_exiting_tree.connect(Callable(self, "_on_enemy_child_exiting"))
 	_enemy_signals_connected = true
-	print("[ROOM]", name, "connected enemy signals on:", enemies_root.get_path())
 
 func _recount_enemies_and_update_doors() -> void:
 	if not lock_doors_until_clear:
-		print("[ROOM]", name, "recount skipped (lock_doors_until_clear=false)")
 		return
 
 	if enemies_root == null:
@@ -138,16 +124,10 @@ func _recount_enemies_and_update_doors() -> void:
 			if c == null:
 				continue
 			_enemies_alive += 1
-		print("[ROOM]", name, "recount enemies:", _enemies_alive, " children=", children.size(), " enemies_root=", enemies_root.get_path())
-	else:
-		print("[ROOM]", name, "recount: enemies_root is NULL")
-
 	_cleared = (_enemies_alive <= 0)
-	print("[ROOM]", name, "state after recount: cleared=", _cleared, " -> doors open=", _cleared)
 	_update_doors_open_state()
 
 func _on_enemy_child_entered(child: Node) -> void:
-	print("[ROOM]", name, "enemy child_entered_tree:", child, " path=", (child.get_path() if child != null else "<null>"))
 	if child == null:
 		return
 	_enemies_alive += 1

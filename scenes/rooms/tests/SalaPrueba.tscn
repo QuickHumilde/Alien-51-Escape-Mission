@@ -350,7 +350,7 @@ position = Vector2(371, 0)
 position = Vector2(224, -37)
 
 [node name="BlueMarkerWeaponItem" parent="." instance=ExtResource("20_f0phr")]
-position = Vector2(-17, -46)
+position = Vector2(-10, -44)
 
 [node name="Ghosty" parent="." instance=ExtResource("21_3s4b3")]
 position = Vector2(297, -46)

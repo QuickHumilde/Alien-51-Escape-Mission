@@ -8,9 +8,11 @@
 script = ExtResource("2_p61qk")
 
 [node name="Sprite2D" type="Sprite2D" parent="Visual" index="0"]
-position = Vector2(-2, 2)
 scale = Vector2(0.65, 0.65)
 texture = ExtResource("3_q2gqx")
 
 [node name="ShootCooldown" parent="." index="1"]
 wait_time = 0.001
+
+[node name="Barrel" type="Node2D" parent="." index="2"]
+position = Vector2(3.5, -1.5)

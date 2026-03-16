@@ -1,4 +1,4 @@
-[gd_scene load_steps=123 format=3 uid="uid://jygsb42krc3q"]
+[gd_scene load_steps=124 format=3 uid="uid://jygsb42krc3q"]
 
 [ext_resource type="Script" uid="uid://c05bk0i1ljchi" path="res://scenes/player/character.gd" id="1_t61fv"]
 [ext_resource type="Texture2D" uid="uid://maoxh7al31bo" path="res://assets/sprites/player/PlayerDying.png" id="2_fcs02"]
@@ -23,6 +23,7 @@
 [ext_resource type="Script" uid="uid://b56hgobt7k6xa" path="res://scenes/player/character_abilities.gd" id="19_lgqa7"]
 [ext_resource type="PackedScene" uid="uid://ddmkkd4lvgb5g" path="res://scenes/ui/pause_menu.tscn" id="21_yj68g"]
 [ext_resource type="PackedScene" uid="uid://byrp3wtch5b76" path="res://scenes/ui/death_menu.tscn" id="22_ioxgp"]
+[ext_resource type="Script" uid="uid://dypft4j8xsgv1" path="res://scenes/player/player_inventory.gd" id="24_cnsyf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_myrg7"]
 atlas = ExtResource("2_fcs02")
@@ -797,7 +798,7 @@ debug_color = Color(0.8564939, 3.657937e-06, 8.663535e-07, 0.41960785)
 
 [node name="Detector" type="Area2D" parent="." groups=["player"]]
 collision_layer = 4
-collision_mask = 27
+collision_mask = 91
 
 [node name="HitboxDetector" type="CollisionShape2D" parent="Detector" groups=["player"]]
 position = Vector2(0, 2)
@@ -837,6 +838,10 @@ script = ExtResource("8_xuses")
 [node name="Audio" type="Node" parent="Logic"]
 process_mode = 3
 script = ExtResource("13_blysn")
+
+[node name="Inventory" type="Node" parent="Logic"]
+script = ExtResource("24_cnsyf")
+metadata/_custom_type_script = "uid://dypft4j8xsgv1"
 
 [node name="DamageTimer" type="Timer" parent="Logic"]
 one_shot = true

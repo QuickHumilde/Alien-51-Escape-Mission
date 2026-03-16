@@ -284,7 +284,7 @@ sprite_frames = SubResource("SpriteFrames_u8737")
 animation = &"attacking"
 
 [node name="ShootCooldown" type="Timer" parent="."]
-wait_time = 0.75
+wait_time = 0.3
 one_shot = true
 
 [node name="Hitbox" type="Area2D" parent="."]

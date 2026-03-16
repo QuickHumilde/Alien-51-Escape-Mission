@@ -93,5 +93,5 @@ func player_and_weapon_changing_color(player_color: Color, weapon_holder_color: 
 	weapon_holder.modulate = weapon_holder_color
 
 func vessel_code():
-	print("dweidi")
+	print("VESSEL CODE: ACTIVATED")
 	vessel=true

@@ -73,7 +73,7 @@ func modify_size(amount: float):
 	size += amount
 	visuals.scale = Vector2(size, size)
 	player_collision_detector.scale = Vector2(size, size)
-	if size <=	 1:
+	if size <= 1:
 		player_hitbox.scale = Vector2(size, size)
 	else:
 		Vector2(1, 1)

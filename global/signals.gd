@@ -15,9 +15,13 @@ signal show_death_menu()
 signal player_revive()
 #endregion
 
-signal vessel_code()
+signal money_changed(money: int)
 
-#Made for removing the warning
+#region Secrets
+signal vessel_code()
+#endregion
+
+# Made for removing the warning
 func _emit_all():
 	show_item_information.emit()
 	hide_item_information.emit()
@@ -26,3 +30,4 @@ func _emit_all():
 	show_death_menu.emit()
 	player_revive.emit()
 	player_take_damage.emit()
+	vessel_code.emit()

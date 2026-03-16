@@ -8,6 +8,7 @@ class_name LaserBeam
 @export var knockback_force : float = 0.0
 
 var laser_owner = ""
+var barrel = null
 var firing : bool = true
 
 func _ready():
@@ -19,16 +20,17 @@ func _ready():
 	mat.set_shader_parameter("tint_color", Color("ff82f8"))
 	line.material = mat
 
-func setup(owner_node):
+func setup(owner_node, barrel_node = null):
 	laser_owner = owner_node
+	barrel = barrel_node
 
 func _process(delta):
 	if not firing:
 		return
 
-	if owner:
-		global_position = owner.global_position
-		global_rotation = owner.global_rotation
+	if barrel != null:
+		global_position = barrel.global_position
+		global_rotation = barrel.global_rotation
 
 	var direction : Vector2 = Vector2.RIGHT
 	ray_cast.target_position = direction * max_length

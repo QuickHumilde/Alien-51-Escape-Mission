@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b4oe7bbfjujrv"]
+[gd_scene load_steps=5 format=3 uid="uid://b4oe7bbfjujrv"]
 
 [ext_resource type="Script" uid="uid://dmu6xagklf05g" path="res://scenes/ui/hud.gd" id="1_hqnrr"]
 [ext_resource type="Theme" uid="uid://b380oga6tlya7" path="res://assets/themes/default.tres" id="2_bo48s"]
 [ext_resource type="PackedScene" uid="uid://c28e2pqwwccu2" path="res://scenes/ui/ability_charge_bar.tscn" id="3_6ll6g"]
+[ext_resource type="Texture2D" uid="uid://xtkrsksxu7ei" path="res://assets/sprites/extras/Destiny2_Item.png" id="4_ig75s"]
 
 [node name="HUD" type="CanvasLayer" groups=["player_ui"]]
 layer = 129
@@ -134,3 +135,21 @@ offset_top = 43.0
 offset_right = 274.0
 offset_bottom = 61.0
 stretch_mode = 2
+
+[node name="MoneyAmount" type="Label" parent="."]
+offset_left = 32.0
+offset_top = 51.0
+offset_right = 221.0
+offset_bottom = 69.0
+theme = ExtResource("2_bo48s")
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 16
+text = "Money"
+vertical_alignment = 1
+
+[node name="MoneyImage" type="TextureRect" parent="."]
+offset_left = 9.0
+offset_top = 52.0
+offset_right = 25.0
+offset_bottom = 68.0
+texture = ExtResource("4_ig75s")

@@ -15,7 +15,7 @@ func start_shooting(player_damage, _player_lifetime):
 	laser_instance.max_length = 500.0
 	laser_instance.knockback_force = 10.0
 	add_child(laser_instance)
-	laser_instance.setup(self)
+	laser_instance.setup(self, $Barrel)
 
 func stop_shooting():
 	if laser_instance:

@@ -8,6 +8,7 @@ class_name Character
 @onready var combat : CharacterCombat = $Logic/Combat
 @onready var stats : CharacterStats = $Logic/Stats
 @onready var abilities : CharacterAbilities = $Logic/Abilities
+@onready var inventory: PlayerInventory = $Logic/Inventory
 @onready var items : CharacterItems = $Logic/Items
 @onready var audio : CharacterAudio = $Logic/Audio
 @onready var damage_timer = $Logic/DamageTimer
@@ -40,8 +41,9 @@ func take_damage(amount: float):
 		audio.play_damage()
 		stats.take_damage(amount)
 		animation.player_taking_damage()
-		damage_timer.start(stats.invulnerability_time+0.30)
+		damage_timer.start(stats.invulnerability_time)
 		await damage_timer.timeout
+		await get_tree().create_timer(0.25).timeout
 		
 		_check_overlapping_enemies()
 		

@@ -6,7 +6,7 @@ var current_weapon: Node2D = null
 @export var current_weapon_index: int = 0
 var weapon_holder: Node2D = null
 
-@export var orbit_radius: float = 13.5
+@export var orbit_radius: float = 13
 @export var weapon_orbit_radius : float = 0
 @export var orbit_smoothness: float = 10.0
 
@@ -21,7 +21,7 @@ var laser_test_scene : PackedScene = preload("res://scenes/weapons/continous_las
 
 var weapon_scenes : Dictionary = {}
 @export var weapon_instances : Dictionary = {} 
-@export var weapon_order : Array = []
+@export var weapon_order : Array = [1,2,3,4,5]
 
 func _ready():
 	weapon_scenes = {
@@ -39,7 +39,7 @@ func init(holder: Node2D, character_stats: CharacterStats):
 	if weapon_scenes.is_empty():
 		_ready()
 
-	if weapon_order.is_empty():
+	if weapon_order.is_empty() and stats == null:
 		random_weapon()
 	else:
 		var initial_id = weapon_order[current_weapon_index]

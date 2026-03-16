@@ -1,8 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://ctdsnkjtbdqr3"]
+[gd_scene load_steps=17 format=3 uid="uid://dlnik63yjjvi4"]
 
-[ext_resource type="Texture2D" uid="uid://bkb1imot6dffr" path="res://assets/sprites/extras/ItemPedestal.png" id="1_k2xhr"]
+[ext_resource type="Texture2D" uid="uid://bkb1imot6dffr" path="res://assets/sprites/extras/ItemPedestal.png" id="1_0xilv"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k2xhr"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dcdc4"]
 radius = 6.0
 height = 12.0
 
@@ -45,38 +45,38 @@ _data = {
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k2xhr"]
-atlas = ExtResource("1_k2xhr")
+atlas = ExtResource("1_0xilv")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hrmnj"]
-atlas = ExtResource("1_k2xhr")
+atlas = ExtResource("1_0xilv")
 region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_scykp"]
-atlas = ExtResource("1_k2xhr")
+atlas = ExtResource("1_0xilv")
 region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f4lgc"]
-atlas = ExtResource("1_k2xhr")
+atlas = ExtResource("1_0xilv")
 region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x145m"]
-atlas = ExtResource("1_k2xhr")
+atlas = ExtResource("1_0xilv")
 region = Rect2(64, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ajd6o"]
-atlas = ExtResource("1_k2xhr")
+atlas = ExtResource("1_0xilv")
 region = Rect2(80, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8gykp"]
-atlas = ExtResource("1_k2xhr")
+atlas = ExtResource("1_0xilv")
 region = Rect2(96, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rixry"]
-atlas = ExtResource("1_k2xhr")
+atlas = ExtResource("1_0xilv")
 region = Rect2(112, 0, 16, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_be6va"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_or5n3"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -108,22 +108,19 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_rwhbg"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_klu5l"]
 radius = 7.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_47b0j"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_tqp0k"]
 radius = 47.042534
 
-[node name="ItemTemplate" type="Node2D" groups=["item"]]
-
-[node name="Physics" type="RigidBody2D" parent="."]
-collision_mask = 13
+[node name="ItemTemplate2" type="RigidBody2D"]
 gravity_scale = 0.0
 
-[node name="HitboxCollider" type="CollisionShape2D" parent="Physics" groups=["item"]]
+[node name="HitboxCollider" type="CollisionShape2D" parent="." groups=["item"]]
 visibility_layer = 13
 position = Vector2(0, 8)
-shape = SubResource("CapsuleShape2D_k2xhr")
+shape = SubResource("CapsuleShape2D_dcdc4")
 debug_color = Color(0.99972993, 0.092388816, 0.06062036, 0.41960785)
 
 [node name="Visual" type="Node2D" parent="."]
@@ -140,8 +137,7 @@ z_index = 9
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Pedestal"]
 position = Vector2(0, 9)
-sprite_frames = SubResource("SpriteFrames_be6va")
-frame_progress = 0.5619147
+sprite_frames = SubResource("SpriteFrames_or5n3")
 
 [node name="Detector" type="Area2D" parent="."]
 collision_layer = 16
@@ -151,11 +147,11 @@ collision_mask = 4
 light_mask = 16
 visibility_layer = 4
 position = Vector2(0, 8)
-shape = SubResource("CircleShape2D_rwhbg")
+shape = SubResource("CircleShape2D_klu5l")
 
 [node name="DescriptionDetector" type="Area2D" parent="."]
 collision_layer = 16
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DescriptionDetector"]
-shape = SubResource("CircleShape2D_47b0j")
+shape = SubResource("CircleShape2D_tqp0k")
