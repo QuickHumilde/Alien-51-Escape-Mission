@@ -13,6 +13,7 @@ func _ready() -> void:
 	call_deferred("_spawn_item_deferred")
 	buy_area.area_entered.connect(_on_area_entered)
 	Signals.room_changed.connect(_on_room_change)
+	Signals.shop_price_mult_changed.connect(_on_shop_price_mult_changed)
 
 func _spawn_item_deferred() -> void:
 	for c in get_children():
@@ -35,8 +36,7 @@ func _spawn_item_deferred() -> void:
 	inst = ps.instantiate()
 	add_child(inst)
 
-	price = get_item_price()
-	price_label.text = str(price) + "$"
+	update_prices()
 
 	inst.disable_hitbox()
 
@@ -69,4 +69,11 @@ func alien_millonetis():
 	price_label.hide()
 
 func get_item_price():
-	return inst.get_price()
+	return GlobalModifiers.apply_shop_price(inst.get_price())
+
+func update_prices():
+	price = get_item_price()
+	price_label.text = str(price) + "$"
+
+func _on_shop_price_mult_changed():
+	update_prices()

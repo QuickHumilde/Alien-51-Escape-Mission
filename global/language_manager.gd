@@ -2,7 +2,7 @@ extends Node
 
 signal language_changed(locale: String)
 
-var current_locale := "en"
+var current_locale: String= "en"
 
 func _ready():
 	TranslationServer.set_locale(current_locale)

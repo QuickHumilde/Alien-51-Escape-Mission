@@ -1,7 +1,7 @@
 extends Item
 class_name DashAbilityItem
 
-@export var id: int = 999
+@export var id: int = 11
 
 func _ready():
 	name_key = "item_dash_name"

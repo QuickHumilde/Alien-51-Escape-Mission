@@ -115,6 +115,7 @@ radius = 7.0
 radius = 34.0147
 
 [node name="ItemTemplate" type="RigidBody2D" groups=["item"]]
+collision_mask = 33
 gravity_scale = 0.0
 
 [node name="Hitbox" type="CollisionShape2D" parent="." groups=["item"]]

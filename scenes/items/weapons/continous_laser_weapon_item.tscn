@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://ilq0vx363u7q"]
+
+[ext_resource type="PackedScene" uid="uid://dlnik63yjjvi4" path="res://scenes/templates/item/item_template.tscn" id="1_f6y0c"]
+[ext_resource type="Texture2D" uid="uid://lxbt8h045ktg" path="res://assets/sprites/weapons/ContinousLaserWeapon.png" id="2_lnpcj"]
+[ext_resource type="Script" uid="uid://bp2npih0f8tds" path="res://scenes/items/weapons/continous_laser_weapon_item.gd" id="2_oeg7b"]
+
+[node name="ContinousLaserWeaponItem" instance=ExtResource("1_f6y0c")]
+script = ExtResource("2_oeg7b")
+
+[node name="Sprite2D" type="Sprite2D" parent="Visual" index="1"]
+z_index = 11
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("2_lnpcj")

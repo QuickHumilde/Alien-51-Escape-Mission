@@ -2,11 +2,11 @@ extends Node
 var music_player: AudioStreamPlayer
 var sfx_player: AudioStreamPlayer
 
-var sfx := {
+var sfx: Dictionary = {
 	"big_shot_laugh":preload("res://assets/audio/sfx/items/BigShot_Laugh.mp3")
 }
 
-var music := {
+var music: Dictionary = {
 	"death_menu": preload("res://assets/audio/music/DeathMusic.mp3"),
 	"barbie": preload("res://assets/audio/music/barbie.mp3")
 }

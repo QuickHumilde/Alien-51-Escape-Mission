@@ -25,7 +25,7 @@ item_dai_name,"DAI","ICD"
 item_dai_desc,"• Cuando tu corazon lata a menos de un 35% de lo que deberia, te dara mas daño y velocidad.","• When your heart beats at less than 35% of what it should, it will give you more damage and speed."
 
 item_business_glasses_name,"Gafas de Negocio","Business Glasses"
-item_business_glasses_desc,"• BIG SHOT","• BIG SHOT"
+item_business_glasses_desc,"• Los objetos de tienda ahora son un 20% más baratos","• Store items are now 20% cheaper"
 
 item_divisor_3_name,"Divisor de 3","Divisor of 3"
 item_divisor_3_desc,"• Si tu vida es divisible entre 3, te da un aumento de velocidad.","• If your health is divisible by 3, it gives you a speed boost."
@@ -38,3 +38,12 @@ item_blue_marker_weapon_desc,"• Un rotulador que se lanza a los enemigos y los
 
 item_dash_name,"Dash","Dash"
 item_dash_desc,"• Habilidad que te da un impulso hacia la direccion que estes andando.\n• Cooldown: 3.5 segundos","• Ability that gives you a dash in the direction you are moving.\n• Cooldown: 3.5 seconds"
+
+item_continous_laser_weapon_name,"Laser Continuo","Continous Laser"
+item_continous_laser_weapon_desc,"• Arma que hace poco daño, pero lo hace de forma continua","• Weapon that does little damage, but does it continuously"
+
+item_heavy_armor_name,"Armadura Pesada","Heavy Armor"
+item_heavy_armor_desc,"• +2 de vida extra cada piso \n• -10 de velocidad","• +2 of extra health each floor \n• -10 of speed"
+
+item_exploding_kitens_weapon_name,"Gatitos Explosivos","Exploding Kittens"
+item_exploding_kitens_weapon_desc,"• En proceso","• In progress"

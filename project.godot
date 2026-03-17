@@ -29,6 +29,7 @@ AudioManager="*res://global/audio_manager.gd"
 ItemManager="*res://global/item_manager.gd"
 MouseController="*res://global/mouse_controller.gd"
 GameManager="*res://global/game_manager.gd"
+GlobalModifiers="*res://global/global_modifiers.gd"
 
 [display]
 
@@ -159,4 +160,4 @@ common/physics_jitter_fix=2.0
 
 textures/canvas_textures/default_texture_filter=0
 textures/canvas_textures/default_texture_repeat=1
-environment/defaults/default_clear_color=Color(0.17283267, 0.17283267, 0.17283261, 1)
+environment/defaults/default_clear_color=Color(0.051970966, 0.05197096, 0.05197095, 1)

@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvqkxuftdvffm"]
+
+[ext_resource type="PackedScene" uid="uid://dlnik63yjjvi4" path="res://scenes/templates/item/item_template.tscn" id="1_brwyu"]
+[ext_resource type="Texture2D" uid="uid://4hj6kk5jme3b" path="res://assets/sprites/items/HeavyArmor.png" id="2_ck2mn"]
+[ext_resource type="Script" uid="uid://c8ttko8h4y2qx" path="res://scenes/items/heavy_armor_item.gd" id="2_uw05m"]
+
+[node name="HeavyArmorItem" instance=ExtResource("1_brwyu")]
+script = ExtResource("2_uw05m")
+
+[node name="Sprite2D" type="Sprite2D" parent="Visual" index="1"]
+z_index = 11
+position = Vector2(4.172325e-07, 4.172325e-07)
+scale = Vector2(0.75000006, 0.75000006)
+texture = ExtResource("2_ck2mn")

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://641t0oysglvl" path="res://scenes/rooms/template/room_template.tscn" id="1_wxo0j"]
 [ext_resource type="PackedScene" uid="uid://45k8kt4s1uvb" path="res://scenes/enemies/SpawnEnemy/enemy4.tscn" id="2_t6dve"]
-[ext_resource type="PackedScene" uid="uid://chrgijw2gs6eb" path="res://scenes/tests/lamp.tscn" id="4_wxoax"]
+[ext_resource type="PackedScene" uid="uid://chrgijw2gs6eb" path="res://scenes/world/lamp.tscn" id="4_wxoax"]
 
 [node name="NormalRoom1" instance=ExtResource("1_wxo0j")]
 

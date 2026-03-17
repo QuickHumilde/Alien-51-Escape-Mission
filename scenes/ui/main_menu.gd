@@ -60,7 +60,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _on_start_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/map/map_generation.tscn")
+	get_tree().change_scene_to_file("res://scenes/map/world_generator.tscn")
 
 func _on_options_pressed() -> void:
 	in_options = true

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lxbt8h045ktg"
-path="res://.godot/imported/LaserWeaponTest1.png-9a8175cac4a7ff7ac644218d4e85d1a1.ctex"
+uid="uid://bdeyccmsajbgm"
+path="res://.godot/imported/LegoCoin.png-f044f28919a2fc8cc238931b0154bbc9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/provisional/LaserWeaponTest1.png"
-dest_files=["res://.godot/imported/LaserWeaponTest1.png-9a8175cac4a7ff7ac644218d4e85d1a1.ctex"]
+source_file="res://assets/sprites/extras/LegoCoin.png"
+dest_files=["res://.godot/imported/LegoCoin.png-f044f28919a2fc8cc238931b0154bbc9.ctex"]
 
 [params]
 

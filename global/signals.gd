@@ -24,6 +24,11 @@ signal items_changed()
 #region Map
 signal room_changed()
 signal room_cleared()
+signal floor_changed()
+#endregion
+
+#region Modifiers
+signal shop_price_mult_changed()
 #endregion
 
 #region Secrets
@@ -45,3 +50,5 @@ func _emit_all():
 	room_cleared.emit()
 	item_picked.emit()
 	items_changed.emit()
+	floor_changed.emit()
+	shop_price_mult_changed.emit()

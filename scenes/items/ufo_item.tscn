@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bfusponyjei61"]
 
-[ext_resource type="PackedScene" uid="uid://ctdsnkjtbdqr3" path="res://scenes/templates/item/item_template.tscn" id="1_fgon5"]
+[ext_resource type="PackedScene" uid="uid://dlnik63yjjvi4" path="res://scenes/templates/item/item_template.tscn" id="1_fgon5"]
 [ext_resource type="Texture2D" uid="uid://ditsoqubvvl5v" path="res://assets/sprites/items/UFO_Item.png" id="2_ki4cd"]
 [ext_resource type="Script" uid="uid://bg75nva0bkqgr" path="res://scenes/items/ufo_item.gd" id="2_rin74"]
 
@@ -8,4 +8,5 @@
 script = ExtResource("2_rin74")
 
 [node name="Sprite2D" type="Sprite2D" parent="Visual" index="1"]
+z_index = 12
 texture = ExtResource("2_ki4cd")

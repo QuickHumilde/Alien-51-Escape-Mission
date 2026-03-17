@@ -1,6 +1,6 @@
 extends Item
 
-var health : float = 1
+var discount : float = -0.2
 @onready var sprite = $Visual/AnimatedSprite2D
 @export var id: int = 6
 
@@ -12,7 +12,7 @@ func _ready():
 	super._ready()
 
 func give_changes(body: Character):
-	body.stats.increase_max_health(health)
+	GlobalModifiers.modify_shop_shop_price_mult(discount)
 	destroy_on_pickup()
 	
 func destroy_on_pickup():

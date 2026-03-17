@@ -8,7 +8,6 @@ signal entered(dir: String)
 @onready var trigger: Area2D = $Trigger
 @onready var trigger_shape: CollisionShape2D = $Trigger/CollisionShape2D
 @onready var anim: AnimationPlayer = $AnimationPlayer
-
 @onready var wall_visual: CanvasItem = get_node_or_null("Wall/WallVisual") as CanvasItem
 @onready var door_visual: CanvasItem = get_node_or_null("DoorVisual") as CanvasItem
 @onready var blocker_door_shape: CollisionShape2D = get_node_or_null("BlockerDoor/CollisionShape2D") as CollisionShape2D

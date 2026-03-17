@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bmbav0qodanb7"]
 
-[ext_resource type="PackedScene" uid="uid://ctdsnkjtbdqr3" path="res://scenes/templates/item/item_template.tscn" id="1_3a5kq"]
+[ext_resource type="PackedScene" uid="uid://dlnik63yjjvi4" path="res://scenes/templates/item/item_template.tscn" id="1_3a5kq"]
 [ext_resource type="Texture2D" uid="uid://ysq5dmn100gj" path="res://assets/sprites/items/DAI_Item.png" id="2_phlct"]
 [ext_resource type="Script" uid="uid://cb4yb88xiee04" path="res://scenes/items/dai_item.gd" id="2_yeem5"]
 
@@ -8,4 +8,5 @@
 script = ExtResource("2_yeem5")
 
 [node name="Sprite2D" type="Sprite2D" parent="Visual" index="1"]
+z_index = 12
 texture = ExtResource("2_phlct")

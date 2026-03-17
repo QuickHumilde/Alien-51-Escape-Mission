@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=4 uid="uid://bskq5r35bsqur"]
 
 [ext_resource type="PackedScene" uid="uid://641t0oysglvl" path="res://scenes/rooms/template/room_template.tscn" id="1_y1rib"]
-[ext_resource type="PackedScene" uid="uid://chrgijw2gs6eb" path="res://scenes/tests/lamp.tscn" id="2_a8nmb"]
+[ext_resource type="PackedScene" uid="uid://chrgijw2gs6eb" path="res://scenes/world/lamp.tscn" id="2_a8nmb"]
 [ext_resource type="Script" uid="uid://ekhvna8hwpsa" path="res://scripts/extras/item_spawner.gd" id="3_a8nmb"]
 
 [node name="ItemRoom1" instance=ExtResource("1_y1rib")]
@@ -23,6 +23,9 @@ rotation = 3.1415925
 [node name="LampTR" parent="Background" index="3" instance=ExtResource("2_a8nmb")]
 position = Vector2(92, -74)
 
-[node name="ItemSpawn" type="Node2D" parent="." index="4"]
+[node name="RewardSpawner" parent="." index="5"]
+activable = false
+
+[node name="ItemSpawn" type="Node2D" parent="." index="6"]
 position = Vector2(40, 0)
 script = ExtResource("3_a8nmb")

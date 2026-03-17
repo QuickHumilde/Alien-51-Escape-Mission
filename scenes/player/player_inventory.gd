@@ -1,7 +1,7 @@
 extends Node
 class_name PlayerInventory
 
-@export var money: int = 15
+@export var money: int = 3
 @export var items: int = 0
 
 func _ready() -> void:

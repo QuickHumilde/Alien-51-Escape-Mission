@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cpaq7yaxwkrir"]
 
-[ext_resource type="PackedScene" uid="uid://ctdsnkjtbdqr3" path="res://scenes/templates/item/item_template.tscn" id="1_uxgxj"]
+[ext_resource type="PackedScene" uid="uid://dlnik63yjjvi4" path="res://scenes/templates/item/item_template.tscn" id="1_uxgxj"]
 [ext_resource type="Texture2D" uid="uid://b3nye7hea2aep" path="res://assets/sprites/items/Divisor3_Item.png" id="2_e6tmr"]
 [ext_resource type="Script" uid="uid://dgi1m0fhyb0ve" path="res://scenes/items/divisor_3_item.gd" id="2_veq26"]
 
@@ -8,4 +8,5 @@
 script = ExtResource("2_veq26")
 
 [node name="Sprite2D" type="Sprite2D" parent="Visual" index="1"]
+z_index = 12
 texture = ExtResource("2_e6tmr")

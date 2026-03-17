@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://c2c03fmvpi3jy"]
 
-[ext_resource type="PackedScene" uid="uid://ctdsnkjtbdqr3" path="res://scenes/templates/item/item_template.tscn" id="1_s27v1"]
+[ext_resource type="PackedScene" uid="uid://dlnik63yjjvi4" path="res://scenes/templates/item/item_template.tscn" id="1_s27v1"]
 [ext_resource type="Script" uid="uid://cun2rl2lyrxn8" path="res://scenes/items/business_glasses_item.gd" id="2_oy1og"]
 [ext_resource type="Texture2D" uid="uid://df25bi1au0328" path="res://assets/sprites/items/animated/BusinessGlasses_Item-Animated.png" id="3_oy1og"]
 
@@ -30,4 +30,5 @@ animations = [{
 script = ExtResource("2_oy1og")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visual" index="1"]
+z_index = 12
 sprite_frames = SubResource("SpriteFrames_oy1og")

@@ -1,9 +1,9 @@
-[gd_scene load_steps=32 format=3 uid="uid://b136fo0oyrifh"]
+[gd_scene load_steps=34 format=3 uid="uid://b136fo0oyrifh"]
 
-[ext_resource type="Script" uid="uid://c8s782wlstl0g" path="res://scenes/doors/door.gd" id="1_cjc7v"]
+[ext_resource type="Script" uid="uid://c8s782wlstl0g" path="res://scenes/world/door.gd" id="1_cjc7v"]
 [ext_resource type="Texture2D" uid="uid://c7xwn8yaskux4" path="res://assets/sprites/extras/DoorAnimation.png" id="1_vl1pl"]
 [ext_resource type="Texture2D" uid="uid://q6r4gsax1cxd" path="res://assets/sprites/extras/DoorAnimationClosing.png" id="2_d8f5h"]
-[ext_resource type="PackedScene" uid="uid://x4vtdaxsj8o1" path="res://scenes/doors/wall.tscn" id="4_3o04y"]
+[ext_resource type="PackedScene" uid="uid://x4vtdaxsj8o1" path="res://scenes/world/wall.tscn" id="4_3o04y"]
 
 [sub_resource type="Animation" id="Animation_d8f5h"]
 length = 0.001
@@ -261,10 +261,16 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5kx3l"]
-size = Vector2(16, 10)
+size = Vector2(16, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vl1pl"]
 size = Vector2(16, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n1vre"]
+size = Vector2(128, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w8gqt"]
+size = Vector2(8, 20)
 
 [node name="Door" type="Node2D"]
 script = ExtResource("1_cjc7v")
@@ -286,13 +292,39 @@ collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger"]
 visibility_layer = 5
+position = Vector2(0, -7)
 shape = SubResource("RectangleShape2D_5kx3l")
 
-[node name="BlockerDoor" type="StaticBody2D" parent="."]
-visibility_layer = 5
+[node name="BlockerDoor" type="StaticBody2D" parent="." groups=["wall"]]
+visibility_layer = 3
 collision_mask = 13
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BlockerDoor"]
-visibility_layer = 13
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlockerDoor" groups=["wall"]]
+visibility_layer = 3
 shape = SubResource("RectangleShape2D_vl1pl")
 disabled = true
+
+[node name="Casiiii" type="StaticBody2D" parent="." groups=["wall"]]
+light_mask = 3
+visibility_layer = 3
+collision_mask = 13
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Casiiii" groups=["wall"]]
+visibility_layer = 3
+position = Vector2(0, -23)
+shape = SubResource("RectangleShape2D_n1vre")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Casiiii" groups=["wall"]]
+visibility_layer = 3
+position = Vector2(12, -10)
+shape = SubResource("RectangleShape2D_w8gqt")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Casiiii" groups=["wall"]]
+visibility_layer = 3
+position = Vector2(-12, -10)
+shape = SubResource("RectangleShape2D_w8gqt")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Casiiii" groups=["wall"]]
+visibility_layer = 3
+position = Vector2(-12, -10)
+shape = SubResource("RectangleShape2D_w8gqt")

@@ -11,6 +11,7 @@ var item_to_weapon_id: Dictionary = {
 
 func _ready() -> void:
 	fill_item_pool()
+	Signals.show_death_menu.connect(_on_death_menu)
 
 func register_item(id: int, scene: PackedScene) -> void:
 	item_pool[id] = scene
@@ -57,3 +58,12 @@ func fill_item_pool():
 	register_item(9, preload("res://scenes/items/the_cross_item.tscn"))
 	register_item(10, preload("res://scenes/items/ufo_item.tscn"))
 	register_item(11, preload("res://scenes/items/dash_ability_item.tscn"))
+	register_item(12, preload("res://scenes/items/weapons/continous_laser_weapon_item.tscn"))
+	register_item(13, preload("res://scenes/items/heavy_armor_item.tscn"))
+	register_item(14, preload("res://scenes/items/weapons/exploding_kittens_weapon_item.tscn"))
+
+func clear_removed_items():
+	removed_items.clear()
+
+func _on_death_menu():
+	clear_removed_items()

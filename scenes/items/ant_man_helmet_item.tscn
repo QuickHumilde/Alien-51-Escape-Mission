@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bo3j44bwha26a"]
 
-[ext_resource type="PackedScene" uid="uid://ctdsnkjtbdqr3" path="res://scenes/templates/item/item_template.tscn" id="1_swf55"]
+[ext_resource type="PackedScene" uid="uid://dlnik63yjjvi4" path="res://scenes/templates/item/item_template.tscn" id="1_swf55"]
 [ext_resource type="Texture2D" uid="uid://cxoknbcghqdv" path="res://assets/sprites/items/Ant-ManHelmet_Item.png" id="2_0fs44"]
 [ext_resource type="Script" uid="uid://cmkj2gcukth17" path="res://scenes/items/ant_man_helmet_item.gd" id="2_jfphx"]
 
@@ -8,4 +8,5 @@
 script = ExtResource("2_jfphx")
 
 [node name="Sprite2D" type="Sprite2D" parent="Visual" index="1"]
+z_index = 12
 texture = ExtResource("2_0fs44")

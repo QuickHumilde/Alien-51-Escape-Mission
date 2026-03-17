@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://dug0rdf4rqk8"]
+
+[ext_resource type="PackedScene" uid="uid://dlnik63yjjvi4" path="res://scenes/templates/item/item_template.tscn" id="1_5mhxp"]
+[ext_resource type="Texture2D" uid="uid://cvjr7gmr130hk" path="res://assets/sprites/weapons/ExplodingKittens.png" id="2_4ynot"]
+[ext_resource type="Script" uid="uid://c6516m6u3rdd4" path="res://scenes/items/weapons/exploding_kittens_weapon_item.gd" id="2_r5yo0"]
+
+[node name="ExplodingKittensWeaponItem" instance=ExtResource("1_5mhxp")]
+script = ExtResource("2_r5yo0")
+
+[node name="Sprite2D" type="Sprite2D" parent="Visual" index="1"]
+z_index = 11
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_4ynot")

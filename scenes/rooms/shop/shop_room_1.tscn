@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=4 uid="uid://c7t16wmm46rln"]
 
 [ext_resource type="PackedScene" uid="uid://641t0oysglvl" path="res://scenes/rooms/template/room_template.tscn" id="1_tg8o8"]
-[ext_resource type="PackedScene" uid="uid://chrgijw2gs6eb" path="res://scenes/tests/lamp.tscn" id="2_gii40"]
+[ext_resource type="PackedScene" uid="uid://chrgijw2gs6eb" path="res://scenes/world/lamp.tscn" id="2_gii40"]
 [ext_resource type="PackedScene" uid="uid://lgbybxtpsdem" path="res://scenes/spawner/product_spawner.tscn" id="3_cnb7l"]
 [ext_resource type="Texture2D" uid="uid://bg5rd73h0n0au" path="res://assets/images/Garcos.jpg" id="4_io6o1"]
 
@@ -34,3 +34,6 @@ modulate = Color(0.73484474, 1, 0.7006048, 1)
 position = Vector2(39.979706, -22.8125)
 scale = Vector2(0.07119667, 0.07119665)
 texture = ExtResource("4_io6o1")
+
+[node name="RewardSpawner" parent="." index="8"]
+activable = false

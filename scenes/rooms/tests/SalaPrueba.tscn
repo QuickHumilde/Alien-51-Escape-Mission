@@ -1,25 +1,17 @@
-[gd_scene load_steps=46 format=4 uid="uid://c0wyiru2g8jgf"]
+[gd_scene load_steps=38 format=4 uid="uid://c0wyiru2g8jgf"]
 
 [ext_resource type="Texture2D" uid="uid://xlto3ea6ja0d" path="res://assets/sprites/tileset/TileSet.png" id="1_qbal3"]
 [ext_resource type="Script" uid="uid://dmccp7lddki73" path="res://scenes/rooms/tests/sala_prueba.gd" id="1_ypwf5"]
 [ext_resource type="PackedScene" uid="uid://jygsb42krc3q" path="res://scenes/player/player.tscn" id="2_bkx0u"]
 [ext_resource type="Texture2D" uid="uid://dko4hcv0xy3dv" path="res://assets/sprites/tileset/Obstacle_TileSet.png" id="3_4ieoh"]
-[ext_resource type="PackedScene" uid="uid://cc8qw2lwwn2bj" path="res://scenes/items/golden_fruit_item.tscn" id="5_mvyeq"]
-[ext_resource type="PackedScene" uid="uid://bfusponyjei61" path="res://scenes/items/ufo_item.tscn" id="9_5lslb"]
-[ext_resource type="PackedScene" uid="uid://cbvlm8p85dkk3" path="res://scenes/items/ninja_headband_item.tscn" id="11_a2tj1"]
-[ext_resource type="PackedScene" uid="uid://bo3j44bwha26a" path="res://scenes/items/ant_man_helmet_item.tscn" id="11_fuxfh"]
-[ext_resource type="PackedScene" uid="uid://bmbav0qodanb7" path="res://scenes/items/dai_item.tscn" id="12_fuxfh"]
-[ext_resource type="PackedScene" uid="uid://c2c03fmvpi3jy" path="res://scenes/items/business_glasses_item.tscn" id="13_otkra"]
+[ext_resource type="PackedScene" uid="uid://ilq0vx363u7q" path="res://scenes/items/weapons/continous_laser_weapon_item.tscn" id="10_4ieoh"]
+[ext_resource type="PackedScene" uid="uid://bvqkxuftdvffm" path="res://scenes/items/heavy_armor_item.tscn" id="11_a2tj1"]
+[ext_resource type="PackedScene" uid="uid://dug0rdf4rqk8" path="res://scenes/items/weapons/exploding_kittens_weapon_item.tscn" id="12_fuxfh"]
 [ext_resource type="PackedScene" uid="uid://dw4em1kkdblnm" path="res://scenes/enemies/StalkerEnemy/stalker_enemy.tscn" id="14_84wfm"]
-[ext_resource type="PackedScene" uid="uid://cpaq7yaxwkrir" path="res://scenes/items/divisor_3_item.tscn" id="15_hvcyd"]
-[ext_resource type="PackedScene" uid="uid://8rdt5yow22lo" path="res://scenes/items/dash_ability_item.tscn" id="16_8wn8x"]
-[ext_resource type="PackedScene" uid="uid://d1qge3djlvi1u" path="res://scenes/items/the_cross_item.tscn" id="17_3xu2y"]
 [ext_resource type="PackedScene" uid="uid://b07bo16m56htg" path="res://scenes/enemies/Enemy2/enemy_2.tscn" id="18_5suce"]
 [ext_resource type="PackedScene" uid="uid://cy1pdn0ydx5qy" path="res://scenes/enemies/Enemy3/enemy3.tscn" id="19_7y8ym"]
-[ext_resource type="PackedScene" uid="uid://dmp6o4vu7765b" path="res://scenes/items/weapons/blue_marker_weapon_item.tscn" id="20_f0phr"]
-[ext_resource type="PackedScene" uid="uid://tgp6wr33vk2p" path="res://scenes/items/weapons/pistol_gun_item.tscn" id="21_0bciu"]
 [ext_resource type="PackedScene" uid="uid://doywx78bcdk8u" path="res://scenes/enemies/Ghosty/ghosty.tscn" id="21_3s4b3"]
-[ext_resource type="PackedScene" uid="uid://chrgijw2gs6eb" path="res://scenes/tests/lamp.tscn" id="22_0bciu"]
+[ext_resource type="PackedScene" uid="uid://chrgijw2gs6eb" path="res://scenes/world/lamp.tscn" id="22_0bciu"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_e1ecg"]
 polygon = PackedVector2Array(8, 0, 4, 0, 4, 4, 8, 4)
@@ -325,35 +317,11 @@ position = Vector2(297, -46)
 [node name="Lamp" parent="." instance=ExtResource("22_0bciu")]
 position = Vector2(152, -77)
 
-[node name="NinjaHeadbandItem" parent="." instance=ExtResource("11_a2tj1")]
-position = Vector2(197, 5)
+[node name="ContinousLaserWeaponItem" parent="." instance=ExtResource("10_4ieoh")]
+position = Vector2(-26, -50)
 
-[node name="TheCrossItem" parent="." instance=ExtResource("17_3xu2y")]
-position = Vector2(194, 3)
+[node name="HeavyArmorItem" parent="." instance=ExtResource("11_a2tj1")]
+position = Vector2(59, -58)
 
-[node name="UFOItem" parent="." instance=ExtResource("9_5lslb")]
-position = Vector2(196, 3)
-
-[node name="BlueMarkerWeaponItem" parent="." instance=ExtResource("20_f0phr")]
-position = Vector2(195, 2)
-
-[node name="PistolGunItem" parent="." instance=ExtResource("21_0bciu")]
-position = Vector2(196, 1)
-
-[node name="GoldenFruitItem2" parent="." instance=ExtResource("5_mvyeq")]
-position = Vector2(195, 2)
-
-[node name="Divisor3Item" parent="." instance=ExtResource("15_hvcyd")]
-position = Vector2(193, 2)
-
-[node name="DashAbilityItem" parent="." instance=ExtResource("16_8wn8x")]
-position = Vector2(194, 5)
-
-[node name="DAIItem" parent="." instance=ExtResource("12_fuxfh")]
-position = Vector2(195, 2)
-
-[node name="BusinessGlassesItem" parent="." instance=ExtResource("13_otkra")]
-position = Vector2(194, 3)
-
-[node name="Ant-ManHelmetItem" parent="." instance=ExtResource("11_fuxfh")]
-position = Vector2(195, 4)
+[node name="ExplodingKittensWeaponItem" parent="." instance=ExtResource("12_fuxfh")]
+position = Vector2(141, -49)
