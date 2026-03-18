@@ -8,8 +8,15 @@ var sfx: Dictionary = {
 
 var music: Dictionary = {
 	"death_menu": preload("res://assets/audio/music/DeathMusic.mp3"),
-	"barbie": preload("res://assets/audio/music/barbie.mp3")
+	"barbie": preload("res://assets/audio/music/barbie.mp3"),
+	"main_menu": preload("res://assets/audio/music/MainMenu.mp3"),
+	"floor_1": preload("res://assets/audio/music/FloorMusic_1.mp3"),
+	"floor_2": preload("res://assets/audio/music/FloorMusic_2.mp3"),
+	"floor_3": preload("res://assets/audio/music/FloorMusic_3.mp3"),
+
 }
+
+var floor_music: Array[String]= ["floor_1", "floor_2", "floor_3"]
 
 func _ready():
 	music_player = AudioStreamPlayer.new()
@@ -34,6 +41,12 @@ func play_music(music_name: String, loop := true, volume_db := 0.0):
 	music_player.stream.loop = loop
 	music_player.volume_db = volume_db
 	music_player.play()
+
+func play_floor_music():
+	var random_index: int = randi_range(0, floor_music.size())
+	var music_name: String = floor_music[random_index]
+	
+	play_music(music_name, true, -20)
 
 func stop_music():
 	music_player.stop()

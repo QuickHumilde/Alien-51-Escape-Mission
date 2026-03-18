@@ -52,9 +52,18 @@ func take_damage(amount: float):
 	if health <= 0.0:
 		die()
 
-func heal(amount: float):
-	health = min(health + amount, max_health)
-	_emit_health_changed_signal()
+func heal(amount: float) -> bool:
+	var healed: bool = false
+
+	if amount > 0 and health < max_health:
+		var before: float = health
+		health = min(health + amount, max_health)
+
+		if health > before:
+			_emit_health_changed_signal()
+			healed = true
+
+	return healed
 
 func increase_max_health(amount: float):
 	max_health += amount
@@ -145,3 +154,9 @@ func revive():
 	
 	health = 2
 	Signals.health_changed.emit(health, max_health, extra_health, revives)
+
+func is_player_full_healed():
+	var is_full: bool = false
+	if health == max_health:
+		is_full = true
+	return is_full

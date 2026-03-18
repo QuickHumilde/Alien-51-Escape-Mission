@@ -27,6 +27,7 @@ func _ready() -> void:
 
 	options_container.hide()
 	button_manager.show()
+	AudioManager.play_music("main_menu", true, -20.0)
 
 func update_texts() -> void:
 	start_button.text = tr("menu_start")
@@ -58,8 +59,8 @@ func _unhandled_input(event: InputEvent) -> void:
 
 	get_viewport().set_input_as_handled()
 
-
 func _on_start_pressed() -> void:
+	AudioManager.stop_music()
 	get_tree().change_scene_to_file("res://scenes/map/world_generator.tscn")
 
 func _on_options_pressed() -> void:

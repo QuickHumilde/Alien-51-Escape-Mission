@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://b136fo0oyrifh"]
+[gd_scene load_steps=35 format=3 uid="uid://b136fo0oyrifh"]
 
 [ext_resource type="Script" uid="uid://c8s782wlstl0g" path="res://scenes/world/door.gd" id="1_cjc7v"]
 [ext_resource type="Texture2D" uid="uid://c7xwn8yaskux4" path="res://assets/sprites/extras/DoorAnimation.png" id="1_vl1pl"]
@@ -272,6 +272,9 @@ size = Vector2(128, 28)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w8gqt"]
 size = Vector2(8, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_638dj"]
+size = Vector2(17, 4)
+
 [node name="Door" type="Node2D"]
 script = ExtResource("1_cjc7v")
 
@@ -328,3 +331,13 @@ shape = SubResource("RectangleShape2D_w8gqt")
 visibility_layer = 3
 position = Vector2(-12, -10)
 shape = SubResource("RectangleShape2D_w8gqt")
+
+[node name="PickupBlocker" type="StaticBody2D" parent="."]
+light_mask = 64
+visibility_layer = 64
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupBlocker"]
+position = Vector2(-0.5, 10)
+shape = SubResource("RectangleShape2D_638dj")

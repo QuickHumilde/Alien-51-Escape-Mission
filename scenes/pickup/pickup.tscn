@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://68850c5r3u73" path="res://scenes/pickup/pickup.gd" id="1_8cxqy"]
 
 [node name="Pickup" type="RigidBody2D"]
+light_mask = 0
 collision_layer = 64
 collision_mask = 97
 gravity_scale = 0.0
@@ -11,7 +12,9 @@ script = ExtResource("1_8cxqy")
 [node name="Visual" type="Node2D" parent="."]
 
 [node name="Area2D" type="Area2D" parent="."]
+light_mask = 0
 visibility_layer = 5
+collision_layer = 0
 collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]

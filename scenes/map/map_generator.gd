@@ -51,6 +51,7 @@ func _ready() -> void:
 		minimap.call("set_data", map, current_room_pos)
 	print("Seed usada: ", GameManager.seed_value)
 	_watch_room_cleared(current_room)
+	AudioManager.play_floor_music()
 
 func next_floor() -> void:
 	if transitioning:
@@ -72,6 +73,7 @@ func next_floor() -> void:
 	_watch_room_cleared(current_room)
 	Signals.room_changed.emit()
 	Signals.floor_changed.emit()
+	AudioManager.play_floor_music()
 	transitioning = false
 
 func _apply_floor_settings() -> void:

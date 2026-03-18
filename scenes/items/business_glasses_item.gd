@@ -11,7 +11,7 @@ func _ready():
 	sprite.play("default")
 	super._ready()
 
-func give_changes(body: Character):
+func give_changes(_body: Character):
 	GlobalModifiers.modify_shop_shop_price_mult(discount)
 	destroy_on_pickup()
 	
