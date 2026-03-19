@@ -43,38 +43,61 @@ func _ready() -> void:
 	_apply_floor_settings()
 	generate_map()
 	_print_map_type_counts()
+
 	current_room_pos = Vector2.ZERO
 	current_room = await _spawn_room_at(current_room_pos)
 	_snap_camera_to_room(current_room)
 	_place_player(current_room, "")
+
 	if minimap != null and minimap.has_method("set_data"):
 		minimap.call("set_data", map, current_room_pos)
+
 	print("Seed usada: ", GameManager.seed_value)
+
 	_watch_room_cleared(current_room)
+
 	AudioManager.play_floor_music()
+	_emit_room_changed()
 
 func next_floor() -> void:
 	if transitioning:
 		return
 	transitioning = true
+
 	GameManager.next_floor()
+
 	for child in world.get_children():
 		child.queue_free()
+
 	room_instances.clear()
 	_apply_floor_settings()
 	generate_map()
 	_print_map_type_counts()
+
 	current_room_pos = Vector2.ZERO
 	current_room = await _spawn_room_at(current_room_pos)
 	_snap_camera_to_room(current_room)
 	_place_player(current_room, "")
+
 	if minimap != null and minimap.has_method("set_data"):
 		minimap.call("set_data", map, current_room_pos)
+
 	_watch_room_cleared(current_room)
-	Signals.room_changed.emit()
+
 	Signals.floor_changed.emit()
+
 	AudioManager.play_floor_music()
+	_emit_room_changed()
+
 	transitioning = false
+
+func _emit_room_changed() -> void:
+	var key := pos_to_key(current_room_pos)
+	if not map.has(key):
+		return
+	var data := map[key] as Dictionary
+	var room_type := str(data.get("type", "normal"))
+	Signals.room_changed.emit(room_type)
 
 func _apply_floor_settings() -> void:
 	var f: int = int(GameManager.get_current_floor())
@@ -103,15 +126,18 @@ func _spawn_room_at(room_pos: Vector2) -> Node2D:
 		existing.visible = true
 		existing.process_mode = Node.PROCESS_MODE_INHERIT
 		return existing
+
 	var data: Dictionary = map[key] as Dictionary
 	var room: Node2D = _instantiate_room_for(data)
 	world.add_child(room)
 	room.position = room_pos * room_slot_size
 	room_instances[key] = room
+
 	if room.has_signal("door_entered"):
 		room.connect("door_entered", Callable(self, "_on_door_entered"))
 	if room.has_method("setup"):
 		room.call_deferred("setup", data)
+
 	await get_tree().process_frame
 	return room
 
@@ -121,6 +147,7 @@ func _instantiate_room_for(data: Dictionary) -> Node2D:
 		var ps: PackedScene = load(p) as PackedScene
 		if ps != null:
 			return ps.instantiate() as Node2D
+
 	var room_type: String = str(data.get("type", "normal"))
 	var list_any: Variant = room_scenes.get(room_type, room_scenes["normal"])
 	var list: Array = list_any as Array
@@ -131,11 +158,13 @@ func _instantiate_room_for(data: Dictionary) -> Node2D:
 func _on_door_entered(dir: String) -> void:
 	if transitioning:
 		return
+
 	var d: String = dir.strip_edges().to_lower()
 	var step := dir_to_vector(d)
 	var next_pos: Vector2 = current_room_pos + step
 	if not map.has(pos_to_key(next_pos)):
 		return
+
 	transitioning = true
 	call_deferred("_start_transition_deferred", next_pos, d)
 
@@ -145,22 +174,30 @@ func _start_transition_deferred(next_pos: Vector2, exit_dir: String) -> void:
 func _transition_to(next_pos: Vector2, exit_dir: String) -> void:
 	var prev_room: Node2D = current_room
 	var next_room: Node2D = await _spawn_room_at(next_pos)
+
 	if is_instance_valid(prev_room):
 		prev_room.visible = false
 		prev_room.process_mode = Node.PROCESS_MODE_DISABLED
+
 	next_room.visible = true
 	next_room.process_mode = Node.PROCESS_MODE_INHERIT
+
 	_place_player(next_room, opposite_dir(exit_dir))
 	await get_tree().process_frame
+
 	var from_cam: Vector2 = _room_center_node(prev_room)
 	var to_cam: Vector2 = _room_center_node(next_room)
 	await _slide_camera(from_cam, to_cam, transition_duration)
+
 	current_room = next_room
 	current_room_pos = next_pos
+
 	if minimap != null and minimap.has_method("set_data"):
 		minimap.call("set_data", map, current_room_pos)
+
 	transitioning = false
-	Signals.room_changed.emit()
+
+	_emit_room_changed()
 	_watch_room_cleared(current_room)
 
 func _place_player(room: Node2D, entered_from_dir: String) -> void:
@@ -262,10 +299,12 @@ func generate_map() -> void:
 		map.clear()
 		main_path_rooms.clear()
 		room_instances.clear()
+
 		var start_pos := Vector2.ZERO
 		var start_scene: PackedScene = room_scenes["start"][0]
 		map[pos_to_key(start_pos)] = create_room(start_pos, "start", init_doors(false), start_scene.resource_path)
 		main_path_rooms.append(start_pos)
+
 		_create_start_item_branch(start_pos)
 		var target_normals: int = rand_range(min_rooms, max_rooms)
 		_create_main_normals(start_pos, target_normals)
@@ -273,6 +312,7 @@ func generate_map() -> void:
 		_create_shop_branches(num_shop_rooms)
 		_create_boss_branch(start_pos)
 		_cleanup_doors_against_missing_neighbors()
+
 		if _has_room_type("boss"):
 			break
 		if tries >= 30:

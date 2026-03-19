@@ -59,14 +59,15 @@ func _on_area_entered(body) -> void:
 			can_buy = false
 			alien_millonetis()
 
-func _on_room_change() -> void:
+func _on_room_change(_room_type) -> void:
 	can_buy = false
 	await get_tree().create_timer(timer).timeout
 	can_buy = true
 
 func alien_millonetis():
-	inst.enable_hitbox()
-	price_label.hide()
+	if inst != null and inst.has_method("enable_hitbox"):
+		inst.enable_hitbox()
+		price_label.hide()
 
 func get_item_price():
 	return GlobalModifiers.apply_shop_price(inst.get_price())

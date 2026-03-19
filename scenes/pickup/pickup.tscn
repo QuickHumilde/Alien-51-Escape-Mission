@@ -1,11 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://k4ys0u38ybki"]
+[gd_scene load_steps=3 format=3 uid="uid://k4ys0u38ybki"]
 
+[ext_resource type="PhysicsMaterial" uid="uid://dry23a3ja6b5h" path="res://physics_material/pickup_physics_material.tres" id="1_4yg4j"]
 [ext_resource type="Script" uid="uid://68850c5r3u73" path="res://scenes/pickup/pickup.gd" id="1_8cxqy"]
 
 [node name="Pickup" type="RigidBody2D"]
 light_mask = 0
 collision_layer = 64
 collision_mask = 97
+physics_material_override = ExtResource("1_4yg4j")
 gravity_scale = 0.0
 script = ExtResource("1_8cxqy")
 

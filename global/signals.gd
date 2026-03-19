@@ -22,7 +22,7 @@ signal items_changed()
 #endregion
 
 #region Map
-signal room_changed()
+signal room_changed(room_type: String)
 signal room_cleared()
 signal floor_changed()
 #endregion
