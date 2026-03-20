@@ -47,3 +47,6 @@ item_heavy_armor_desc,"• +2 de vida extra cada piso \n• -10 de velocidad","�
 
 item_exploding_kitens_weapon_name,"Gatitos Explosivos","Exploding Kittens"
 item_exploding_kitens_weapon_desc,"• En proceso","• In progress"
+
+item_football_ball_name,"Balón de Fútbol","Soccer Ball"
+item_football_ball_desc,"• Genera un balón en cada sala que daña a los enemigos \n• Su daño aumenta con el daño del jugador","• Spawns a soccer ball in each room that damages enemies.\n• Its damage scales with the player's damage."

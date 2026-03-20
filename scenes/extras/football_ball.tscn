@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://bns8nphp5sx17"]
+
+[ext_resource type="PhysicsMaterial" uid="uid://brtvauj6rwjih" path="res://physics_material/football_physics_material.tres" id="1_o1sjn"]
+[ext_resource type="Script" uid="uid://dtn0tnmket8os" path="res://scenes/extras/football_ball.gd" id="2_611w5"]
+[ext_resource type="Texture2D" uid="uid://dfyh01s0badd0" path="res://assets/sprites/items/FootballBall.png" id="2_i27pe"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hefpj"]
+radius = 5.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o1sjn"]
+radius = 7.0
+
+[node name="Football" type="RigidBody2D"]
+light_mask = 0
+visibility_layer = 45
+collision_layer = 64
+collision_mask = 101
+mass = 5.0
+physics_material_override = ExtResource("1_o1sjn")
+gravity_scale = 0.0
+script = ExtResource("2_611w5")
+
+[node name="Visual" type="Node2D" parent="."]
+z_index = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="Visual"]
+scale = Vector2(0.625, 0.625)
+texture = ExtResource("2_i27pe")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+light_mask = 64
+visibility_layer = 77
+shape = SubResource("CircleShape2D_hefpj")
+
+[node name="Area2D" type="Area2D" parent="."]
+visibility_layer = 109
+collision_layer = 0
+collision_mask = 109
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+light_mask = 0
+shape = SubResource("CircleShape2D_o1sjn")

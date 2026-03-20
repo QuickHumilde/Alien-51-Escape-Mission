@@ -12,6 +12,7 @@ gravity_scale = 0.0
 script = ExtResource("1_8cxqy")
 
 [node name="Visual" type="Node2D" parent="."]
+z_index = 1
 
 [node name="Area2D" type="Area2D" parent="."]
 light_mask = 0

@@ -776,7 +776,7 @@ position_smoothing_speed = 8.0
 
 [node name="WeaponHolder" type="Node2D" parent="."]
 light_mask = 4
-z_index = 1
+z_index = 2
 
 [node name="Visual" type="Node2D" parent="."]
 
