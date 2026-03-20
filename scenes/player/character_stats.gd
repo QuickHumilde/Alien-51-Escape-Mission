@@ -3,7 +3,7 @@ class_name CharacterStats
 
 @export_category("Player Character")
 @export_group("Stats")
-@export var max_health: float = 5.0
+@export var max_health: float = 521312312.0
 @export var health: float = 0.0
 @export var extra_health: float = 0
 @export var speed: float = 75.0

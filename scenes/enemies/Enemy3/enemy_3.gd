@@ -69,12 +69,19 @@ func _update_animation():
 			sprite.play("default")
 
 func die():
+	var enemies_container = get_parent()
+	while enemies_container != null and enemies_container.name != "Enemies":
+		enemies_container = enemies_container.get_parent()
+
+	if enemies_container == null:
+		enemies_container = get_tree().current_scene
+
 	for i in range(children_spawn):
 		var perro = enemy.instantiate()
 		var offset = Vector2(randf_range(-20, 20), randf_range(-20, 20))
-		perro.global_position = global_position + offset
-		get_tree().current_scene.add_child(perro)
-
+		perro.global_position = self.position + offset
+		enemies_container.add_child(perro)
+		
 	queue_free()
 
 func _on_damage():
