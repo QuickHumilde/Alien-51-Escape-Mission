@@ -13,7 +13,7 @@ var weapon_holder: Node2D = null
 #region Weapons Scenes
 var arm_scene: PackedScene = preload("res://scenes/weapons/arm_weapon.tscn")
 var pistol_scene: PackedScene = preload("res://scenes/weapons/pistol_weapon.tscn")
-#var wizard_hat_scene: PackedScene = preload("res://scenes/weapons/wizard_hat_weapon.tscn")
+var wizard_hat_scene: PackedScene = preload("res://scenes/weapons/shotgun_inter_mark_weapon.tscn")
 var nail_scene: PackedScene = preload("res://scenes/weapons/nail_weapon.tscn")
 var blue_marker_scene: PackedScene = preload("res://scenes/weapons/blue_marker_weapon.tscn")
 var continous_laser_scene : PackedScene = preload("res://scenes/weapons/continous_laser_weapon.tscn")
@@ -22,7 +22,7 @@ var exploding_kittens_scene: PackedScene = preload("res://scenes/weapons/explodi
 
 var weapon_scenes : Dictionary = {}
 @export var weapon_instances : Dictionary = {} 
-@export var weapon_order : Array = [1]
+@export var weapon_order : Array = [1, 7]
 
 func _ready():
 	weapon_scenes = {
@@ -31,7 +31,8 @@ func _ready():
 		3: blue_marker_scene,
 		4: nail_scene,
 		5: continous_laser_scene,
-		6: exploding_kittens_scene
+		6: exploding_kittens_scene,
+		7: wizard_hat_scene,
 	}
 
 func init(holder: Node2D, character_stats: CharacterStats):

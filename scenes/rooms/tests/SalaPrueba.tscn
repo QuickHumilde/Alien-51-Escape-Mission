@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://c0wyiru2g8jgf"]
+[gd_scene load_steps=43 format=4 uid="uid://c0wyiru2g8jgf"]
 
 [ext_resource type="Texture2D" uid="uid://xlto3ea6ja0d" path="res://assets/sprites/tileset/TileSet.png" id="1_qbal3"]
 [ext_resource type="Script" uid="uid://dmccp7lddki73" path="res://scenes/rooms/tests/sala_prueba.gd" id="1_ypwf5"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dxitdlogd57rg" path="res://scenes/pickup/health.tscn" id="14_hvcyd"]
 [ext_resource type="PackedScene" uid="uid://bns8nphp5sx17" path="res://scenes/extras/football_ball.tscn" id="15_hvcyd"]
 [ext_resource type="PackedScene" uid="uid://cnr52ffyprkm8" path="res://scenes/items/football_ball_item.tscn" id="16_8wn8x"]
+[ext_resource type="PackedScene" uid="uid://bmeb4xuj7s7i7" path="res://scenes/items/weapons/shotgun_inter_mark_weapon_item.tscn" id="17_3xu2y"]
 [ext_resource type="PackedScene" uid="uid://b07bo16m56htg" path="res://scenes/enemies/Enemy2/enemy_2.tscn" id="18_5suce"]
 [ext_resource type="PackedScene" uid="uid://cy1pdn0ydx5qy" path="res://scenes/enemies/Enemy3/enemy3.tscn" id="19_7y8ym"]
 [ext_resource type="PackedScene" uid="uid://doywx78bcdk8u" path="res://scenes/enemies/Ghosty/ghosty.tscn" id="21_3s4b3"]
@@ -342,3 +343,6 @@ position = Vector2(65, 6)
 
 [node name="FootballBallItem" parent="." instance=ExtResource("16_8wn8x")]
 position = Vector2(223, -46)
+
+[node name="ShotgunInterMarkWeaponItem" parent="." instance=ExtResource("17_3xu2y")]
+position = Vector2(217, 29)

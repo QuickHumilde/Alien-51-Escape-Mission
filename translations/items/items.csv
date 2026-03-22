@@ -50,3 +50,6 @@ item_exploding_kitens_weapon_desc,"• En proceso","• In progress"
 
 item_football_ball_name,"Balón de Fútbol","Soccer Ball"
 item_football_ball_desc,"• Genera un balón en cada sala que daña a los enemigos \n• Su daño aumenta con el daño del jugador","• Spawns a soccer ball in each room that damages enemies.\n• Its damage scales with the player's damage."
+
+item_shotgun_inter_mark_gun_name,"¿Escopeta?","Shotgun?"
+item_shotgun_inter_mark_gun_desc,"• Escopeta totalmente normal que dispara 4 balas de poca duracion","• Totally normal shotgun that shoots 4 short-lived bullets"

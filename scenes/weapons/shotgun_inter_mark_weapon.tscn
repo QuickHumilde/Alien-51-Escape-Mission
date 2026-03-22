@@ -1,11 +1,11 @@
 [gd_scene load_steps=5 format=3 uid="uid://qnbuxkg52vws"]
 
-[ext_resource type="Script" uid="uid://bqo51dxg4vaxu" path="res://scenes/weapons/pistol_gun.gd" id="1_ykpwj"]
-[ext_resource type="Texture2D" uid="uid://dg3o641heeou6" path="res://assets/sprites/weapons/WizardHat.png" id="2_ykpwj"]
+[ext_resource type="Script" uid="uid://cdcvnv42lmo5e" path="res://scenes/weapons/shotgun_inter_mark_weapon.gd" id="1_7eng5"]
+[ext_resource type="Texture2D" uid="uid://de7o2wis1qq8s" path="res://assets/sprites/weapons/ShotgunInterrogationMark.png" id="2_6dv4u"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ykpwj"]
-atlas = ExtResource("2_ykpwj")
-region = Rect2(0, 0, 19, 18)
+atlas = ExtResource("2_6dv4u")
+region = Rect2(0, 0, 38, 21)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0le7k"]
 animations = [{
@@ -18,13 +18,11 @@ animations = [{
 "speed": 22.0
 }]
 
-[node name="WizardHatWeapon" type="Node2D"]
-script = ExtResource("1_ykpwj")
+[node name="ShotgunInterMarkWeapon" type="Node2D"]
+script = ExtResource("1_7eng5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(3.576279e-07, -5.9604645e-08)
-rotation = -1.5707964
-scale = Vector2(0.625, 0.625)
+position = Vector2(-11, -8)
 sprite_frames = SubResource("SpriteFrames_0le7k")
 animation = &"attacking"
 
@@ -33,3 +31,6 @@ wait_time = 0.25
 one_shot = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="Barrel" type="Node2D" parent="."]
+position = Vector2(-28.5, -0.5)

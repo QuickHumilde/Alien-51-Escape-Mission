@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmeb4xuj7s7i7"]
+
+[ext_resource type="PackedScene" uid="uid://dlnik63yjjvi4" path="res://scenes/templates/item/item_template.tscn" id="1_p4pws"]
+[ext_resource type="Texture2D" uid="uid://de7o2wis1qq8s" path="res://assets/sprites/weapons/ShotgunInterrogationMark.png" id="2_2djkb"]
+[ext_resource type="Script" uid="uid://bfjmleqyl0eq8" path="res://scenes/items/weapons/shotgun_inter_mark_weapon_item.gd" id="2_ms387"]
+
+[node name="ShotgunInterMarkWeaponItem" instance=ExtResource("1_p4pws")]
+script = ExtResource("2_ms387")
+
+[node name="Sprite2D" type="Sprite2D" parent="Visual" index="1"]
+z_index = 12
+texture = ExtResource("2_2djkb")
