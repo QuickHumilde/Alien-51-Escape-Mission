@@ -3,9 +3,8 @@
 [ext_resource type="Script" uid="uid://cv2340vga4kqp" path="res://scenes/world/spikes.gd" id="1_btssp"]
 [ext_resource type="Texture2D" uid="uid://cxdhrwqlyqu0m" path="res://assets/sprites/extras/Spikes.png" id="1_raj8n"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_btssp"]
-radius = 5.0
-height = 12.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_btssp"]
+size = Vector2(10, 10)
 
 [node name="Spikes" type="Area2D" groups=["trap"]]
 light_mask = 2
@@ -18,4 +17,4 @@ script = ExtResource("1_btssp")
 texture = ExtResource("1_raj8n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["trap"]]
-shape = SubResource("CapsuleShape2D_btssp")
+shape = SubResource("RectangleShape2D_btssp")

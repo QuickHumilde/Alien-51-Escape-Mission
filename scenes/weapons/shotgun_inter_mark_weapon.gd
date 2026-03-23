@@ -3,7 +3,9 @@ extends Weapon
 @onready var bullet_scene: PackedScene = preload("res://scenes/bullets/shotgun_bullet.tscn")
 @onready var cooldown: Timer = $ShootCooldown
 @onready var barrel: Node2D = $Barrel
-var pellets: int = 4
+var min_pellets: int = 4
+var max_pellets: int = 6
+
 
 func _ready() -> void:
 	id = 7
@@ -28,7 +30,8 @@ func shoot(player_damage: float, player_lifetime: float):
 		
 	self.get_node("AnimatedSprite2D").play("attacking")
 	
-	for i in range(pellets):
+	var random_pellets: int = randi_range(min_pellets, max_pellets - 1)
+	for i in range(random_pellets):
 		var bullet = bullet_scene.instantiate()
 		var offset = Vector2(randf_range(-0.5, 0.85), randf_range(-0.5, 0.85))
 		give_bullet_values(bullet, offset)
