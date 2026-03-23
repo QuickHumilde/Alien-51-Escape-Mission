@@ -1,4 +1,14 @@
-[gd_scene format=3 uid="uid://byym4irhw1v80"]
+[gd_scene load_steps=2 format=3 uid="uid://byym4irhw1v80"]
+
+[sub_resource type="GDScript" id="GDScript_7oxj7"]
+resource_name = "enemy_detector"
+script/source = "extends Area2D
+
+@onready var enemy= $\"..\"
+
+func take_damage(damage: float):
+	enemy.take_damage(damage)
+"
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 8
@@ -13,6 +23,7 @@ z_index = 11
 [node name="Detector" type="Area2D" parent="." groups=["enemy"]]
 collision_layer = 8
 collision_mask = 7
+script = SubResource("GDScript_7oxj7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detector"]
 

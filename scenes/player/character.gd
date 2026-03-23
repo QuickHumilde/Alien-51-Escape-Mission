@@ -15,6 +15,8 @@ class_name Character
 @onready var hitbox : CollisionShape2D = $Hitbox
 @onready var hitbox_detector : CollisionShape2D = $Detector/HitboxDetector
 @onready var detector_area : Area2D = $Detector
+@onready var tramp_detector_area : Area2D = $TrampDetector
+@onready var tramp_detector_area_hitbox : CollisionShape2D = $TrampDetector/CollisionShape2D
 @onready var weapon_holder = $WeaponHolder
 
 func _ready():
@@ -25,7 +27,7 @@ func _ready():
 	items.init(self)
 	movement.init(self)
 	abilities.init(self)
-	stats.init(sprite, audio, animation, hitbox_detector, hitbox, visuals)
+	stats.init(sprite, audio, animation, hitbox_detector, hitbox, visuals, tramp_detector_area_hitbox)
 	animation.init(sprite, damage_timer, weapon_holder)
 
 func _process(_delta):
@@ -46,6 +48,7 @@ func take_damage(amount: float):
 		await get_tree().create_timer(0.25).timeout
 		
 		_check_overlapping_enemies()
+		_check_overlapping_tramps()
 		
 func player_death():
 	weapon_holder.hide()
@@ -53,14 +56,19 @@ func player_death():
 func apply_knockback(dir: Vector2, force: float, duration: float = 0.2):
 	if damage_timer.is_stopped():
 		movement.apply_knockback(dir, force, duration)
-	#else:
-	#	movement.apply_knockback(dir, 75.0, duration)
 
 func _check_overlapping_enemies():
 	var overlapping_bodies= detector_area.get_overlapping_areas()
 	for body in overlapping_bodies:
 		if body.is_in_group("enemy"):
 			body.get_parent().do_damage(self)
+			return
+	
+func _check_overlapping_tramps():
+	var overlapping_tramps= tramp_detector_area.get_overlapping_areas()
+	for body in overlapping_tramps:
+		if body.is_in_group("trap"):
+			body.do_damage(tramp_detector_area)
 			return
 
 func get_stats() -> CharacterStats:

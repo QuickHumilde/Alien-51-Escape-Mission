@@ -437,11 +437,15 @@ func _watch_room_cleared(room: Node) -> void:
 	if enemies == null:
 		Signals.room_cleared.emit()
 		return
+
 	_emit_room_cleared_if_empty(enemies)
+
 	for e in enemies.get_children():
 		if e.is_in_group("enemy"):
-			e.tree_exited.connect(_on_enemy_exited.bind(room), CONNECT_ONE_SHOT)
-
+			var cb := _on_enemy_exited.bind(room)
+			if not e.tree_exited.is_connected(cb):
+				e.tree_exited.connect(cb)
+	
 func _on_enemy_exited(room: Node) -> void:
 	if room != current_room:
 		return

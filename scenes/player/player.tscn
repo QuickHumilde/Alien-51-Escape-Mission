@@ -1,4 +1,4 @@
-[gd_scene load_steps=124 format=3 uid="uid://jygsb42krc3q"]
+[gd_scene load_steps=127 format=3 uid="uid://jygsb42krc3q"]
 
 [ext_resource type="Script" uid="uid://c05bk0i1ljchi" path="res://scenes/player/character.gd" id="1_t61fv"]
 [ext_resource type="Texture2D" uid="uid://maoxh7al31bo" path="res://assets/sprites/player/PlayerDying.png" id="2_fcs02"]
@@ -759,8 +759,32 @@ animations = [{
 radius = 3.0
 height = 6.0
 
+[sub_resource type="GDScript" id="GDScript_cnsyf"]
+resource_name = "player_detector"
+script/source = "extends Area2D
+
+@onready var player: Character= $\"..\"
+
+func take_damage(damage: float):
+	player.take_damage(damage)
+"
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_lgqa7"]
 radius = 4.0
+
+[sub_resource type="GDScript" id="GDScript_007i1"]
+resource_name = "player_tramp_detector"
+script/source = "extends Area2D
+
+@onready var player: Character= $\"..\"
+
+func take_damage(damage: float):
+	player.take_damage(damage)
+"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cnsyf"]
+radius = 1.0
+height = 4.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 z_index = 10
@@ -788,8 +812,8 @@ animation = &"idle_down"
 [node name="Shadow" type="Sprite2D" parent="Visual"]
 self_modulate = Color(0, 0, 0, 0.13725491)
 show_behind_parent = true
-position = Vector2(0, 7)
-scale = Vector2(0.95947266, 0.98750013)
+position = Vector2(0, 6.0183535)
+scale = Vector2(0.92736816, 0.5022942)
 texture = ExtResource("12_8ydkj")
 
 [node name="Hitbox" type="CollisionShape2D" parent="." groups=["player"]]
@@ -800,11 +824,22 @@ debug_color = Color(0.8564939, 3.657937e-06, 8.663535e-07, 0.41960785)
 
 [node name="Detector" type="Area2D" parent="." groups=["player"]]
 collision_layer = 4
-collision_mask = 91
+collision_mask = 89
+script = SubResource("GDScript_cnsyf")
 
 [node name="HitboxDetector" type="CollisionShape2D" parent="Detector" groups=["player"]]
 position = Vector2(0, 2)
 shape = SubResource("CircleShape2D_lgqa7")
+
+[node name="TrampDetector" type="Area2D" parent="." groups=["player", "player_tramp"]]
+collision_layer = 4
+collision_mask = 2
+script = SubResource("GDScript_007i1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrampDetector" groups=["player", "player_tramp"]]
+position = Vector2(0, 7)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_cnsyf")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, 1)

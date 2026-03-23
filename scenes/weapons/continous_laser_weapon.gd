@@ -4,6 +4,9 @@ extends Weapon
 
 var laser_instance : Node
 
+func _ready():
+	id=5
+
 func start_shooting(player_damage, _player_lifetime):
 	if laser_instance:
 		return

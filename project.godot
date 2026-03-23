@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Alien 51: Escape Mission"
-run/main_scene="uid://c0wyiru2g8jgf"
+run/main_scene="uid://di4p0yf3oup8t"
 config/features=PackedStringArray("4.5", "Forward Plus")
 boot_splash/bg_color=Color(1, 1, 1, 1)
 boot_splash/image="uid://4w8ox45pa6q"
@@ -70,6 +70,7 @@ wall=""
 player=""
 bullet=""
 damage=""
+trap=""
 
 [input]
 

@@ -4,7 +4,7 @@ extends Weapon
 @onready var animation: AnimationPlayer = $Visual/AnimationPlayer
 
 func _ready():
-	id=4
+	id=3
 	damage = 2
 	knockback_force = 400.0
 	self_knockback_force=0.0

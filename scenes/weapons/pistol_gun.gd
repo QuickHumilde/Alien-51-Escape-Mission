@@ -4,7 +4,7 @@ extends Weapon
 @onready var cooldown = $ShootCooldown
 
 func _ready() -> void:
-	id=3
+	id=2
 	damage = 1.5
 	knockback_force = 75.0
 	self_knockback_force= 50.0

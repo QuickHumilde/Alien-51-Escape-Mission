@@ -3,7 +3,7 @@ class_name CharacterStats
 
 @export_category("Player Character")
 @export_group("Stats")
-@export var max_health: float = 521312312.0
+@export var max_health: float = 5.0
 @export var health: float = 0.0
 @export var extra_health: float = 0
 @export var speed: float = 75.0
@@ -20,9 +20,10 @@ class_name CharacterStats
 @onready var sprite: AnimatedSprite2D
 @onready var player_collision_detector: CollisionShape2D
 @onready var player_hitbox: CollisionShape2D
+@onready var player_tramp_collision_detector: CollisionShape2D
 @onready var visuals: Node2D
 
-func init(cSprite: AnimatedSprite2D, audio:CharacterAudio, animation: CharacterAnimation, detector: CollisionShape2D, hitbox: CollisionShape2D, cVisuals: Node2D) -> void:
+func init(cSprite: AnimatedSprite2D, audio:CharacterAudio, animation: CharacterAnimation, detector: CollisionShape2D, hitbox: CollisionShape2D, cVisuals: Node2D, tramp_hitbox: CollisionShape2D) -> void:
 	health = max_health
 	sprite= cSprite
 	player_audio = audio
@@ -30,6 +31,7 @@ func init(cSprite: AnimatedSprite2D, audio:CharacterAudio, animation: CharacterA
 	player_collision_detector = detector
 	player_hitbox=hitbox
 	visuals=cVisuals
+	player_tramp_collision_detector=tramp_hitbox
 	modify_size(0.0)
 	pass
 
@@ -82,6 +84,7 @@ func modify_size(amount: float):
 	size += amount
 	visuals.scale = Vector2(size, size)
 	player_collision_detector.scale = Vector2(size, size)
+	player_tramp_collision_detector.scale = Vector2(size, size)
 	if size <= 1:
 		player_hitbox.scale = Vector2(size, size)
 	else:

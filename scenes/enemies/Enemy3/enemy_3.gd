@@ -5,6 +5,7 @@ extends Enemy
 @export var stopping_distance : float = 1.5
 @onready var enemy = preload("res://scenes/enemies/SpawnEnemy/enemy4.tscn")
 @export var children_spawn: int = 3
+var dead: bool = false
 
 func _ready():
 	_get_detector()
@@ -69,20 +70,22 @@ func _update_animation():
 			sprite.play("default")
 
 func die():
-	var enemies_container = get_parent()
-	while enemies_container != null and enemies_container.name != "Enemies":
-		enemies_container = enemies_container.get_parent()
+	if !dead:
+		dead=true
+		var enemies_container = get_parent()
+		while enemies_container != null and enemies_container.name != "Enemies":
+			enemies_container = enemies_container.get_parent()
 
-	if enemies_container == null:
-		enemies_container = get_tree().current_scene
+		if enemies_container == null:
+			enemies_container = get_tree().current_scene
 
-	for i in range(children_spawn):
-		var perro = enemy.instantiate()
-		var offset = Vector2(randf_range(-20, 20), randf_range(-20, 20))
-		perro.global_position = self.position + offset
-		enemies_container.add_child(perro)
-		
-	queue_free()
+		for i in range(children_spawn):
+			var perro = enemy.instantiate()
+			var offset = Vector2(randf_range(-20, 20), randf_range(-20, 20))
+			perro.global_position = self.position + offset
+			enemies_container.add_child(perro)
+			
+		queue_free()
 
 func _on_damage():
 	play_damage_sound()

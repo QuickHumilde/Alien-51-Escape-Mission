@@ -62,6 +62,7 @@ func fill_item_pool():
 	register_item(13, preload("res://scenes/items/heavy_armor_item.tscn"))
 	register_item(14, preload("res://scenes/items/weapons/exploding_kittens_weapon_item.tscn"))
 	register_item(15, preload("res://scenes/items/football_ball_item.tscn"))
+	register_item(16, preload("res://scenes/items/weapons/shotgun_inter_mark_weapon_item.tscn"))
 
 func clear_removed_items():
 	removed_items.clear()
