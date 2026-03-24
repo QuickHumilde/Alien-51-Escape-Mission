@@ -14,6 +14,14 @@ func _input(event: InputEvent) -> void:
 
 func use_ability():
 	for ability in abilities:
+		if ability is PackedScene:
+			var instance = ability.instantiate()
+			player.get_tree().current_scene.add_child(instance)
+			if instance.has_method("activate"):
+				instance.activate()
+			elif instance.has_method("activate_with_player"):
+				instance.activate_with_player(player)
+	
 		if ability.has_method("activate"):
 			ability.activate()
 		if ability.has_method("activate_with_player"):

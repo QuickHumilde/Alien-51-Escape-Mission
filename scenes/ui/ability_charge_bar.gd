@@ -5,7 +5,7 @@ var first_time : bool = false
 
 func _ready() -> void:
 	hide()
-	pass
+	Signals.show_death_menu.connect(_on_death)
 	
 func set_value(value: float):
 	$AbilityCooldownBar.value=value
@@ -37,3 +37,6 @@ func _on_cooldown_finished():
 func change_image(item_texture: String):
 	show()
 	$AbilityImage.texture=load(item_texture)
+
+func _on_death():
+	self.hide()

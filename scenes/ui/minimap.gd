@@ -27,7 +27,10 @@ var _origin: Vector2 = Vector2.ZERO
 @export var minimap_size: Vector2 = Vector2(220, 180)
 
 func _ready() -> void:
-	pass
+	Signals.show_death_menu.connect(_on_death)
+
+func _on_death():
+	self.hide()
 
 func set_data(m: Dictionary, cur: Vector2) -> void:
 	dungeon_map = m

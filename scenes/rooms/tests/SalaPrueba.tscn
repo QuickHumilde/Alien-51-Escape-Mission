@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=4 uid="uid://c0wyiru2g8jgf"]
+[gd_scene load_steps=45 format=4 uid="uid://c0wyiru2g8jgf"]
 
 [ext_resource type="Texture2D" uid="uid://xlto3ea6ja0d" path="res://assets/sprites/tileset/TileSet.png" id="1_qbal3"]
 [ext_resource type="Script" uid="uid://dmccp7lddki73" path="res://scenes/rooms/tests/sala_prueba.gd" id="1_ypwf5"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://b07bo16m56htg" path="res://scenes/enemies/Enemy2/enemy_2.tscn" id="18_5suce"]
 [ext_resource type="PackedScene" uid="uid://c2c03fmvpi3jy" path="res://scenes/items/business_glasses_item.tscn" id="18_7y8ym"]
 [ext_resource type="PackedScene" uid="uid://cy1pdn0ydx5qy" path="res://scenes/enemies/Enemy3/enemy3.tscn" id="19_7y8ym"]
+[ext_resource type="PackedScene" uid="uid://dtapkc8g2rb0m" path="res://scenes/items/parry_ability_item.tscn" id="19_f0phr"]
 [ext_resource type="PackedScene" uid="uid://doywx78bcdk8u" path="res://scenes/enemies/Ghosty/ghosty.tscn" id="21_3s4b3"]
 [ext_resource type="PackedScene" uid="uid://chrgijw2gs6eb" path="res://scenes/world/lamp.tscn" id="22_0bciu"]
 
@@ -350,3 +351,6 @@ position = Vector2(217, 29)
 
 [node name="BusinessGlassesItem" parent="." instance=ExtResource("18_7y8ym")]
 position = Vector2(168, 35)
+
+[node name="ParryAbilityItem" parent="." instance=ExtResource("19_f0phr")]
+position = Vector2(-24, 47)

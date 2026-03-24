@@ -8,6 +8,9 @@ script/source = "extends Area2D
 
 func take_damage(damage: float):
 	enemy.take_damage(damage)
+
+func apply_knockback(dir: Vector2, force: float = 500.0, duration: float = 0.2) -> void:
+	enemy.apply_knockback(dir, force, duration)
 "
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]

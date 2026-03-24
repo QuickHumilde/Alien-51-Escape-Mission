@@ -68,5 +68,10 @@ func _against_enemy(_area):
 	if not modifiers.has("piercing"):
 		destroy_bullet()
 
+func change_direction(new_direction: Vector2, new_owner = ""):
+	if new_owner != "":
+		bullet_owner = new_owner
+	bullet_direction = new_direction
+
 func destroy_bullet():
 	queue_free()

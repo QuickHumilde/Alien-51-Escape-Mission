@@ -5,10 +5,10 @@ signal cooldown_started(duration)
 signal cooldown_progress(progress)
 signal cooldown_finished()
 
-var cooldown := 3.5
-var dash_speed := 400.0
-var dash_time := 0.2
-var is_on_cooldown := false
+var cooldown: float = 3.5
+var dash_speed: float = 400.0
+var dash_time: float= 0.2
+var is_on_cooldown:bool = false
 
 func activate_with_player(player: Character):
 	if player.velocity != Vector2(0.0, 0.0):
