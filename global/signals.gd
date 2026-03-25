@@ -17,7 +17,7 @@ signal player_revive()
 
 #region Inventory
 signal money_changed(money: int)
-signal item_picked()
+signal item_picked(id: int)
 signal items_changed()
 #endregion
 

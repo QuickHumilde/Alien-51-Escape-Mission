@@ -7,12 +7,12 @@ extends Weapon
 func _ready():
 	melee_hitbox.area_entered.connect(_on_hitbox_enter)
 	id = 4
-	damage = 1
+	damage = 2
 	knockback_force = 150.0
 	self_knockback_force=125.0
 	flip = false
 	sounds = {
-		"shoot" : preload("res://assets/audio/sfx/player/uiuiuiADuque.mp3")
+		"shoot" : preload("res://assets/audio/sfx/NailAttack_1.wav")
 	}
 	setup_audio()
 
@@ -22,11 +22,6 @@ func shoot(player_damage: float, _player_lifetime: float):
 		return
 		
 	is_attacking = true
-	
-	if anim.current_animation != "attack":
-		var pitch := randf_range(0.9, 1.5)
-		var volume := randf_range(-4.0, -2.5)
-		play_sound("shoot", volume, pitch)
 
 	if self.position.x > 0: 
 		anim.play("attack")
@@ -66,3 +61,8 @@ func play_sound(sound_name : String, volume_db: float = 0.0, pitch: float = 1.0)
 	audio_player.volume_db = volume_db
 	audio_player.pitch_scale = pitch
 	audio_player.play()
+
+func play_attack_sound():
+	var pitch := randf_range(0.9, 1.5)
+	var volume := randf_range(-4.0, -2.5)
+	play_sound("shoot", volume, pitch)

@@ -17,7 +17,7 @@ func _ready() -> void:
 	cooldown.wait_time = 1.5
 	audio_player = $AudioStreamPlayer2D
 	sounds = {
-		"shoot": preload("res://assets/audio/sfx/weapons/pistol/PistolGunShoot.mp3"),
+		"shoot": preload("res://assets/audio/sfx/ShotgunShoot_1.mp3"),
 	}
 	setup_audio()
 

@@ -6,6 +6,7 @@ class_name Item
 @export var name_key : String
 @export var desc_key : String
 @export var price: int = 10
+var id: int = -1
 var item_texture: String
 
 func _ready():
@@ -18,8 +19,11 @@ func _on_hitbox_enter(_body):
 
 @abstract func give_changes(body: Character)
 
+func get_id():
+	return id
+
 func destroy_on_pickup():
-	Signals.item_picked.emit()
+	Signals.item_picked.emit(get_id())
 	queue_free()
 
 func _on_hitbox_enter_description(body):

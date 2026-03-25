@@ -26,6 +26,6 @@ func get_money() -> int:
 func get_items() -> int:
 	return items
 
-func _on_item_picked():
+func _on_item_picked(_id: int = -1):
 	items+=1
 	Signals.items_changed.emit()

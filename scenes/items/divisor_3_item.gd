@@ -1,9 +1,10 @@
 extends Item
 class_name Divisor3Item
 
-@export var id: int = 8
+@export var ext_id: int = 8
 
 func _ready():
+	id = 8
 	name_key = "item_divisor_3_name"
 	desc_key = "item_divisor_3_desc"
 	item_texture = "res://assets/sprites/items/Divisor3_Item.png"

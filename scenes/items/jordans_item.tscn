@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://dto0juwvdopm6"]
+
+[ext_resource type="PackedScene" uid="uid://dlnik63yjjvi4" path="res://scenes/templates/item/item_template.tscn" id="1_kh2hq"]
+[ext_resource type="Script" uid="uid://d30bhmk7men0o" path="res://scenes/items/jordans_item.gd" id="2_dgdq5"]
+[ext_resource type="Texture2D" uid="uid://bqnqxsvvehny0" path="res://assets/sprites/provisional/Jordans.png" id="3_dgdq5"]
+
+[node name="JordansItem" instance=ExtResource("1_kh2hq")]
+script = ExtResource("2_dgdq5")
+
+[node name="Sprite2D" type="Sprite2D" parent="Visual" index="1"]
+texture = ExtResource("3_dgdq5")

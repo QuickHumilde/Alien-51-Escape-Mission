@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://nhq8xx72olhs"]
+
+[ext_resource type="PackedScene" uid="uid://dlnik63yjjvi4" path="res://scenes/templates/item/item_template.tscn" id="1_dcj3o"]
+[ext_resource type="Script" uid="uid://bnvcyoqejyw0m" path="res://scenes/items/revivemint_item.gd" id="2_xo4io"]
+[ext_resource type="Texture2D" uid="uid://n1lgw0tdnmqi" path="res://assets/sprites/items/Revivemint.png" id="2_yc2gm"]
+
+[node name="RevivemintItem" instance=ExtResource("1_dcj3o")]
+script = ExtResource("2_xo4io")
+
+[node name="Sprite2D" type="Sprite2D" parent="Visual" index="1"]
+texture = ExtResource("2_yc2gm")

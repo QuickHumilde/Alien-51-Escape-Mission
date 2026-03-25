@@ -1,9 +1,10 @@
 extends Item
 
-@export var id : int = 16
 @export var weapon_id : int = 7
+@export var ext_id: int = 16
 
-func _ready() -> void:
+func _ready():
+	id = 16
 	name_key="item_shotgun_inter_mark_gun_name"
 	desc_key="item_shotgun_inter_mark_gun_desc"
 	item_texture = "res://assets/sprites/weapons/ShotgunInterrogationMark.png"

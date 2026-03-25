@@ -53,3 +53,18 @@ item_football_ball_desc,"• Genera un balón en cada sala que daña a los enemi
 
 item_shotgun_inter_mark_gun_name,"¿Escopeta?","Shotgun?"
 item_shotgun_inter_mark_gun_desc,"• Escopeta totalmente normal que dispara 4 balas de poca duracion","• Totally normal shotgun that shoots 4 short-lived bullets"
+
+item_parry_name,"Parry","Parry"
+item_parry_desc,"• Habilidad que empuja y hace 2 de daño a los enemigos que te atacan cuerpo a cuerpo.\n• Refleja las balas enemigas.\n• Cooldown: 4 segundos","• Ability that pushes and does 2 damage to enemies that attack you in melee.\n• Reflects enemy bullets.\n• Cooldown: 4 seconds"
+
+item_nail_weapon_name,"Clavo","Nail"
+item_nail_weapon_desc,"• Un clavo que ataca a los enemigos de cerca.\n• Solamente te empuja cuando aciertas a un enemigo.\n• Hace 2 de daño","• A nail that attacks enemies up close.\n• Only pushes you when you hit an enemy.\n• Does 2 damage"
+
+item_jordans_name,"Jordan's","Jordan's"
+item_jordans_desc,"• +1.5 de velocidad.\n• +2 de estilo.\n• Con estas zapatillas el dash será mejor que nunca","• +1.5 of speed \n• +2 of style\n• With these shoes, the dash will be better than ever"
+
+item_revivemint_name,"Menta Revivir","Revivemint"
+item_revivemint_desc,"• +1 resurreccion.\n• Al recogerlo, te cura toda la vida","• +1 resurrection.\n• Upon pickup, it fully heals you"
+
+item_dwarfism_name,"Enanismo","Dwarfism"
+item_dwarfism_desc,"• Te hace más pequeño.\n• -1 de vida maxima.\n• -0.2 de tiempo de invulnerabilidad.","• Makes you smaller.\n• -1 max health.\n• -0.2 seconds of invulnerability time."

@@ -2,12 +2,13 @@ extends Node2D
 class_name ParryAbility
 
 @onready var area: Area2D = $Area2D
+@export var damage: float = 2.0
 
 signal cooldown_started(duration)
 signal cooldown_progress(progress)
 signal cooldown_finished()
 
-var cooldown: float = 4.5
+var cooldown: float = 4.0
 var is_on_cooldown:bool = false
 
 func activate_with_player(player: Character):
@@ -39,8 +40,12 @@ func start_parry(player: Character):
 	var overlapping_bodies= area.get_overlapping_areas()
 	for body in overlapping_bodies:
 		if body.is_in_group("enemy"):
-			var knockback_direction = (body.global_position - player.global_position).normalized()
-			body.apply_knockback(knockback_direction, 350.0)
+			print(body)
+			if body.has_method("apply_knockback"):
+				var knockback_direction = (body.global_position - player.global_position).normalized()
+				body.apply_knockback(knockback_direction, 350.0)
+			if body.has_method("take_damage"):
+				body.take_damage(damage)
 		if body.is_in_group("bullet"):
 			var new_direction = (player.global_position - body.global_position).normalized()
 			body.change_direction(new_direction, "player")

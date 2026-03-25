@@ -6,9 +6,12 @@ signal cooldown_progress(progress)
 signal cooldown_finished()
 
 var cooldown: float = 3.5
-var dash_speed: float = 400.0
+var dash_speed: float = 300.0
 var dash_time: float= 0.2
 var is_on_cooldown:bool = false
+var _player: Character = null
+
+var jordans_item_id = 18
 
 func activate_with_player(player: Character):
 	if player.velocity != Vector2(0.0, 0.0):
@@ -26,7 +29,7 @@ func start_cooldown_timer(player: Character):
 	timer.process_mode = Node.PROCESS_MODE_PAUSABLE
 	player.add_child(timer)
 	timer.start()
-	while timer.time_left > 0:
+	while timer.time_left > 0 :
 		await player.get_tree().process_frame
 		var progress := 1.0 - (timer.time_left / cooldown)
 		emit_signal("cooldown_progress", progress)
@@ -42,3 +45,17 @@ func start_dash(player: Character):
 	await player.get_tree().create_timer(dash_time).timeout
 	player.animation.player_and_weapon_changing_color(Color(1,1,1), Color(1,1,1))
 	player.stats.speed = normal_speed
+
+func get_player(body: Character):
+	_player = body
+
+func check_items(player: Character):
+	for modifier in player.stats.modifiers:
+		if modifier is JordansModifierItem:
+			_on_item_picked(18)
+
+func _on_item_picked(id: int = -1):
+	if id == jordans_item_id:
+		cooldown -= 0.5
+		dash_speed += 100
+		dash_time += 0.075

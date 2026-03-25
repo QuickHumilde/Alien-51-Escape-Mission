@@ -2,9 +2,10 @@ extends Item
 
 var discount : float = -0.2
 @onready var sprite = $Visual/AnimatedSprite2D
-@export var id: int = 6
+@export var ext_id: int = 6
 
 func _ready():
+	id = 6
 	name_key = "item_business_glasses_name"
 	desc_key = "item_business_glasses_desc"
 	item_texture = "res://assets/sprites/items/BusinessGlasses_Item.png"

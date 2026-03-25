@@ -2,9 +2,10 @@ extends Item
 class_name GoldenFruitItem
 
 var health_increase : float = 2
-@export var id: int = 1
+@export var ext_id: int = 1
 
 func _ready():
+	id = 1
 	name_key = "item_golden_fruit_name"
 	desc_key = "item_golden_fruit_desc"
 	item_texture = "res://assets/sprites/items/GoldenFruit_Item.png"

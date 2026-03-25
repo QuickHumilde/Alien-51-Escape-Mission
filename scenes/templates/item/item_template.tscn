@@ -1,10 +1,20 @@
-[gd_scene load_steps=17 format=3 uid="uid://dlnik63yjjvi4"]
+[gd_scene load_steps=18 format=3 uid="uid://dlnik63yjjvi4"]
 
 [ext_resource type="Texture2D" uid="uid://bkb1imot6dffr" path="res://assets/sprites/extras/ItemPedestal.png" id="1_0xilv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dcdc4"]
 radius = 6.0
 height = 12.0
+
+[sub_resource type="GDScript" id="GDScript_k2xhr"]
+resource_name = "item_visual"
+script/source = "extends Node2D
+
+func _ready():
+	for child in get_children():
+		if child is CanvasItem:
+			child.z_index = 12
+"
 
 [sub_resource type="Animation" id="Animation_f4lgc"]
 length = 0.001
@@ -127,6 +137,7 @@ debug_color = Color(0.99972993, 0.092388816, 0.06062036, 0.41960785)
 [node name="Visual" type="Node2D" parent="."]
 z_index = 11
 position = Vector2(0, -11)
+script = SubResource("GDScript_k2xhr")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Visual"]
 libraries = {

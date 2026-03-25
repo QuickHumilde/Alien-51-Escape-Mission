@@ -1,9 +1,10 @@
 extends Item
 class_name FootballBallItem
 
-@export var id: int = 15
+@export var ext_id: int = 15
 
 func _ready():
+	id = 15
 	name_key = "item_football_ball_name"
 	desc_key = "item_football_ball_desc"
 	item_texture = "res://assets/sprites/items/FootballBall.png"

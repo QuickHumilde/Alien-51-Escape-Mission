@@ -98,6 +98,20 @@ tracks/4/keys = {
 "update": 0,
 "values": [Vector2(2.625, 1.625)]
 }
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("..")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.13333334),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_attack_sound"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_1g631"]
 resource_name = "attack_left"
@@ -162,6 +176,20 @@ tracks/4/keys = {
 "update": 0,
 "values": [Vector2(2.625, -1.625)]
 }
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("..")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.13333334),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_attack_sound"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iirtn"]
 _data = {
@@ -189,6 +217,7 @@ shape = SubResource("RectangleShape2D_1g631")
 disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Visual" index="0"]
+position = Vector2(1.1920929e-07, 0)
 rotation = 0.6440265
 texture = ExtResource("2_6aeiv")
 

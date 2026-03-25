@@ -136,6 +136,15 @@ func get_lifetime() -> float:
 			value += mod.get_bonus("lifetime", self)
 	return value
 
+func get_invulnerability_time() -> float:
+	var value = invulnerability_time
+	for mod in modifiers:
+		if mod.has_method("get_bonus"):
+			value += mod.get_bonus("invulnerability_time", self)
+	if value < 0.05:
+		value=0.05
+	return value
+
 func _emit_health_changed_signal():
 	Signals.health_changed.emit(health, max_health, extra_health, revives)
 

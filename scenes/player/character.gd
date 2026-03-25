@@ -43,7 +43,7 @@ func take_damage(amount: float):
 		audio.play_damage()
 		stats.take_damage(amount)
 		animation.player_taking_damage()
-		damage_timer.start(stats.invulnerability_time)
+		damage_timer.start(stats.get_invulnerability_time())
 		await damage_timer.timeout
 		await get_tree().create_timer(0.25).timeout
 		
@@ -51,6 +51,10 @@ func take_damage(amount: float):
 		_check_overlapping_tramps()
 		
 func player_death():
+	if abilities and abilities.abilities.size() > 0:
+		for ability in abilities.abilities:
+			if is_instance_valid(ability):
+				ability.queue_free()
 	weapon_holder.hide()
 
 func apply_knockback(dir: Vector2, force: float, duration: float = 0.2):
@@ -80,18 +84,18 @@ func set_flying():
 func player_revive():
 	weapon_holder.show()
 	animation.player_taking_damage()
-	damage_timer.start(stats.invulnerability_time)
+	damage_timer.start(stats.get_invulnerability_time())
 	await damage_timer.timeout
 	
 	await get_tree().create_timer(0.25).timeout
 	
 	_check_overlapping_enemies()
 
-func change_player_damagable_timer(state: bool, timer: float):
+func change_player_damagable_timer(state: bool, _timer: float):
 	if state and damage_timer.is_stopped():
 		_check_overlapping_enemies()
 	else:
-		damage_timer.start(timer)
+		damage_timer.start(stats.get_invulnerability_time())
 		await damage_timer.timeout
 		_check_overlapping_enemies()
 

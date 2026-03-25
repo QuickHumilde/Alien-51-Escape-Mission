@@ -2,9 +2,10 @@ extends Item
 class_name HeavyArmorItem
 
 var extra_health : float = 2
-@export var id: int = 13
+@export var ext_id: int = 13
 
 func _ready():
+	id = 13
 	name_key = "item_heavy_armor_name"
 	desc_key = "item_heavy_armor_desc"
 	item_texture = "res://assets/sprites/items/HeavyArmor.png"

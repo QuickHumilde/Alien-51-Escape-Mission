@@ -2,9 +2,10 @@ extends Item
 class_name UFOItem
 
 var fly: bool =true
-@export var id: int = 10
+@export var ext_id: int = 10
 
 func _ready():
+	id = 10
 	name_key = "item_ufo_name"
 	desc_key = "item_ufo_desc"
 	item_texture = "res://assets/sprites/items/UFO_Item.png"
