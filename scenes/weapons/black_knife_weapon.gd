@@ -5,11 +5,9 @@ extends Weapon
 @onready var cooldown = $ShootCooldown
 
 func _ready():
-	melee_hitbox.area_entered.connect(_on_hitbox_enter)
 	id = 1
 	damage = 1
 	knockback_force = 250.0
-	audio_player = $AudioStreamPlayer2D
 	sounds = {
 		"shoot" : preload("res://assets/audio/sfx/player/uiuiuiADuque.mp3")
 	}

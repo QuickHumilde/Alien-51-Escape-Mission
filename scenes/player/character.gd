@@ -24,10 +24,11 @@ func _ready():
 	Signals.player_revive.connect(player_revive)
 	Signals.player_take_damage.connect(take_damage)
 	combat.init(weapon_holder, stats)
+	inventory.init(self)
 	items.init(self)
+	stats.init(sprite, audio, animation, hitbox_detector, hitbox, visuals, tramp_detector_area_hitbox, inventory)
 	movement.init(self)
 	abilities.init(self)
-	stats.init(sprite, audio, animation, hitbox_detector, hitbox, visuals, tramp_detector_area_hitbox)
 	animation.init(sprite, damage_timer, weapon_holder)
 
 func _process(_delta):
@@ -40,15 +41,25 @@ func _physics_process(_delta):
 
 func take_damage(amount: float):
 	if damage_timer.is_stopped() and !Signals.player_is_dead:
+		for modifier in inventory.modifiers:
+			if modifier.has_method("avoid_damage"):
+				if modifier.avoid_damage():
+					damage_timer.start(stats.get_invulnerability_time())
+					await damage_timer.timeout
+					_check_overlapping_enemies()
+					_check_overlapping_tramps()
+					return
+
 		audio.play_damage()
 		stats.take_damage(amount)
 		animation.player_taking_damage()
 		damage_timer.start(stats.get_invulnerability_time())
 		await damage_timer.timeout
 		await get_tree().create_timer(0.25).timeout
-		
+
 		_check_overlapping_enemies()
 		_check_overlapping_tramps()
+
 		
 func player_death():
 	if abilities and abilities.abilities.size() > 0:

@@ -12,12 +12,15 @@ func _ready():
 	super._ready()
 
 func give_changes(body: Character):
+	call_deferred("_give_changes_deferred", body)
+
+func _give_changes_deferred(body: Character):
 	var inst = parry_scene.instantiate()
-	body.call_deferred("add_child", inst)
+	body.add_child(inst)
 	inst.global_position = body.global_position
+
 	var hud = body.get_node("HUD/AbilityChargeBar")
 	hud.connect_ability(inst)
 	hud.on_ability_pick(item_texture)
-
 	body.abilities.change_ability(inst)
 	destroy_on_pickup()

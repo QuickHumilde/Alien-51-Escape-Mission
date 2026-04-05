@@ -18,6 +18,7 @@ var blue_marker_scene: PackedScene = preload("res://scenes/weapons/blue_marker_w
 var continous_laser_scene : PackedScene = preload("res://scenes/weapons/continous_laser_weapon.tscn")
 var exploding_kittens_scene: PackedScene = preload("res://scenes/weapons/exploding_kittens_weapon.tscn")
 var shotgun_inter_mark_hat_scene: PackedScene = preload("res://scenes/weapons/shotgun_inter_mark_weapon.tscn")
+var black_knife_scene: PackedScene = preload("res://scenes/weapons/black_knife_weapon.tscn")
 #endregion
 
 var weapon_scenes : Dictionary = {}
@@ -36,6 +37,7 @@ func fill_weapon_scenes():
 		5: continous_laser_scene,
 		6: exploding_kittens_scene,
 		7: shotgun_inter_mark_hat_scene,
+		8: black_knife_scene,
 	}
 
 func init(holder: Node2D, character_stats: CharacterStats):

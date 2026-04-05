@@ -33,7 +33,6 @@ func modify_size(value: float):
 func modify_revives(value: float):
 	apply_item(6, value)
 
-
 func give_weapon(weapon_id: int):
 	player.combat.add_weapon(weapon_id)
 
@@ -42,4 +41,4 @@ func give_fly(allow_flying: bool):
 	player.set_flying()
 
 func give_modifiers(modifier: ItemModifier):
-	player.stats.modifiers.append(modifier)
+	player.inventory.give_modifiers(modifier)

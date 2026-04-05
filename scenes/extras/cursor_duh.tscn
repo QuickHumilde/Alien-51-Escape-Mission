@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://pjvg6q720vra"]
+
+[ext_resource type="Texture2D" uid="uid://blt1rsoh1d4w7" path="res://assets/sprites/cursor/cursor1.png" id="1_v84xg"]
+[ext_resource type="Texture2D" uid="uid://c2fnca1upyhka" path="res://assets/sprites/cursor/WiiPointer.png" id="2_7krmk"]
+[ext_resource type="Script" uid="uid://cylbwocgmr22l" path="res://scenes/extras/cursor_duh_sprite.gd" id="2_rnvp7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rnvp7"]
+atlas = ExtResource("1_v84xg")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7krmk"]
+atlas = ExtResource("2_7krmk")
+region = Rect2(0, 0, 32, 34)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7krmk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rnvp7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7krmk")
+}],
+"loop": true,
+"name": &"wii_pointer",
+"speed": 5.0
+}]
+
+[node name="CursorDuh" type="Control"]
+process_mode = 3
+top_level = true
+z_index = 4096
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2147483647
+
+[node name="Sprite" type="AnimatedSprite2D" parent="CanvasLayer"]
+scale = Vector2(0.6, 0.6)
+sprite_frames = SubResource("SpriteFrames_7krmk")
+script = ExtResource("2_rnvp7")

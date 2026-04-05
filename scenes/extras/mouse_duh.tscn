@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://d27rlec2q0aof"]
+
+[ext_resource type="Texture2D" uid="uid://blt1rsoh1d4w7" path="res://assets/sprites/cursor/cursor1.png" id="1_bmbps"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nhlvo"]
+atlas = ExtResource("1_bmbps")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s5hp7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nhlvo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="CursorDuh" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_s5hp7")

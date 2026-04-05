@@ -8,7 +8,11 @@ var _floor_paused_pos: float = 0.0
 var _floor_music_name: String = ""
 
 var sfx: Dictionary = {
-	"big_shot_laugh": preload("res://assets/audio/sfx/items/BigShot_Laugh.mp3")
+	"big_shot_laugh": preload("res://assets/audio/sfx/items/BigShot_Laugh.mp3"),
+	"dash_1": preload("res://assets/audio/sfx/Dash_1.mp3"),
+	"parry_1": preload("res://assets/audio/sfx/Parry_1.mp3"),
+	"failed_parry_1": preload("res://assets/audio/sfx/FailedParry_1.mp3"),
+	"wii_startup":preload("res://assets/audio/sfx/WiiStartupSFX.mp3"),
 }
 
 var music: Dictionary = {

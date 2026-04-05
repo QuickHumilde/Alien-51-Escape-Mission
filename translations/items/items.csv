@@ -67,4 +67,7 @@ item_revivemint_name,"Menta Revivir","Revivemint"
 item_revivemint_desc,"• +1 resurreccion.\n• Al recogerlo, te cura toda la vida","• +1 resurrection.\n• Upon pickup, it fully heals you"
 
 item_dwarfism_name,"Enanismo","Dwarfism"
-item_dwarfism_desc,"• Te hace más pequeño.\n• -1 de vida maxima.\n• -0.2 de tiempo de invulnerabilidad.","• Makes you smaller.\n• -1 max health.\n• -0.2 seconds of invulnerability time."
+item_dwarfism_desc,"• Te hace más pequeño.\n• -1 de vida maxima y daño.\n• -0.2 de tiempo de invulnerabilidad.\n• +0.3 de velocidad.\n• 50% de probabilidad de evita el daño recibido.","• Makes you smaller.\n• -1 max health and damage.\n• -0.2 seconds of invulnerability time.\n• +0.3 of speed.\n• 50% chance to avoid incoming damage."
+
+item_black_knife_weapon_name,"Cuchillo Oscuro","Black Knife"
+item_black_knife_weapon_desc,"Descripción del objeto predeterminado.","Default item description."

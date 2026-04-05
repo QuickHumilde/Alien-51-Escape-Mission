@@ -35,6 +35,10 @@ signal shop_price_mult_changed()
 signal vessel_code()
 #endregion
 
+#region Extras
+signal wii_pointer_activated()
+#endregion
+
 # Made for removing the warning
 func _emit_all():
 	show_item_information.emit()
