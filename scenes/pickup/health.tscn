@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://k4ys0u38ybki" path="res://scenes/pickup/pickup.tscn" id="1_g5dp7"]
 [ext_resource type="Script" uid="uid://blip1gy17itum" path="res://scenes/pickup/health.gd" id="2_gbtty"]
-[ext_resource type="Texture2D" uid="uid://xtkrsksxu7ei" path="res://assets/sprites/extras/Destiny2_Item.png" id="3_8u432"]
+[ext_resource type="Texture2D" uid="uid://bwl4k5abtml66" path="res://assets/sprites/Egg.png" id="3_8u432"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8u432"]
 radius = 5.0
@@ -18,7 +18,6 @@ player_collision_layer = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="Visual" index="0"]
 position = Vector2(-2.3841858e-07, -2.3841858e-07)
-scale = Vector2(0.625, 0.625)
 texture = ExtResource("3_8u432")
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
