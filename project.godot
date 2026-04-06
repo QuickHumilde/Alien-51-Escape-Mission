@@ -30,7 +30,7 @@ ItemManager="*res://global/item_manager.gd"
 MouseController="*res://global/mouse_controller.gd"
 GameManager="*res://global/game_manager.gd"
 GlobalModifiers="*res://global/global_modifiers.gd"
-CursorDuh="*res://scenes/extras/cursor_duh.tscn"
+CursorDuh="*res://global/cursor_duh.tscn"
 
 [display]
 

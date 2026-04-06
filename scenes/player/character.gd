@@ -41,6 +41,11 @@ func _physics_process(_delta):
 
 func take_damage(amount: float):
 	if damage_timer.is_stopped() and !Signals.player_is_dead:
+		var final_damage: float = amount
+		for modifier in inventory.get_modifiers():
+			if modifier.has_method("modify_incoming_damage"):
+				final_damage = modifier.modify_incoming_damage(final_damage)
+
 		for modifier in inventory.modifiers:
 			if modifier.has_method("avoid_damage"):
 				if modifier.avoid_damage():
@@ -51,12 +56,11 @@ func take_damage(amount: float):
 					return
 
 		audio.play_damage()
-		stats.take_damage(amount)
+		stats.take_damage(final_damage)
 		animation.player_taking_damage()
 		damage_timer.start(stats.get_invulnerability_time())
 		await damage_timer.timeout
 		await get_tree().create_timer(0.25).timeout
-
 		_check_overlapping_enemies()
 		_check_overlapping_tramps()
 

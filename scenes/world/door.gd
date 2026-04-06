@@ -19,6 +19,7 @@ var _open: bool = true
 func _ready() -> void:
 	if trigger != null:
 		trigger.body_entered.connect(_on_body_entered)
+	_adjust_trigger_hitbox()
 
 func set_enabled(v: bool) -> void:
 	_enabled = v
@@ -59,3 +60,22 @@ func _on_body_entered(body: Node) -> void:
 		return
 	if body != null and body.is_in_group("player"):
 		emit_signal("entered", dir)
+
+func _adjust_trigger_hitbox() -> void:
+	if trigger_shape == null:
+		return
+	trigger_shape.position = Vector2.ZERO
+	
+	match dir:
+		"up":
+			blocker_door_shape.position.y -= 4
+			blocker_wall_shape.position.y -= 4
+		"down":
+			blocker_door_shape.position.y += 2
+			blocker_wall_shape.position.y += 2
+		"Up":
+			blocker_door_shape.position.y -= 4
+			blocker_wall_shape.position.y -= 4
+		"Down":
+			blocker_door_shape.position.y += 2
+			blocker_wall_shape.position.y += 2

@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://blt1rsoh1d4w7" path="res://assets/sprites/cursor/cursor1.png" id="1_v84xg"]
 [ext_resource type="Texture2D" uid="uid://c2fnca1upyhka" path="res://assets/sprites/cursor/WiiPointer.png" id="2_7krmk"]
-[ext_resource type="Script" uid="uid://cylbwocgmr22l" path="res://scenes/extras/cursor_duh_sprite.gd" id="2_rnvp7"]
+[ext_resource type="Script" uid="uid://cylbwocgmr22l" path="res://global/cursor_duh_sprite.gd" id="2_rnvp7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rnvp7"]
 atlas = ExtResource("1_v84xg")

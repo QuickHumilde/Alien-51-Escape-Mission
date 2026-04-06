@@ -1,10 +1,10 @@
 extends Item
 
 @export var weapon_id : int = 8
-@export var ext_id: int = 22
+@export var ext_id: int = 23
 
 func _ready():
-	id = 22
+	id = 23
 	name_key="item_black_knife_weapon_name"
 	desc_key="item_black_knife_weapon_desc"
 	item_texture = "res://assets/sprites/PreBlackKnife.png"

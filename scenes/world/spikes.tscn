@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://di7t2uklujror"]
 
 [ext_resource type="Script" uid="uid://cv2340vga4kqp" path="res://scenes/world/spikes.gd" id="1_btssp"]
-[ext_resource type="Texture2D" uid="uid://cxdhrwqlyqu0m" path="res://assets/sprites/extras/Spikes.png" id="1_raj8n"]
+[ext_resource type="Texture2D" uid="uid://c7ri52m27530e" path="res://assets/sprites/Water.png" id="2_btssp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_btssp"]
 size = Vector2(10, 10)
@@ -14,7 +14,7 @@ collision_mask = 12
 script = ExtResource("1_btssp")
 
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["trap"]]
-texture = ExtResource("1_raj8n")
+texture = ExtResource("2_btssp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["trap"]]
 shape = SubResource("RectangleShape2D_btssp")

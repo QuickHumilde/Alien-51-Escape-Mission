@@ -56,3 +56,4 @@ func _emit_all():
 	items_changed.emit()
 	floor_changed.emit()
 	shop_price_mult_changed.emit()
+	wii_pointer_activated.emit()

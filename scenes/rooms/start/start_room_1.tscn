@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=4 uid="uid://dq1g6exitw215"]
+[gd_scene load_steps=4 format=4 uid="uid://dq1g6exitw215"]
 
 [ext_resource type="PackedScene" uid="uid://641t0oysglvl" path="res://scenes/rooms/template/room_template.tscn" id="1_3wrg4"]
 [ext_resource type="PackedScene" uid="uid://chrgijw2gs6eb" path="res://scenes/world/lamp.tscn" id="2_1ipfx"]
+[ext_resource type="PackedScene" uid="uid://di7t2uklujror" path="res://scenes/world/spikes.tscn" id="3_yvg0b"]
 
 [node name="StartRoom1" instance=ExtResource("1_3wrg4")]
 
@@ -27,3 +28,12 @@ position = Vector2(92, -74)
 
 [node name="RewardSpawner" parent="." index="9"]
 activable = false
+
+[node name="Spikes" parent="Obstacles" index="0" instance=ExtResource("3_yvg0b")]
+position = Vector2(104, 8)
+
+[node name="Spikes2" parent="Obstacles" index="1" instance=ExtResource("3_yvg0b")]
+position = Vector2(88, 24)
+
+[node name="Spikes3" parent="Obstacles" index="2" instance=ExtResource("3_yvg0b")]
+position = Vector2(88, -56)

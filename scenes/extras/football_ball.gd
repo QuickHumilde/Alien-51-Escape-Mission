@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 @onready var area: Area2D = $Area2D
-var damage: float = 1.0
+var damage: float = 2.0
 
 func _ready() -> void:
 	area.area_entered.connect(_on_area_entered)

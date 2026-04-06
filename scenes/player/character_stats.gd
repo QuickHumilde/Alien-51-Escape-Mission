@@ -162,6 +162,13 @@ func modify_revives(amount: float):
 	revives += int(amount)
 	_emit_health_changed_signal()
 
+func player_fly(fly : bool):
+	if fly and !is_flying:
+		is_flying=true
+		player_animation.is_flying=true
+	elif !fly and is_flying:
+		is_flying=false
+
 func _emit_health_changed_signal():
 	Signals.health_changed.emit(health, max_health, extra_health, revives)
 

@@ -8,7 +8,7 @@ var speed_increase: float = 0.3
 var damage_decrease: float = -1.0
 var avoid_probability: float = 0.25
 
-func get_bonus(stat_name: String, player: CharacterStats) -> float:
+func get_bonus(stat_name: String, _player: CharacterStats) -> float:
 	match stat_name:
 		"invulnerability_time":
 			return invulnerability_time_decrease

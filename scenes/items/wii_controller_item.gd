@@ -4,12 +4,12 @@ extends Item
 
 func _ready():
 	id = 22
-	name_key = "item_default_name"
-	desc_key = "item_default_desc"
+	name_key = "item_console_controller_name"
+	desc_key = "item_console_controller_desc"
 	item_texture = "res://assets/sprites/WiiController.png"
 	super._ready()
 	
-func give_changes(body: Character):
+func give_changes(_body: Character):
 	Signals.wii_pointer_activated.emit()
 	destroy_on_pickup()
 

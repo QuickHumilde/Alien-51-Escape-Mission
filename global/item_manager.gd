@@ -70,6 +70,7 @@ func fill_item_pool():
 	register_item(21, preload("res://scenes/items/dwarfism_item.tscn"))
 	register_item(22, preload("res://scenes/items/wii_controller_item.tscn"))
 	register_item(23, preload("res://scenes/items/weapons/black_knife_weapon_item.tscn"))
+	register_item(24, preload("res://scenes/items/massive_rage_item.tscn"))
 
 func clear_removed_items():
 	removed_items.clear()

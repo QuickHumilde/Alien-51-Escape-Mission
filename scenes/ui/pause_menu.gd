@@ -46,9 +46,7 @@ func resume():
 	
 func pause():
 	last_mouse_position = get_global_mouse_position()
-	
-	# He estado desde el numero 4 probando decima a decima para saber cual era exactamente
-	mouse_last_position_sprite.position = last_mouse_position - Vector2(-6.8, -6.8) 
+	mouse_last_position_sprite.position = last_mouse_position
 	get_tree().paused = true
 	show()
 	$AnimationPlayer.play("blur")

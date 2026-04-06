@@ -270,10 +270,10 @@ size = Vector2(16, 24)
 size = Vector2(128, 28)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w8gqt"]
-size = Vector2(8, 20)
+size = Vector2(19, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_638dj"]
-size = Vector2(17, 4)
+size = Vector2(18, 4)
 
 [node name="Door" type="Node2D"]
 script = ExtResource("1_cjc7v")
@@ -319,7 +319,7 @@ shape = SubResource("RectangleShape2D_n1vre")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Casiiii" groups=["wall"]]
 visibility_layer = 3
-position = Vector2(12, -10)
+position = Vector2(6.5, -10)
 shape = SubResource("RectangleShape2D_w8gqt")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Casiiii" groups=["wall"]]
@@ -339,5 +339,5 @@ collision_layer = 64
 collision_mask = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickupBlocker"]
-position = Vector2(-0.5, 10)
+position = Vector2(0, 10)
 shape = SubResource("RectangleShape2D_638dj")

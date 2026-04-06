@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://c0wyiru2g8jgf"]
+[gd_scene load_steps=47 format=4 uid="uid://c0wyiru2g8jgf"]
 
 [ext_resource type="Texture2D" uid="uid://xlto3ea6ja0d" path="res://assets/sprites/tileset/TileSet.png" id="1_qbal3"]
 [ext_resource type="Script" uid="uid://dmccp7lddki73" path="res://scenes/rooms/tests/sala_prueba.gd" id="1_ypwf5"]
@@ -21,7 +21,6 @@
 [ext_resource type="PackedScene" uid="uid://cq248kvqextcv" path="res://scenes/items/massive_rage_item.tscn" id="21_0bciu"]
 [ext_resource type="PackedScene" uid="uid://doywx78bcdk8u" path="res://scenes/enemies/Ghosty/ghosty.tscn" id="21_3s4b3"]
 [ext_resource type="PackedScene" uid="uid://chrgijw2gs6eb" path="res://scenes/world/lamp.tscn" id="22_0bciu"]
-[ext_resource type="PackedScene" uid="uid://bfusponyjei61" path="res://scenes/items/ufo_item.tscn" id="22_8ydvs"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_e1ecg"]
 polygon = PackedVector2Array(8, 0, 4, 0, 4, 4, 8, 4)
@@ -363,5 +362,3 @@ position = Vector2(-16, -44)
 
 [node name="MassiveRageItem" parent="." instance=ExtResource("21_0bciu")]
 position = Vector2(29, -30)
-
-[node name="UFOItem" parent="." instance=ExtResource("22_8ydvs")]
