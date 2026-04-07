@@ -1,19 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://vwuduq2qtmsv"]
+[gd_scene load_steps=3 format=3 uid="uid://vwuduq2qtmsv"]
 
 [ext_resource type="Script" uid="uid://bpjj8w1oiv4cn" path="res://scenes/world/obstacle_1.gd" id="1_i6gwk"]
-[ext_resource type="Texture2D" uid="uid://cdtupu2t2b5kr" path="res://assets/sprites/Obstacle1.png" id="1_jnxyi"]
+[ext_resource type="Texture2D" uid="uid://4ow3nwrsic2p" path="res://assets/sprites/Obstacle2.png" id="2_i6gwk"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jnxyi"]
-size = Vector2(16, 13)
-
-[node name="Obstacle1" type="StaticBody2D"]
+[node name="Obstacle1" type="StaticBody2D" groups=["obstacle"]]
 collision_layer = 32
-collision_mask = 111
+collision_mask = 103
 script = ExtResource("1_i6gwk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_jnxyi")
+texture = ExtResource("2_i6gwk")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1.5)
-shape = SubResource("RectangleShape2D_jnxyi")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+light_mask = 32
+visibility_layer = 127
+polygon = PackedVector2Array(-6, -8, 6, -8, 8, -6, 8, 5, 6, 7, -6, 7, -8, 5, -8, -6)

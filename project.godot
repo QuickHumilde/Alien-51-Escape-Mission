@@ -155,6 +155,10 @@ locale/translations=PackedStringArray("res://translations/items/items.en.transla
 2d_physics/layer_6="Obstacle"
 2d_physics/layer_7="Pickup"
 
+[navigation]
+
+2d/default_edge_connection_margin=4.0
+
 [physics]
 
 common/physics_jitter_fix=2.0

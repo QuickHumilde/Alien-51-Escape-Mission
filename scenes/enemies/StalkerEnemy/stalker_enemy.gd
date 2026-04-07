@@ -13,7 +13,7 @@ func _ready():
 	knockback_force = 200.0
 	knockback_time = 0.0
 	knockback_resistance = 0.0
-	agent.path_desired_distance = 4.0
+	agent.path_desired_distance = 8.0
 	agent.target_desired_distance = stopping_distance
 	sounds = {
 		"damage": preload("res://assets/audio/sfx/enemies/stalkerenemy/StalkerDamage.mp3")

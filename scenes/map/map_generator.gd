@@ -24,7 +24,7 @@ const FLOOR_SETTINGS := [
 
 var room_scenes: Dictionary = {
 	"start": [ preload("res://scenes/rooms/start/start_room_1.tscn") ],
-	"normal": [ preload("res://scenes/rooms/normal/normal_room_1.tscn") ],
+	"normal": [ preload("res://scenes/rooms/normal/normal_room_2.tscn"), preload("res://scenes/rooms/normal/normal_room_2.tscn") ],
 	"item": [ preload("res://scenes/rooms/item/item_room_1.tscn") ],
 	"shop": [ preload("res://scenes/rooms/shop/shop_room_1.tscn") ],
 	"boss": [ preload("res://scenes/rooms/boss/boss_room_1.tscn") ]

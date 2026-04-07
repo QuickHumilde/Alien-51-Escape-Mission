@@ -15,7 +15,7 @@ func apply_knockback(dir: Vector2, force: float = 500.0, duration: float = 0.2) 
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 8
-collision_mask = 13
+collision_mask = 47
 motion_mode = 1
 
 [node name="Visual" type="Node2D" parent="."]
