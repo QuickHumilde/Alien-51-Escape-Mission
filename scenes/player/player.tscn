@@ -810,19 +810,22 @@ sprite_frames = SubResource("SpriteFrames_xuses")
 animation = &"idle_down"
 
 [node name="Shadow" type="Sprite2D" parent="Visual"]
-self_modulate = Color(0, 0, 0, 0.13725491)
+self_modulate = Color(0, 0, 0, 0.25490198)
 show_behind_parent = true
+z_index = -1
+z_as_relative = false
 position = Vector2(0, 6.0183535)
 scale = Vector2(0.92736816, 0.5022942)
 texture = ExtResource("12_8ydkj")
 
 [node name="Hitbox" type="CollisionShape2D" parent="." groups=["player"]]
 light_mask = 4
-position = Vector2(0, 2)
+position = Vector2(0, 3)
 shape = SubResource("CapsuleShape2D_xuses")
 debug_color = Color(0.8564939, 3.657937e-06, 8.663535e-07, 0.41960785)
 
 [node name="Detector" type="Area2D" parent="." groups=["player"]]
+position = Vector2(0, 1)
 collision_layer = 4
 collision_mask = 89
 script = SubResource("GDScript_cnsyf")

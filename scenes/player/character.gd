@@ -20,6 +20,7 @@ class_name Character
 @onready var weapon_holder = $WeaponHolder
 
 func _ready():
+	tramp_detector_area.area_entered.connect(_on_tramp_detector_area_entered)
 	Signals.player_death.connect(player_death)
 	Signals.player_revive.connect(player_revive)
 	Signals.player_take_damage.connect(take_damage)
@@ -64,7 +65,6 @@ func take_damage(amount: float):
 		_check_overlapping_enemies()
 		_check_overlapping_tramps()
 
-		
 func player_death():
 	if abilities and abilities.abilities.size() > 0:
 		for ability in abilities.abilities:
@@ -75,6 +75,11 @@ func player_death():
 func apply_knockback(dir: Vector2, force: float, duration: float = 0.2):
 	if damage_timer.is_stopped():
 		movement.apply_knockback(dir, force, duration)
+
+func _on_tramp_detector_area_entered(body):
+	if body.is_in_group("trap"):
+		if body.has_method("do_damage"):
+			body.do_damage(tramp_detector_area)
 
 func _check_overlapping_enemies():
 	var overlapping_bodies= detector_area.get_overlapping_areas()
@@ -94,7 +99,8 @@ func get_stats() -> CharacterStats:
 	return stats
 
 func set_flying():
-	collision_mask &= ~(1 << 5)
+	set_collision_mask_value(6, false)
+	tramp_detector_area.set_collision_mask_value(2, false)
 
 func player_revive():
 	weapon_holder.show()

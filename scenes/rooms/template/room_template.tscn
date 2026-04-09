@@ -352,3 +352,7 @@ position = Vector2(40, 8)
 script = ExtResource("5_kv71q")
 
 [node name="Obstacles" type="Node2D" parent="."]
+
+[node name="Pickups" type="Node2D" parent="."]
+
+[node name="Decorations" type="Node2D" parent="."]
