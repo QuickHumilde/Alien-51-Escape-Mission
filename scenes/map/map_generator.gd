@@ -24,7 +24,14 @@ const FLOOR_SETTINGS := [
 
 var room_scenes: Dictionary = {
 	"start": [ preload("res://scenes/rooms/start/start_room_1.tscn") ],
-	"normal": [ preload("res://scenes/rooms/normal/normal_room_2.tscn"), preload("res://scenes/rooms/normal/normal_room_2.tscn") ],
+	"normal": [
+	preload("res://scenes/rooms/normal/normal_room_1.tscn"),
+	preload("res://scenes/rooms/normal/normal_room_2.tscn"),
+	preload("res://scenes/rooms/normal/normal_room_3.tscn"),
+	preload("res://scenes/rooms/normal/normal_room_4.tscn"),
+	preload("res://scenes/rooms/normal/normal_room_5.tscn"),
+	preload("res://scenes/rooms/normal/normal_room_6.tscn"),
+	],
 	"item": [ preload("res://scenes/rooms/item/item_room_1.tscn") ],
 	"shop": [ preload("res://scenes/rooms/shop/shop_room_1.tscn") ],
 	"boss": [ preload("res://scenes/rooms/boss/boss_room_1.tscn") ]
@@ -36,6 +43,9 @@ var room_instances: Dictionary = {}
 var current_room_pos: Vector2 = Vector2.ZERO
 var current_room: Node2D = null
 var transitioning: bool = false
+
+# Cache to avoid instantiating rooms repeatedly just to read door caps.
+var _door_caps_cache: Dictionary = {} # scene_path -> Dictionary
 
 func _ready() -> void:
 	GameManager.generate_seed()
@@ -263,13 +273,43 @@ func manhattan(a: Vector2, b: Vector2) -> int:
 	return int(abs(a.x - b.x) + abs(a.y - b.y))
 
 func get_scene_door_caps(scene: PackedScene) -> Dictionary:
+	# Cached by resource_path
+	if scene != null and not scene.resource_path.is_empty():
+		if _door_caps_cache.has(scene.resource_path):
+			return _door_caps_cache[scene.resource_path] as Dictionary
+
 	var inst := scene.instantiate()
 	var caps := {"up": true, "down": true, "left": true, "right": true}
 	if inst != null and inst.has_method("get_door_caps"):
 		caps = inst.call("get_door_caps")
 	if inst != null:
 		inst.queue_free()
+
+	if scene != null and not scene.resource_path.is_empty():
+		_door_caps_cache[scene.resource_path] = caps
+
 	return caps
+
+func _get_caps_from_scene_path(scene_path: String) -> Dictionary:
+	if _door_caps_cache.has(scene_path):
+		return _door_caps_cache[scene_path] as Dictionary
+	var ps := load(scene_path) as PackedScene
+	if ps == null:
+		var fallback := {"up": true, "down": true, "left": true, "right": true}
+		_door_caps_cache[scene_path] = fallback
+		return fallback
+	var caps := get_scene_door_caps(ps)
+	_door_caps_cache[scene_path] = caps
+	return caps
+
+func _room_allows_exit(base_data: Dictionary, dir: String) -> bool:
+	if not base_data.has("scene_path"):
+		return true
+	var p := str(base_data.get("scene_path", ""))
+	if p.is_empty():
+		return true
+	var caps := _get_caps_from_scene_path(p)
+	return bool(caps.get(dir, true))
 
 func pick_scene_with_required_door(room_type: String, required_entry_dir: String) -> PackedScene:
 	var list_any: Variant = room_scenes.get(room_type, room_scenes["normal"])
@@ -328,15 +368,20 @@ func _create_start_item_branch(start_pos: Vector2) -> void:
 	var start_data := map[start_key] as Dictionary
 	var start_scene: PackedScene = load(str(start_data["scene_path"])) as PackedScene
 	var start_caps := get_scene_door_caps(start_scene)
+
 	for d in dirs:
+		# IMPORTANT: base (start) must allow exit in that direction
+		if not bool(start_caps.get(d, true)):
+			continue
+
 		var new_pos := start_pos + dir_to_vector(d)
 		if map.has(pos_to_key(new_pos)):
 			continue
-		if not bool(start_caps.get(d, true)):
-			continue
+
 		var item_scene := pick_scene_with_required_door("item", opposite_dir(d))
 		if item_scene == null:
 			continue
+
 		var item_doors := init_doors(false)
 		item_doors[opposite_dir(d)] = true
 		map[pos_to_key(new_pos)] = create_room(new_pos, "item", item_doors, item_scene.resource_path)
@@ -351,15 +396,23 @@ func _create_main_normals(_start_pos: Vector2, target_normals: int) -> void:
 		var base_pos: Vector2 = rand_choice(main_path_rooms) as Vector2
 		var base_key := pos_to_key(base_pos)
 		var base_data := map[base_key] as Dictionary
+
 		var dirs: Array[String] = ["up","down","left","right"]
 		shuffle_seeded(dirs)
+
 		for d in dirs:
+			# IMPORTANT: base must support having a door in that direction
+			if not _room_allows_exit(base_data, d):
+				continue
+
 			var new_pos := base_pos + dir_to_vector(d)
 			if map.has(pos_to_key(new_pos)):
 				continue
+
 			var normal_scene := pick_scene_with_required_door("normal", opposite_dir(d))
 			if normal_scene == null:
 				continue
+
 			var new_doors := init_doors(false)
 			map[pos_to_key(new_pos)] = create_room(new_pos, "normal", new_doors, normal_scene.resource_path)
 			(base_data["doors"] as Dictionary)[d] = true
@@ -402,17 +455,26 @@ func _create_dead_end_branch(room_type: String, preferred_base: Vector2, max_att
 			base_pos = rand_choice(main_path_rooms) as Vector2
 		if room_type != "item" and base_pos == start_pos:
 			continue
+
 		var base_key := pos_to_key(base_pos)
 		var base_data := map[base_key] as Dictionary
+
 		var dirs: Array[String] = ["up","down","left","right"]
 		shuffle_seeded(dirs)
+
 		for d in dirs:
+			# IMPORTANT: base must support having a door in that direction
+			if not _room_allows_exit(base_data, d):
+				continue
+
 			var new_pos := base_pos + dir_to_vector(d)
 			if map.has(pos_to_key(new_pos)):
 				continue
+
 			var special_scene := pick_scene_with_required_door(room_type, opposite_dir(d))
 			if special_scene == null:
 				continue
+
 			var doors := init_doors(false)
 			doors[opposite_dir(d)] = true
 			map[pos_to_key(new_pos)] = create_room(new_pos, room_type, doors, special_scene.resource_path)
@@ -445,7 +507,7 @@ func _watch_room_cleared(room: Node) -> void:
 			var cb := _on_enemy_exited.bind(room)
 			if not e.tree_exited.is_connected(cb):
 				e.tree_exited.connect(cb)
-	
+
 func _on_enemy_exited(room: Node) -> void:
 	if room != current_room:
 		return

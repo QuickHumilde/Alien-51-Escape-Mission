@@ -1,0 +1,84 @@
+[gd_scene load_steps=13 format=3 uid="uid://cfp7dhd1laj72"]
+
+[ext_resource type="Script" uid="uid://bdlispxgspbyj" path="res://scenes/world/decorative_capsule.gd" id="1_7k7et"]
+[ext_resource type="Texture2D" uid="uid://b0y7t6b8n4vfp" path="res://assets/sprites/Capsule.png" id="1_ln2u2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7k7et"]
+size = Vector2(18, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6nqle"]
+atlas = ExtResource("1_ln2u2")
+region = Rect2(0, 0, 16, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u5x7s"]
+atlas = ExtResource("1_ln2u2")
+region = Rect2(16, 0, 16, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8q4tn"]
+atlas = ExtResource("1_ln2u2")
+region = Rect2(32, 0, 16, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4cgby"]
+atlas = ExtResource("1_ln2u2")
+region = Rect2(48, 0, 16, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ysx8d"]
+atlas = ExtResource("1_ln2u2")
+region = Rect2(64, 0, 16, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7s5u"]
+atlas = ExtResource("1_ln2u2")
+region = Rect2(80, 0, 16, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bl222"]
+atlas = ExtResource("1_ln2u2")
+region = Rect2(96, 0, 16, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1ph8"]
+atlas = ExtResource("1_ln2u2")
+region = Rect2(112, 0, 16, 26)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2qahq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6nqle")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u5x7s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8q4tn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4cgby")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ysx8d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b7s5u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bl222")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c1ph8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="DecorativeCapsule" type="StaticBody2D"]
+script = ExtResource("1_7k7et")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-8, 8)
+shape = SubResource("RectangleShape2D_7k7et")
+
+[node name="Visual" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visual"]
+position = Vector2(-8, 8)
+sprite_frames = SubResource("SpriteFrames_2qahq")
