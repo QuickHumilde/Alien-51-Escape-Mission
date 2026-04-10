@@ -47,12 +47,7 @@ sprite_frames = SubResource("SpriteFrames_6e6d2")
 position = Vector2(0, 5)
 shape = SubResource("CapsuleShape2D_gaafd")
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." index="2"]
-avoidance_enabled = true
-radius = 6.0
-avoidance_mask = 3
-
-[node name="Detector" parent="." index="3"]
+[node name="Detector" parent="." index="2"]
 position = Vector2(0, 2)
 
 [node name="CollisionShape2D" parent="Detector" index="0" groups=["enemy"]]

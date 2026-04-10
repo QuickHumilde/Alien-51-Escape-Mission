@@ -1,0 +1,37 @@
+[gd_scene load_steps=8 format=3 uid="uid://dceenhddbl8gi"]
+
+[ext_resource type="PackedScene" uid="uid://byym4irhw1v80" path="res://scenes/templates/enemy/enemy_template.tscn" id="1_of77h"]
+[ext_resource type="Texture2D" uid="uid://bhtquw02cbm4b" path="res://assets/sprites/Zombie.png" id="2_anf3d"]
+[ext_resource type="Script" uid="uid://cltjldacks4n" path="res://scenes/enemies/Zombie/zombie_enemy.gd" id="2_v2kvp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_anf3d"]
+atlas = ExtResource("2_anf3d")
+region = Rect2(0, 0, 12, 29)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0p3af"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_anf3d")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4jwl6"]
+radius = 9.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_518f0"]
+
+[node name="ZombieEnemy" instance=ExtResource("1_of77h")]
+script = ExtResource("2_v2kvp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visual" index="0"]
+sprite_frames = SubResource("SpriteFrames_0p3af")
+
+[node name="Hitbox" parent="." index="1"]
+shape = SubResource("CircleShape2D_4jwl6")
+
+[node name="CollisionShape2D" parent="Detector" index="0"]
+shape = SubResource("CircleShape2D_518f0")

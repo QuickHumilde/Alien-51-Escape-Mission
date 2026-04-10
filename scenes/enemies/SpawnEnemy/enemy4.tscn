@@ -35,5 +35,3 @@ shape = SubResource("CircleShape2D_torcv")
 
 [node name="CollisionShape2D" parent="Detector" index="0"]
 shape = SubResource("CircleShape2D_4lujc")
-
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." index="4"]

@@ -4,6 +4,7 @@ extends Item
 
 func _ready():
 	id = 22
+	price = 5
 	name_key = "item_console_controller_name"
 	desc_key = "item_console_controller_desc"
 	item_texture = "res://assets/sprites/WiiController.png"

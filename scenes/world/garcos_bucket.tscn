@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://c3jejed60p32"]
+
+[ext_resource type="Texture2D" uid="uid://doeg51hs3bkwh" path="res://assets/sprites/GarcosBucket.png" id="1_n2of5"]
+[ext_resource type="Script" uid="uid://cd0h5cmk3ti7m" path="res://scenes/world/garcos_bucket.gd" id="1_yyxxr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1vul6"]
+radius = 5.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yyxxr"]
+atlas = ExtResource("1_n2of5")
+region = Rect2(0, 0, 10, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qrwmp"]
+atlas = ExtResource("1_n2of5")
+region = Rect2(10, 0, 10, 7)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5spwa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yyxxr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qrwmp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="GarcosBucket" type="StaticBody2D"]
+collision_mask = 77
+script = ExtResource("1_yyxxr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1vul6")
+
+[node name="Visual" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visual"]
+sprite_frames = SubResource("SpriteFrames_5spwa")

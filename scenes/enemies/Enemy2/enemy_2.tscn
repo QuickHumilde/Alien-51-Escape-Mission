@@ -34,6 +34,3 @@ shape = SubResource("CircleShape2D_ngklj")
 [node name="CollisionShape2D" parent="Detector" index="0"]
 position = Vector2(0, 4)
 shape = SubResource("CircleShape2D_4m1wf")
-
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." index="4"]
-avoidance_enabled = true

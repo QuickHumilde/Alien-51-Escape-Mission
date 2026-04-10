@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://d2sgnq744wr7"]
+
+[ext_resource type="PackedScene" uid="uid://byym4irhw1v80" path="res://scenes/templates/enemy/enemy_template.tscn" id="1_kaw0m"]
+[ext_resource type="Texture2D" uid="uid://w4dbnyewb0jq" path="res://assets/sprites/ZombieRemains.png" id="1_no6vc"]
+[ext_resource type="Script" uid="uid://uotnnb588k0f" path="res://scenes/enemies/Zombie/zombie_remains.gd" id="2_j8iny"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kaw0m"]
+atlas = ExtResource("1_no6vc")
+region = Rect2(0, 0, 16, 6)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j8iny"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kaw0m")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j8iny"]
+radius = 2.0
+height = 12.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n4phl"]
+radius = 3.0
+height = 14.0
+
+[node name="ZombieRemains" instance=ExtResource("1_kaw0m")]
+script = ExtResource("2_j8iny")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visual" index="0"]
+sprite_frames = SubResource("SpriteFrames_j8iny")
+
+[node name="Hitbox" parent="." index="1"]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_j8iny")
+
+[node name="CollisionShape2D" parent="Detector" index="0"]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_n4phl")
+
+[node name="NavigationAgent2D" parent="." index="4"]
+process_mode = 4

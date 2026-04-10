@@ -34,4 +34,6 @@ script = SubResource("GDScript_7oxj7")
 wait_time = 0.5
 autostart = true
 
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
 [connection signal="timeout" from="PathTimer" to="." method="_on_path_timer_timeout"]

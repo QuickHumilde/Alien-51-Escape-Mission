@@ -12,6 +12,7 @@ class_name Enemy
 @onready var player: CharacterBody2D = get_tree().current_scene.get_node("Player")
 @onready var visuals : Node2D = $Visual
 @onready var sfx_enemy: AudioStreamPlayer2D
+@onready var damage_color: Color = Color(1.0, 0.0, 0.0, 1.0)
 
 var _frozen: bool = false
 var knockback: Vector2
@@ -51,7 +52,7 @@ func apply_knockback(dir: Vector2, force: float = 500.0, duration: float = 0.2) 
 
 func take_damage(damage : float) -> void:
 	damage_ticks += 1
-	visuals.modulate = Color(1.0, 0.0, 0.0, 1.0)
+	visuals.modulate = damage_color
 	health -= damage
 	await get_tree().create_timer(0.2).timeout
 	damage_ticks -= 1

@@ -3,14 +3,17 @@ extends Enemy
 @onready var agent: NavigationAgent2D = $NavigationAgent2D
 @onready var sprite = $Visual/AnimatedSprite2D
 @export var stopping_distance : float = 1.5
+@onready var enemy = preload("res://scenes/enemies/Zombie/zombie_remains.tscn")
+@export var children_spawn: int = 1
+var dead: bool = false
 
 func _ready():
 	_get_detector()
 	id = 1
 	contact_damage = 1.0
-	speed = 25.0
-	health = 1.0
-	knockback_force = 50.0
+	speed = 40.0
+	health = 3.0
+	knockback_force = 200.0
 	knockback_time = 0.0
 	knockback_resistance = 0.0
 	agent.path_desired_distance = 4.0
@@ -24,7 +27,7 @@ func _physics_process(delta):
 	if is_frozen():
 		process_frozen()
 		return
-	
+		
 	if not is_inside_tree() or player == null:
 		return
 
@@ -65,6 +68,23 @@ func _update_animation():
 			sprite.play("default")
 		else:
 			sprite.play("default")
+
+func die():
+	if !dead:
+		dead=true
+		var enemies_container = get_parent()
+		while enemies_container != null and enemies_container.name != "Enemies":
+			enemies_container = enemies_container.get_parent()
+
+		if enemies_container == null:
+			enemies_container = get_tree().current_scene
+
+		for i in range(children_spawn):
+			var perro = enemy.instantiate()
+			perro.global_position = self.position
+			enemies_container.add_child(perro)
+			
+		queue_free()
 
 func _on_damage():
 	play_damage_sound()

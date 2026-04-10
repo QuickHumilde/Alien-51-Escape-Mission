@@ -10,7 +10,6 @@ func _on_area_entered(body):
 	do_damage(body)
 
 func do_damage(body):
-	print("Sss")
 	if body.is_in_group("enemy"):
 		body.get_parent().take_damage(damage)
 	elif body.is_in_group("player_tramp"):

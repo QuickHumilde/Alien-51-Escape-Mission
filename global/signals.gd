@@ -37,6 +37,7 @@ signal vessel_code()
 
 #region Extras
 signal wii_pointer_activated()
+signal purchased_shop_item()
 #endregion
 
 # Made for removing the warning
@@ -57,3 +58,4 @@ func _emit_all():
 	floor_changed.emit()
 	shop_price_mult_changed.emit()
 	wii_pointer_activated.emit()
+	purchased_shop_item.emit()

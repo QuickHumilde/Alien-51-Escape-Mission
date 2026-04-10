@@ -66,6 +66,7 @@ func _on_room_change(_room_type) -> void:
 
 func alien_millonetis():
 	if inst != null and inst.has_method("enable_hitbox"):
+		Signals.purchased_shop_item.emit()
 		inst.enable_hitbox()
 		price_label.hide()
 
