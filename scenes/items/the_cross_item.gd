@@ -1,7 +1,6 @@
 extends Item
 class_name TheCrossItem
 
-var revive : float = 1.0
 @export var ext_id: int = 9
 
 func _ready():
@@ -13,5 +12,7 @@ func _ready():
 	super._ready()
 
 func give_changes(body: Character):
-	body.items.modify_revives(revive)
+	var the_cross_modifier = TheCrossModifierItem.new(body)
+	body.items.give_modifiers(the_cross_modifier)
+	body.stats._emit_health_changed_signal()
 	destroy_on_pickup()

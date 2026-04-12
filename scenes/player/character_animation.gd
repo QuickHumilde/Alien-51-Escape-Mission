@@ -83,7 +83,6 @@ func player_dying(player_revives: int):
 func player_revive():
 	Signals.player_revive.emit()
 	sprite.play("idle_down")
-	pass
 
 func player_changing_color(player_color: Color):
 	sprite.modulate = player_color

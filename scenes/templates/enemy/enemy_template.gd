@@ -73,6 +73,9 @@ func _on_area_2d_body_entered(body: Node) -> void:
 		return
 	if body.is_in_group("player"):
 		do_damage(body)
+	if body.is_in_group("trap"):
+		if body.has_method("do_damage"):
+			body.do_damage($Detector)
 
 func do_damage(body: Node) -> void:
 	var knockback_direction = (body.global_position - global_position).normalized()

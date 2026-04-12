@@ -47,6 +47,7 @@ func connect_player_signals():
 	Signals.money_changed.connect(_on_money_changed)
 	Signals.show_death_menu.connect(_on_death)
 	Signals.items_changed.connect(_on_item_changed)
+	Signals.player_revive.connect(_on_revive_player)
 
 func connect_item_signals():
 	Signals.show_item_information.connect(_show_item_info)
@@ -65,7 +66,7 @@ func update_health():
 	var current = player.stats.health
 	var maximum = player.stats.max_health
 	var extra = player.stats.extra_health
-	var revives = player.stats.revives
+	var revives = player.stats.get_revives()
 	
 	health_bar.max_value = maximum
 	health_bar.value = current
@@ -158,3 +159,6 @@ func set_item_icon(image: String):
 
 func _on_death():
 	self.hide()
+
+func _on_revive_player():
+	self.show()

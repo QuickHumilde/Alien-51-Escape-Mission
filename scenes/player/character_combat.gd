@@ -108,6 +108,7 @@ func equip_weapon(id: int):
 	current_weapon = weapon_instances[id]
 	current_weapon.visible = true
 	current_weapon.set_process(true)
+	Signals.weapon_changed.emit(id)
 
 func remove_weapon(id: int):
 	var current_id = weapon_order[current_weapon_index]
@@ -135,7 +136,6 @@ func add_weapon(id: int):
 	equip_last_weapon()
 
 func equip_last_weapon():
-	
 	var last_id: int=0
 	
 	for item_id in weapon_order:

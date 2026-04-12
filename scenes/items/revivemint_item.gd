@@ -1,7 +1,6 @@
 extends Item
 class_name RevivemintItem
 
-var resurrections: int = 1
 @export var ext_id: int = 20
 
 func _ready():
@@ -12,6 +11,7 @@ func _ready():
 	super._ready()
 	
 func give_changes(body: Character):
-	body.items.heal(body.stats.get_max_health())
-	body.stats.modify_revives(resurrections)
+	var revivemint_modifier = RevivemintModifierItem.new(body)
+	body.items.give_modifiers(revivemint_modifier)
+	body.stats._emit_health_changed_signal()
 	destroy_on_pickup()

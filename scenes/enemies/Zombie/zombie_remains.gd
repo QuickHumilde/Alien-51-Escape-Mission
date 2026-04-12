@@ -49,7 +49,10 @@ func play_damage_sound():
 	play_sound("damage", volume, pitch)
 
 func start_delayed_action():
-	await get_tree().create_timer(4.0).timeout
+	await get_tree().create_timer(2.5).timeout
+	sprite.position.y -= 10
+	sprite.play("regenerating")
+	await sprite.animation_finished
 	no_mori_jisjisjis()
 
 func no_mori_jisjisjis():
@@ -66,7 +69,7 @@ func no_mori_jisjisjis():
 			queue_free()
 			return
 
-		brains.global_position = self.global_position
+		brains.global_position = sprite.global_position
 		enemies_container.add_child(brains)
 		queue_free()
 

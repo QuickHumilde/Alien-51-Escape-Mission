@@ -170,26 +170,36 @@ func player_fly(fly : bool):
 		is_flying=false
 
 func _emit_health_changed_signal():
-	Signals.health_changed.emit(health, max_health, extra_health, revives)
+	Signals.health_changed.emit(health, max_health, extra_health, get_revives())
 
 func die():
 	player_audio.play_death()
-	player_animation.player_dying(revives)
+	player_animation.player_dying(get_revives())
 	Signals.player_death.emit()
 
-	if revives > 0:
-		revive()
+	var returns: Array
+	returns = player_inventory.can_revive()
+	if !returns.is_empty() and returns[0] == true:
+		if returns.size() > 1:
+			revive(returns[1])
+		else:
+			revive()
 
-func revive():
+func revive(new_health: float = -1):
 	await player_animation.sprite.animation_finished
 	Signals.player_revive.emit()
-	revives -= 1
 
 	if max_health >= 3:
 		max_health -= 1
-
-	health = 2
-	Signals.health_changed.emit(health, max_health, extra_health, revives)
+		
+	if new_health != -1 and new_health > 0 :
+		health = new_health
+		if health > max_health:
+			health = max_health
+	else:
+		health = 2
+	
+	_emit_health_changed_signal()
 	_invalidate_stats()
 
 func is_player_full_healed():
@@ -202,3 +212,6 @@ func _apply_size_visual(final_size: float):
 
 	if final_size <= 1:
 		player_hitbox.scale = Vector2(final_size, final_size)
+
+func get_revives():
+	return player_inventory.get_revives()

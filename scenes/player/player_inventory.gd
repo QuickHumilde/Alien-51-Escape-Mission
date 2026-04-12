@@ -41,3 +41,18 @@ func give_modifiers(modifier):
 func _on_item_picked(_id: int = -1):
 	items += 1
 	Signals.items_changed.emit()
+
+func can_revive() -> Array:
+	var returns: Array
+	for mod in get_modifiers():
+		if mod.has_method("revive_player"):
+			returns = mod.revive_player()
+			return returns
+	return []
+
+func get_revives():
+	var quantity: float = 0
+	for mod in get_modifiers():
+		if mod.has_method("get_revives_quantity"):
+			quantity += mod.get_revives_quantity()
+	return quantity

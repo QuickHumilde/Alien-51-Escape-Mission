@@ -17,7 +17,6 @@ func _on_death_menu():
 	reset()
 
 func modify_shop_shop_price_mult(big_shot: float):
-	print(shop_price_mult+big_shot)
 	if shop_price_mult+big_shot >= 0.0 :
 		shop_price_mult+=big_shot
 		Signals.shop_price_mult_changed.emit()

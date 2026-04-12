@@ -13,6 +13,7 @@ signal player_death()
 signal player_take_damage(damage: float)
 signal show_death_menu()
 signal player_revive()
+signal weapon_changed(id: int)
 #endregion
 
 #region Inventory

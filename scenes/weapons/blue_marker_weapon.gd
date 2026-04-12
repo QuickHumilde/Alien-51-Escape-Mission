@@ -11,7 +11,7 @@ func _ready():
 	lifetime=500.0
 	speed = 100.0
 	sounds = {
-		"shoot" : preload("res://assets/audio/sfx/player/uiuiuiADuque.mp3")
+		"shoot" : preload("res://assets/audio/sfx/BlueMarkerThrow.mp3")
 	}
 	setup_audio()
 	
@@ -29,9 +29,8 @@ func shoot(player_damage: float, _player_lifetime: float):
 	get_tree().current_scene.add_child(bullet)
 	
 	var pitch := randf_range(0.9, 1.5)
-	var volume := randf_range(-4.0, -2.5)
 	
-	play_sound("shoot", volume, pitch)
+	play_sound("shoot", 0, pitch)
 	
 	cooldown_timer.start()
 	

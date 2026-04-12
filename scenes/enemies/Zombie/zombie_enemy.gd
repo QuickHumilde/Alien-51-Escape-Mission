@@ -57,17 +57,19 @@ func _update_animation():
 
 	var dir = velocity.normalized()
 
-	# Movimiento horizontal dominante
 	if abs(dir.x) > abs(dir.y):
-		sprite.play("default")
-		sprite.flip_h = dir.x > 0
+		if dir.x < 0:
+			sprite.play("left")
+			sprite.flip_h = false
+		else:
+			sprite.play("right")
+			sprite.flip_h = false
 
-	# Movimiento vertical dominante
 	else:
 		if dir.y > 0:
-			sprite.play("default")
+			sprite.play("front")
 		else:
-			sprite.play("default")
+			sprite.play("back")
 
 func die():
 	if !dead:

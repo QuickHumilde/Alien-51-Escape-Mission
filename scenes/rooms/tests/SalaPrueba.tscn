@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://xlto3ea6ja0d" path="res://assets/sprites/tileset/TileSet.png" id="1_qbal3"]
 [ext_resource type="Script" uid="uid://dmccp7lddki73" path="res://scenes/rooms/tests/sala_prueba.gd" id="1_ypwf5"]
-[ext_resource type="PackedScene" uid="uid://jygsb42krc3q" path="res://scenes/player/player.tscn" id="2_bkx0u"]
 [ext_resource type="Texture2D" uid="uid://dko4hcv0xy3dv" path="res://assets/sprites/tileset/Obstacle_TileSet.png" id="3_4ieoh"]
 [ext_resource type="PackedScene" uid="uid://dug0rdf4rqk8" path="res://scenes/items/weapons/exploding_kittens_weapon_item.tscn" id="12_fuxfh"]
 [ext_resource type="PackedScene" uid="uid://kge2n01jvemp" path="res://scenes/pickup/coin.tscn" id="13_84wfm"]
@@ -17,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cy1pdn0ydx5qy" path="res://scenes/enemies/Enemy3/enemy3.tscn" id="19_7y8ym"]
 [ext_resource type="PackedScene" uid="uid://tgp6wr33vk2p" path="res://scenes/items/weapons/pistol_gun_item.tscn" id="19_8ydvs"]
 [ext_resource type="PackedScene" uid="uid://dtapkc8g2rb0m" path="res://scenes/items/parry_ability_item.tscn" id="19_f0phr"]
+[ext_resource type="PackedScene" uid="uid://bmeb4xuj7s7i7" path="res://scenes/items/weapons/shotgun_inter_mark_weapon_item.tscn" id="20_f0phr"]
 [ext_resource type="PackedScene" uid="uid://doywx78bcdk8u" path="res://scenes/enemies/Ghosty/ghosty.tscn" id="21_3s4b3"]
 [ext_resource type="PackedScene" uid="uid://chrgijw2gs6eb" path="res://scenes/world/lamp.tscn" id="22_0bciu"]
 
@@ -304,9 +304,6 @@ z_as_relative = false
 tile_set = SubResource("TileSet_a2tj1")
 navigation_enabled = false
 
-[node name="Player" parent="." instance=ExtResource("2_bkx0u")]
-position = Vector2(59, 33)
-
 [node name="StalkerEnemy" parent="." instance=ExtResource("14_84wfm")]
 position = Vector2(317, -14)
 collision_mask = 13
@@ -361,3 +358,5 @@ position = Vector2(0, 16)
 
 [node name="PistolGunItem" parent="." instance=ExtResource("19_8ydvs")]
 position = Vector2(-8, -40)
+
+[node name="ShotgunInterMarkWeaponItem" parent="." instance=ExtResource("20_f0phr")]
