@@ -7,7 +7,7 @@ func _ready():
 	id = 23
 	name_key="item_black_knife_weapon_name"
 	desc_key="item_black_knife_weapon_desc"
-	item_texture = "res://assets/sprites/PreBlackKnife.png"
+	item_texture = "res://assets/sprites/items/PreBlackKnife.png"
 	super._ready()
 
 func give_changes(body: Character):

@@ -14,6 +14,7 @@ signal player_take_damage(damage: float)
 signal show_death_menu()
 signal player_revive()
 signal weapon_changed(id: int)
+signal stats_changed()
 #endregion
 
 #region Inventory
@@ -60,3 +61,5 @@ func _emit_all():
 	shop_price_mult_changed.emit()
 	wii_pointer_activated.emit()
 	purchased_shop_item.emit()
+	weapon_changed.emit()
+	stats_changed.emit()

@@ -11,6 +11,6 @@ func _ready():
 	super._ready()
 	
 func give_changes(body: Character):
-	var dai_modifier = DwarfismModifierItem.new()
-	body.items.give_modifiers(dai_modifier)
+	var dwarfism_modifier = DwarfismModifierItem.new(body)
+	body.items.give_modifiers(dwarfism_modifier)
 	destroy_on_pickup()

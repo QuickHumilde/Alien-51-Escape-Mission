@@ -7,7 +7,7 @@ func _ready():
 	id = 23
 	name_key = "item_massive_rage_name"
 	desc_key = "item_massive_rage_desc"
-	item_texture = "res://assets/sprites/MassiveRage.png"
+	item_texture = "res://assets/sprites/items/MassiveRage.png"
 	super._ready()
 
 func give_changes(body: Character):

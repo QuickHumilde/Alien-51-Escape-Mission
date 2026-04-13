@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://c3jejed60p32"]
 
-[ext_resource type="Texture2D" uid="uid://doeg51hs3bkwh" path="res://assets/sprites/GarcosBucket.png" id="1_n2of5"]
+[ext_resource type="Texture2D" uid="uid://doeg51hs3bkwh" path="res://assets/sprites/decorations/GarcosBucket.png" id="1_n2of5"]
 [ext_resource type="Script" uid="uid://cd0h5cmk3ti7m" path="res://scenes/world/garcos_bucket.gd" id="1_yyxxr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1vul6"]

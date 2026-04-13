@@ -1,8 +1,8 @@
 [gd_scene load_steps=26 format=3 uid="uid://doywx78bcdk8u"]
 
 [ext_resource type="Script" uid="uid://cesl5nw0eecwg" path="res://scenes/enemies/Ghosty/ghosty.gd" id="1_iptfg"]
-[ext_resource type="Texture2D" uid="uid://dkyt6h84cc0yf" path="res://assets/sprites/enemies/Ghost.png" id="2_iptfg"]
-[ext_resource type="Texture2D" uid="uid://d20486v8t5vnp" path="res://assets/sprites/GhostyDying.png" id="3_tqu0y"]
+[ext_resource type="Texture2D" uid="uid://dkyt6h84cc0yf" path="res://assets/sprites/enemies/ghosty/Ghost.png" id="2_iptfg"]
+[ext_resource type="Texture2D" uid="uid://d20486v8t5vnp" path="res://assets/sprites/enemies/ghosty/GhostyDying.png" id="3_tqu0y"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vxbs8"]
 atlas = ExtResource("2_iptfg")

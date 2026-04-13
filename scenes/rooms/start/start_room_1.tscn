@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=4 uid="uid://dq1g6exitw215"]
+[gd_scene load_steps=4 format=4 uid="uid://dq1g6exitw215"]
 
 [ext_resource type="PackedScene" uid="uid://641t0oysglvl" path="res://scenes/rooms/template/room_template.tscn" id="1_3wrg4"]
 [ext_resource type="PackedScene" uid="uid://chrgijw2gs6eb" path="res://scenes/world/lamp.tscn" id="2_1ipfx"]
+[ext_resource type="PackedScene" uid="uid://dx84hx66dk08f" path="res://scenes/items/whetstone_item.tscn" id="3_yvg0b"]
 
 [node name="StartRoom1" instance=ExtResource("1_3wrg4")]
 
@@ -24,3 +25,6 @@ rotation = 3.1415925
 
 [node name="LampTR" parent="Decorations" index="3" instance=ExtResource("2_1ipfx")]
 position = Vector2(88, -72)
+
+[node name="WhetstoneItem" parent="." index="9" instance=ExtResource("3_yvg0b")]
+position = Vector2(-40, 24)

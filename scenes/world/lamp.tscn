@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://chrgijw2gs6eb"]
 
 [ext_resource type="Texture2D" uid="uid://dhb578tgpap3a" path="res://assets/sprites/extras/LampLight.png" id="1_glyoy"]
-[ext_resource type="Texture2D" uid="uid://bibukcsq2hg25" path="res://assets/sprites/extras/Lamp.png" id="2_x8p5s"]
+[ext_resource type="Texture2D" uid="uid://bibukcsq2hg25" path="res://assets/sprites/decorations/Lamp.png" id="2_x8p5s"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dpjwg"]
 animations = [{

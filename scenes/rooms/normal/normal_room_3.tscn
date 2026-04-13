@@ -16,12 +16,14 @@ tile_map_data = PackedByteArray("AAD+/wMAAAABAAYAAAD+/wQAAAABAAYAAAAAAAQAAAAEAAA
 
 [node name="Left" parent="Doors" index="2"]
 process_mode = 4
-position = Vector2(-216, -72)
+visible = false
+position = Vector2(-344, -56)
 dir = ""
 
 [node name="Right" parent="Doors" index="3"]
 process_mode = 4
-position = Vector2(-184, -72)
+visible = false
+position = Vector2(-312, -56)
 dir = ""
 
 [node name="RewardSpawner" parent="." index="5"]

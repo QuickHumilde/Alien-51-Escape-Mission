@@ -80,3 +80,6 @@ item_massive_rage_desc,"• Das y recibes el doble de daño.","• You deal and 
 
 item_interior_peace_name,"Paz Interior","Interior Peace"
 item_interior_peace_desc,"Descripción del objeto predeterminado.","Default item description."
+
+item_whetstone_name,"Piedra de afilar","Whetstone"
+item_whetstone_desc,"• Aumenta el daño del arma que tengas equipada al acabar una habitación.","• Increases the damage of the weapon you have equipped at the end of a room."

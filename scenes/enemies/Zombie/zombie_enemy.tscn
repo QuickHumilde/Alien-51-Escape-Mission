@@ -1,12 +1,12 @@
 [gd_scene load_steps=29 format=3 uid="uid://dceenhddbl8gi"]
 
 [ext_resource type="PackedScene" uid="uid://byym4irhw1v80" path="res://scenes/templates/enemy/enemy_template.tscn" id="1_of77h"]
-[ext_resource type="Texture2D" uid="uid://bhtquw02cbm4b" path="res://assets/sprites/Zombie.png" id="2_anf3d"]
+[ext_resource type="Texture2D" uid="uid://bhtquw02cbm4b" path="res://assets/sprites/enemies/zombie/Zombie.png" id="2_anf3d"]
 [ext_resource type="Script" uid="uid://cltjldacks4n" path="res://scenes/enemies/Zombie/zombie_enemy.gd" id="2_v2kvp"]
-[ext_resource type="Texture2D" uid="uid://cf5fix2gkpy7k" path="res://assets/sprites/ZombieWalkingBack.png" id="3_vfsox"]
-[ext_resource type="Texture2D" uid="uid://cokji25of1axw" path="res://assets/sprites/ZombieWalkingFront.png" id="4_3h510"]
-[ext_resource type="Texture2D" uid="uid://bg0tyse7pfcwu" path="res://assets/sprites/ZombieWalkingLeft.png" id="5_mgsqh"]
-[ext_resource type="Texture2D" uid="uid://buii2aayeuxmd" path="res://assets/sprites/ZombieWalkingRight.png" id="6_q8xxc"]
+[ext_resource type="Texture2D" uid="uid://cf5fix2gkpy7k" path="res://assets/sprites/enemies/zombie/ZombieWalkingBack.png" id="3_vfsox"]
+[ext_resource type="Texture2D" uid="uid://cokji25of1axw" path="res://assets/sprites/enemies/zombie/ZombieWalkingFront.png" id="4_3h510"]
+[ext_resource type="Texture2D" uid="uid://bg0tyse7pfcwu" path="res://assets/sprites/enemies/zombie/ZombieWalkingLeft.png" id="5_mgsqh"]
+[ext_resource type="Texture2D" uid="uid://buii2aayeuxmd" path="res://assets/sprites/enemies/zombie/ZombieWalkingRight.png" id="6_q8xxc"]
 [ext_resource type="Texture2D" uid="uid://wyftcn2xgr0m" path="res://assets/sprites/extras/Shadow.png" id="8_bqhy5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xyld3"]
@@ -177,7 +177,9 @@ scale = Vector2(0.92736816, 0.5022942)
 texture = ExtResource("8_bqhy5")
 
 [node name="Hitbox" parent="." index="1"]
+position = Vector2(0, 3)
 shape = SubResource("CircleShape2D_4jwl6")
 
 [node name="CollisionShape2D" parent="Detector" index="0"]
+position = Vector2(0, 3)
 shape = SubResource("CircleShape2D_518f0")

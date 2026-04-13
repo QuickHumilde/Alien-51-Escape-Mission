@@ -115,12 +115,16 @@ texture = ExtResource("1_tric1")
 3:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_0lu74")
 4:0/0 = 0
 4:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_0lu74")
+4:0/0/custom_data_0 = true
 5:0/0 = 0
 5:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_0lu74")
+5:0/0/custom_data_0 = true
 6:0/0 = 0
 6:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_0lu74")
+6:0/0/custom_data_0 = true
 6:1/0 = 0
 6:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_0lu74")
+6:1/0/custom_data_0 = true
 1:5/0 = 0
 1:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 6:5/next_alternative_id = 2
@@ -136,6 +140,7 @@ texture = ExtResource("1_tric1")
 3:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 7:0/0 = 0
 7:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_0lu74")
+7:0/0/custom_data_0 = true
 3:6/0 = 0
 3:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, -8, -8, -8, 4, 8, 4)
 1:7/0 = 0
@@ -144,6 +149,7 @@ texture = ExtResource("1_tric1")
 6:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -10.285714, 8, 8, -8, 8, -8, -10.285714)
 7:1/0 = 0
 7:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_5lslb")
+7:1/0/custom_data_0 = true
 7:5/0 = 0
 7:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
 7:6/0 = 0
@@ -201,8 +207,10 @@ texture = ExtResource("1_tric1")
 8:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 8:0/0 = 0
 8:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_a2tj1")
+8:0/0/custom_data_0 = true
 8:1/0 = 0
 8:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_fuxfh")
+8:1/0/custom_data_0 = true
 2:3/next_alternative_id = 2
 2:3/0 = 0
 2:3/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_y6uxd")
@@ -248,17 +256,23 @@ texture = ExtResource("1_tric1")
 1:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_kv71q")
 2:1/0 = 0
 2:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_mwidr")
+2:1/0/custom_data_0 = true
 1:1/0 = 0
 1:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_tcgfj")
+1:1/0/custom_data_0 = true
 3:1/0 = 0
 3:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_clwv3")
+3:1/0/custom_data_0 = true
 0:1/0 = 0
 0:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_pk6yb")
+0:1/0/custom_data_0 = true
 
 [sub_resource type="TileSet" id="TileSet_kv71q"]
 occlusion_layer_0/light_mask = 1
 physics_layer_0/collision_layer = 1
 navigation_layer_0/layers = 1
+custom_data_layer_0/name = "can_decorate"
+custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_npk0r")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kv71q"]
@@ -391,8 +405,8 @@ position = Vector2(130, 8)
 position = Vector2(40, 8)
 script = ExtResource("5_kv71q")
 
+[node name="Decorations" type="Node2D" parent="."]
+
 [node name="Obstacles" type="Node2D" parent="."]
 
 [node name="Pickups" type="Node2D" parent="."]
-
-[node name="Decorations" type="Node2D" parent="."]

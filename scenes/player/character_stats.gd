@@ -46,6 +46,7 @@ func init(cSprite: AnimatedSprite2D, audio:CharacterAudio, animation: CharacterA
 
 func _ready() -> void:
 	Signals.health_changed.emit(health, max_health, extra_health, revives)
+	Signals.stats_changed.connect(_invalidate_stats)
 
 func recalc_stats():
 	cached_speed = speed
@@ -215,3 +216,13 @@ func _apply_size_visual(final_size: float):
 
 func get_revives():
 	return player_inventory.get_revives()
+
+func decrease_max_health(quantity: float):
+	if max_health - quantity >= 1:
+		max_health -= quantity
+	else:
+		max_health=1
+		
+	if health > max_health:
+		health=max_health
+	_emit_health_changed_signal()

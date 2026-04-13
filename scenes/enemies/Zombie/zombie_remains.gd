@@ -69,9 +69,9 @@ func no_mori_jisjisjis():
 			queue_free()
 			return
 
-		brains.global_position = sprite.global_position
 		enemies_container.add_child(brains)
-		queue_free()
+		brains.global_position = sprite.global_position
+	queue_free()
 
 func do_damage(_body) -> void:
 	pass

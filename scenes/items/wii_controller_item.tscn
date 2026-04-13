@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dlnik63yjjvi4" path="res://scenes/templates/item/item_template.tscn" id="1_b673n"]
 [ext_resource type="Script" uid="uid://dy67s7f75wd32" path="res://scenes/items/wii_controller_item.gd" id="2_2lnvb"]
-[ext_resource type="Texture2D" uid="uid://dicfpr154sqiq" path="res://assets/sprites/WiiController.png" id="3_5owgi"]
+[ext_resource type="Texture2D" uid="uid://dicfpr154sqiq" path="res://assets/sprites/items/WiiController.png" id="3_5owgi"]
 
 [node name="WiiControllerItem" instance=ExtResource("1_b673n")]
 script = ExtResource("2_2lnvb")

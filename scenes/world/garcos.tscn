@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://dm0wyd8k13ri1"]
 
-[ext_resource type="Texture2D" uid="uid://cafbirov3sain" path="res://assets/sprites/Garcos_1.png" id="1_avre8"]
+[ext_resource type="Texture2D" uid="uid://cafbirov3sain" path="res://assets/sprites/decorations/Garcos_1.png" id="1_avre8"]
 [ext_resource type="Texture2D" uid="uid://wyftcn2xgr0m" path="res://assets/sprites/extras/Shadow.png" id="2_7n2ot"]
-[ext_resource type="Texture2D" uid="uid://ccm0sii4l6wxe" path="res://assets/sprites/GarcosCarpet.png" id="3_0j4ra"]
+[ext_resource type="Texture2D" uid="uid://ccm0sii4l6wxe" path="res://assets/sprites/decorations/GarcosCarpet.png" id="3_0j4ra"]
 
 [sub_resource type="GDScript" id="GDScript_7n2ot"]
 resource_name = "GarcosScript"
@@ -11,8 +11,8 @@ script/source = "extends StaticBody2D
 @onready var sprite: Sprite2D = $Visual/Sprite2D
 
 var textures: Array = [
-	preload(\"res://assets/sprites/Garcos_1.png\"),
-	preload(\"res://assets/sprites/Garcos_2.png\")
+	preload(\"res://assets/sprites/decorations/Garcos_1.png\"),
+	preload(\"res://assets/sprites/decorations/Garcos_2.png\"),
 ]
 
 func _ready():

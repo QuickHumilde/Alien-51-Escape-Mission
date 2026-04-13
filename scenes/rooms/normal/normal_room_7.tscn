@@ -17,6 +17,14 @@ tile_map_data = PackedByteArray("AAD+/wMAAAAEAAcAAAD+/wQAAAAEAAgAAAAAAAQAAAAEAAg
 [node name="Foreground" parent="." index="1"]
 tile_map_data = PackedByteArray()
 
+[node name="Up" parent="Doors" index="0"]
+visible = false
+position = Vector2(616, 244)
+
+[node name="Down" parent="Doors" index="1"]
+visible = false
+position = Vector2(616, 268)
+
 [node name="RewardSpawner" parent="." index="5"]
 activable = false
 

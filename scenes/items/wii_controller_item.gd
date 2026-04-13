@@ -7,7 +7,7 @@ func _ready():
 	price = 5
 	name_key = "item_console_controller_name"
 	desc_key = "item_console_controller_desc"
-	item_texture = "res://assets/sprites/WiiController.png"
+	item_texture = "res://assets/sprites/items/WiiController.png"
 	super._ready()
 	
 func give_changes(_body: Character):

@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://dx84hx66dk08f"]
+
+[ext_resource type="PackedScene" uid="uid://dlnik63yjjvi4" path="res://scenes/templates/item/item_template.tscn" id="1_rnsrw"]
+[ext_resource type="Texture2D" uid="uid://byvoi67kgtdqn" path="res://assets/sprites/items/whetstone.png" id="2_3byaa"]
+[ext_resource type="Script" uid="uid://cksebgmjgy075" path="res://scenes/items/whetstone_item.gd" id="2_ymr7i"]
+
+[node name="WhetstoneItem" instance=ExtResource("1_rnsrw")]
+script = ExtResource("2_ymr7i")
+
+[node name="Sprite2D" type="Sprite2D" parent="Visual" index="1"]
+texture = ExtResource("2_3byaa")

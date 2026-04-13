@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dlnik63yjjvi4" path="res://scenes/templates/item/item_template.tscn" id="1_0j70i"]
 [ext_resource type="Script" uid="uid://b42tavd8neojr" path="res://scenes/items/weapons/black_knife_weapon_item.gd" id="2_lrdn8"]
-[ext_resource type="Texture2D" uid="uid://0uljgpald6jw" path="res://assets/sprites/PreBlackKnife.png" id="2_segrq"]
+[ext_resource type="Texture2D" uid="uid://0uljgpald6jw" path="res://assets/sprites/items/PreBlackKnife.png" id="2_segrq"]
 
 [node name="BlackKnifeWeaponItem" instance=ExtResource("1_0j70i")]
 script = ExtResource("2_lrdn8")

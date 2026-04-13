@@ -1,9 +1,9 @@
 [gd_scene load_steps=61 format=3 uid="uid://d2sgnq744wr7"]
 
 [ext_resource type="PackedScene" uid="uid://byym4irhw1v80" path="res://scenes/templates/enemy/enemy_template.tscn" id="1_kaw0m"]
-[ext_resource type="Texture2D" uid="uid://w4dbnyewb0jq" path="res://assets/sprites/ZombieRemains.png" id="1_no6vc"]
+[ext_resource type="Texture2D" uid="uid://w4dbnyewb0jq" path="res://assets/sprites/enemies/zombie/ZombieRemains.png" id="1_no6vc"]
 [ext_resource type="Script" uid="uid://uotnnb588k0f" path="res://scenes/enemies/Zombie/zombie_remains.gd" id="2_j8iny"]
-[ext_resource type="Texture2D" uid="uid://b4pwed8lbtiq6" path="res://assets/sprites/ZombieRegenerating.png" id="4_n4phl"]
+[ext_resource type="Texture2D" uid="uid://b4pwed8lbtiq6" path="res://assets/sprites/enemies/zombie/ZombieRegenerating.png" id="4_n4phl"]
 [ext_resource type="Texture2D" uid="uid://wyftcn2xgr0m" path="res://assets/sprites/extras/Shadow.png" id="5_7kcjk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n4phl"]
