@@ -4,13 +4,14 @@ extends TileMapLayer
 @export var decoration_sprites: Array[Texture2D]
 @export var max_decorations_per_room: int = 3
 @onready var decorations := $"../Decorations"
+@onready var invisible_obstacle_scene: PackedScene = preload("res://scenes/extras/invisible_obstacle.tscn")
 var decoration_variants: Dictionary
 
 func _ready():
 	fill_decoration_array()
 	fill_dictionary()
+	place_invisible_obstacles()
 	decorate_random_tiles()
-
 
 func fill_decoration_array():
 	decoration_sprites = [
@@ -18,7 +19,6 @@ func fill_decoration_array():
 		load("res://assets/sprites/decorations/FootprintDecoration1.png"),
 		load("res://assets/sprites/decorations/SkullDecoration1.png")
 	]
-
 
 func fill_dictionary():
 	decoration_variants = {
@@ -39,8 +39,6 @@ func fill_dictionary():
 		}
 	}
 
-
-
 func decorate_random_tiles():
 	var valid_tiles: Array[Vector2i] = []
 
@@ -56,15 +54,19 @@ func decorate_random_tiles():
 		var coords := valid_tiles[i]
 		decorate_tile(coords)
 
-
 func tile_allows_decoration(coords: Vector2i) -> bool:
 	var tile := get_cell_tile_data(coords)
 	if tile == null:
 		return false
 
-	# Custom Data del TileSet
 	return tile.get_custom_data("can_decorate") == true
 
+func tile_put_obstacle(coords: Vector2i) -> bool:
+	var tile := get_cell_tile_data(coords)
+	if tile == null:
+		return false
+
+	return tile.get_custom_data("put_obstacle") == true
 
 func _use_tile_data_runtime_update(coords: Vector2i) -> bool:
 	for obstacle in obstacles.get_children():
@@ -73,13 +75,11 @@ func _use_tile_data_runtime_update(coords: Vector2i) -> bool:
 			return true
 	return false
 
-
 func _tile_data_runtime_update(coords: Vector2i, tile_data: TileData) -> void:
 	for obstacle in obstacles.get_children():
 		var cell := local_to_map(obstacle.global_position)
 		if cell == coords:
 			tile_data.set_navigation_polygon(0, null)
-
 
 func has_obstacle(coords: Vector2i) -> bool:
 	for obstacle in obstacles.get_children():
@@ -87,7 +87,6 @@ func has_obstacle(coords: Vector2i) -> bool:
 		if cell == coords:
 			return true
 	return false
-
 
 func decorate_tile(coords: Vector2i) -> void:
 	var sprite: Sprite2D = Sprite2D.new()
@@ -109,6 +108,14 @@ func decorate_tile(coords: Vector2i) -> void:
 		sprite.scale = Vector2(s, s)
 
 	decorations.add_child(sprite)
+
+func place_invisible_obstacles():
+	for coords in get_used_cells():
+		if tile_put_obstacle(coords):
+			var obs = invisible_obstacle_scene.instantiate()
+			obs.position = map_to_local(coords)
+			obstacles.add_child(obs)
+
 
 func rand_range_from_dict(data):
 	return randf_range(data["min"], data["max"])

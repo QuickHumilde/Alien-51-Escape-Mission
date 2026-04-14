@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://7rhvgxjf42md"]
+
+[ext_resource type="Texture2D" uid="uid://wyftcn2xgr0m" path="res://assets/sprites/extras/Shadow.png" id="1_qigvs"]
+
+[node name="Shadow" type="Sprite2D"]
+self_modulate = Color(0, 0, 0, 0.25490198)
+show_behind_parent = true
+z_index = -1
+z_as_relative = false
+scale = Vector2(0.92736816, 0.5022942)
+texture = ExtResource("1_qigvs")

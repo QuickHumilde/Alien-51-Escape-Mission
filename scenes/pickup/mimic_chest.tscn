@@ -1,0 +1,56 @@
+[gd_scene load_steps=10 format=3 uid="uid://btakcp8d7eo58"]
+
+[ext_resource type="PackedScene" uid="uid://k4ys0u38ybki" path="res://scenes/pickup/pickup.tscn" id="1_ewgfi"]
+[ext_resource type="Script" uid="uid://dp0uanbmmlm0a" path="res://scenes/pickup/mimic_chest.gd" id="2_mvsef"]
+[ext_resource type="Texture2D" uid="uid://dr035bevn78nh" path="res://assets/sprites/extras/MimicChest.png" id="2_wa1tq"]
+[ext_resource type="PackedScene" uid="uid://7rhvgxjf42md" path="res://scenes/extras/shadow.tscn" id="4_mvsef"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvsef"]
+atlas = ExtResource("2_wa1tq")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cshq5"]
+atlas = ExtResource("2_wa1tq")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_efcj3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mvsef")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cshq5")
+}],
+"loop": false,
+"name": &"open",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ewgfi"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wa1tq"]
+radius = 7.071068
+
+[node name="MimicChest" instance=ExtResource("1_ewgfi")]
+collision_mask = 109
+script = ExtResource("2_mvsef")
+activable = true
+coin_percentage = 60.0
+health_percentage = 30.0
+enemy1_percentage = 10.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visual" index="0"]
+position = Vector2(0, -3.3333333)
+sprite_frames = SubResource("SpriteFrames_efcj3")
+animation = &"open"
+
+[node name="Shadow" parent="Visual" index="1" instance=ExtResource("4_mvsef")]
+position = Vector2(0, 3.333339)
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+shape = SubResource("CircleShape2D_ewgfi")
+
+[node name="Hitbox" parent="." index="2"]
+shape = SubResource("CircleShape2D_wa1tq")

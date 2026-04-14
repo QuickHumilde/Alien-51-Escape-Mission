@@ -2,11 +2,13 @@ extends Node2D
 
 @export var activable: bool = true
 
-@export var coin_percentage: float = 70.0
+@export var coin_percentage: float = 65.0
 @export var health_percentage: float = 30.0
+@export var mimic_chest_percentage: float = 5.0
 
 var coin_scene: PackedScene = preload("res://scenes/pickup/coin.tscn")
 var health_scene: PackedScene = preload("res://scenes/pickup/health.tscn")
+var mimic_chest_scene: PackedScene = preload("res://scenes/pickup/mimic_chest.tscn")
 var spawned: bool = false
 
 func _ready() -> void:

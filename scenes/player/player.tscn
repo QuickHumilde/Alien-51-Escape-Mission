@@ -17,9 +17,9 @@
 [ext_resource type="Script" uid="uid://b2o031434leip" path="res://scenes/player/character_animation.gd" id="9_42irl"]
 [ext_resource type="Texture2D" uid="uid://c88vhmg4n716n" path="res://assets/sprites/player/VesselPlayer.png" id="9_ioxgp"]
 [ext_resource type="Script" uid="uid://b5vvjo7uwvnxw" path="res://scenes/player/character_combat.gd" id="11_djydg"]
-[ext_resource type="Texture2D" uid="uid://wyftcn2xgr0m" path="res://assets/sprites/extras/Shadow.png" id="12_8ydkj"]
 [ext_resource type="Script" uid="uid://cpilx8lbp3x7t" path="res://scenes/player/character_item_manager.gd" id="12_bsn6e"]
 [ext_resource type="Script" uid="uid://cm8dyqwgpnapc" path="res://scenes/player/character_audio.gd" id="13_blysn"]
+[ext_resource type="PackedScene" uid="uid://7rhvgxjf42md" path="res://scenes/extras/shadow.tscn" id="13_cnsyf"]
 [ext_resource type="Script" uid="uid://b56hgobt7k6xa" path="res://scenes/player/character_abilities.gd" id="19_lgqa7"]
 [ext_resource type="PackedScene" uid="uid://ddmkkd4lvgb5g" path="res://scenes/ui/pause_menu.tscn" id="21_yj68g"]
 [ext_resource type="PackedScene" uid="uid://byrp3wtch5b76" path="res://scenes/ui/death_menu.tscn" id="22_ioxgp"]
@@ -809,14 +809,8 @@ z_index = 2
 sprite_frames = SubResource("SpriteFrames_xuses")
 animation = &"idle_down"
 
-[node name="Shadow" type="Sprite2D" parent="Visual"]
-self_modulate = Color(0, 0, 0, 0.25490198)
-show_behind_parent = true
-z_index = -1
-z_as_relative = false
+[node name="Shadow" parent="Visual" instance=ExtResource("13_cnsyf")]
 position = Vector2(0, 6.0183535)
-scale = Vector2(0.92736816, 0.5022942)
-texture = ExtResource("12_8ydkj")
 
 [node name="Hitbox" type="CollisionShape2D" parent="." groups=["player"]]
 light_mask = 4
