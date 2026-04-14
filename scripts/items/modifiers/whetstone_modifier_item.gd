@@ -2,7 +2,7 @@ extends ItemModifier
 class_name WhetstoneModifierItem
 
 var player: Character
-var increase_per_room: float = 0.15
+var increase_per_room: float = 0.05
 var damage_increase: float = 0
 
 func _init(body: Character) -> void:

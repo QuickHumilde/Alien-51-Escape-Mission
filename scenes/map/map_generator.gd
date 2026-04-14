@@ -47,8 +47,7 @@ var current_room_pos: Vector2 = Vector2.ZERO
 var current_room: Node2D = null
 var transitioning: bool = false
 
-# Cache to avoid instantiating rooms repeatedly just to read door caps.
-var _door_caps_cache: Dictionary = {} # scene_path -> Dictionary
+var _door_caps_cache: Dictionary = {}
 
 func _ready() -> void:
 	GameManager.generate_seed()
@@ -248,7 +247,30 @@ func shuffle_seeded(array: Array) -> void:
 		array[j] = temp
 
 func create_room(pos: Vector2, type: String, doors: Dictionary, scene_path: String) -> Dictionary:
-	return {"pos": pos, "type": type, "doors": doors, "scene_path": scene_path}
+	return {
+		"pos": pos,
+		"type": type,
+		"doors": doors,
+		"scene_path": scene_path,
+		"cleared": false,
+		"had_enemies": false
+	}
+
+func _room_key() -> String:
+	return pos_to_key(current_room_pos)
+
+func _room_data() -> Dictionary:
+	var key := _room_key()
+	if not map.has(key):
+		return {}
+	return map[key] as Dictionary
+
+func _set_room_flag(flag: String, value: bool) -> void:
+	var key := _room_key()
+	if not map.has(key):
+		return
+	(map[key] as Dictionary)[flag] = value
+
 
 func init_doors(value: bool) -> Dictionary:
 	return {"up": value, "down": value, "left": value, "right": value}
@@ -272,11 +294,26 @@ func opposite_dir(dir: String) -> String:
 		"right": return "left"
 	return ""
 
+func _get_room_data_at(pos: Vector2) -> Dictionary:
+	var key := pos_to_key(pos)
+	if not map.has(key):
+		return {}
+	return map[key] as Dictionary
+
+func _is_room_cleared(pos: Vector2) -> bool:
+	var data := _get_room_data_at(pos)
+	return bool(data.get("cleared", false))
+
+func _set_room_cleared(pos: Vector2, value: bool) -> void:
+	var key := pos_to_key(pos)
+	if not map.has(key):
+		return
+	(map[key] as Dictionary)["cleared"] = value
+
 func manhattan(a: Vector2, b: Vector2) -> int:
 	return int(abs(a.x - b.x) + abs(a.y - b.y))
 
 func get_scene_door_caps(scene: PackedScene) -> Dictionary:
-	# Cached by resource_path
 	if scene != null and not scene.resource_path.is_empty():
 		if _door_caps_cache.has(scene.resource_path):
 			return _door_caps_cache[scene.resource_path] as Dictionary
@@ -373,7 +410,6 @@ func _create_start_item_branch(start_pos: Vector2) -> void:
 	var start_caps := get_scene_door_caps(start_scene)
 
 	for d in dirs:
-		# IMPORTANT: base (start) must allow exit in that direction
 		if not bool(start_caps.get(d, true)):
 			continue
 
@@ -404,7 +440,6 @@ func _create_main_normals(_start_pos: Vector2, target_normals: int) -> void:
 		shuffle_seeded(dirs)
 
 		for d in dirs:
-			# IMPORTANT: base must support having a door in that direction
 			if not _room_allows_exit(base_data, d):
 				continue
 
@@ -466,7 +501,6 @@ func _create_dead_end_branch(room_type: String, preferred_base: Vector2, max_att
 		shuffle_seeded(dirs)
 
 		for d in dirs:
-			# IMPORTANT: base must support having a door in that direction
 			if not _room_allows_exit(base_data, d):
 				continue
 
@@ -498,23 +532,59 @@ func _cleanup_doors_against_missing_neighbors() -> void:
 				doors[d] = false
 
 func _watch_room_cleared(room: Node) -> void:
-	var enemies := room.get_node_or_null("Enemies")
-	if enemies == null:
-		Signals.room_cleared.emit()
+	var data := _room_data()
+	if data.is_empty():
+		return
+	if bool(data.get("cleared", false)):
 		return
 
-	_emit_room_cleared_if_empty(enemies)
+	var enemies := room.get_node_or_null("Enemies")
+	if enemies == null:
+		return
 
+	var found_enemy := false
 	for e in enemies.get_children():
 		if e.is_in_group("enemy"):
+			found_enemy = true
 			var cb := _on_enemy_exited.bind(room)
 			if not e.tree_exited.is_connected(cb):
 				e.tree_exited.connect(cb)
 
+	if not found_enemy:
+		return
+
+	_set_room_flag("had_enemies", true)
+
+func _is_enemies_empty(enemies: Node) -> bool:
+	for e in enemies.get_children():
+		if e.is_in_group("enemy"):
+			return false
+	return true
+
 func _on_enemy_exited(room: Node) -> void:
 	if room != current_room:
 		return
-	_watch_room_cleared(current_room)
+
+	var key := _room_key()
+	if not map.has(key):
+		return
+	var data := map[key] as Dictionary
+
+	if bool(data.get("cleared", false)):
+		return
+	if not bool(data.get("had_enemies", false)):
+		return
+
+	var enemies := room.get_node_or_null("Enemies")
+	if enemies == null:
+		return
+
+	for e in enemies.get_children():
+		if e.is_in_group("enemy"):
+			return
+
+	data["cleared"] = true
+	Signals.room_cleared.emit()
 
 func _emit_room_cleared_if_empty(enemies: Node) -> void:
 	for e in enemies.get_children():

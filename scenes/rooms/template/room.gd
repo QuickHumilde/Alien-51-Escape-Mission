@@ -5,6 +5,7 @@ signal door_entered(dir: String)
 @export var door_caps := { "up": true, "down": true, "left": true, "right": true }
 @export var lock_doors_until_clear: bool = true
 @export var enemies_node_path: NodePath = NodePath("Enemies")
+@export var cleared: bool = false
 
 var doors: Node = null
 var spawns: Node = null
