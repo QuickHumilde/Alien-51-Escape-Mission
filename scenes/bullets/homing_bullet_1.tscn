@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bagboy5nbxnu8"]
+
+[ext_resource type="Texture2D" uid="uid://dyu10c0wutn7h" path="res://assets/sprites/bullet/PistolBullet.png" id="1_exoxf"]
+[ext_resource type="Script" uid="uid://ccvi5lkfw30bt" path="res://scripts/template/bullet/homing_bullet_1.gd" id="1_leeap"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_leeap"]
+size = Vector2(4, 4)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_exoxf"]
+radius = 70.0
+
+[node name="HomingBullet1" type="Area2D"]
+collision_layer = 4
+collision_mask = 47
+script = ExtResource("1_leeap")
+
+[node name="Visual" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visual"]
+modulate = Color(0.8694309, 0.49116397, 1, 1)
+texture = ExtResource("1_exoxf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_leeap")
+
+[node name="HomingArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 47
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HomingArea"]
+shape = SubResource("CircleShape2D_exoxf")

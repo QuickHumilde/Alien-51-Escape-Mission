@@ -2,6 +2,7 @@ extends Weapon
 
 @onready var bullet_scene = preload("res://scenes/bullets/player_bullet.tscn")
 @onready var cooldown = $ShootCooldown
+@onready var gunfire: CPUParticles2D = $Gunfire
 
 func _ready() -> void:
 	id=2
@@ -30,6 +31,8 @@ func shoot(player_damage: float, player_lifetime: float):
 	
 	give_bullet_values(bullet)
 
+	gunfire.play_one_shot()
+	
 	get_tree().current_scene.add_child(bullet)
 	
 	var pitch := randf_range(0.9, 1.5)
@@ -42,5 +45,5 @@ func shoot(player_damage: float, player_lifetime: float):
 	cooldown_timer.start()
 
 func give_bullet_values(bullet: Bullet):
-	var forward := Vector2.LEFT.rotated(global_rotation)
+	var forward = Vector2.RIGHT.rotated(global_rotation)
 	bullet.init(forward, global_position, damage+extra_damage, knockback_force, lifetime+extra_lifetime, speed, "player")

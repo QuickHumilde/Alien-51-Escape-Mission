@@ -70,7 +70,7 @@ func shoot_player():
 	can_shoot = true
 
 func give_bullet_values(bullet: Bullet):
-	var forward := (player.global_position - global_position).normalized() * -1
+	var forward := (player.global_position - global_position).normalized() * 1
 	bullet.init(forward, global_position, damage, 75.0, lifetime, 100.0, "enemy")
 
 func _update_animation():

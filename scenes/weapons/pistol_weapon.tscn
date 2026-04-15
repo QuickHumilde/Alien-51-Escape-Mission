@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfiycvbsqwwul"]
+[gd_scene load_steps=5 format=3 uid="uid://bfiycvbsqwwul"]
 
 [ext_resource type="Script" uid="uid://bqo51dxg4vaxu" path="res://scenes/weapons/pistol_gun.gd" id="1_0le7k"]
 [ext_resource type="Texture2D" uid="uid://b2iwo7ebnkmdj" path="res://assets/sprites/weapons/PistolGun.png" id="2_ih7fq"]
+[ext_resource type="PackedScene" uid="uid://d2ju430s6mqpe" path="res://scenes/extras/gunfire.tscn" id="3_j17aw"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0le7k"]
 animations = [{
@@ -27,3 +28,7 @@ wait_time = 0.25
 one_shot = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="Gunfire" parent="." instance=ExtResource("3_j17aw")]
+position = Vector2(5, -2)
+light_scale = Vector2(1, 0.9)

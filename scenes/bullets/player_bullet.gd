@@ -1,6 +1,6 @@
 extends Bullet
 
-func init(new_forward, new_position, new_damage, new_knockback_force, new_lifetime, new_speed, new_bullet_owner) -> void:
+func init(new_forward, new_position, new_damage, new_knockback_force, new_lifetime, new_speed, new_bullet_owner, _extras: Dictionary = {}) -> void:
 	self.global_position = new_position
 	self.bullet_direction = new_forward
 	self.damage = new_damage

@@ -108,7 +108,7 @@ func equip_weapon(id: int):
 	current_weapon = weapon_instances[id]
 	current_weapon.visible = true
 	current_weapon.set_process(true)
-	Signals.weapon_changed.emit(id)
+	Signals.weapon_changed.emit()
 
 func remove_weapon(id: int):
 	var current_id = weapon_order[current_weapon_index]

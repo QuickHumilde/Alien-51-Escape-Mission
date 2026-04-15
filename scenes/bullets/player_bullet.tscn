@@ -34,6 +34,7 @@ shape = SubResource("RectangleShape2D_v3byq")
 physics_interpolation_mode = 1
 
 [node name="Area2D" type="Area2D" parent="." groups=["bullet"]]
+collision_mask = 12
 monitoring = false
 script = SubResource("GDScript_48eg6")
 

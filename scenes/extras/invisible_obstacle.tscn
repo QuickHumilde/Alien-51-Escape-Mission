@@ -1,7 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://c04a1jekjhsjw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wkott"]
-size = Vector2(16, 16)
+size = Vector2(14, 14)
 
 [node name="InvisibleObstacle" type="StaticBody2D"]
 collision_layer = 32

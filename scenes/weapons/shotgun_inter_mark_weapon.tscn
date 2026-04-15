@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://qnbuxkg52vws"]
+[gd_scene load_steps=6 format=3 uid="uid://qnbuxkg52vws"]
 
 [ext_resource type="Script" uid="uid://cdcvnv42lmo5e" path="res://scenes/weapons/shotgun_inter_mark_weapon.gd" id="1_7eng5"]
 [ext_resource type="Texture2D" uid="uid://de7o2wis1qq8s" path="res://assets/sprites/weapons/ShotgunInterrogationMark.png" id="2_6dv4u"]
+[ext_resource type="PackedScene" uid="uid://d2ju430s6mqpe" path="res://scenes/extras/gunfire.tscn" id="3_6dv4u"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ykpwj"]
 atlas = ExtResource("2_6dv4u")
@@ -34,3 +35,10 @@ one_shot = true
 
 [node name="Barrel" type="Node2D" parent="."]
 position = Vector2(-28.5, -0.5)
+
+[node name="Gunfire" parent="." instance=ExtResource("3_6dv4u")]
+position = Vector2(-30, -0.5)
+lifetime = 0.25
+max_scale = 1.5
+light_energy = 3.0
+light_scale = Vector2(1.05, 1)

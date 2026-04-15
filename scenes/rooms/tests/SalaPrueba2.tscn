@@ -52,7 +52,7 @@ position = Vector2(404, -40)
 position = Vector2(476, -120)
 
 [node name="ZombieEnemy" parent="Enemies" index="0" instance=ExtResource("32_nng34")]
-position = Vector2(-72, -168)
+position = Vector2(-72, -161)
 
 [node name="ExplodingKittensWeaponItem" parent="Obstacles" index="0" instance=ExtResource("2_esqot")]
 position = Vector2(264, 56)
@@ -70,86 +70,77 @@ position = Vector2(65, 6)
 [node name="ParryAbilityItem" parent="Obstacles" index="4" instance=ExtResource("6_swimx")]
 position = Vector2(-8, 56)
 
-[node name="DashAbilityItem" parent="Obstacles" index="5" instance=ExtResource("7_bkrbk")]
-position = Vector2(184, -56)
-
-[node name="RevivemintItem" parent="Obstacles" index="6" instance=ExtResource("8_8ca48")]
+[node name="RevivemintItem" parent="Obstacles" index="5" instance=ExtResource("8_8ca48")]
 position = Vector2(264, -56)
 
-[node name="BlackKnifeWeaponItem" parent="Obstacles" index="7" instance=ExtResource("9_dyjxo")]
+[node name="BlackKnifeWeaponItem" parent="Obstacles" index="6" instance=ExtResource("9_dyjxo")]
 position = Vector2(184, 56)
 
-[node name="PistolGunItem" parent="Obstacles" index="8" instance=ExtResource("10_okcs0")]
+[node name="PistolGunItem" parent="Obstacles" index="7" instance=ExtResource("10_okcs0")]
 position = Vector2(88, 56)
 
-[node name="ShotgunInterMarkWeaponItem" parent="Obstacles" index="9" instance=ExtResource("11_glgcq")]
+[node name="ShotgunInterMarkWeaponItem" parent="Obstacles" index="8" instance=ExtResource("11_glgcq")]
 position = Vector2(88, -56)
 
-[node name="Ant-ManHelmetItem" parent="Obstacles" index="10" instance=ExtResource("12_x6vjs")]
+[node name="Ant-ManHelmetItem" parent="Obstacles" index="9" instance=ExtResource("12_x6vjs")]
 position = Vector2(-8, -56)
 
-[node name="BusinessGlassesItem" parent="Obstacles" index="11" instance=ExtResource("13_u0i4w")]
+[node name="BusinessGlassesItem" parent="Obstacles" index="10" instance=ExtResource("13_u0i4w")]
 position = Vector2(-88, -56)
 
-[node name="DAIItem" parent="Obstacles" index="12" instance=ExtResource("14_oe3yd")]
+[node name="DAIItem" parent="Obstacles" index="11" instance=ExtResource("14_oe3yd")]
 position = Vector2(-168, -56)
 
-[node name="DashAbilityItem2" parent="Obstacles" index="13" instance=ExtResource("7_bkrbk")]
+[node name="DashAbilityItem2" parent="Obstacles" index="12" instance=ExtResource("7_bkrbk")]
 position = Vector2(-264, -56)
 
-[node name="Divisor3Item" parent="Obstacles" index="14" instance=ExtResource("15_4m4k5")]
+[node name="Divisor3Item" parent="Obstacles" index="13" instance=ExtResource("15_4m4k5")]
 position = Vector2(-344, -56)
 
-[node name="DwarfismItem" parent="Obstacles" index="15" instance=ExtResource("16_wgfmk")]
+[node name="DwarfismItem" parent="Obstacles" index="14" instance=ExtResource("16_wgfmk")]
 position = Vector2(-440, -56)
 
-[node name="FootballBallItem" parent="Obstacles" index="16" instance=ExtResource("17_3oki1")]
+[node name="FootballBallItem" parent="Obstacles" index="15" instance=ExtResource("17_3oki1")]
 position = Vector2(-440, 56)
 
-[node name="GoldenFruitItem" parent="Obstacles" index="17" instance=ExtResource("18_wqtyc")]
+[node name="GoldenFruitItem" parent="Obstacles" index="16" instance=ExtResource("18_wqtyc")]
 position = Vector2(-344, 56)
 
-[node name="HeavyArmorItem" parent="Obstacles" index="18" instance=ExtResource("19_rdm6m")]
+[node name="HeavyArmorItem" parent="Obstacles" index="17" instance=ExtResource("19_rdm6m")]
 position = Vector2(-264, 56)
 
-[node name="JordansItem" parent="Obstacles" index="19" instance=ExtResource("20_3r0m4")]
+[node name="JordansItem" parent="Obstacles" index="18" instance=ExtResource("20_3r0m4")]
 position = Vector2(-168, 56)
 
-[node name="MassiveRageItem" parent="Obstacles" index="20" instance=ExtResource("21_i36he")]
+[node name="MassiveRageItem" parent="Obstacles" index="19" instance=ExtResource("21_i36he")]
 position = Vector2(-88, 56)
 
-[node name="NinjaHeadbandItem" parent="Obstacles" index="21" instance=ExtResource("22_yl73k")]
+[node name="NinjaHeadbandItem" parent="Obstacles" index="20" instance=ExtResource("22_yl73k")]
 position = Vector2(264, -136)
 
-[node name="ProvisionalItem" parent="Obstacles" index="22" instance=ExtResource("23_hmums")]
+[node name="ProvisionalItem" parent="Obstacles" index="21" instance=ExtResource("23_hmums")]
 position = Vector2(264, -248)
 
-[node name="TheCrossItem" parent="Obstacles" index="23" instance=ExtResource("24_1w2c5")]
+[node name="TheCrossItem" parent="Obstacles" index="22" instance=ExtResource("24_1w2c5")]
 position = Vector2(184, -248)
 
-[node name="UFOItem" parent="Obstacles" index="24" instance=ExtResource("25_4ooyx")]
+[node name="UFOItem" parent="Obstacles" index="23" instance=ExtResource("25_4ooyx")]
 position = Vector2(88, -248)
 
-[node name="WhetstoneItem" parent="Obstacles" index="25" instance=ExtResource("26_k0f1o")]
+[node name="WhetstoneItem" parent="Obstacles" index="24" instance=ExtResource("26_k0f1o")]
 position = Vector2(-8, -248)
 
-[node name="WiiControllerItem" parent="Obstacles" index="26" instance=ExtResource("27_lmyjb")]
+[node name="WiiControllerItem" parent="Obstacles" index="25" instance=ExtResource("27_lmyjb")]
 position = Vector2(-88, -248)
 
-[node name="BlueMarkerWeaponItem" parent="Obstacles" index="27" instance=ExtResource("28_dfdki")]
+[node name="BlueMarkerWeaponItem" parent="Obstacles" index="26" instance=ExtResource("28_dfdki")]
 position = Vector2(-168, -248)
 
-[node name="ContinousLaserWeaponItem" parent="Obstacles" index="28" instance=ExtResource("29_6gohq")]
+[node name="ContinousLaserWeaponItem" parent="Obstacles" index="27" instance=ExtResource("29_6gohq")]
 position = Vector2(-280, -248)
 
-[node name="ExplodingKittensWeaponItem2" parent="Obstacles" index="29" instance=ExtResource("2_esqot")]
-position = Vector2(-360, -248)
-
-[node name="NailWeaponItem" parent="Obstacles" index="30" instance=ExtResource("30_5cbcc")]
+[node name="NailWeaponItem" parent="Obstacles" index="28" instance=ExtResource("30_5cbcc")]
 position = Vector2(-440, -248)
-
-[node name="ShotgunInterMarkWeaponItem2" parent="Obstacles" index="31" instance=ExtResource("11_glgcq")]
-position = Vector2(-440, -136)
 
 [node name="Player" parent="." index="9" instance=ExtResource("2_kxxeq")]
 position = Vector2(-21, -166)

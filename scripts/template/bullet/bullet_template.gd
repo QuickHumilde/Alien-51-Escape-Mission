@@ -18,12 +18,19 @@ func _ready():
 	
 	time_left = lifetime
 
-@abstract func init(new_forward, new_position, new_damage, new_knockback_force, new_lifetime, new_speed, new_owner) -> void
+func init(new_forward, new_position, new_damage, new_knockback_force, new_lifetime, new_speed, new_bullet_owner, _extras: Dictionary = {}) -> void:
+	self.global_position = new_position
+	self.bullet_direction = new_forward
+	self.damage = new_damage
+	self.knockback_force = new_knockback_force
+	self.lifetime = new_lifetime
+	self.speed = new_speed
+	self.bullet_owner = new_bullet_owner
 
 func _process(delta: float):
 	if get_tree().paused:
 		return
-	global_position -= bullet_direction * speed * delta
+	global_position += bullet_direction * speed * delta
 	rotation_degrees += speed_rotation * delta
 	time_left -= delta
 	if time_left <= 0.0:

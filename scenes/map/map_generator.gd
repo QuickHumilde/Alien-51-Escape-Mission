@@ -1,7 +1,9 @@
 extends Node2D
 
 @export var room_slot_size: Vector2 = Vector2(640, 384)
-@export var transition_duration: float = 0.35
+@export var transition_duration: float = 0.2
+var _enemies_container: Node = null
+var _enemies_connected: bool = false
 
 var rng: RandomNumberGenerator
 
@@ -203,6 +205,8 @@ func _transition_to(next_pos: Vector2, exit_dir: String) -> void:
 
 	current_room = next_room
 	current_room_pos = next_pos
+	_enemies_connected = false
+	_enemies_container = null
 
 	if minimap != null and minimap.has_method("set_data"):
 		minimap.call("set_data", map, current_room_pos)
@@ -532,9 +536,10 @@ func _cleanup_doors_against_missing_neighbors() -> void:
 				doors[d] = false
 
 func _watch_room_cleared(room: Node) -> void:
-	var data := _room_data()
-	if data.is_empty():
+	var key := pos_to_key(current_room_pos)
+	if not map.has(key):
 		return
+	var data := map[key] as Dictionary
 	if bool(data.get("cleared", false)):
 		return
 
@@ -542,18 +547,46 @@ func _watch_room_cleared(room: Node) -> void:
 	if enemies == null:
 		return
 
-	var found_enemy := false
-	for e in enemies.get_children():
-		if e.is_in_group("enemy"):
-			found_enemy = true
-			var cb := _on_enemy_exited.bind(room)
-			if not e.tree_exited.is_connected(cb):
-				e.tree_exited.connect(cb)
-
-	if not found_enemy:
+	if _is_enemies_empty(enemies):
 		return
 
-	_set_room_flag("had_enemies", true)
+	data["had_enemies"] = true
+
+	_enemies_container = enemies
+	if not _enemies_connected:
+		enemies.child_exiting_tree.connect(_on_enemies_child_exiting_tree)
+		_enemies_connected = true
+
+	_check_room_cleared()
+
+func _on_enemies_child_exiting_tree(_child: Node) -> void:
+	await get_tree().process_frame
+	_check_room_cleared()
+
+func _on_enemies_child_exited(_child: Node) -> void:
+	_check_room_cleared()
+
+func _check_room_cleared() -> void:
+	if current_room == null:
+		return
+
+	var key := pos_to_key(current_room_pos)
+	if not map.has(key):
+		return
+	var data := map[key] as Dictionary
+
+	if bool(data.get("cleared", false)):
+		return
+	if not bool(data.get("had_enemies", false)):
+		return
+
+	var enemies := current_room.get_node_or_null("Enemies")
+	if enemies == null:
+		return
+
+	if _is_enemies_empty(enemies):
+		data["cleared"] = true
+		Signals.room_cleared.emit()
 
 func _is_enemies_empty(enemies: Node) -> bool:
 	for e in enemies.get_children():
