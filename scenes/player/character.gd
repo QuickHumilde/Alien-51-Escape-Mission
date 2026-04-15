@@ -36,6 +36,13 @@ func _process(_delta):
 	movement.update(_delta, self)
 	animation.update(self)
 	combat.update(_delta, self)
+	
+	# --------REMOVE---------------
+	if Input.is_action_just_pressed("god_mode"):
+		god_mode()
+	if Input.is_action_just_pressed("open_doors"):
+		Signals.room_cleared.emit()
+	
 
 func _physics_process(_delta):
 	move_and_slide()
@@ -122,3 +129,15 @@ func change_player_damagable_timer(state: bool, _timer: float):
 
 func is_player_damagable():
 	return damage_timer.is_stopped()
+
+
+# -------REMOVE-------------
+func god_mode():
+	if Input.is_action_just_pressed("god_mode"):
+		print("eres dios")
+		stats.extra_damage=99
+		stats.invulnerability_time=99
+		stats.speed+=100
+		stats.extra_lifetime=100
+		stats.max_health=99999
+		stats.heal(999999999)

@@ -63,9 +63,9 @@ func _update_animation():
 	# Movimiento vertical dominante
 	else:
 		if dir.y > 0:
-			sprite.play("default")
+			sprite.play("front")
 		else:
-			sprite.play("default")
+			sprite.play("back")
 
 func _on_damage():
 	play_damage_sound()

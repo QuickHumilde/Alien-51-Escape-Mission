@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://1k5ta205shrd"]
+[gd_scene load_steps=34 format=4 uid="uid://1k5ta205shrd"]
 
 [ext_resource type="PackedScene" uid="uid://641t0oysglvl" path="res://scenes/rooms/template/room_template.tscn" id="1_do61m"]
 [ext_resource type="PackedScene" uid="uid://dug0rdf4rqk8" path="res://scenes/items/weapons/exploding_kittens_weapon_item.tscn" id="2_esqot"]
@@ -32,6 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://ilq0vx363u7q" path="res://scenes/items/weapons/continous_laser_weapon_item.tscn" id="29_6gohq"]
 [ext_resource type="PackedScene" uid="uid://duw3amkjs6npj" path="res://scenes/items/weapons/nail_weapon_item.tscn" id="30_5cbcc"]
 [ext_resource type="PackedScene" uid="uid://dceenhddbl8gi" path="res://scenes/enemies/Zombie/zombie_enemy.tscn" id="32_nng34"]
+[ext_resource type="PackedScene" uid="uid://dw4em1kkdblnm" path="res://scenes/enemies/stickman/stickman_enemy.tscn" id="33_327g5"]
 
 [node name="SalaPrueba2" instance=ExtResource("1_do61m")]
 
@@ -144,3 +145,6 @@ position = Vector2(-440, -248)
 
 [node name="Player" parent="." index="9" instance=ExtResource("2_kxxeq")]
 position = Vector2(-21, -166)
+
+[node name="StalkerEnemy" parent="." index="10" instance=ExtResource("33_327g5")]
+position = Vector2(136, -151)
