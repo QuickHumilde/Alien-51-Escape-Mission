@@ -4,7 +4,7 @@ extends Pickup
 
 @onready var coin_scene: PackedScene = preload("res://scenes/pickup/coin.tscn")
 @onready var health_scene: PackedScene = preload("res://scenes/pickup/health.tscn")
-@onready var enemy1_scene: PackedScene = preload("res://scenes/enemies/Zombie/zombie_enemy.tscn")
+@onready var enemy1_scene: PackedScene = preload("res://scenes/enemies/stickman/stickman_enemy.tscn")
 @onready var sprite: AnimatedSprite2D = $Visual/AnimatedSprite2D
 @export var coin_percentage: float = 60.0
 @export var health_percentage: float = 30.0
@@ -19,9 +19,9 @@ func open_chest():
 
 		var instant: Node = scene.instantiate()
 		var parent = get_parent()
+		sprite.play("open")
 		parent.add_child(instant)
 		instant.global_position = global_position
-		sprite.play("open")
 		spawned = true
 	
 func _pick_weighted_scene() -> PackedScene:

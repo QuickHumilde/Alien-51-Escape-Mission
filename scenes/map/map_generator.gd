@@ -36,6 +36,7 @@ var room_scenes: Dictionary = {
 	preload("res://scenes/rooms/normal/normal_room_7.tscn"),
 	preload("res://scenes/rooms/normal/normal_room_8.tscn"),
 	preload("res://scenes/rooms/normal/normal_room_9.tscn"),
+	preload("res://scenes/rooms/normal/normal_room_10.tscn"),
 	],
 	"item": [ preload("res://scenes/rooms/item/item_room_1.tscn") ],
 	"shop": [ preload("res://scenes/rooms/shop/shop_room_1.tscn") ],

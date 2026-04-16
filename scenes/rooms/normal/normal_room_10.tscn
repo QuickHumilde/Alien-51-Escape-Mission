@@ -1,0 +1,85 @@
+[gd_scene load_steps=6 format=4 uid="uid://c1fpuhuw3gjea"]
+
+[ext_resource type="PackedScene" uid="uid://641t0oysglvl" path="res://scenes/rooms/template/room_template.tscn" id="1_shq5p"]
+[ext_resource type="PackedScene" uid="uid://dw4em1kkdblnm" path="res://scenes/enemies/stickman/stickman_enemy.tscn" id="2_shq5p"]
+[ext_resource type="PackedScene" uid="uid://chrgijw2gs6eb" path="res://scenes/world/lamp.tscn" id="3_cxygk"]
+[ext_resource type="PackedScene" uid="uid://dceenhddbl8gi" path="res://scenes/enemies/Zombie/zombie_enemy.tscn" id="3_yt024"]
+[ext_resource type="PackedScene" uid="uid://vwuduq2qtmsv" path="res://scenes/world/obstacle_1.tscn" id="4_yt024"]
+
+[node name="NormalRoom10" instance=ExtResource("1_shq5p")]
+door_caps = {
+"down": false,
+"left": true,
+"right": true,
+"up": true
+}
+
+[node name="Background" parent="." index="0"]
+tile_map_data = PackedByteArray("AAD+/wMAAAAEAAgAAAAAAAQAAAACAAYAAAABAAQAAAAGAAAAAAD+//r/AAAEAAUAAAD//wUAAAABAAkAAAAAAAUAAAACAAkAAAABAAUAAAAEAAcAAAD9/wMAAAAEAAgAAAD8/wMAAAACAAoAAAD9//r/AAAEAAUAAAADAAUAAAAEAAcAAAADAPr/AAAEAAUAAAAEAPr/AAAEAAUAAAAFAPr/AAAEAAUAAAAGAPr/AAAEAAUAAAAEAAMAAAALAAgAAAAEAAQAAAAHAAYAAAAFAAMAAAAMAAgAAAAFAAQAAAAIAAYAAAAGAAMAAAAEAAgAAAAHAAMAAAAEAAgAAAABAPr/AAAEAAUAAAACAAQAAAAGAAEAAAACAAMAAAAHAAEAAAABAAMAAAAGAAEAAAAAAAMAAAAKAAgAAAD//wMAAAAJAAgAAAD//wQAAAABAAYAAAD7/wMAAAABAAoAAAD//wYAAAABAAoAAAAAAAYAAAACAAoAAAABAAYAAAAEAAgAAAADAAYAAAAEAAgAAAD7//r/AAABAAMAAAD8//r/AAACAAMAAAAHAPr/AAAEAAUAAAD///r/AAAEAAUAAAAAAPr/AAAEAAUAAAAIAAMAAAAHAAoAAAAIAPr/AAAHAAMAAAAJAPr/AAAIAAMAAAD7//v/AAABAAYAAAD7//z/AAABAAYAAAD7//3/AAABAAYAAAD7//7/AAABAAYAAAD8//v/AAACAAQAAAD8//z/AAACAAYAAAD8//3/AAACAAYAAAD8//7/AAACAAYAAAD9//v/AAAEAAYAAAD9//z/AAAEAAAAAAD9//3/AAAGAAEAAAD9//7/AAAGAAAAAAD9////AAAGAAEAAAD9/wAAAAAHAAAAAAD+//v/AAAEAAYAAAD+//z/AAAFAAAAAAD+//3/AAAFAAAAAAD+//7/AAAGAAEAAAD+////AAAGAAEAAAD+/wAAAAAEAAAAAAD///v/AAAEAAYAAAD///z/AAAGAAEAAAD///3/AAAGAAEAAAD///7/AAAHAAEAAAD/////AAAGAAEAAAD//wAAAAAFAAAAAAAAAPv/AAAEAAYAAAAAAPz/AAAGAAEAAAAAAP3/AAAGAAEAAAAAAP7/AAAHAAAAAAAAAP//AAAEAAAAAAAAAAAAAAAGAAEAAAD7/wEAAAABAAYAAAD7/wIAAAABAAkAAAD8/wEAAAACAAYAAAD8/wIAAAACAAkAAAD9/wEAAAAFAAAAAAD9/wIAAAAEAAcAAAD+/wEAAAAGAAEAAAD+/wIAAAAEAAcAAAD//wEAAAAGAAEAAAD//wIAAAAJAAcAAAAAAAEAAAAGAAEAAAAAAAIAAAAKAAcAAAABAPv/AAAEAAYAAAABAPz/AAAHAAEAAAABAP3/AAAGAAEAAAABAP7/AAAGAAEAAAABAP//AAAEAAAAAAABAAAAAAAGAAEAAAABAAEAAAAGAAAAAAABAAIAAAAFAAAAAAACAPz/AAAGAAEAAAACAP3/AAAEAAAAAAACAP7/AAAEAAAAAAACAP//AAAFAAAAAAACAAAAAAAGAAEAAAACAAEAAAAEAAAAAAACAAIAAAAGAAEAAAADAPv/AAAEAAYAAAADAPz/AAAGAAEAAAADAP3/AAAFAAAAAAADAP7/AAAGAAEAAAADAP//AAAGAAEAAAAEAPv/AAAEAAYAAAAEAPz/AAAGAAAAAAAEAP3/AAAGAAEAAAAEAP7/AAAGAAEAAAAEAP//AAAHAAEAAAAEAAAAAAAGAAEAAAAEAAEAAAAGAAEAAAAEAAIAAAALAAcAAAAFAPv/AAAEAAYAAAAFAPz/AAAHAAAAAAAFAP3/AAAEAAAAAAAFAP7/AAAGAAEAAAAFAP//AAAGAAEAAAAFAAAAAAAGAAEAAAAFAAEAAAAGAAEAAAAFAAIAAAAMAAcAAAAGAPv/AAAEAAYAAAAGAPz/AAAGAAAAAAAGAP3/AAAGAAEAAAAGAP7/AAAEAAAAAAAGAP//AAAFAAAAAAAGAAAAAAAEAAAAAAAGAAEAAAAFAAAAAAAGAAIAAAAEAAcAAAAHAPv/AAAEAAYAAAAHAPz/AAAGAAEAAAAHAP3/AAAGAAAAAAAHAP7/AAAGAAEAAAAHAP//AAAEAAAAAAAHAAAAAAAEAAAAAAAHAAEAAAAGAAEAAAAHAAIAAAAEAAcAAAAIAPv/AAAHAAQAAAAIAPz/AAAHAAYAAAAIAP3/AAAHAAYAAAAIAP7/AAAHAAYAAAAIAAEAAAAHAAYAAAAIAAIAAAAHAAkAAAAJAPv/AAAIAAQAAAAJAPz/AAAIAAYAAAAJAP3/AAAIAAYAAAAJAP7/AAAIAAYAAAAJAAEAAAAIAAYAAAAJAAIAAAAIAAkAAAAJAAMAAAAIAAoAAAADAAAAAAAGAAEAAAADAAEAAAAHAAEAAAADAAIAAAAGAAEAAAADAAMAAAAGAAEAAAADAAQAAAAFAAAAAAAFAAYAAAAIAAoAAAAEAAYAAAAHAAoAAAAEAAUAAAAHAAkAAAAFAAUAAAAIAAkAAAACAAUAAAAEAAcAAAACAAYAAAAEAAgAAAD7/wAAAAABAAYAAAD8/wAAAAACAAYAAAAIAAAAAAAHAAYAAAAJAAAAAAAIAAYAAAA=")
+
+[node name="Down" parent="Doors" index="1"]
+visible = false
+
+[node name="Left" parent="Doors" index="2"]
+position = Vector2(-60, -8)
+
+[node name="Right" parent="Doors" index="3"]
+position = Vector2(140, -8)
+
+[node name="FromLeft" parent="Spawns" index="3"]
+position = Vector2(-50, -8)
+
+[node name="FromRight" parent="Spawns" index="4"]
+position = Vector2(130, -8)
+
+[node name="StickmanEnemy" parent="Enemies" index="0" instance=ExtResource("2_shq5p")]
+position = Vector2(56, 48)
+
+[node name="StickmanEnemy2" parent="Enemies" index="1" instance=ExtResource("2_shq5p")]
+position = Vector2(24, 48)
+
+[node name="StickmanEnemy3" parent="Enemies" index="2" instance=ExtResource("2_shq5p")]
+position = Vector2(40, 40)
+
+[node name="ZombieEnemy" parent="Enemies" index="3" instance=ExtResource("3_yt024")]
+position = Vector2(40, 64)
+
+[node name="RewardSpawner" parent="." index="5"]
+position = Vector2(40, -8)
+
+[node name="Lamp" parent="Decorations" index="0" instance=ExtResource("3_cxygk")]
+position = Vector2(40, 88)
+rotation = 3.1415927
+
+[node name="Lamp2" parent="Decorations" index="1" instance=ExtResource("3_cxygk")]
+position = Vector2(88, -72.000015)
+
+[node name="Lamp3" parent="Decorations" index="2" instance=ExtResource("3_cxygk")]
+position = Vector2(-8, -72)
+
+[node name="Obstacle1" parent="Obstacles" index="0" instance=ExtResource("4_yt024")]
+position = Vector2(-8, 24)
+
+[node name="Obstacle2" parent="Obstacles" index="1" instance=ExtResource("4_yt024")]
+position = Vector2(88, 24)
+
+[node name="Obstacle3" parent="Obstacles" index="2" instance=ExtResource("4_yt024")]
+position = Vector2(88, -40)
+
+[node name="Obstacle4" parent="Obstacles" index="3" instance=ExtResource("4_yt024")]
+position = Vector2(-8, -40)
+
+[node name="Obstacle5" parent="Obstacles" index="4" instance=ExtResource("4_yt024")]
+position = Vector2(-24, -40)
+
+[node name="Obstacle6" parent="Obstacles" index="5" instance=ExtResource("4_yt024")]
+position = Vector2(-24, 24)
+
+[node name="Obstacle7" parent="Obstacles" index="6" instance=ExtResource("4_yt024")]
+position = Vector2(104, 24)
+
+[node name="Obstacle8" parent="Obstacles" index="7" instance=ExtResource("4_yt024")]
+position = Vector2(104, -40)
+
+[node name="Pickups" parent="." index="8"]
+position = Vector2(40, -8)

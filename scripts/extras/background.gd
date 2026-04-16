@@ -17,7 +17,8 @@ func fill_decoration_array():
 	decoration_sprites = [
 		load("res://assets/sprites/decorations/PaperDecoration1.png"),
 		load("res://assets/sprites/decorations/FootprintDecoration1.png"),
-		load("res://assets/sprites/decorations/SkullDecoration1.png")
+		load("res://assets/sprites/decorations/SkullDecoration1.png"),
+		load("res://assets/sprites/decorations/HoleDecoration1.png"),
 	]
 
 func fill_dictionary():
@@ -36,7 +37,12 @@ func fill_dictionary():
 			"rotation": { "min": -90.0, "max": 90.0 },
 			"alpha": null,
 			"scale": { "min": 0.95, "max": 1 }
-		}
+		},
+		"HoleDecoration1.png": {
+			"rotation": { "min": 0.0, "max": 360.0 },
+			"alpha": { "min": 0.8, "max": 0.85 },
+			"scale": { "min": 0.85, "max": 1 }
+		},
 	}
 
 func decorate_random_tiles():
@@ -115,7 +121,6 @@ func place_invisible_obstacles():
 			var obs = invisible_obstacle_scene.instantiate()
 			obs.position = map_to_local(coords)
 			obstacles.add_child(obs)
-
 
 func rand_range_from_dict(data):
 	return randf_range(data["min"], data["max"])

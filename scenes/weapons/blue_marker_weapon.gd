@@ -5,10 +5,10 @@ extends Weapon
 
 func _ready():
 	id=3
-	damage = 2
+	damage = 1
 	knockback_force = 400.0
 	self_knockback_force=0.0
-	lifetime=500.0
+	lifetime=1.0
 	speed = 100.0
 	sounds = {
 		"shoot" : preload("res://assets/audio/sfx/BlueMarkerThrow.mp3")

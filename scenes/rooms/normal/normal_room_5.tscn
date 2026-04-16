@@ -36,6 +36,14 @@ position = Vector2(289, 9)
 position = Vector2(120, 8)
 activable = false
 
+[node name="Lamp" parent="Decorations" index="0" instance=ExtResource("5_pp8lu")]
+position = Vector2(296, 56)
+rotation = -4.712389
+
+[node name="Lamp2" parent="Decorations" index="1" instance=ExtResource("5_pp8lu")]
+position = Vector2(-53, -40)
+rotation = 4.712389
+
 [node name="Obstacle1" parent="Obstacles" index="0" instance=ExtResource("2_gf4p3")]
 position = Vector2(88, 72)
 
@@ -115,7 +123,7 @@ position = Vector2(56, 40)
 position = Vector2(72, 40)
 
 [node name="Obstacle27" parent="Obstacles" index="26" instance=ExtResource("2_gf4p3")]
-position = Vector2(40, 41)
+position = Vector2(40, 40)
 
 [node name="Obstacle28" parent="Obstacles" index="27" instance=ExtResource("2_gf4p3")]
 position = Vector2(88, -24)
@@ -172,7 +180,7 @@ position = Vector2(56, -56)
 position = Vector2(72, -56)
 
 [node name="Obstacle54" parent="Obstacles" index="45" instance=ExtResource("2_gf4p3")]
-position = Vector2(40, -55)
+position = Vector2(40, -56)
 
 [node name="Obstacle55" parent="Obstacles" index="46" instance=ExtResource("2_gf4p3")]
 position = Vector2(280, -24)
@@ -253,7 +261,7 @@ position = Vector2(248, -56)
 position = Vector2(264, -56)
 
 [node name="Obstacle81" parent="Obstacles" index="72" instance=ExtResource("2_gf4p3")]
-position = Vector2(232, -55)
+position = Vector2(232, -56)
 
 [node name="Obstacle82" parent="Obstacles" index="73" instance=ExtResource("2_gf4p3")]
 position = Vector2(280, 72)
@@ -280,7 +288,7 @@ position = Vector2(248, 72)
 position = Vector2(264, 72)
 
 [node name="Obstacle90" parent="Obstacles" index="81" instance=ExtResource("2_gf4p3")]
-position = Vector2(232, 73)
+position = Vector2(232, 72)
 
 [node name="Obstacle91" parent="Obstacles" index="82" instance=ExtResource("2_gf4p3")]
 position = Vector2(280, 56)
@@ -341,11 +349,3 @@ position = Vector2(248, 55)
 
 [node name="Coin8" parent="Pickups" index="7" instance=ExtResource("4_afjpf")]
 position = Vector2(184, 55)
-
-[node name="Lamp" parent="Decorations" index="0" instance=ExtResource("5_pp8lu")]
-position = Vector2(296, 56)
-rotation = -4.712389
-
-[node name="Lamp2" parent="Decorations" index="1" instance=ExtResource("5_pp8lu")]
-position = Vector2(-53, -40)
-rotation = 4.712389

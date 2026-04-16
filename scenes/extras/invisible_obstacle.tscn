@@ -1,7 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://c04a1jekjhsjw"]
+[gd_scene load_steps=3 format=3 uid="uid://c04a1jekjhsjw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wkott"]
 size = Vector2(14, 14)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_wflvm"]
+outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8, -8, -8)])
 
 [node name="InvisibleObstacle" type="StaticBody2D"]
 collision_layer = 32
@@ -9,3 +12,7 @@ collision_mask = 111
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_wkott")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_wflvm")
+navigation_layers = 2

@@ -20,6 +20,9 @@ func init(new_forward, new_position, new_damage, new_knockback_force, new_lifeti
 func _process(delta: float):
 	global_position -= bullet_direction * speed * delta
 	rotation_degrees += speed_rotation * delta
+	time_left -= delta
+	if time_left <= 0.0:
+		queue_free()
 	
 func _against_enemy(area):
 	var enemy_node = area.get_parent()
@@ -27,4 +30,3 @@ func _against_enemy(area):
 	if enemy_node != null:
 		if enemy_node.has_method("change_color"):
 			enemy_node.change_color(paint_color)
-	destroy_bullet()
