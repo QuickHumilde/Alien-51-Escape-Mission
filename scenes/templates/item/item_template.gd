@@ -1,5 +1,5 @@
 @abstract
-extends Node2D
+extends RigidBody2D
 class_name Item
 
 @onready var hitbox: CollisionShape2D = $Detector/CollisionShape2D
@@ -24,7 +24,7 @@ func get_id():
 
 func destroy_on_pickup():
 	Signals.item_picked.emit(get_id())
-	queue_free()
+	call_deferred("queue_free")
 
 func _on_hitbox_enter_description(body):
 	if body.is_in_group("player"):
@@ -54,6 +54,11 @@ func enable_hitbox():
 
 func disable_hitbox():
 	hitbox.set_deferred("disabled" ,true)
+
+func disable_pickup(time: float):
+	disable_hitbox()
+	await get_tree().create_timer(time).timeout
+	enable_hitbox()
 
 func _initiate_detectors():
 	$Detector.body_entered.connect(_on_hitbox_enter)

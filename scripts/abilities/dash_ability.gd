@@ -102,6 +102,14 @@ func _on_item_picked(id: int = -1):
 		dash_speed += 100
 		dash_time += 0.075
 
+func change_ability(new_ability_position):
+	var item_scene: PackedScene = load("res://scenes/items/dash_ability_item.tscn")
+	var inst = item_scene.instantiate()
+	_player.get_tree().current_scene.add_child(inst)
+	inst.global_position = new_ability_position
+	inst.disable_pickup(2.0)
+	queue_free()
+
 func play_sound():
 	var pitch: float = randf_range(0.9, 1.2)
 	AudioManager.play_sfx("dash_1", -23.0, pitch)

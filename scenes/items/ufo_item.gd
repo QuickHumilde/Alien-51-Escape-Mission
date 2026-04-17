@@ -6,6 +6,7 @@ var fly: bool =true
 
 func _ready():
 	id = 10
+	price = 15
 	name_key = "item_ufo_name"
 	desc_key = "item_ufo_desc"
 	item_texture = "res://assets/sprites/items/UFO_Item.png"

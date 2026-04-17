@@ -2,7 +2,10 @@ extends Node2D
 class_name ParryAbility
 
 @onready var area: Area2D = $Area2D
+@onready var item_scene: PackedScene = load("res://scenes/items/parry_ability_item.tscn")
+var parry_scene = preload("res://scenes/extras/parry_ability_scene.tscn")
 @export var damage: float = 2.0
+var player: Character
 
 signal cooldown_started(duration)
 signal cooldown_progress(progress)
@@ -12,7 +15,7 @@ var cooldown: float = 4.0
 var is_on_cooldown:bool = false
 var failed: bool = true
 
-func activate_with_player(player: Character):
+func activate_with_player(_player: Character):
 	if !player.is_player_damagable():
 		return
 	if is_on_cooldown:
@@ -24,7 +27,7 @@ func activate_with_player(player: Character):
 	failed = true
 	start_cooldown_timer(player)
 
-func start_cooldown_timer(player: Node) -> void:
+func start_cooldown_timer(_player: Node) -> void:
 	is_on_cooldown = true
 
 	if player == null or not is_instance_valid(player) or not player.is_inside_tree():
@@ -79,7 +82,7 @@ func start_cooldown_timer(player: Node) -> void:
 	tick.start()
 	end_timer.start()
 
-func start_parry(player: Character):
+func start_parry(_player: Character):
 	var overlapping_bodies= area.get_overlapping_areas()
 	for body in overlapping_bodies:
 		if body.is_in_group("enemy"):
@@ -95,8 +98,19 @@ func start_parry(player: Character):
 			body.change_direction(new_direction, "player")
 
 func _activate_area():
-	area.monitoring = true
-	area.monitorable = true
+	area.set_deferred("monitoring", true)
+	area.set_deferred("monitorable", true)
+
+func get_player(body: Character):
+	player = body
+
+func change_ability(new_ability_position):
+	var item_scene: PackedScene = load("res://scenes/items/parry_ability_item.tscn")
+	var inst = item_scene.instantiate()
+	get_tree().current_scene.add_child(inst)
+	inst.global_position = new_ability_position
+	inst.disable_pickup(2.0)
+	queue_free()
 
 func play_sfx():
 	var pitch: float = randf_range(0.9, 1.1)

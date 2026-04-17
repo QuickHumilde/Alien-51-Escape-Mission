@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://x4tu7jldj560"]
+
+[ext_resource type="PackedScene" uid="uid://dlnik63yjjvi4" path="res://scenes/templates/item/item_template.tscn" id="1_w630n"]
+[ext_resource type="Texture2D" uid="uid://ce4fkkbdif78e" path="res://assets/sprites/weapons/Shuriken.png" id="2_iy1md"]
+[ext_resource type="Script" uid="uid://xlnamvvats5g" path="res://scenes/items/weapons/shuriken_weapon_item.gd" id="2_r7we4"]
+
+[node name="ShurikenWeaponItem" instance=ExtResource("1_w630n")]
+script = ExtResource("2_r7we4")
+
+[node name="Sprite2D" type="Sprite2D" parent="Visual" index="1"]
+texture = ExtResource("2_iy1md")

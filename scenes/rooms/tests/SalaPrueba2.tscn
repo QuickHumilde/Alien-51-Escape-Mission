@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://1k5ta205shrd"]
+[gd_scene load_steps=36 format=4 uid="uid://1k5ta205shrd"]
 
 [ext_resource type="PackedScene" uid="uid://641t0oysglvl" path="res://scenes/rooms/template/room_template.tscn" id="1_do61m"]
 [ext_resource type="PackedScene" uid="uid://dug0rdf4rqk8" path="res://scenes/items/weapons/exploding_kittens_weapon_item.tscn" id="2_esqot"]
@@ -34,6 +34,7 @@
 [ext_resource type="PackedScene" uid="uid://dceenhddbl8gi" path="res://scenes/enemies/Zombie/zombie_enemy.tscn" id="32_nng34"]
 [ext_resource type="PackedScene" uid="uid://btakcp8d7eo58" path="res://scenes/pickup/mimic_chest.tscn" id="32_swimx"]
 [ext_resource type="PackedScene" uid="uid://dw4em1kkdblnm" path="res://scenes/enemies/stickman/stickman_enemy.tscn" id="33_327g5"]
+[ext_resource type="PackedScene" uid="uid://x4tu7jldj560" path="res://scenes/items/weapons/shuriken_weapon_item.tscn" id="33_bkrbk"]
 
 [node name="SalaPrueba2" instance=ExtResource("1_do61m")]
 
@@ -73,7 +74,7 @@ position = Vector2(100, 9)
 position = Vector2(65, 6)
 
 [node name="ParryAbilityItem" parent="Obstacles" index="4" instance=ExtResource("6_swimx")]
-position = Vector2(-8, 56)
+position = Vector2(-263, -55)
 
 [node name="RevivemintItem" parent="Obstacles" index="5" instance=ExtResource("8_8ca48")]
 position = Vector2(264, -56)
@@ -97,7 +98,7 @@ position = Vector2(-88, -56)
 position = Vector2(-168, -56)
 
 [node name="DashAbilityItem2" parent="Obstacles" index="12" instance=ExtResource("7_bkrbk")]
-position = Vector2(-264, -56)
+position = Vector2(-10, 62)
 
 [node name="Divisor3Item" parent="Obstacles" index="13" instance=ExtResource("15_4m4k5")]
 position = Vector2(-344, -56)
@@ -146,6 +147,9 @@ position = Vector2(-280, -248)
 
 [node name="NailWeaponItem" parent="Obstacles" index="28" instance=ExtResource("30_5cbcc")]
 position = Vector2(-440, -248)
+
+[node name="ShurikenWeaponItem" parent="Obstacles" index="29" instance=ExtResource("33_bkrbk")]
+position = Vector2(72, -129)
 
 [node name="MimicChest" parent="Pickups" index="0" instance=ExtResource("32_swimx")]
 position = Vector2(66, -146)

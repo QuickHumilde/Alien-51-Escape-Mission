@@ -14,7 +14,7 @@ tile_map_data = PackedByteArray("AAD+/wMAAAAHAAEAAAD+/wQAAAAGAAEAAAAAAAQAAAAGAAE
 activable = false
 
 [node name="Staircase" parent="." index="6" instance=ExtResource("3_4ssu2")]
-position = Vector2(40, 0)
+position = Vector2(40, -24)
 
 [node name="LampTL" parent="Decorations" index="0" instance=ExtResource("2_dbaow")]
 position = Vector2(-18.000015, -74)

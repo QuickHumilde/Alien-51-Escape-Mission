@@ -27,6 +27,8 @@ func use_ability():
 		if ability.has_method("activate_with_player"):
 			ability.activate_with_player(player)
 		
-func change_ability(new_ability):
+func change_ability(new_ability, ability_position):
+	if !abilities.is_empty():
+		abilities[actual_ability_index].call_deferred("change_ability", ability_position)
 	abilities.clear()
 	abilities.append(new_ability)

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://ck33gek404wae"]
+
+[ext_resource type="Script" uid="uid://n8v3itbct8qx" path="res://scenes/bullets/shuriken_bullet.gd" id="1_c3iuj"]
+[ext_resource type="Texture2D" uid="uid://ce4fkkbdif78e" path="res://assets/sprites/weapons/Shuriken.png" id="1_njanv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c3iuj"]
+radius = 7.0
+
+[node name="ShurikenBullet" type="Area2D"]
+collision_mask = 45
+script = ExtResource("1_c3iuj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_c3iuj")
+
+[node name="Visual" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visual"]
+texture = ExtResource("1_njanv")

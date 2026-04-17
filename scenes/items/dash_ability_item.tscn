@@ -6,6 +6,9 @@
 
 [node name="DashAbilityItem" instance=ExtResource("1_numh3")]
 script = ExtResource("2_s4j2a")
+ext_id = null
+desc_key = null
+price = null
 
 [node name="Sprite2D" type="Sprite2D" parent="Visual" index="1"]
 z_index = 12

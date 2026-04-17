@@ -156,6 +156,7 @@ offset_bottom = 67.76923
 texture = ExtResource("5_4ed8p")
 
 [node name="ItemAmount" type="Label" parent="."]
+visible = false
 offset_left = 32.0
 offset_top = 75.0
 offset_right = 221.0
@@ -167,6 +168,7 @@ text = "Items"
 vertical_alignment = 1
 
 [node name="ItemAmountImage" type="TextureRect" parent="."]
+visible = false
 offset_left = 7.0
 offset_top = 72.0
 offset_right = 28.0

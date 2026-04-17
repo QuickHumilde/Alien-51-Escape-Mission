@@ -20,6 +20,6 @@ func give_changes(body: Character):
 	hud.connect_ability(dash_ability)
 	hud.on_ability_pick(item_texture)
 
-	body.abilities.change_ability(dash_ability)
+	body.abilities.change_ability(dash_ability, self.global_position)
 	
 	destroy_on_pickup()

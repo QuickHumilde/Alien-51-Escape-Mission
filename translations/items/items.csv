@@ -83,3 +83,6 @@ item_interior_peace_desc,"Descripción del objeto predeterminado.","Default item
 
 item_whetstone_name,"Piedra de afilar","Whetstone"
 item_whetstone_desc,"• Aumenta el daño del arma que tengas equipada al acabar una habitación.","• Increases the damage of the weapon you have equipped at the end of a room."
+
+item_shuriken_weapon_name,"Shuriken","Shuriken"
+item_shuriken_weapon_desc,"• Dispara 3 shurikens de alta velocidad en abanico.","• Shoots 3 high-speed shurikens in a fan shape."
