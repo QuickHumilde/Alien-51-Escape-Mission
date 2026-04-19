@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://1k5ta205shrd"]
+[gd_scene load_steps=37 format=4 uid="uid://1k5ta205shrd"]
 
 [ext_resource type="PackedScene" uid="uid://641t0oysglvl" path="res://scenes/rooms/template/room_template.tscn" id="1_do61m"]
 [ext_resource type="PackedScene" uid="uid://dug0rdf4rqk8" path="res://scenes/items/weapons/exploding_kittens_weapon_item.tscn" id="2_esqot"]
@@ -35,6 +35,7 @@
 [ext_resource type="PackedScene" uid="uid://btakcp8d7eo58" path="res://scenes/pickup/mimic_chest.tscn" id="32_swimx"]
 [ext_resource type="PackedScene" uid="uid://dw4em1kkdblnm" path="res://scenes/enemies/stickman/stickman_enemy.tscn" id="33_327g5"]
 [ext_resource type="PackedScene" uid="uid://x4tu7jldj560" path="res://scenes/items/weapons/shuriken_weapon_item.tscn" id="33_bkrbk"]
+[ext_resource type="Texture2D" uid="uid://7863ug37ua4d" path="res://assets/sprites/enemies/cyborg_unicorn/CyborgUnicorn.png" id="34_8ca48"]
 
 [node name="SalaPrueba2" instance=ExtResource("1_do61m")]
 
@@ -150,6 +151,10 @@ position = Vector2(-440, -248)
 
 [node name="ShurikenWeaponItem" parent="Obstacles" index="29" instance=ExtResource("33_bkrbk")]
 position = Vector2(72, -129)
+
+[node name="CyborgUnicorn" type="Sprite2D" parent="Obstacles" index="30"]
+position = Vector2(1, -181)
+texture = ExtResource("34_8ca48")
 
 [node name="MimicChest" parent="Pickups" index="0" instance=ExtResource("32_swimx")]
 position = Vector2(66, -146)

@@ -2,7 +2,6 @@ extends Node2D
 class_name ParryAbility
 
 @onready var area: Area2D = $Area2D
-@onready var item_scene: PackedScene = load("res://scenes/items/parry_ability_item.tscn")
 var parry_scene = preload("res://scenes/extras/parry_ability_scene.tscn")
 @export var damage: float = 2.0
 var player: Character

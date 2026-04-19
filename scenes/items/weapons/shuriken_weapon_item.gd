@@ -7,7 +7,7 @@ func _ready():
 	id = 24
 	name_key="item_shuriken_weapon_name"
 	desc_key="item_shuriken_weapon_desc"
-	item_texture = "res://assets/sprites/weapons/Shuriken.png"
+	item_texture = "res://assets/sprites/items/ShurikenItem.png"
 	super._ready()
 
 func give_changes(body: Character):
