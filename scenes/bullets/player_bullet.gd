@@ -8,3 +8,10 @@ func init(new_forward, new_position, new_damage, new_knockback_force, new_lifeti
 	self.lifetime = new_lifetime
 	self.speed = new_speed
 	self.bullet_owner = new_bullet_owner
+	
+	_update_sprite_rotation()
+
+func _update_sprite_rotation() -> void:
+	if bullet_direction == Vector2.ZERO:
+		return
+	self.rotation = bullet_direction.angle()

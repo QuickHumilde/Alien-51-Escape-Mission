@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://chd8ttoncxpnu"]
+
+[ext_resource type="Script" uid="uid://cqr3tkt02tcc5" path="res://scenes/extras/line_2d.gd" id="1_uh5y1"]
+
+[sub_resource type="Curve" id="Curve_gdqi6"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="BulletTrail" type="Line2D"]
+width = 4.0
+width_curve = SubResource("Curve_gdqi6")
+default_color = Color(1, 1, 1, 0.42352942)
+script = ExtResource("1_uh5y1")

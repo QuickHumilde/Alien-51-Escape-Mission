@@ -67,7 +67,9 @@ func take_damage(amount: float):
 		stats.take_damage(final_damage)
 		animation.player_taking_damage()
 		damage_timer.start(stats.get_invulnerability_time())
+		set_collision_mask_value(4, false)
 		await damage_timer.timeout
+		set_collision_mask_value(4, true)
 		await get_tree().create_timer(0.25).timeout
 		_check_overlapping_enemies()
 		_check_overlapping_tramps()

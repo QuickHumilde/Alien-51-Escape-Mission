@@ -312,11 +312,11 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gaafd"]
 radius = 3.0
-height = 10.0
+height = 8.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qgoh5"]
 radius = 3.5
-height = 12.0
+height = 10.0
 
 [node name="StickmanEnemy" instance=ExtResource("1_rymsy")]
 script = ExtResource("2_2epw7")
@@ -329,11 +329,11 @@ position = Vector2(0, 7.4907775)
 scale = Vector2(0.7136841, 0.31365278)
 
 [node name="Hitbox" parent="." index="1"]
-position = Vector2(0, 1)
+position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_gaafd")
 
 [node name="Detector" parent="." index="2"]
-position = Vector2(0, -2)
+position = Vector2(0, -1)
 
 [node name="CollisionShape2D" parent="Detector" index="0" groups=["enemy"]]
 position = Vector2(0, 3)

@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://56s4k8o4frak"]
+[gd_scene load_steps=7 format=3 uid="uid://56s4k8o4frak"]
 
 [ext_resource type="Texture2D" uid="uid://dyu10c0wutn7h" path="res://assets/sprites/bullet/PistolBullet.png" id="1_h31n7"]
 [ext_resource type="Script" uid="uid://d4aln6vy3dmcn" path="res://scenes/bullets/player_bullet.gd" id="1_v3byq"]
+[ext_resource type="PackedScene" uid="uid://chd8ttoncxpnu" path="res://scenes/extras/bullet_trail.tscn" id="4_gdqi6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v3byq"]
-size = Vector2(4, 4)
+size = Vector2(8, 6)
 
 [sub_resource type="GDScript" id="GDScript_48eg6"]
 resource_name = "BiggerCollisionScript"
@@ -41,3 +42,7 @@ script = SubResource("GDScript_48eg6")
 
 [node name="BiggerCollision" type="CollisionShape2D" parent="Area2D" groups=["bullet"]]
 shape = SubResource("CircleShape2D_48eg6")
+
+[node name="BulletTrail" parent="." instance=ExtResource("4_gdqi6")]
+width = 2.0
+default_color = Color(0.15294118, 0.36862746, 0, 0.77254903)

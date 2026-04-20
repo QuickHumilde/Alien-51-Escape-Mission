@@ -164,6 +164,7 @@ radius = 5.0
 height = 20.0
 
 [node name="ZombieEnemy" instance=ExtResource("1_of77h")]
+wall_min_slide_angle = 0.0
 script = ExtResource("2_v2kvp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visual" index="0"]

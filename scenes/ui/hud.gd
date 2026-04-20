@@ -16,6 +16,8 @@ var cache_item_desc : String
 @onready var extra_health_bar = $ExtraHealthBar
 @onready var extra_health_label = $ExtraHealthBar/Label
 
+@onready var new_health_bar = $NewHealthBar
+
 var player: Character
 var item: Item
 var stats: CharacterStats
@@ -71,6 +73,9 @@ func update_health():
 	health_bar.max_value = maximum
 	health_bar.value = current
 	
+	new_health_bar.max_value = maximum
+	new_health_bar.value = current
+	
 	if extra <= 0.0:
 		health_label.text = str(int(current)) + " / " + str(int(maximum))
 		extra_health_bar.visible = false
@@ -94,10 +99,16 @@ func update_health():
 		
 	if current / maximum < 0.3:
 		health_bar.modulate = Color(0.686, 0.0, 0.0, 1.0)
+		new_health_bar.tint_progress  = Color(0.686, 0.0, 0.0, 1.0)
+		new_health_bar.tint_under  = Color(0.592, 0.0, 0.0, 0.392)
 	elif current / maximum < 0.6:
 		health_bar.modulate = Color(1.0, 0.376, 0.0, 1.0)
+		new_health_bar.tint_progress  = Color(1.0, 0.376, 0.0, 1.0)
+		new_health_bar.tint_under  = Color(0.606, 0.214, 0.0, 0.392)
 	else:
 		health_bar.modulate = Color(0.0, 0.765, 0.0, 1.0)
+		new_health_bar.tint_progress  = Color(0.0, 0.765, 0.0, 1.0)
+		new_health_bar.tint_under  = Color(0.0, 0.382, 0.0, 0.392)
 
 func update_inventory():
 	var money = player.inventory.get_money()
