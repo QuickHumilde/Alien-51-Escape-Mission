@@ -3,6 +3,7 @@ class_name HudPlayer
 
 @onready var health_bar = $HealthBar
 @onready var health_label = $HealthBar/Label
+@onready var health_label2: RichTextLabel = $NewHealthBar/RichTextLabel
 @onready var revives_label = $ReviveCount
 @onready var item_name = $ItemName
 @onready var item_desc = $ItemDescription
@@ -75,9 +76,12 @@ func update_health():
 	
 	new_health_bar.max_value = maximum
 	new_health_bar.value = current
+	#health_label2.clear()
+	#health_label2.append_text("[center]%d\n[b]—[/b]\n%d[/center]" % [int(current), int(maximum)])	
 	
 	if extra <= 0.0:
 		health_label.text = str(int(current)) + " / " + str(int(maximum))
+		
 		extra_health_bar.visible = false
 		extra_health_label.visible=false
 	else:
