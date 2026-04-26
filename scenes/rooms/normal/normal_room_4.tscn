@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://641t0oysglvl" path="res://scenes/rooms/template/room_template.tscn" id="1_h4bld"]
 [ext_resource type="PackedScene" uid="uid://di7t2uklujror" path="res://scenes/world/spikes.tscn" id="2_cpdog"]
 [ext_resource type="PackedScene" uid="uid://doywx78bcdk8u" path="res://scenes/enemies/Ghosty/ghosty.tscn" id="2_qm85p"]
-[ext_resource type="PackedScene" uid="uid://cy1pdn0ydx5qy" path="res://scenes/enemies/Enemy3/enemy3.tscn" id="3_qm85p"]
+[ext_resource type="PackedScene" uid="uid://cy1pdn0ydx5qy" path="res://scenes/enemies/SlimeEnemy1/slime_enemy_1.tscn" id="3_qm85p"]
 [ext_resource type="PackedScene" uid="uid://chrgijw2gs6eb" path="res://scenes/world/lamp.tscn" id="5_4q8e3"]
 
 [node name="NormalRoom4" instance=ExtResource("1_h4bld")]

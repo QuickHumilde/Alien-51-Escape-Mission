@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var damage: float = 1.0
 @onready var timer: Timer = $Timer
 @onready var sprite: AnimatedSprite2D = $Visual/AnimatedSprite2D
+@export var id: int = 5
 var dead: bool = false
 
 func _ready() -> void:

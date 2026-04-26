@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bsqiy11i5ou1v" path="res://scenes/items/weapons/black_knife_weapon_item.tscn" id="18_f0phr"]
 [ext_resource type="PackedScene" uid="uid://nhq8xx72olhs" path="res://scenes/items/revivemint_item.tscn" id="19_0bciu"]
 [ext_resource type="PackedScene" uid="uid://8rdt5yow22lo" path="res://scenes/items/dash_ability_item.tscn" id="19_3s4b3"]
-[ext_resource type="PackedScene" uid="uid://cy1pdn0ydx5qy" path="res://scenes/enemies/Enemy3/enemy3.tscn" id="19_7y8ym"]
+[ext_resource type="PackedScene" uid="uid://cy1pdn0ydx5qy" path="res://scenes/enemies/SlimeEnemy1/slime_enemy_1.tscn" id="19_7y8ym"]
 [ext_resource type="PackedScene" uid="uid://tgp6wr33vk2p" path="res://scenes/items/weapons/pistol_gun_item.tscn" id="19_8ydvs"]
 [ext_resource type="PackedScene" uid="uid://dtapkc8g2rb0m" path="res://scenes/items/parry_ability_item.tscn" id="19_f0phr"]
 [ext_resource type="PackedScene" uid="uid://jygsb42krc3q" path="res://scenes/player/player.tscn" id="19_p5vl3"]

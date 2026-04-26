@@ -1,0 +1,147 @@
+[gd_scene load_steps=20 format=3 uid="uid://bi50aklcvaewj"]
+
+[ext_resource type="PackedScene" uid="uid://dlnik63yjjvi4" path="res://scenes/templates/item/item_template.tscn" id="1_td503"]
+[ext_resource type="Texture2D" uid="uid://d3m8sokolxbi4" path="res://assets/sprites/weapons/EyeOfTheWitch.png" id="2_g5cnw"]
+[ext_resource type="Script" uid="uid://cp5ufcss781ww" path="res://scenes/items/weapons/eye_of_the_witch_weapon_item.gd" id="2_npvhs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_npvhs"]
+atlas = ExtResource("2_g5cnw")
+region = Rect2(0, 0, 15, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_smbtx"]
+atlas = ExtResource("2_g5cnw")
+region = Rect2(15, 0, 15, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ttbv6"]
+atlas = ExtResource("2_g5cnw")
+region = Rect2(30, 0, 15, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7yqs"]
+atlas = ExtResource("2_g5cnw")
+region = Rect2(45, 0, 15, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ho0xp"]
+atlas = ExtResource("2_g5cnw")
+region = Rect2(60, 0, 15, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l60ef"]
+atlas = ExtResource("2_g5cnw")
+region = Rect2(75, 0, 15, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j4awn"]
+atlas = ExtResource("2_g5cnw")
+region = Rect2(90, 0, 15, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ykody"]
+atlas = ExtResource("2_g5cnw")
+region = Rect2(105, 0, 15, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3gx76"]
+atlas = ExtResource("2_g5cnw")
+region = Rect2(120, 0, 15, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_btwqc"]
+atlas = ExtResource("2_g5cnw")
+region = Rect2(135, 0, 15, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8l1d"]
+atlas = ExtResource("2_g5cnw")
+region = Rect2(150, 0, 15, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_duuew"]
+atlas = ExtResource("2_g5cnw")
+region = Rect2(165, 0, 15, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n208n"]
+atlas = ExtResource("2_g5cnw")
+region = Rect2(180, 0, 15, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3dm86"]
+atlas = ExtResource("2_g5cnw")
+region = Rect2(195, 0, 15, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5cnw"]
+atlas = ExtResource("2_g5cnw")
+region = Rect2(0, 0, 15, 11)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kw5cn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_npvhs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_smbtx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ttbv6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7yqs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ho0xp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l60ef")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j4awn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ykody")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3gx76")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_btwqc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8l1d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_duuew")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n208n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3dm86")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5cnw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5cnw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5cnw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5cnw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5cnw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5cnw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5cnw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5cnw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="EyeOfTheWitchWeaponItem" instance=ExtResource("1_td503")]
+script = ExtResource("2_npvhs")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visual" index="1"]
+sprite_frames = SubResource("SpriteFrames_kw5cn")
+autoplay = "default"
+frame_progress = 0.3497229

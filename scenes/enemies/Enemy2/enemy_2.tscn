@@ -1,14 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://b07bo16m56htg"]
+[gd_scene load_steps=8 format=3 uid="uid://b07bo16m56htg"]
 
 [ext_resource type="PackedScene" uid="uid://byym4irhw1v80" path="res://scenes/templates/enemy/enemy_template.tscn" id="1_oj22f"]
 [ext_resource type="Script" uid="uid://dpu6hxrute2e3" path="res://scenes/enemies/Enemy2/enemy_2.gd" id="2_4m1wf"]
-[ext_resource type="Texture2D" uid="uid://c2g552o1dmkt5" path="res://assets/sprites/player/tests/PlayerDown-Idle2.png" id="2_ngklj"]
+[ext_resource type="Texture2D" uid="uid://6dprgwip2c8u" path="res://assets/sprites/enemies/MouthEnemy.png" id="3_0hhts"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2qv7l"]
+atlas = ExtResource("3_0hhts")
+region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4m1wf"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_ngklj")
+"texture": SubResource("AtlasTexture_2qv7l")
 }],
 "loop": true,
 "name": &"default",

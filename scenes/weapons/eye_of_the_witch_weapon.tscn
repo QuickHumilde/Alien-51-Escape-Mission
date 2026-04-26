@@ -1,0 +1,180 @@
+[gd_scene load_steps=27 format=3 uid="uid://bwhv65f74a7j4"]
+
+[ext_resource type="PackedScene" uid="uid://dyjyit2bbrpm4" path="res://scenes/templates/weapon/weapon_template.tscn" id="1_l56ji"]
+[ext_resource type="Script" uid="uid://ck0r8mn2tw40x" path="res://scenes/weapons/eye_of_the_witch_weapon.gd" id="2_085ot"]
+[ext_resource type="Texture2D" uid="uid://bo5y4u1y55mhv" path="res://assets/sprites/weapons/EyeOfTheWitchShooting.png" id="2_hsfsa"]
+[ext_resource type="Texture2D" uid="uid://d3m8sokolxbi4" path="res://assets/sprites/weapons/EyeOfTheWitch.png" id="3_085ot"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7h67k"]
+atlas = ExtResource("2_hsfsa")
+region = Rect2(0, 0, 15, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_er7e2"]
+atlas = ExtResource("3_085ot")
+region = Rect2(0, 0, 15, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ell3a"]
+atlas = ExtResource("3_085ot")
+region = Rect2(15, 0, 15, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0uewf"]
+atlas = ExtResource("3_085ot")
+region = Rect2(30, 0, 15, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfy5q"]
+atlas = ExtResource("3_085ot")
+region = Rect2(45, 0, 15, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5o1u"]
+atlas = ExtResource("3_085ot")
+region = Rect2(60, 0, 15, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kx751"]
+atlas = ExtResource("3_085ot")
+region = Rect2(75, 0, 15, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o286t"]
+atlas = ExtResource("3_085ot")
+region = Rect2(90, 0, 15, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ogdx5"]
+atlas = ExtResource("3_085ot")
+region = Rect2(105, 0, 15, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qgbef"]
+atlas = ExtResource("3_085ot")
+region = Rect2(120, 0, 15, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3p174"]
+atlas = ExtResource("3_085ot")
+region = Rect2(135, 0, 15, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d1qes"]
+atlas = ExtResource("3_085ot")
+region = Rect2(150, 0, 15, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ius1"]
+atlas = ExtResource("3_085ot")
+region = Rect2(165, 0, 15, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tj3jt"]
+atlas = ExtResource("3_085ot")
+region = Rect2(180, 0, 15, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oab2m"]
+atlas = ExtResource("3_085ot")
+region = Rect2(195, 0, 15, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdtpr"]
+atlas = ExtResource("2_hsfsa")
+region = Rect2(15, 0, 15, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uueqj"]
+atlas = ExtResource("2_hsfsa")
+region = Rect2(30, 0, 15, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yeysh"]
+atlas = ExtResource("2_hsfsa")
+region = Rect2(45, 0, 15, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ro8gt"]
+atlas = ExtResource("2_hsfsa")
+region = Rect2(60, 0, 15, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ubigd"]
+atlas = ExtResource("2_hsfsa")
+region = Rect2(75, 0, 15, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1k72"]
+atlas = ExtResource("2_hsfsa")
+region = Rect2(0, 0, 15, 11)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_itve6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7h67k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_er7e2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ell3a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0uewf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mfy5q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p5o1u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kx751")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o286t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ogdx5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qgbef")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3p174")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d1qes")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ius1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tj3jt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oab2m")
+}],
+"loop": false,
+"name": &"reloading",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sdtpr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uueqj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yeysh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ro8gt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ubigd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1k72")
+}],
+"loop": false,
+"name": &"shooting",
+"speed": 15.0
+}]
+
+[node name="EyeOfTheWitchWeapon" instance=ExtResource("1_l56ji")]
+script = ExtResource("2_085ot")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visual" index="0"]
+sprite_frames = SubResource("SpriteFrames_itve6")
+animation = &"reloading"
+frame = 13
+frame_progress = 1.0

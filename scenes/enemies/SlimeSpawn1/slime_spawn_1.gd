@@ -6,7 +6,7 @@ extends Enemy
 
 func _ready():
 	_get_detector()
-	id = 1
+	id = 4
 	contact_damage = 1.0
 	speed = 25.0
 	health = 1.0

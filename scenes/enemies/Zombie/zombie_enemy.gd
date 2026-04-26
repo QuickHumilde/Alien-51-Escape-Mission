@@ -9,7 +9,7 @@ var dead: bool = false
 
 func _ready():
 	_get_detector()
-	id = 1
+	id = 6
 	contact_damage = 1.0
 	speed = 40.0
 	health = 3.0

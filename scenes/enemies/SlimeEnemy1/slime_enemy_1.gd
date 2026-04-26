@@ -3,13 +3,13 @@ extends Enemy
 @onready var agent: NavigationAgent2D = $NavigationAgent2D
 @onready var sprite = $Visual/AnimatedSprite2D
 @export var stopping_distance : float = 1.5
-@onready var enemy = preload("res://scenes/enemies/SpawnEnemy/enemy4.tscn")
+@onready var enemy = preload("res://scenes/enemies/SlimeSpawn1/slime_spawn_1.tscn")
 @export var children_spawn: int = 3
 var dead: bool = false
 
 func _ready():
 	_get_detector()
-	id = 1
+	id = 3
 	contact_damage = 1.0
 	speed = 50.0
 	health = 3.0

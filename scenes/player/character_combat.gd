@@ -20,6 +20,7 @@ var exploding_kittens_scene: PackedScene = preload("res://scenes/weapons/explodi
 var shotgun_inter_mark_hat_scene: PackedScene = preload("res://scenes/weapons/shotgun_inter_mark_weapon.tscn")
 var black_knife_scene: PackedScene = preload("res://scenes/weapons/black_knife_weapon.tscn")
 var shuriken_scene: PackedScene = preload("res://scenes/weapons/shuriken_weapon.tscn")
+var eye_of_the_witch: PackedScene = preload("res://scenes/weapons/eye_of_the_witch_weapon.tscn")
 #endregion
 
 var weapon_scenes : Dictionary = {}
@@ -39,7 +40,8 @@ func fill_weapon_scenes():
 		6: exploding_kittens_scene,
 		7: shotgun_inter_mark_hat_scene,
 		8: black_knife_scene,
-		9: shuriken_scene
+		9: shuriken_scene,
+		10: eye_of_the_witch,
 	}
 
 func init(holder: Node2D, character_stats: CharacterStats):

@@ -26,3 +26,6 @@ shape = SubResource("CapsuleShape2D_xp08u")
 [node name="Shadow" parent="." instance=ExtResource("3_nf7ey")]
 position = Vector2(0, 6.0000005)
 scale = Vector2(1.0261842, 0.5022942)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5

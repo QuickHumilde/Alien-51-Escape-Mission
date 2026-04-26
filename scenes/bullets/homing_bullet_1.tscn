@@ -1,10 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bagboy5nbxnu8"]
+[gd_scene load_steps=6 format=3 uid="uid://bagboy5nbxnu8"]
 
-[ext_resource type="Texture2D" uid="uid://dyu10c0wutn7h" path="res://assets/sprites/bullet/PistolBullet.png" id="1_exoxf"]
 [ext_resource type="Script" uid="uid://ccvi5lkfw30bt" path="res://scripts/template/bullet/homing_bullet_1.gd" id="1_leeap"]
+[ext_resource type="Texture2D" uid="uid://dihd6juwu3lxu" path="res://assets/sprites/bullet/StarBullet.png" id="2_leeap"]
+[ext_resource type="PackedScene" uid="uid://chd8ttoncxpnu" path="res://scenes/extras/bullet_trail.tscn" id="3_mngmn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_leeap"]
-size = Vector2(4, 4)
+size = Vector2(8.5, 8.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_exoxf"]
 radius = 70.0
@@ -17,15 +18,20 @@ script = ExtResource("1_leeap")
 [node name="Visual" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Visual"]
-modulate = Color(0.8694309, 0.49116397, 1, 1)
-texture = ExtResource("1_exoxf")
+modulate = Color(0.8110547, 0.00026414156, 0.7444595, 1)
+texture = ExtResource("2_leeap")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_leeap")
 
 [node name="HomingArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 4
 collision_mask = 47
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HomingArea"]
 shape = SubResource("CircleShape2D_exoxf")
+
+[node name="BulletTrail" parent="." instance=ExtResource("3_mngmn")]
+default_color = Color(0.88827366, 0.00070424913, 0.9001216, 0.42352942)

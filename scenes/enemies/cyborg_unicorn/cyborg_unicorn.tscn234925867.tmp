@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://hn5pw77ojo1h"]
+
+[ext_resource type="PackedScene" uid="uid://byym4irhw1v80" path="res://scenes/templates/enemy/enemy_template.tscn" id="1_mmukf"]
+[ext_resource type="Script" uid="uid://lk7ymoi0jpfi" path="res://scenes/enemies/cyborg_unicorn/cyborg_unicorn.gd" id="2_uoien"]
+[ext_resource type="Texture2D" uid="uid://7863ug37ua4d" path="res://assets/sprites/enemies/cyborg_unicorn/CyborgUnicorn.png" id="2_yl5uq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uoien"]
+atlas = ExtResource("2_yl5uq")
+region = Rect2(0, 0, 38, 36)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_es10a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uoien")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yl5uq"]
+radius = 9.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uoien"]
+radius = 11.0
+
+[node name="CyborgUnicorn" instance=ExtResource("1_mmukf")]
+script = ExtResource("2_uoien")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visual" index="0"]
+sprite_frames = SubResource("SpriteFrames_es10a")
+
+[node name="Hitbox" parent="." index="1"]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_yl5uq")
+
+[node name="CollisionShape2D" parent="Detector" index="0"]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_uoien")

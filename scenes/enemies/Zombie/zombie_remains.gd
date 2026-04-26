@@ -6,7 +6,7 @@ var children_spawn: int = 1
 
 func _ready() -> void:
 	_get_detector()
-	id = 1
+	id = 7
 	contact_damage = 0.0
 	speed = 0.0
 	health = 2.0
