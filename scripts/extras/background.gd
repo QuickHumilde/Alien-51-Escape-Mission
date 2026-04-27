@@ -83,10 +83,14 @@ func _use_tile_data_runtime_update(coords: Vector2i) -> bool:
 
 func _tile_data_runtime_update(coords: Vector2i, tile_data: TileData) -> void:
 	for obstacle in obstacles.get_children():
-		var cell := local_to_map(obstacle.global_position)
+		var cell: Vector2i = local_to_map(obstacle.global_position)
 		if cell == coords:
-			tile_data.set_navigation_polygon(0, null)
-
+			var nav_poly := tile_data.get_navigation_polygon(0)
+			if nav_poly != null:
+				tile_data.set_navigation_polygon(0, null)
+				tile_data.set_navigation_polygon(1, nav_poly)
+			return
+	
 func has_obstacle(coords: Vector2i) -> bool:
 	for obstacle in obstacles.get_children():
 		var cell = local_to_map(obstacle.global_position)

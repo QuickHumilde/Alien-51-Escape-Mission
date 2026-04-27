@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=4 uid="uid://cbeeg860ggp8j"]
 
 [ext_resource type="PackedScene" uid="uid://641t0oysglvl" path="res://scenes/rooms/template/room_template.tscn" id="1_wxo0j"]
-[ext_resource type="PackedScene" uid="uid://b07bo16m56htg" path="res://scenes/enemies/Enemy2/enemy_2.tscn" id="3_dkrl8"]
+[ext_resource type="PackedScene" uid="uid://b07bo16m56htg" path="res://scenes/enemies/MouthEnemy/mouth_enemy.tscn" id="3_dkrl8"]
 [ext_resource type="PackedScene" uid="uid://doywx78bcdk8u" path="res://scenes/enemies/Ghosty/ghosty.tscn" id="3_wxoax"]
 [ext_resource type="PackedScene" uid="uid://vwuduq2qtmsv" path="res://scenes/world/obstacle_1.tscn" id="4_12kmx"]
 [ext_resource type="PackedScene" uid="uid://chrgijw2gs6eb" path="res://scenes/world/lamp.tscn" id="4_wxoax"]

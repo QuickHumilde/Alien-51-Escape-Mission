@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=4 uid="uid://bq6ys6ec4gajy"]
+[gd_scene load_steps=8 format=4 uid="uid://bq6ys6ec4gajy"]
 
 [ext_resource type="PackedScene" uid="uid://641t0oysglvl" path="res://scenes/rooms/template/room_template.tscn" id="1_6n5dt"]
 [ext_resource type="PackedScene" uid="uid://chrgijw2gs6eb" path="res://scenes/world/lamp.tscn" id="2_3jm0b"]
 [ext_resource type="PackedScene" uid="uid://vwuduq2qtmsv" path="res://scenes/world/obstacle_1.tscn" id="3_3jm0b"]
 [ext_resource type="PackedScene" uid="uid://dceenhddbl8gi" path="res://scenes/enemies/Zombie/zombie_enemy.tscn" id="4_by7vl"]
 [ext_resource type="PackedScene" uid="uid://45k8kt4s1uvb" path="res://scenes/enemies/SlimeSpawn1/slime_spawn_1.tscn" id="5_153kc"]
+[ext_resource type="PackedScene" uid="uid://btakcp8d7eo58" path="res://scenes/pickup/mimic_chest.tscn" id="6_kgesj"]
 [ext_resource type="PackedScene" uid="uid://doywx78bcdk8u" path="res://scenes/enemies/Ghosty/ghosty.tscn" id="6_plhe6"]
 
 [node name="NormalRoom9" instance=ExtResource("1_6n5dt")]
@@ -67,6 +68,9 @@ position = Vector2(40, -24)
 
 [node name="Pickups" parent="." index="8"]
 position = Vector2(40, -24)
+
+[node name="MimicChest" parent="Pickups" index="0" instance=ExtResource("6_kgesj")]
+position = Vector2(0, 80)
 
 [node name="Ghosty" parent="." index="9" instance=ExtResource("6_plhe6")]
 position = Vector2(40, -8)

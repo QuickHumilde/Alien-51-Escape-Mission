@@ -15,4 +15,5 @@ texture = ExtResource("3_q2gqx")
 wait_time = 0.001
 
 [node name="Barrel" type="Node2D" parent="." index="2"]
-position = Vector2(3.5, -1.5)
+z_index = -1
+position = Vector2(-1.5, -1.5)

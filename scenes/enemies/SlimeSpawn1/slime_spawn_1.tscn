@@ -1,22 +1,69 @@
-[gd_scene load_steps=9 format=3 uid="uid://45k8kt4s1uvb"]
+[gd_scene load_steps=16 format=3 uid="uid://45k8kt4s1uvb"]
 
 [ext_resource type="PackedScene" uid="uid://byym4irhw1v80" path="res://scenes/templates/enemy/enemy_template.tscn" id="1_gdee5"]
 [ext_resource type="Script" uid="uid://crym51cv1hwhw" path="res://scenes/enemies/SlimeSpawn1/slime_spawn_1.gd" id="2_303uw"]
-[ext_resource type="Texture2D" uid="uid://y6p2ocp48bnj" path="res://assets/sprites/enemies/slime_spawn_enemy_1/SlimeSpawn1.png" id="3_487j1"]
+[ext_resource type="Texture2D" uid="uid://b48lnop47pqf" path="res://assets/sprites/enemies/slime_spawn_enemy_1/SlimeSpawn1_BackFly.png" id="3_1c84j"]
+[ext_resource type="Texture2D" uid="uid://bfbv1ln2qhww3" path="res://assets/sprites/enemies/slime_spawn_enemy_1/SlimeSpawn1_FrontFly.png" id="3_e8r1g"]
 [ext_resource type="PackedScene" uid="uid://7rhvgxjf42md" path="res://scenes/extras/shadow.tscn" id="4_e8r1g"]
+[ext_resource type="Texture2D" uid="uid://bumfph0wru3os" path="res://assets/sprites/enemies/slime_spawn_enemy_1/SlimeSpawn1_LeftFly.png" id="5_egn2k"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_e8r1g"]
-atlas = ExtResource("3_487j1")
-region = Rect2(0, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_7tcdt"]
+atlas = ExtResource("3_1c84j")
+region = Rect2(0, 0, 16, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_35mca"]
+atlas = ExtResource("3_1c84j")
+region = Rect2(16, 0, 16, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1c84j"]
+atlas = ExtResource("3_e8r1g")
+region = Rect2(0, 0, 16, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_egn2k"]
+atlas = ExtResource("3_e8r1g")
+region = Rect2(16, 0, 16, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ccqwq"]
+atlas = ExtResource("5_egn2k")
+region = Rect2(0, 0, 16, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jbdqk"]
+atlas = ExtResource("5_egn2k")
+region = Rect2(16, 0, 16, 9)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4lujc"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_e8r1g")
+"texture": SubResource("AtlasTexture_7tcdt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_35mca")
 }],
 "loop": true,
-"name": &"default",
+"name": &"fly_back",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1c84j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_egn2k")
+}],
+"loop": true,
+"name": &"fly_front",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ccqwq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jbdqk")
+}],
+"loop": true,
+"name": &"fly_left",
 "speed": 5.0
 }]
 
@@ -27,18 +74,27 @@ radius = 2.236068
 radius = 3.1622777
 
 [node name="SlimeSpawn1" instance=ExtResource("1_gdee5")]
+collision_mask = 15
 script = ExtResource("2_303uw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visual" index="0"]
-modulate = Color(1, 1, 1, 0.78431374)
 position = Vector2(0, -1.847744e-06)
 sprite_frames = SubResource("SpriteFrames_4lujc")
+animation = &"fly_front"
+autoplay = "fly_front"
 
 [node name="Shadow" parent="Visual" index="1" instance=ExtResource("4_e8r1g")]
 position = Vector2(0, 8.999999)
 
 [node name="Hitbox" parent="." index="1"]
+position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_torcv")
+
+[node name="Detector" parent="." index="2"]
+position = Vector2(0, 1)
 
 [node name="CollisionShape2D" parent="Detector" index="0"]
 shape = SubResource("CircleShape2D_4lujc")
+
+[node name="NavigationAgent2D" parent="." index="4"]
+navigation_layers = 3

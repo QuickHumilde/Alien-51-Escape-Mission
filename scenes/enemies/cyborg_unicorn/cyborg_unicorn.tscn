@@ -218,10 +218,9 @@ scale_min = 0.7
 scale_max = 1.1999999
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yl5uq"]
-radius = 9.0
+radius = 8.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uoien"]
-radius = 11.0
 
 [node name="CyborgUnicorn" instance=ExtResource("1_mmukf")]
 script = ExtResource("2_uoien")

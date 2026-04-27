@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bv4py25wei8wj"]
+
+[ext_resource type="Texture2D" uid="uid://cxn8mfhkfye04" path="res://assets/sprites/bullet/SpitBullet.png" id="1_plut8"]
+[ext_resource type="Script" uid="uid://d3wq7istrmhok" path="res://scenes/bullets/spit_bullet.gd" id="1_q0wr5"]
+[ext_resource type="PackedScene" uid="uid://chd8ttoncxpnu" path="res://scenes/extras/bullet_trail.tscn" id="2_q0wr5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g7dkb"]
+radius = 1.4142135
+
+[node name="SpitBullet" type="Area2D"]
+collision_layer = 2
+collision_mask = 13
+script = ExtResource("1_q0wr5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_g7dkb")
+
+[node name="Visual" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visual"]
+texture = ExtResource("1_plut8")
+
+[node name="BulletTrail" parent="." instance=ExtResource("2_q0wr5")]
+position = Vector2(-3, -0.5)
+width = 1.5
+default_color = Color(0.18431373, 0.57254905, 0.8, 0.7019608)
+lenght = 10

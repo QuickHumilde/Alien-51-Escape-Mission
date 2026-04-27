@@ -808,6 +808,7 @@ z_index = 2
 z_index = 2
 sprite_frames = SubResource("SpriteFrames_xuses")
 animation = &"idle_down"
+autoplay = "idle_down"
 
 [node name="Shadow" parent="Visual" instance=ExtResource("13_cnsyf")]
 position = Vector2(0, 6.0183535)

@@ -59,15 +59,15 @@ func _update_animation():
 
 	# Movimiento horizontal dominante
 	if abs(dir.x) > abs(dir.y):
-		sprite.play("default")
+		sprite.play("side_walk")
 		sprite.flip_h = dir.x > 0
 
 	# Movimiento vertical dominante
 	else:
 		if dir.y > 0:
-			sprite.play("default")
+			sprite.play("front_walk")
 		else:
-			sprite.play("default")
+			sprite.play("back_walk")
 
 func die():
 	if !dead:

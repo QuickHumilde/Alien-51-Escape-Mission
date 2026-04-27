@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dw4em1kkdblnm" path="res://scenes/enemies/stickman/stickman_enemy.tscn" id="14_84wfm"]
 [ext_resource type="PackedScene" uid="uid://dxitdlogd57rg" path="res://scenes/pickup/health.tscn" id="14_hvcyd"]
 [ext_resource type="PackedScene" uid="uid://bns8nphp5sx17" path="res://scenes/extras/football_ball.tscn" id="15_hvcyd"]
-[ext_resource type="PackedScene" uid="uid://b07bo16m56htg" path="res://scenes/enemies/Enemy2/enemy_2.tscn" id="18_5suce"]
+[ext_resource type="PackedScene" uid="uid://b07bo16m56htg" path="res://scenes/enemies/MouthEnemy/mouth_enemy.tscn" id="18_5suce"]
 [ext_resource type="PackedScene" uid="uid://bsqiy11i5ou1v" path="res://scenes/items/weapons/black_knife_weapon_item.tscn" id="18_f0phr"]
 [ext_resource type="PackedScene" uid="uid://nhq8xx72olhs" path="res://scenes/items/revivemint_item.tscn" id="19_0bciu"]
 [ext_resource type="PackedScene" uid="uid://8rdt5yow22lo" path="res://scenes/items/dash_ability_item.tscn" id="19_3s4b3"]

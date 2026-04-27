@@ -1,7 +1,6 @@
-[gd_scene load_steps=36 format=4 uid="uid://1k5ta205shrd"]
+[gd_scene load_steps=35 format=4 uid="uid://1k5ta205shrd"]
 
 [ext_resource type="PackedScene" uid="uid://641t0oysglvl" path="res://scenes/rooms/template/room_template.tscn" id="1_do61m"]
-[ext_resource type="PackedScene" uid="uid://b07bo16m56htg" path="res://scenes/enemies/Enemy2/enemy_2.tscn" id="2_bkrbk"]
 [ext_resource type="PackedScene" uid="uid://dug0rdf4rqk8" path="res://scenes/items/weapons/exploding_kittens_weapon_item.tscn" id="2_esqot"]
 [ext_resource type="PackedScene" uid="uid://jygsb42krc3q" path="res://scenes/player/player.tscn" id="2_kxxeq"]
 [ext_resource type="PackedScene" uid="uid://kge2n01jvemp" path="res://scenes/pickup/coin.tscn" id="3_w4rbs"]
@@ -53,8 +52,6 @@ position = Vector2(404, -40)
 
 [node name="Right" parent="Doors" index="3"]
 position = Vector2(476, -120)
-
-[node name="Enemy2" parent="Enemies" index="0" instance=ExtResource("2_bkrbk")]
 
 [node name="ExplodingKittensWeaponItem" parent="Obstacles" index="0" instance=ExtResource("2_esqot")]
 position = Vector2(264, 56)
@@ -158,4 +155,4 @@ health_percentage = 30.0
 enemy1_percentage = 10.0
 
 [node name="Player" parent="." index="9" instance=ExtResource("2_kxxeq")]
-position = Vector2(138, -22)
+position = Vector2(-135, -155)

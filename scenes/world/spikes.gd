@@ -13,5 +13,4 @@ func do_damage(body):
 	if body.is_in_group("enemy"):
 		body.get_parent().take_damage(damage)
 	elif body.is_in_group("player_tramp"):
-
 		body.take_damage(damage)

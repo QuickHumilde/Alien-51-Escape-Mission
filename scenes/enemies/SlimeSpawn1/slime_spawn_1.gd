@@ -49,22 +49,22 @@ func _physics_process(delta):
 
 func _update_animation():
 	if velocity == Vector2.ZERO:
-		sprite.play("default")
+		sprite.play("fly_front")
 		return
 
 	var dir = velocity.normalized()
 
 	# Movimiento horizontal dominante
 	if abs(dir.x) > abs(dir.y):
-		sprite.play("default")
+		sprite.play("fly_left")
 		sprite.flip_h = dir.x > 0
 
 	# Movimiento vertical dominante
 	else:
 		if dir.y > 0:
-			sprite.play("default")
+			sprite.play("fly_front")
 		else:
-			sprite.play("default")
+			sprite.play("fly_back")
 
 func _on_damage():
 	play_damage_sound()

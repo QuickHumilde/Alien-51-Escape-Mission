@@ -21,7 +21,6 @@ func _on_body_enter(body: Node2D) -> void:
 		return
 	
 	used = true
-	print("Cambio de piso")
 	hitbox.set_deferred("monitoring", false)
 	hitbox.set_deferred("monitorable", false)
 	call_deferred("_do_next_floor")
