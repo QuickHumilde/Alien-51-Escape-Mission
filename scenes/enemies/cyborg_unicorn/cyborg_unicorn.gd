@@ -3,6 +3,7 @@ extends Enemy
 @onready var sprite: AnimatedSprite2D = $Visual/AnimatedSprite2D
 @onready var charge_ray: RayCast2D = $ChargeRay
 @onready var dash_particles: GPUParticles2D = $Visual/DashParticles
+@onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 enum State { CHASE, WINDUP, DASH, RECOVER }
 var state: State = State.CHASE
@@ -35,11 +36,13 @@ func _ready() -> void:
 	contact_damage = 2.0
 	health = 30.0
 
+	sounds = { "acceleration_1" : load("res://assets/audio/sfx/Acceleration_1.mp3")}
+
 	speed = chase_speed
 	knockback_force = 700.0
 	knockback_time = 0.0
 	knockback_resistance = 0.2
-
+	
 	if charge_ray != null:
 		charge_ray.add_exception(self)
 		charge_ray.enabled = true
@@ -139,6 +142,7 @@ func _process_chase(_delta: float) -> void:
 
 func _process_windup(_delta: float) -> void:
 	velocity = Vector2.ZERO
+	_on_acceleration()
 	move_and_slide()
 
 	if _state_t >= windup_time:
@@ -152,6 +156,7 @@ func _process_dash(_delta: float) -> void:
 	move_and_slide()
 
 	if get_slide_collision_count() > 0 or is_on_wall():
+		_on_impact()
 		state = State.RECOVER
 		_state_t = 0.0
 		_dash_cd = dash_cooldown
@@ -202,8 +207,17 @@ func _decay_knockback(delta: float) -> void:
 		knockback = Vector2.ZERO
 
 func _on_damage() -> void:
-	play_sound("damage", randf_range(-2.0, 0.0), randf_range(0.9, 1.1))
-
+	pass
+	
+func _on_acceleration():
+	var pitch: float = randf_range(0.8, 1.1)
+	play_sound("acceleration_1", -5.0, pitch)
+	
+func _on_impact() -> void:
+	Signals.shake_camera.emit(7.5)
+	var pitch: float = randf_range(0.9, 1.1)
+	AudioManager.play_sfx("crash_1", 0.0, pitch)
+	
 func _update_animation() -> void:
 	var dir := _facing
 	if state == State.DASH:

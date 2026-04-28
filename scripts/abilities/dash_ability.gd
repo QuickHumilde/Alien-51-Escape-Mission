@@ -108,6 +108,8 @@ func change_ability(new_ability_position):
 	_player.get_tree().current_scene.add_child(inst)
 	inst.global_position = new_ability_position
 	inst.disable_pickup(2.0)
+	_player.animation.player_and_weapon_changing_color(Color(1,1,1), Color(1,1,1))
+	_player.movement.clear_override_speed()
 	queue_free()
 
 func play_sound():

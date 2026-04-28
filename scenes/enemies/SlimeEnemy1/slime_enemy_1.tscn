@@ -226,7 +226,7 @@ script = ExtResource("2_0vi2q")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visual" index="0"]
 position = Vector2(-9.536743e-07, 0)
 sprite_frames = SubResource("SpriteFrames_skcte")
-animation = &"side_walk"
+animation = &"front_walk"
 autoplay = "front_walk"
 
 [node name="Shadow" parent="Visual" index="1" instance=ExtResource("4_0vi2q")]

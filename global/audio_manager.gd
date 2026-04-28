@@ -13,6 +13,7 @@ var sfx: Dictionary = {
 	"parry_1": preload("res://assets/audio/sfx/Parry_1.mp3"),
 	"failed_parry_1": preload("res://assets/audio/sfx/FailedParry_1.mp3"),
 	"wii_startup":preload("res://assets/audio/sfx/WiiStartupSFX.mp3"),
+	"crash_1": preload("res://assets/audio/sfx/Crash_1.mp3")
 }
 
 var music: Dictionary = {

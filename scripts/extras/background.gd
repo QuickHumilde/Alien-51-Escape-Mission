@@ -75,29 +75,25 @@ func tile_put_obstacle(coords: Vector2i) -> bool:
 	return tile.get_custom_data("put_obstacle") == true
 
 func _use_tile_data_runtime_update(coords: Vector2i) -> bool:
-	for obstacle in obstacles.get_children():
-		var cell = local_to_map(obstacle.global_position)
-		if cell == coords:
-			return true
-	return false
+	return has_obstacle(coords)
 
 func _tile_data_runtime_update(coords: Vector2i, tile_data: TileData) -> void:
-	for obstacle in obstacles.get_children():
-		var cell: Vector2i = local_to_map(obstacle.global_position)
-		if cell == coords:
-			var nav_poly := tile_data.get_navigation_polygon(0)
-			if nav_poly != null:
-				tile_data.set_navigation_polygon(0, null)
-				tile_data.set_navigation_polygon(1, nav_poly)
-			return
+	if not has_obstacle(coords):
+		return
+
+	var nav_poly := tile_data.get_navigation_polygon(0)
+	if nav_poly != null:
+		tile_data.set_navigation_polygon(0, null)
+		tile_data.set_navigation_polygon(1, nav_poly)
 	
 func has_obstacle(coords: Vector2i) -> bool:
-	for obstacle in obstacles.get_children():
-		var cell = local_to_map(obstacle.global_position)
+	for obstacle in get_tree().get_nodes_in_group("obstacle"):
+		var local_pos := to_local(obstacle.global_position)
+		var cell := local_to_map(local_pos)
 		if cell == coords:
 			return true
 	return false
-
+	
 func decorate_tile(coords: Vector2i) -> void:
 	var sprite: Sprite2D = Sprite2D.new()
 	sprite.texture = decoration_sprites.pick_random()

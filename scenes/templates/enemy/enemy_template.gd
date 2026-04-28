@@ -6,7 +6,7 @@ class_name Enemy
 @export var speed : float = 50.0
 @export var health : float = 3.0
 @export var contact_damage: float = 0.0
-@export var spawn_freeze_time: float = 0.5
+@export var spawn_freeze_time: float = 0.75
 @export var knockback_force : float = 0.0
 
 @onready var player: CharacterBody2D = get_tree().current_scene.get_node("Player")

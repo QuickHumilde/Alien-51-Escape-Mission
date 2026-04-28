@@ -40,6 +40,7 @@ signal vessel_code()
 #region Extras
 signal wii_pointer_activated()
 signal purchased_shop_item()
+signal shake_camera(strength: float)
 #endregion
 
 # Made for removing the warning
@@ -63,3 +64,4 @@ func _emit_all():
 	purchased_shop_item.emit()
 	weapon_changed.emit()
 	stats_changed.emit()
+	shake_camera.emit(0.0)

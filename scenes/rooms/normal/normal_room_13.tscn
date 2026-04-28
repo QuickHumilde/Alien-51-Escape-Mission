@@ -1,0 +1,86 @@
+[gd_scene load_steps=7 format=4 uid="uid://se5yn3q1omg2"]
+
+[ext_resource type="PackedScene" uid="uid://641t0oysglvl" path="res://scenes/rooms/template/room_template.tscn" id="1_85ro8"]
+[ext_resource type="PackedScene" uid="uid://dw4em1kkdblnm" path="res://scenes/enemies/stickman/stickman_enemy.tscn" id="2_dhvhq"]
+[ext_resource type="PackedScene" uid="uid://45k8kt4s1uvb" path="res://scenes/enemies/SlimeSpawn1/slime_spawn_1.tscn" id="3_x3cwi"]
+[ext_resource type="PackedScene" uid="uid://chrgijw2gs6eb" path="res://scenes/world/lamp.tscn" id="4_rm8jl"]
+[ext_resource type="PackedScene" uid="uid://di7t2uklujror" path="res://scenes/world/spikes.tscn" id="5_x3cwi"]
+[ext_resource type="PackedScene" uid="uid://vwuduq2qtmsv" path="res://scenes/world/obstacle_1.tscn" id="6_rm8jl"]
+
+[node name="NormalRoom13" instance=ExtResource("1_85ro8")]
+door_caps = {
+"down": true,
+"left": false,
+"right": true,
+"up": false
+}
+
+[node name="Background" parent="." index="0"]
+tile_map_data = PackedByteArray("AAD+/wMAAAAGAAEAAAD+/wQAAAAGAAAAAAAAAAQAAAAGAAEAAAABAAQAAAAHAAEAAAD9/wMAAAALAAEAAAD9/wQAAAALAAEAAAD8/wMAAAACAAYAAAD8/wQAAAACAAYAAAAEAAMAAAAFAAAAAAAEAAQAAAAGAAAAAAAFAAMAAAAGAAEAAAAFAAQAAAAGAAEAAAAGAAMAAAAGAAEAAAAGAAQAAAAGAAEAAAAHAAMAAAAGAAEAAAAHAAQAAAAEAAAAAAACAAQAAAAGAAEAAAACAAMAAAAGAAEAAAABAAMAAAAGAAEAAAAAAAMAAAAGAAEAAAD//wMAAAAFAAAAAAD//wQAAAAEAAAAAAD7/wMAAAABAAYAAAD7/wQAAAABAAYAAAAIAAMAAAAHAAYAAAAIAAQAAAAHAAYAAAD7/wEAAAABAAYAAAD7/wIAAAABAAYAAAD8/wEAAAACAAYAAAD8/wIAAAACAAYAAAD9/wEAAAAOAAEAAAD9/wIAAAALAAEAAAD+/wEAAAAHAAEAAAD+/wIAAAAEAAAAAAD//wEAAAAFAAAAAAD//wIAAAAGAAEAAAAAAAEAAAAGAAAAAAAAAAIAAAAGAAEAAAABAAEAAAAGAAEAAAABAAIAAAAHAAEAAAACAAEAAAAEAAAAAAACAAIAAAAHAAAAAAADAPz/AAAGAAEAAAADAP3/AAAHAAEAAAADAP7/AAAGAAEAAAADAP//AAAFAAAAAAAEAPz/AAAGAAAAAAAEAP3/AAAGAAEAAAAEAP7/AAAGAAEAAAAEAP//AAAEAAAAAAAEAAAAAAAHAAAAAAAEAAEAAAAEAAAAAAAEAAIAAAAGAAEAAAAFAPz/AAAGAAEAAAAFAP3/AAAGAAEAAAAFAP7/AAAGAAEAAAAFAP//AAAGAAEAAAAFAAAAAAAGAAEAAAAFAAEAAAAEAAAAAAAFAAIAAAAGAAEAAAAGAPz/AAAGAAEAAAAGAP3/AAAHAAEAAAAGAP7/AAAFAAAAAAAGAP//AAAGAAEAAAAGAAAAAAAGAAEAAAAGAAEAAAAGAAEAAAAGAAIAAAAHAAEAAAAHAPz/AAAHAAAAAAAHAP3/AAAGAAEAAAAHAP7/AAAGAAEAAAAHAP//AAAGAAEAAAAHAAAAAAAGAAEAAAAHAAEAAAAGAAEAAAAHAAIAAAAGAAEAAAAIAPz/AAAHAAYAAAAIAP3/AAAHAAYAAAAIAP7/AAAHAAYAAAAIAP//AAAHAAYAAAAIAAEAAAAHAAYAAAAIAAIAAAAHAAYAAAAJAPz/AAAIAAYAAAAJAP3/AAAIAAYAAAAJAP7/AAAIAAYAAAAJAP//AAAIAAYAAAAJAAEAAAAIAAYAAAAJAAIAAAAIAAYAAAAJAAMAAAAIAAYAAAAJAAQAAAAIAAYAAAADAAAAAAAGAAEAAAADAAEAAAAGAAAAAAADAAIAAAAGAAEAAAADAAMAAAAGAAEAAAADAAQAAAAGAAEAAAD9/wUAAAAPAAIAAAD+/wUAAAAGAAEAAAD//wUAAAAHAAAAAAAAAAUAAAAGAAEAAAABAAUAAAAGAAEAAAACAAUAAAAFAAAAAAADAAUAAAAGAAEAAAAEAAUAAAAGAAEAAAAFAAUAAAAGAAEAAAAGAAUAAAAGAAAAAAAHAAUAAAAGAAEAAAAIAAUAAAAHAAYAAAAJAAUAAAAIAAYAAAD7/wUAAAABAAYAAAD8/wUAAAACAAYAAAD7/wYAAAABAAkAAAD7/wcAAAABAAoAAAD8/wYAAAACAAkAAAD8/wcAAAACAAoAAAAIAAYAAAAHAAkAAAAIAAcAAAAHAAoAAAAJAAYAAAAIAAkAAAAJAAcAAAAIAAoAAAAHAAYAAAAEAAcAAAAHAAcAAAAEAAgAAAAGAAYAAAAEAAcAAAAGAAcAAAAEAAgAAAAFAAYAAAAEAAcAAAAFAAcAAAAEAAgAAAAEAAYAAAAEAAcAAAAEAAcAAAAEAAgAAAADAAYAAAAEAAcAAAADAAcAAAAEAAgAAAABAAYAAAAEAAcAAAABAAcAAAAEAAgAAAAAAAYAAAAEAAcAAAAAAAcAAAAEAAgAAAD//wYAAAAEAAcAAAD//wcAAAAEAAgAAAD+/wYAAAAEAAcAAAD+/wcAAAAEAAgAAAD9/wYAAAAEAAcAAAD9/wcAAAAEAAgAAAAIAPn/AAAHAAMAAAAIAPr/AAAHAAQAAAAJAPn/AAAIAAMAAAAJAPr/AAAIAAQAAAAIAPv/AAAHAAYAAAAJAPv/AAAIAAYAAAAHAPn/AAAEAAUAAAAHAPr/AAAEAAYAAAAGAPn/AAAEAAUAAAAGAPr/AAAEAAYAAAAFAPn/AAAEAAUAAAAFAPr/AAAEAAYAAAAEAPn/AAAEAAUAAAAEAPr/AAAEAAYAAAADAPn/AAAEAAUAAAADAPr/AAAEAAYAAAADAPv/AAAOAAIAAAAEAPv/AAAKAAAAAAAFAPv/AAAKAAAAAAAGAPv/AAAKAAAAAAAHAPv/AAAPAAEAAAABAPn/AAABAAMAAAABAPr/AAABAAQAAAABAPv/AAABAAYAAAABAPz/AAABAAYAAAABAP3/AAABAAYAAAACAPn/AAACAAMAAAACAPr/AAACAAQAAAACAPv/AAACAAYAAAACAPz/AAACAAYAAAACAP3/AAACAAYAAAD7////AAABAAMAAAD7/wAAAAABAAQAAAD8////AAACAAMAAAD8/wAAAAACAAQAAAD9////AAAEAAUAAAD9/wAAAAAEAAYAAAD+////AAAEAAUAAAD+/wAAAAAEAAYAAAD/////AAAEAAUAAAD//wAAAAAEAAYAAAABAP//AAAJAAUAAAABAAAAAAAJAAYAAAACAP//AAAKAAUAAAACAAAAAAAKAAYAAAAAAP//AAAEAAUAAAAAAAAAAAAEAAYAAAABAP7/AAABAAYAAAACAP7/AAACAAYAAAA=")
+
+[node name="Up" parent="Doors" index="0"]
+visible = false
+position = Vector2(-272, -108)
+
+[node name="Left" parent="Doors" index="2"]
+visible = false
+position = Vector2(-196, 8)
+
+[node name="StickmanEnemy" parent="Enemies" index="0" instance=ExtResource("2_dhvhq")]
+position = Vector2(-24, 56)
+
+[node name="SlimeSpawn1" parent="Enemies" index="1" instance=ExtResource("3_x3cwi")]
+position = Vector2(-24, 16)
+
+[node name="StickmanEnemy2" parent="Enemies" index="2" instance=ExtResource("2_dhvhq")]
+position = Vector2(88, -64)
+
+[node name="SlimeSpawn3" parent="Enemies" index="3" instance=ExtResource("3_x3cwi")]
+position = Vector2(56, -64)
+
+[node name="RewardSpawner" parent="." index="5"]
+position = Vector2(56, 24)
+
+[node name="Lamp2" parent="Decorations" index="0" instance=ExtResource("4_rm8jl")]
+position = Vector2(88, -88)
+
+[node name="Lamp3" parent="Decorations" index="1" instance=ExtResource("4_rm8jl")]
+position = Vector2(88, 104)
+rotation = 3.1415927
+
+[node name="Lamp4" parent="Decorations" index="2" instance=ExtResource("4_rm8jl")]
+position = Vector2(-8, 104)
+rotation = 3.1415927
+
+[node name="Lamp6" parent="Decorations" index="3" instance=ExtResource("4_rm8jl")]
+position = Vector2(-56, 56)
+rotation = -1.5707964
+
+[node name="Lamp7" parent="Decorations" index="4" instance=ExtResource("4_rm8jl")]
+position = Vector2(136, 40)
+rotation = 1.5707964
+
+[node name="Lamp8" parent="Decorations" index="5" instance=ExtResource("4_rm8jl")]
+position = Vector2(136, -24)
+rotation = 1.5707964
+
+[node name="Spikes" parent="Obstacles" index="0" instance=ExtResource("5_x3cwi")]
+position = Vector2(120, 88)
+
+[node name="Spikes2" parent="Obstacles" index="1" instance=ExtResource("5_x3cwi")]
+position = Vector2(120, 56)
+
+[node name="Spikes3" parent="Obstacles" index="2" instance=ExtResource("5_x3cwi")]
+position = Vector2(88, 88)
+
+[node name="Obstacle1" parent="Obstacles" index="3" instance=ExtResource("6_rm8jl")]
+position = Vector2(120, 72)
+
+[node name="Obstacle2" parent="Obstacles" index="4" instance=ExtResource("6_rm8jl")]
+position = Vector2(104, 88)
+
+[node name="Obstacle3" parent="Obstacles" index="5" instance=ExtResource("6_rm8jl")]
+position = Vector2(24, 56)
+
+[node name="Obstacle4" parent="Obstacles" index="6" instance=ExtResource("6_rm8jl")]
+position = Vector2(88, -8)

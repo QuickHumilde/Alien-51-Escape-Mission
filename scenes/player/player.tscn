@@ -1,6 +1,7 @@
-[gd_scene load_steps=127 format=3 uid="uid://jygsb42krc3q"]
+[gd_scene load_steps=128 format=3 uid="uid://jygsb42krc3q"]
 
 [ext_resource type="Script" uid="uid://c05bk0i1ljchi" path="res://scenes/player/character.gd" id="1_t61fv"]
+[ext_resource type="Script" uid="uid://dafi2suj354gl" path="res://scenes/player/player_camera.gd" id="2_007i1"]
 [ext_resource type="Texture2D" uid="uid://maoxh7al31bo" path="res://assets/sprites/player/PlayerDying.png" id="2_fcs02"]
 [ext_resource type="Texture2D" uid="uid://c8ja84sj6gue8" path="res://assets/sprites/player/PlayerDown-Idle.png" id="2_t61fv"]
 [ext_resource type="Texture2D" uid="uid://cud5di11g6xa" path="res://assets/sprites/player/PlayerSide-Idle.png" id="3_hss88"]
@@ -792,11 +793,12 @@ collision_layer = 4
 collision_mask = 47
 script = ExtResource("1_t61fv")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(1.75, 1.75)
+[node name="PlayerCamera" type="Camera2D" parent="."]
+zoom = Vector2(1.5, 1.5)
 process_callback = 0
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0
+script = ExtResource("2_007i1")
 
 [node name="WeaponHolder" type="Node2D" parent="."]
 light_mask = 4
