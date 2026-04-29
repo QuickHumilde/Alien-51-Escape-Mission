@@ -289,7 +289,7 @@ one_shot = true
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 2
-collision_mask = 9
+collision_mask = 41
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Hitbox"]
 position = Vector2(12.026279, -0.24735934)

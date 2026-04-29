@@ -12,6 +12,8 @@ var modifiers: Array = []
 var bullet_owner : String = "-"
 var speed_rotation: float = 0.0
 
+var hit_enemies: Dictionary = {}
+
 func _ready():
 	self.body_entered.connect(_on_hitbox_enter)
 	self.area_entered.connect(_on_hitbox_enter)
@@ -42,13 +44,22 @@ func _process(delta: float):
   
 func _on_hitbox_enter(area):
 	if area.is_in_group("obstacle"):
-		_against_obstacle()
+		_against_obstacle(area)
 		
 	if area.is_in_group("wall"):
 		_against_wall()
 		
 	if area.is_in_group("enemy") and bullet_owner != "enemy":
 		var enemy_node = area.get_parent()
+
+		if hit_enemies.has(enemy_node):
+			return
+		hit_enemies[enemy_node] = true
+
+		if is_instance_valid(enemy_node):
+			if not enemy_node.is_connected("tree_exited", Callable(self, "_on_enemy_tree_exited")):
+				enemy_node.connect("tree_exited", Callable(self, "_on_enemy_tree_exited").bind(enemy_node))
+
 		if enemy_node.has_method("apply_knockback"):
 			var knockback_direction = (enemy_node.global_position - global_position).normalized()
 			enemy_node.apply_knockback(knockback_direction, knockback_force)
@@ -65,7 +76,13 @@ func _on_hitbox_enter(area):
 			player_node.take_damage(damage)
 		_against_enemy(area)
 
-func _against_obstacle():
+func _on_enemy_tree_exited(enemy_node):
+	if hit_enemies.has(enemy_node):
+		hit_enemies.erase(enemy_node)
+
+func _against_obstacle(area):
+	if area.has_method("receive_hit"):
+		area.receive_hit()
 	destroy_bullet()
 		
 func _against_wall():

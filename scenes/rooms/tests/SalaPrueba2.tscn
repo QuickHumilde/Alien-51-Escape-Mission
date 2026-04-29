@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://1k5ta205shrd"]
+[gd_scene load_steps=36 format=4 uid="uid://1k5ta205shrd"]
 
 [ext_resource type="PackedScene" uid="uid://641t0oysglvl" path="res://scenes/rooms/template/room_template.tscn" id="1_do61m"]
 [ext_resource type="PackedScene" uid="uid://dug0rdf4rqk8" path="res://scenes/items/weapons/exploding_kittens_weapon_item.tscn" id="2_esqot"]
@@ -34,6 +34,7 @@
 [ext_resource type="PackedScene" uid="uid://btakcp8d7eo58" path="res://scenes/pickup/mimic_chest.tscn" id="32_swimx"]
 [ext_resource type="PackedScene" uid="uid://x4tu7jldj560" path="res://scenes/items/weapons/shuriken_weapon_item.tscn" id="33_bkrbk"]
 [ext_resource type="PackedScene" uid="uid://bi50aklcvaewj" path="res://scenes/items/weapons/eye_of_the_witch_weapon_item.tscn" id="34_8ca48"]
+[ext_resource type="PackedScene" uid="uid://dmitvew1d7s8n" path="res://scenes/world/obstacle_2.tscn" id="35_bkrbk"]
 
 [node name="SalaPrueba2" instance=ExtResource("1_do61m")]
 
@@ -155,4 +156,6 @@ health_percentage = 30.0
 enemy1_percentage = 10.0
 
 [node name="Player" parent="." index="9" instance=ExtResource("2_kxxeq")]
-position = Vector2(-135, -155)
+position = Vector2(125, 11)
+
+[node name="Obstacle2" parent="." index="10" instance=ExtResource("35_bkrbk")]

@@ -27,6 +27,7 @@ signal items_changed()
 signal room_changed(room_type: String)
 signal room_cleared()
 signal floor_changed()
+signal obstacle_broken(coords: Vector2i)
 #endregion
 
 #region Modifiers
@@ -65,3 +66,4 @@ func _emit_all():
 	weapon_changed.emit()
 	stats_changed.emit()
 	shake_camera.emit(0.0)
+	obstacle_broken.emit()

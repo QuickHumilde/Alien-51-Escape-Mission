@@ -1,0 +1,86 @@
+[gd_scene load_steps=11 format=3 uid="uid://dmitvew1d7s8n"]
+
+[ext_resource type="Texture2D" uid="uid://bu1ym0s67nbg" path="res://assets/sprites/extras/Obstacle3-1.png" id="1_s336n"]
+[ext_resource type="Script" uid="uid://ccuj7hkppol7s" path="res://scenes/world/obstacle_2.gd" id="1_uchrj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uchrj"]
+atlas = ExtResource("1_s336n")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ab5kv"]
+atlas = ExtResource("1_s336n")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x4gli"]
+atlas = ExtResource("1_s336n")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_js3d7"]
+atlas = ExtResource("1_s336n")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gisjp"]
+atlas = ExtResource("1_s336n")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gisjp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uchrj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ab5kv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x4gli")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_js3d7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gisjp")
+}],
+"loop": false,
+"name": &"breaking",
+"speed": 5.0
+}]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_wnxu4"]
+outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8, -8, -8)])
+
+[sub_resource type="GDScript" id="GDScript_uchrj"]
+script/source = "extends Area2D
+
+@onready var parent = $\"..\"
+
+func receive_hit():
+	parent.receive_hit()
+"
+
+[node name="Obstacle-2" type="StaticBody2D" groups=["obstacle"]]
+collision_layer = 32
+collision_mask = 103
+script = ExtResource("1_uchrj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_gisjp")
+animation = &"breaking"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." groups=["obstacle"]]
+light_mask = 32
+visibility_layer = 127
+polygon = PackedVector2Array(-6, -8, 6, -8, 8, -6, 8, 5, 6, 7, -6, 7, -8, 5, -8, -6)
+
+[node name="FlyingNavigation" type="NavigationRegion2D" parent="." groups=["obstacle"]]
+navigation_polygon = SubResource("NavigationPolygon_wnxu4")
+navigation_layers = 2
+
+[node name="Area2D" type="Area2D" parent="." groups=["obstacle"]]
+collision_layer = 32
+script = SubResource("GDScript_uchrj")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" groups=["obstacle"]]
+light_mask = 32
+visibility_layer = 127
+polygon = PackedVector2Array(-6, -9, 6, -9, 9, -6, 9, 5, 6, 8, -7, 8, -9, 5, -9, -6)

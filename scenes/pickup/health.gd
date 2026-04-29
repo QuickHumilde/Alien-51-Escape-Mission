@@ -9,7 +9,8 @@ func _ready() -> void:
 	change_visibility()
 
 func _on_pick_up(player: Character):
-	if player.stats.heal(health):
+	if picked == false and player.stats.heal(health):
+		picked=true
 		destroy()
 	else:
 		change_visibility()

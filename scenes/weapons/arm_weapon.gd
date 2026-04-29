@@ -39,3 +39,11 @@ func _on_hitbox_enter(area):
 		if enemy_node.has_method("apply_knockback"):
 			var knockback_direction = (enemy_node.global_position - global_position).normalized()
 			enemy_node.apply_knockback(knockback_direction, knockback_force)
+	
+	if area.is_in_group("obstacle"):
+		print("me")
+		_against_obstacle(area)
+
+func _against_obstacle(area):
+	if area.has_method("receive_hit"):
+		area.receive_hit()

@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://chrgijw2gs6eb"]
+[gd_scene load_steps=5 format=3 uid="uid://chrgijw2gs6eb"]
 
 [ext_resource type="Texture2D" uid="uid://dhb578tgpap3a" path="res://assets/sprites/extras/LampLight.png" id="1_glyoy"]
+[ext_resource type="Script" uid="uid://csxtqi5q81e1k" path="res://scenes/world/lamp.gd" id="2_jy8vi"]
 [ext_resource type="Texture2D" uid="uid://bibukcsq2hg25" path="res://assets/sprites/decorations/Lamp.png" id="2_x8p5s"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dpjwg"]
@@ -18,6 +19,7 @@ animations = [{
 energy = 0.55
 shadow_enabled = true
 texture = ExtResource("1_glyoy")
+script = ExtResource("2_jy8vi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -3)

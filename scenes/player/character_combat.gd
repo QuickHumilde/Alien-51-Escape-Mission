@@ -106,7 +106,7 @@ func equip_weapon(id: int):
 	if not weapon_instances.has(id):
 		var scene: PackedScene = weapon_scenes[id]
 		var instance = scene.instantiate()
-		weapon_holder.add_child(instance)
+		weapon_holder.call_deferred("add_child",instance)
 		weapon_instances[id] = instance
 
 	current_weapon = weapon_instances[id]

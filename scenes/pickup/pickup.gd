@@ -3,6 +3,7 @@ class_name Pickup
 
 @onready var hitbox: Area2D = $Area2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+var picked: bool = false
 
 func _ready() -> void:
 	hitbox.area_entered.connect(_on_area_entered)

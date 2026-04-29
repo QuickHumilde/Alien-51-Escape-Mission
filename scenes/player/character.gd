@@ -18,6 +18,7 @@ class_name Character
 @onready var tramp_detector_area : Area2D = $TrampDetector
 @onready var tramp_detector_area_hitbox : CollisionShape2D = $TrampDetector/CollisionShape2D
 @onready var weapon_holder = $WeaponHolder
+@onready var camera: Camera2D = $PlayerCamera
 
 func _ready():
 	tramp_detector_area.area_entered.connect(_on_tramp_detector_area_entered)
@@ -63,6 +64,7 @@ func take_damage(amount: float):
 					_check_overlapping_tramps()
 					return
 
+		camera.shake(1.0)
 		audio.play_damage()
 		stats.take_damage(final_damage)
 		animation.player_taking_damage()

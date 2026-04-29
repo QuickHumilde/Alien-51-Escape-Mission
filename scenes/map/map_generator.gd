@@ -27,26 +27,36 @@ const FLOOR_SETTINGS := [
 var room_scenes: Dictionary = {
 	"start": [ preload("res://scenes/rooms/start/start_room_1.tscn") ],
 	"normal": [
-	preload("res://scenes/rooms/normal/normal_room_1.tscn"),
-	preload("res://scenes/rooms/normal/normal_room_2.tscn"),
-	preload("res://scenes/rooms/normal/normal_room_3.tscn"),
-	preload("res://scenes/rooms/normal/normal_room_4.tscn"),
-	preload("res://scenes/rooms/normal/normal_room_5.tscn"),
-	preload("res://scenes/rooms/normal/normal_room_6.tscn"),
-	preload("res://scenes/rooms/normal/normal_room_7.tscn"),
-	preload("res://scenes/rooms/normal/normal_room_8.tscn"),
-	preload("res://scenes/rooms/normal/normal_room_9.tscn"),
-	preload("res://scenes/rooms/normal/normal_room_10.tscn"),
-	preload("res://scenes/rooms/normal/normal_room_11.tscn"),
-	preload("res://scenes/rooms/normal/normal_room_12.tscn"),
-	preload("res://scenes/rooms/normal/normal_room_13.tscn"),
-	preload("res://scenes/rooms/normal/normal_room_14.tscn"),
-	preload("res://scenes/rooms/normal/normal_room_15.tscn"),
-	preload("res://scenes/rooms/normal/normal_room_16.tscn"),
+		preload("res://scenes/rooms/normal/normal_room_1.tscn"),
+		preload("res://scenes/rooms/normal/normal_room_2.tscn"),
+		preload("res://scenes/rooms/normal/normal_room_3.tscn"),
+		preload("res://scenes/rooms/normal/normal_room_4.tscn"),
+		preload("res://scenes/rooms/normal/normal_room_5.tscn"),
+		preload("res://scenes/rooms/normal/normal_room_6.tscn"),
+		preload("res://scenes/rooms/normal/normal_room_7.tscn"),
+		preload("res://scenes/rooms/normal/normal_room_8.tscn"),
+		preload("res://scenes/rooms/normal/normal_room_9.tscn"),
+		preload("res://scenes/rooms/normal/normal_room_10.tscn"),
+		preload("res://scenes/rooms/normal/normal_room_11.tscn"),
+		preload("res://scenes/rooms/normal/normal_room_12.tscn"),
+		preload("res://scenes/rooms/normal/normal_room_13.tscn"),
+		preload("res://scenes/rooms/normal/normal_room_14.tscn"),
+		preload("res://scenes/rooms/normal/normal_room_15.tscn"),
+		preload("res://scenes/rooms/normal/normal_room_16.tscn"),
 	],
 	"item": [ preload("res://scenes/rooms/item/item_room_1.tscn") ],
 	"shop": [ preload("res://scenes/rooms/shop/shop_room_1.tscn") ],
-	"boss": [ preload("res://scenes/rooms/boss/boss_room_1.tscn") ]
+
+	"boss": [ preload("res://scenes/rooms/boss/boss_room_1.tscn") ],
+}
+
+const BOSSES: Dictionary = {
+	"boss_1": [
+		preload("res://scenes/rooms/boss/boss_room_1.tscn"),
+	],
+	"boss_2": [
+		preload("res://scenes/rooms/boss/boss_room_1.tscn"),
+	],
 }
 
 var map: Dictionary = {}
@@ -282,7 +292,6 @@ func _set_room_flag(flag: String, value: bool) -> void:
 		return
 	(map[key] as Dictionary)[flag] = value
 
-
 func init_doors(value: bool) -> Dictionary:
 	return {"up": value, "down": value, "left": value, "right": value}
 
@@ -374,6 +383,47 @@ func pick_scene_with_required_door(room_type: String, required_entry_dir: String
 		var caps := get_scene_door_caps(ps)
 		if bool(caps.get(required_entry_dir, true)):
 			return ps
+	return null
+
+func _pick_boss_id_for_floor() -> String:
+	if GameManager.has_method("is_last_floor") and GameManager.is_last_floor():
+		return str(GameManager.get("final_boss_id"))
+
+	var final_id := str(GameManager.get("final_boss_id"))
+	var available: Array[String] = []
+
+	for boss_id_any in BOSSES.keys():
+		var boss_id := str(boss_id_any)
+		if boss_id == final_id and final_id != "":
+			continue
+		if GameManager.has_method("is_boss_used") and GameManager.is_boss_used(boss_id):
+			continue
+		available.append(boss_id)
+
+	if available.is_empty():
+		for boss_id_any in BOSSES.keys():
+			var boss_id := str(boss_id_any)
+			if boss_id == final_id and final_id != "":
+				continue
+			available.append(boss_id)
+
+	shuffle_seeded(available)
+	return available[0]
+
+func _pick_boss_room_scene(boss_id: String, required_entry_dir: String) -> PackedScene:
+	var list: Array = BOSSES.get(boss_id, [])
+	var candidates: Array = []
+	for s in list:
+		candidates.append(s)
+
+	shuffle_seeded(candidates)
+
+	for s in candidates:
+		var ps := s as PackedScene
+		var caps := get_scene_door_caps(ps)
+		if bool(caps.get(required_entry_dir, true)):
+			return ps
+
 	return null
 
 func _has_room_type(t: String) -> bool:
@@ -519,9 +569,21 @@ func _create_dead_end_branch(room_type: String, preferred_base: Vector2, max_att
 			if map.has(pos_to_key(new_pos)):
 				continue
 
-			var special_scene := pick_scene_with_required_door(room_type, opposite_dir(d))
-			if special_scene == null:
-				continue
+			var special_scene: PackedScene = null
+
+			if room_type == "boss":
+				var boss_id := _pick_boss_id_for_floor()
+				special_scene = _pick_boss_room_scene(boss_id, opposite_dir(d))
+				if special_scene == null:
+					continue
+
+				# marcar como usado SOLO cuando ya lo colocas
+				if GameManager.has_method("mark_boss_used"):
+					GameManager.mark_boss_used(boss_id)
+			else:
+				special_scene = pick_scene_with_required_door(room_type, opposite_dir(d))
+				if special_scene == null:
+					continue
 
 			var doors := init_doors(false)
 			doors[opposite_dir(d)] = true

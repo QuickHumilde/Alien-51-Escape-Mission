@@ -10,7 +10,7 @@ item_provisional_item_name,"Tú pero mas grande","You but bigger"
 item_provisional_item_desc,"• Objeto que incrementa tu vida y velocidad".,"• Item that increases speed and life."
 
 item_pistol_gun_name,"Pistola","Pistol"
-item_pistol_gun_desc,"• Un arma basica que dispara balas de bajo daño.","• A basic weapon that shoots low-damage bullets."
+item_pistol_gun_desc,"• Un arma basica que dispara balas penetrantes de bajo daño.","• A basic weapon that shoots low-damage piercing bullets."
 
 item_ufo_name,"OVNI","UFO"
 item_ufo_desc,"• Un objeto volador no identificado.\n• Te permite volar.","• An unidentified flying object. \n• Allows you to fly."
