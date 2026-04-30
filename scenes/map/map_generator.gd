@@ -44,18 +44,25 @@ var room_scenes: Dictionary = {
 		preload("res://scenes/rooms/normal/normal_room_15.tscn"),
 		preload("res://scenes/rooms/normal/normal_room_16.tscn"),
 	],
-	"item": [ preload("res://scenes/rooms/item/item_room_1.tscn") ],
-	"shop": [ preload("res://scenes/rooms/shop/shop_room_1.tscn") ],
+	"item": [ preload("res://scenes/rooms/item/item_room_1.tscn") 
+	],
+	"shop": [ preload("res://scenes/rooms/shop/shop_room_1.tscn") 
+	],
 
-	"boss": [ preload("res://scenes/rooms/boss/boss_room_1.tscn") ],
+	"boss": [ preload("res://scenes/rooms/boss/boss_room_1.tscn") ,
+	 	preload("res://scenes/rooms/boss/boss_room_2.tscn") 
+		],
+	
 }
 
 const BOSSES: Dictionary = {
 	"boss_1": [
 		preload("res://scenes/rooms/boss/boss_room_1.tscn"),
+		preload("res://scenes/rooms/boss/boss_room_2.tscn"),
 	],
 	"boss_2": [
 		preload("res://scenes/rooms/boss/boss_room_1.tscn"),
+		preload("res://scenes/rooms/boss/boss_room_2.tscn"),
 	],
 }
 

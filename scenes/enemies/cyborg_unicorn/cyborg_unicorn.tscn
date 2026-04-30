@@ -242,8 +242,11 @@ lifetime = 0.5
 process_material = SubResource("ParticleProcessMaterial_es10a")
 
 [node name="Hitbox" parent="." index="1"]
-position = Vector2(0, 3)
+position = Vector2(0, 5)
 shape = SubResource("CircleShape2D_yl5uq")
+
+[node name="Detector" parent="." index="2"]
+position = Vector2(0, 2)
 
 [node name="CollisionShape2D" parent="Detector" index="0"]
 position = Vector2(0, 3)

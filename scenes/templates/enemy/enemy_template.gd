@@ -13,6 +13,7 @@ class_name Enemy
 @onready var visuals : Node2D = $Visual
 @onready var sfx_enemy: AudioStreamPlayer2D
 @onready var damage_color: Color = Color(1.0, 0.0, 0.0, 1.0)
+@onready var navigation: NavigationAgent2D = $NavigationAgent2D
 
 var _frozen: bool = false
 var knockback: Vector2
@@ -29,6 +30,7 @@ var sounds  : Dictionary = {
 
 func _ready() -> void:
 	setup_audio()
+	navigation.radius = 3.0
 	if spawn_freeze_time > 0.0:
 		freeze_for(spawn_freeze_time)
 

@@ -3,15 +3,16 @@ extends Enemy
 @onready var agent: NavigationAgent2D = $NavigationAgent2D
 @onready var sprite: AnimatedSprite2D = $Visual/AnimatedSprite2D
 @onready var bullet_scene = preload("res://scenes/bullets/spit_bullet.tscn")
-@export var stopping_distance : float = 50.0
+
+@export var stopping_distance: float = 50.0
 var damage: float = 1.0
 var lifetime: float = 2.0
-var shoot_cooldown : float = 1.5
+var shoot_cooldown: float = 1.5
 var can_shoot := true
 
 func _ready():
 	_get_detector()
-	id = 2
+	id = 8
 	contact_damage = 1.0
 	speed = 40.0
 	health = 3.0
@@ -35,7 +36,7 @@ func _physics_process(delta):
 	if player == null:
 		return
 
-	var move_velocity : Vector2 = Vector2.ZERO
+	var move_velocity: Vector2 = Vector2.ZERO
 	var distance_to_player = global_position.distance_to(player.global_position)
 
 	if distance_to_player > stopping_distance:
@@ -48,7 +49,10 @@ func _physics_process(delta):
 	if knockback_time > 0:
 		knockback_time -= delta
 		velocity = move_velocity + knockback
-		knockback = knockback.move_toward(Vector2.ZERO, (knockback.length() / max(knockback_time, 0.01)) * delta)
+		knockback = knockback.move_toward(
+			Vector2.ZERO,
+			(knockback.length() / max(knockback_time, 0.01)) * delta
+		)
 	else:
 		knockback = Vector2.ZERO
 		velocity = move_velocity
@@ -62,21 +66,32 @@ func shoot_player():
 
 	can_shoot = false
 
-	var bullet = bullet_scene.instantiate()
-	give_bullet_values(bullet)
-	get_tree().current_scene.add_child(bullet)
+	var base_dir: Vector2 = (player.global_position - global_position).normalized()
+
+	var spread_angle: float= deg_to_rad(20)
+
+	var left_dir: Vector2 = base_dir.rotated(-spread_angle)
+	var right_dir: Vector2 = base_dir.rotated(spread_angle)
+
+	var bullet_left = bullet_scene.instantiate()
+	give_bullet_values_with_direction(bullet_left, left_dir)
+	get_tree().current_scene.add_child(bullet_left)
+
+	var bullet_right = bullet_scene.instantiate()
+	give_bullet_values_with_direction(bullet_right, right_dir)
+	get_tree().current_scene.add_child(bullet_right)
+
 	play_shoot_sound()
 
 	await get_tree().create_timer(shoot_cooldown, false).timeout
 	can_shoot = true
 
-func give_bullet_values(bullet: Bullet):
-	var forward := (player.global_position - global_position).normalized() * 1
-	bullet.init(forward, global_position, damage, 75.0, lifetime, 100.0, "enemy")
+func give_bullet_values_with_direction(bullet: Bullet, dir: Vector2):
+	bullet.init(dir, global_position, damage, 75.0, lifetime, 100.0, "enemy")
 
 func _update_animation():
 	if velocity == Vector2.ZERO:
-		sprite.play("default")
+		sprite.play("front_idle")
 		return
 
 	var dir = velocity.normalized()

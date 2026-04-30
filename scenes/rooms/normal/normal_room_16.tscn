@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=4 uid="uid://bu6amfe36m2ci"]
+[gd_scene load_steps=6 format=4 uid="uid://bu6amfe36m2ci"]
 
 [ext_resource type="PackedScene" uid="uid://641t0oysglvl" path="res://scenes/rooms/template/room_template.tscn" id="1_7v0ya"]
 [ext_resource type="PackedScene" uid="uid://chrgijw2gs6eb" path="res://scenes/world/lamp.tscn" id="2_rfhlq"]
+[ext_resource type="PackedScene" uid="uid://dc1qcgts0k44u" path="res://scenes/enemies/JimmyEnemy/jimmy_enemy.tscn" id="3_3v5gk"]
 [ext_resource type="PackedScene" uid="uid://dw4em1kkdblnm" path="res://scenes/enemies/stickman/stickman_enemy.tscn" id="3_ngv76"]
 [ext_resource type="PackedScene" uid="uid://vwuduq2qtmsv" path="res://scenes/world/obstacle_1.tscn" id="5_2ve4o"]
 
@@ -26,8 +27,8 @@ position = Vector2(136, -8)
 [node name="StickmanEnemy2" parent="Enemies" index="1" instance=ExtResource("3_ngv76")]
 position = Vector2(136, 24)
 
-[node name="StickmanEnemy3" parent="Enemies" index="2" instance=ExtResource("3_ngv76")]
-position = Vector2(136, 8)
+[node name="Enemy8" parent="Enemies" index="2" instance=ExtResource("3_3v5gk")]
+position = Vector2(144, 8)
 
 [node name="RewardSpawner" parent="." index="5"]
 position = Vector2(72, 8)

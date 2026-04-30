@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=4 uid="uid://dtjxrybhyatkw"]
+[gd_scene load_steps=4 format=4 uid="uid://dtjxrybhyatkw"]
 
 [ext_resource type="PackedScene" uid="uid://641t0oysglvl" path="res://scenes/rooms/template/room_template.tscn" id="1_o872b"]
 [ext_resource type="PackedScene" uid="uid://chrgijw2gs6eb" path="res://scenes/world/lamp.tscn" id="2_dxtas"]
+[ext_resource type="PackedScene" uid="uid://dmitvew1d7s8n" path="res://scenes/world/obstacle_2.tscn" id="3_srykc"]
 
 [node name="NormalRoom3" instance=ExtResource("1_o872b")]
 door_caps = {
@@ -48,3 +49,15 @@ rotation = 1.5707964
 [node name="Lamp2" parent="Decorations" index="1" instance=ExtResource("2_dxtas")]
 position = Vector2(-8, 8)
 rotation = 4.712389
+
+[node name="Obstacle-2" parent="Obstacles" index="0" instance=ExtResource("3_srykc")]
+position = Vector2(8, -56)
+
+[node name="Obstacle-3" parent="Obstacles" index="1" instance=ExtResource("3_srykc")]
+position = Vector2(72, -56)
+
+[node name="Obstacle-4" parent="Obstacles" index="2" instance=ExtResource("3_srykc")]
+position = Vector2(72, 72)
+
+[node name="Obstacle-5" parent="Obstacles" index="3" instance=ExtResource("3_srykc")]
+position = Vector2(8, 72)

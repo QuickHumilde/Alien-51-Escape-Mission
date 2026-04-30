@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=4 uid="uid://dqw4a8mxu36io"]
+[gd_scene load_steps=7 format=4 uid="uid://dqw4a8mxu36io"]
 
 [ext_resource type="PackedScene" uid="uid://641t0oysglvl" path="res://scenes/rooms/template/room_template.tscn" id="1_lm6dx"]
 [ext_resource type="PackedScene" uid="uid://b07bo16m56htg" path="res://scenes/enemies/MouthEnemy/mouth_enemy.tscn" id="2_k2kfc"]
 [ext_resource type="PackedScene" uid="uid://chrgijw2gs6eb" path="res://scenes/world/lamp.tscn" id="2_vam21"]
 [ext_resource type="PackedScene" uid="uid://45k8kt4s1uvb" path="res://scenes/enemies/SlimeSpawn1/slime_spawn_1.tscn" id="3_i6cjj"]
 [ext_resource type="PackedScene" uid="uid://vwuduq2qtmsv" path="res://scenes/world/obstacle_1.tscn" id="3_pft5a"]
+[ext_resource type="PackedScene" uid="uid://dmitvew1d7s8n" path="res://scenes/world/obstacle_2.tscn" id="6_i6cjj"]
 
 [node name="NormalRoom11" instance=ExtResource("1_lm6dx")]
 door_caps = {
@@ -86,59 +87,77 @@ position = Vector2(104, 72)
 [node name="Obstacle9" parent="Obstacles" index="8" instance=ExtResource("3_pft5a")]
 position = Vector2(88, 72)
 
-[node name="Obstacle10" parent="Obstacles" index="9" instance=ExtResource("3_pft5a")]
-position = Vector2(72, 72)
-
-[node name="Obstacle11" parent="Obstacles" index="10" instance=ExtResource("3_pft5a")]
+[node name="Obstacle11" parent="Obstacles" index="9" instance=ExtResource("3_pft5a")]
 position = Vector2(24, 88)
 
-[node name="Obstacle12" parent="Obstacles" index="11" instance=ExtResource("3_pft5a")]
+[node name="Obstacle12" parent="Obstacles" index="10" instance=ExtResource("3_pft5a")]
 position = Vector2(120, -8)
 
-[node name="Obstacle13" parent="Obstacles" index="12" instance=ExtResource("3_pft5a")]
+[node name="Obstacle13" parent="Obstacles" index="11" instance=ExtResource("3_pft5a")]
 position = Vector2(104, 8)
 
-[node name="Obstacle14" parent="Obstacles" index="13" instance=ExtResource("3_pft5a")]
+[node name="Obstacle14" parent="Obstacles" index="12" instance=ExtResource("3_pft5a")]
 position = Vector2(88, 24)
 
-[node name="Obstacle15" parent="Obstacles" index="14" instance=ExtResource("3_pft5a")]
+[node name="Obstacle15" parent="Obstacles" index="13" instance=ExtResource("3_pft5a")]
 position = Vector2(72, 40)
 
-[node name="Obstacle16" parent="Obstacles" index="15" instance=ExtResource("3_pft5a")]
+[node name="Obstacle16" parent="Obstacles" index="14" instance=ExtResource("3_pft5a")]
 position = Vector2(56, 56)
 
-[node name="Obstacle17" parent="Obstacles" index="16" instance=ExtResource("3_pft5a")]
+[node name="Obstacle17" parent="Obstacles" index="15" instance=ExtResource("3_pft5a")]
 position = Vector2(40, 88)
 
-[node name="Obstacle18" parent="Obstacles" index="17" instance=ExtResource("3_pft5a")]
+[node name="Obstacle18" parent="Obstacles" index="16" instance=ExtResource("3_pft5a")]
 position = Vector2(56, 88)
 
-[node name="Obstacle19" parent="Obstacles" index="18" instance=ExtResource("3_pft5a")]
+[node name="Obstacle19" parent="Obstacles" index="17" instance=ExtResource("3_pft5a")]
 position = Vector2(88, 88)
 
-[node name="Obstacle20" parent="Obstacles" index="19" instance=ExtResource("3_pft5a")]
+[node name="Obstacle20" parent="Obstacles" index="18" instance=ExtResource("3_pft5a")]
 position = Vector2(72, 88)
 
-[node name="Obstacle21" parent="Obstacles" index="20" instance=ExtResource("3_pft5a")]
+[node name="Obstacle21" parent="Obstacles" index="19" instance=ExtResource("3_pft5a")]
 position = Vector2(104, 88)
 
-[node name="Obstacle22" parent="Obstacles" index="21" instance=ExtResource("3_pft5a")]
+[node name="Obstacle22" parent="Obstacles" index="20" instance=ExtResource("3_pft5a")]
 position = Vector2(120, 88)
 
-[node name="Obstacle23" parent="Obstacles" index="22" instance=ExtResource("3_pft5a")]
+[node name="Obstacle23" parent="Obstacles" index="21" instance=ExtResource("3_pft5a")]
 position = Vector2(72, 56)
 
-[node name="Obstacle24" parent="Obstacles" index="23" instance=ExtResource("3_pft5a")]
+[node name="Obstacle24" parent="Obstacles" index="22" instance=ExtResource("3_pft5a")]
 position = Vector2(88, 56)
 
-[node name="Obstacle25" parent="Obstacles" index="24" instance=ExtResource("3_pft5a")]
+[node name="Obstacle25" parent="Obstacles" index="23" instance=ExtResource("3_pft5a")]
 position = Vector2(88, 40)
 
-[node name="Obstacle26" parent="Obstacles" index="25" instance=ExtResource("3_pft5a")]
+[node name="Obstacle26" parent="Obstacles" index="24" instance=ExtResource("3_pft5a")]
 position = Vector2(104, 24)
 
-[node name="Obstacle27" parent="Obstacles" index="26" instance=ExtResource("3_pft5a")]
+[node name="Obstacle28" parent="Obstacles" index="25" instance=ExtResource("3_pft5a")]
+position = Vector2(104, 56)
+
+[node name="Obstacle-2_1" parent="Obstacles" index="26" instance=ExtResource("6_i6cjj")]
+position = Vector2(72, 72)
+
+[node name="Obstacle-2_2" parent="Obstacles" index="27" instance=ExtResource("6_i6cjj")]
 position = Vector2(104, 40)
 
-[node name="Obstacle28" parent="Obstacles" index="27" instance=ExtResource("3_pft5a")]
-position = Vector2(104, 56)
+[node name="Obstacle27" parent="Obstacles" index="28" instance=ExtResource("3_pft5a")]
+position = Vector2(-40, -56)
+
+[node name="Obstacle30" parent="Obstacles" index="29" instance=ExtResource("3_pft5a")]
+position = Vector2(-24, -72)
+
+[node name="Obstacle31" parent="Obstacles" index="30" instance=ExtResource("3_pft5a")]
+position = Vector2(-40, -40)
+
+[node name="Obstacle32" parent="Obstacles" index="31" instance=ExtResource("3_pft5a")]
+position = Vector2(-8, -72)
+
+[node name="Obstacle33" parent="Obstacles" index="32" instance=ExtResource("3_pft5a")]
+position = Vector2(-24, -56)
+
+[node name="Obstacle-2_3" parent="Obstacles" index="33" instance=ExtResource("6_i6cjj")]
+position = Vector2(-40, -72)
