@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://clefqxdk6ow4h"]
+[gd_scene load_steps=8 format=4 uid="uid://clefqxdk6ow4h"]
 
 [ext_resource type="PackedScene" uid="uid://641t0oysglvl" path="res://scenes/rooms/template/room_template.tscn" id="1_8bj2f"]
 [ext_resource type="PackedScene" uid="uid://chrgijw2gs6eb" path="res://scenes/world/lamp.tscn" id="2_mq141"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dmitvew1d7s8n" path="res://scenes/world/obstacle_2.tscn" id="4_xlfd1"]
 [ext_resource type="PackedScene" uid="uid://vwuduq2qtmsv" path="res://scenes/world/obstacle_1.tscn" id="5_rmbl6"]
 [ext_resource type="PackedScene" uid="uid://d2nsgvosc4lao" path="res://scenes/world/staircase.tscn" id="6_rmbl6"]
+[ext_resource type="PackedScene" uid="uid://dxlqwq2fus7kr" path="res://scenes/extras/item_reward_spawner.tscn" id="7_1t8md"]
 
 [node name="BossRoom2" instance=ExtResource("1_8bj2f")]
 
@@ -83,3 +84,6 @@ position = Vector2(72, 56)
 
 [node name="Staircase" parent="." index="9" instance=ExtResource("6_rmbl6")]
 position = Vector2(40, -24)
+
+[node name="ItemRewardSpawner" parent="." index="10" instance=ExtResource("7_1t8md")]
+position = Vector2(40, 24)

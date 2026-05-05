@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxlqwq2fus7kr"]
+
+[ext_resource type="Script" uid="uid://hehsrk6s6ikl" path="res://scenes/extras/item_reward_spawner.gd" id="1_jnvqb"]
+
+[node name="ItemRewardSpawner" type="Node2D"]
+script = ExtResource("1_jnvqb")

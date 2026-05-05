@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=4 uid="uid://5dscevt3btbo"]
+[gd_scene load_steps=6 format=4 uid="uid://5dscevt3btbo"]
 
 [ext_resource type="PackedScene" uid="uid://641t0oysglvl" path="res://scenes/rooms/template/room_template.tscn" id="1_43luq"]
 [ext_resource type="PackedScene" uid="uid://hn5pw77ojo1h" path="res://scenes/enemies/cyborg_unicorn/cyborg_unicorn.tscn" id="2_72kji"]
 [ext_resource type="PackedScene" uid="uid://chrgijw2gs6eb" path="res://scenes/world/lamp.tscn" id="2_dbaow"]
 [ext_resource type="PackedScene" uid="uid://d2nsgvosc4lao" path="res://scenes/world/staircase.tscn" id="3_4ssu2"]
+[ext_resource type="PackedScene" uid="uid://dxlqwq2fus7kr" path="res://scenes/extras/item_reward_spawner.tscn" id="5_35epj"]
 
 [node name="BossRoom1" instance=ExtResource("1_43luq")]
 visibility_layer = 5
@@ -33,3 +34,6 @@ rotation = 3.1415925
 
 [node name="LampTR" parent="Decorations" index="3" instance=ExtResource("2_dbaow")]
 position = Vector2(92, -90)
+
+[node name="ItemRewardSpawner" parent="." index="10" instance=ExtResource("5_35epj")]
+position = Vector2(40, 24)

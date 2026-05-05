@@ -70,7 +70,7 @@ item_dwarfism_name,"Enanismo","Dwarfism"
 item_dwarfism_desc,"• Te hace más pequeño.\n• -1 de vida maxima y daño.\n• -0.2 de tiempo de invulnerabilidad.\n• +0.3 de velocidad.\n• 50% de probabilidad de evita el daño recibido.","• Makes you smaller.\n• -1 max health and damage.\n• -0.2 seconds of invulnerability time.\n• +0.3 of speed.\n• 50% chance to avoid incoming damage."
 
 item_console_controller_name,"Mando de consola","Console controller"
-item_console_controller_desc,"• Modifica la apariencia del puntero.","• Modifies the appearance of the cursor."
+item_console_controller_desc,"• Modifica la apariencia del puntero.\n• +0.5 de daño \n• +0.20 de tiempo de bala","• Modifies the appearance of the cursor.\n• +0.5 of damage \n• +0.20 of bullet time"
 
 item_black_knife_weapon_name,"Cuchillo Oscuro","Black Knife"
 item_black_knife_weapon_desc,"Descripción del objeto predeterminado.","Default item description."

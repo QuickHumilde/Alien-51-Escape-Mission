@@ -2,7 +2,9 @@ extends Enemy
 
 @onready var agent: NavigationAgent2D = $NavigationAgent2D
 @onready var sprite: AnimatedSprite2D = $Visual/AnimatedSprite2D
-@onready var hitbox: CollisionShape2D = $CollisionShape2D
+@onready var hitbox: CollisionShape2D = $Hitbox
+@onready var detector: Area2D = $Detector
+@onready var detector_shape: CollisionShape2D = $Detector/CollisionShape2D
 
 @onready var bullet_scene = preload("res://scenes/bullets/spit_bullet.tscn")
 
@@ -48,7 +50,7 @@ func _ready() -> void:
 
 	id = 9
 	contact_damage = 2.0
-	health = 80.0
+	health = 20.0
 
 	speed = surface_speed
 	knockback_force = 600.0
@@ -60,6 +62,7 @@ func _ready() -> void:
 
 	_last_state = state
 	super._ready()
+
 
 func _physics_process(delta: float) -> void:
 	if is_frozen():
@@ -91,38 +94,33 @@ func _physics_process(delta: float) -> void:
 
 	_update_animation()
 
-# -----------------------------
-#   STATE TRANSITIONS / FX
-# -----------------------------
+
 func _on_state_changed(from_state: State, to_state: State) -> void:
 	if to_state == State.BURROW:
 		_set_underground(true)
-	if from_state == State.UNDERGROUND_MOVE and to_state == State.EMERGE_WINDUP:
-		# Aquí podrías spawnar un indicador en el suelo
-		pass
-	if from_state == State.BURROW or from_state == State.UNDERGROUND_MOVE:
-		if to_state == State.EMERGE_WINDUP:
-			# seguimos “underground” hasta terminar windup (depende del diseño)
-			pass
 	if to_state == State.ATTACK:
 		_set_underground(false)
 
 
 func _set_underground(value: bool) -> void:
-	# Visual
 	if is_instance_valid(sprite):
 		sprite.visible = not value
 
 	if disable_collision_underground and is_instance_valid(hitbox):
 		hitbox.set_deferred("disabled", value)
 
-	if value:
-		contact_damage = 0.0
-	else:
-		contact_damage = 2.0
+	if is_instance_valid(detector):
+		detector.set_deferred("monitoring", not value)
+		detector.set_deferred("monitorable", not value)
+
+	if is_instance_valid(detector_shape):
+		detector_shape.set_deferred("disabled", value)
+
+	contact_damage = 0.0 if value else 2.0
 
 	if invulnerable_underground:
 		set_meta("invulnerable", value)
+
 
 func _process_surface_chase(delta: float) -> void:
 	var to_player: Vector2 = player.global_position - global_position
@@ -138,7 +136,6 @@ func _process_surface_chase(delta: float) -> void:
 			velocity = (next_point - global_position).normalized() * surface_speed
 		else:
 			velocity = Vector2.ZERO
-
 	else:
 		velocity = Vector2.ZERO
 
@@ -153,6 +150,7 @@ func _process_surface_chase(delta: float) -> void:
 		_t = 0.0
 		_cd = attack_cooldown
 		velocity = Vector2.ZERO
+
 
 func _process_burrow(_delta: float) -> void:
 	velocity = Vector2.ZERO
@@ -170,8 +168,9 @@ func _pick_underground_target() -> void:
 
 	_dash_target = base + offset
 	agent.target_position = _dash_target
-	
-func _process_underground_move(delta: float) -> void:
+
+
+func _process_underground_move(_delta: float) -> void:
 	agent.target_position = _dash_target
 	var next_point := agent.get_next_path_position()
 
@@ -196,8 +195,6 @@ func _process_emerge_windup(_delta: float) -> void:
 	velocity = Vector2.ZERO
 	move_and_slide()
 
-	# En este windup aún está “bajo tierra” (sprite oculto y sin colisión),
-	# así das tiempo a un telegráfico (círculo, partículas, sonido, etc.)
 	if _t >= emerge_windup_time:
 		_choose_attack()
 		state = State.ATTACK
@@ -213,6 +210,7 @@ func _choose_attack() -> void:
 	else:
 		_attack = AttackType.BURST
 
+
 func _process_attack(_delta: float) -> void:
 	velocity = Vector2.ZERO
 	move_and_slide()
@@ -227,6 +225,7 @@ func _process_attack(_delta: float) -> void:
 
 	state = State.RECOVER
 	_t = 0.0
+
 
 func _attack_fan3() -> void:
 	var to_player := (player.global_position - global_position)
@@ -260,9 +259,9 @@ func _attack_burst() -> void:
 
 func _spawn_bullet(dir: Vector2) -> void:
 	var bullet = bullet_scene.instantiate()
-	# Si tu Bullet tiene init distinto, ajusta esta línea
 	bullet.init(dir, global_position, damage, bullet_speed, bullet_lifetime, 100.0, "enemy")
 	get_tree().current_scene.add_child(bullet)
+
 
 func _process_recover(_delta: float) -> void:
 	velocity = Vector2.ZERO
@@ -271,6 +270,7 @@ func _process_recover(_delta: float) -> void:
 	if _t >= recover_time:
 		state = State.SURFACE_CHASE
 		_t = 0.0
+
 
 func _decay_knockback(delta: float) -> void:
 	if knockback_time > 0.0:
@@ -290,9 +290,7 @@ func _on_damage() -> void:
 
 
 func _update_animation() -> void:
-	# Aquí pon tus anims reales. Ejemplo mínimo:
 	if state == State.BURROW or state == State.UNDERGROUND_MOVE or state == State.EMERGE_WINDUP:
-		# sprite oculto ya, pero si quisieras anim subterránea:
 		return
 
 	_play_walk_4dir(_facing)

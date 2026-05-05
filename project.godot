@@ -72,6 +72,7 @@ player=""
 bullet=""
 damage=""
 trap=""
+laser_ignore=""
 
 [input]
 

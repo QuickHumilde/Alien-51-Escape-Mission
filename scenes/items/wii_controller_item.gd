@@ -10,8 +10,10 @@ func _ready():
 	item_texture = "res://assets/sprites/items/WiiController.png"
 	super._ready()
 	
-func give_changes(_body: Character):
+func give_changes(body: Character):
 	Signals.wii_pointer_activated.emit()
+	var wii_controller_modifier = WiiControllerModifierItem.new(body)
+	body.items.give_modifiers(wii_controller_modifier)
 	destroy_on_pickup()
 
 func destroy_on_pickup():

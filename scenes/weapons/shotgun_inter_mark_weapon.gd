@@ -7,7 +7,6 @@ extends Weapon
 var min_pellets: int = 4
 var max_pellets: int = 6
 
-
 func _ready() -> void:
 	id = 7
 	damage = 1.5

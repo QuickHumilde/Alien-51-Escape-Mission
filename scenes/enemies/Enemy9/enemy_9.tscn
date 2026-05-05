@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://byym4irhw1v80" path="res://scenes/templates/enemy/enemy_template.tscn" id="1_gi5nk"]
 [ext_resource type="Texture2D" uid="uid://c88vhmg4n716n" path="res://assets/sprites/player/VesselPlayer.png" id="2_ewtaa"]
-[ext_resource type="Script" uid="uid://4kvdol3tq4hk" path="res://scenes/enemies/enemy9/enemy_9.gd" id="2_xk8p4"]
+[ext_resource type="Script" uid="uid://4kvdol3tq4hk" path="res://scenes/enemies/Enemy9/enemy_9.gd" id="2_xk8p4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xk8p4"]
 atlas = ExtResource("2_ewtaa")

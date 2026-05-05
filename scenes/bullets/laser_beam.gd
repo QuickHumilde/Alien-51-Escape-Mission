@@ -24,6 +24,31 @@ func setup(owner_node, barrel_node = null):
 	laser_owner = owner_node
 	barrel = barrel_node
 
+func get_valid_laser_hit():
+	var space_state = get_world_2d().direct_space_state
+	var origin = global_position
+	var direction = global_transform.x.normalized()
+	var remaining_length = max_length
+	var exclude = []
+	while remaining_length > 0:
+		var to = origin + direction * remaining_length
+		var params = PhysicsRayQueryParameters2D.create(origin, to)
+		params.collide_with_areas = ray_cast.collide_with_areas
+		params.collision_mask = ray_cast.collision_mask
+		params.exclude = exclude
+		var result = space_state.intersect_ray(params)
+		if result:
+			var collider = result["collider"]
+			if collider and collider.is_in_group("laser_ignore"):
+				exclude.append(collider)
+				origin = result["position"] + direction * 0.1
+				remaining_length = max_length - (origin - global_position).length()
+				continue
+			else:
+				return result
+		break
+	return null
+
 func _process(delta):
 	if not firing:
 		return
@@ -33,12 +58,11 @@ func _process(delta):
 		global_rotation = barrel.global_rotation
 
 	var direction : Vector2 = Vector2.RIGHT
-	ray_cast.target_position = direction * max_length
-	ray_cast.force_raycast_update()
+	var hit_result = get_valid_laser_hit()
 	var hit_pos_global : Vector2
 
-	if ray_cast.is_colliding():
-		hit_pos_global = ray_cast.get_collision_point()
+	if hit_result:
+		hit_pos_global = hit_result.position
 	else:
 		hit_pos_global = global_position + global_transform.x * max_length
 
@@ -49,8 +73,8 @@ func _process(delta):
 		hit_pos_local + jitter
 	]
 
-	if ray_cast.is_colliding():
-		var collider : Object = ray_cast.get_collider()
+	if hit_result:
+		var collider : Object = hit_result.collider
 		if collider.is_in_group("enemy"):
 			var enemy_collider = collider.get_parent()
 			if enemy_collider.has_method("take_damage"):
@@ -59,7 +83,7 @@ func _process(delta):
 				enemy_collider.apply_knockback(hit_pos_local, knockback_force * delta)
 				
 	$ImpactParticles.global_position = hit_pos_global
-	$ImpactParticles.emitting = ray_cast.is_colliding()
+	$ImpactParticles.emitting = hit_result != null
 
 func stop():
 	firing = false
