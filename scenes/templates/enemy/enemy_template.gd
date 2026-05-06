@@ -15,6 +15,8 @@ class_name Enemy
 @onready var damage_color: Color = Color(1.0, 0.0, 0.0, 1.0)
 @onready var navigation: NavigationAgent2D = $NavigationAgent2D
 
+@onready var effects: EffectController = EffectController.new()
+
 var _frozen: bool = false
 var knockback: Vector2
 var knockback_time : float = 0.0
@@ -29,6 +31,8 @@ var sounds  : Dictionary = {
 }
 
 func _ready() -> void:
+	add_child(effects)
+	effects.init(self)
 	setup_audio()
 	navigation.radius = 3.0
 	if spawn_freeze_time > 0.0:
@@ -94,6 +98,16 @@ func get_damage() -> float:
 
 func is_player_damagable(body: Character) -> bool:
 	return body.is_player_damagable()
+
+func apply_effect(effect: StatusEffect) -> void:
+	if effects != null:
+		effects.add_effect(effect)
+
+func get_effective_speed() -> float:
+	var mult := 1.0
+	if effects != null:
+		mult = effects.get_speed_multiplier()
+	return speed * mult
 
 func change_color(new_color: Color) -> void:
 	if can_change_color:

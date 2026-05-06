@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://b8bdlnqqu3v46"]
+
+[ext_resource type="Script" uid="uid://d1qkjo1hvcbtf" path="res://scenes/bullets/jimmy_bullet.gd" id="1_7n85i"]
+[ext_resource type="Texture2D" uid="uid://dhb578tgpap3a" path="res://assets/sprites/extras/LampLight.png" id="1_bo5ij"]
+[ext_resource type="Texture2D" uid="uid://lfhxf3redvfy" path="res://assets/sprites/bullet/JimmyBullet.png" id="2_7n85i"]
+[ext_resource type="PackedScene" uid="uid://chd8ttoncxpnu" path="res://scenes/extras/bullet_trail.tscn" id="3_7sh3u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qp23i"]
+radius = 1.4142135
+
+[node name="Area2D" type="Area2D"]
+collision_layer = 2
+collision_mask = 13
+script = ExtResource("1_7n85i")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(1, 1, 0.28627452, 1)
+energy = 0.15
+texture = ExtResource("1_bo5ij")
+texture_scale = 0.15
+
+[node name="Visual" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visual"]
+texture = ExtResource("2_7n85i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_qp23i")
+
+[node name="BulletTrail" parent="." instance=ExtResource("3_7sh3u")]
+position = Vector2(-3, 0)
+width = 1.5
+default_color = Color(1, 1, 0.023529412, 0.42352942)

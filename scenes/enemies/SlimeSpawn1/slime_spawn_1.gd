@@ -34,7 +34,7 @@ func _physics_process(delta):
 	if distance_to_player > stopping_distance:
 		agent.target_position = player.global_position
 		var next_point = agent.get_next_path_position()
-		move_velocity = (next_point - global_position).normalized() * speed
+		move_velocity = (next_point - global_position).normalized() * get_effective_speed()
 
 	if knockback_time > 0:
 		knockback_time -= delta

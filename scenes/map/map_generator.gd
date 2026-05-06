@@ -43,6 +43,8 @@ var room_scenes: Dictionary = {
 		preload("res://scenes/rooms/normal/normal_room_14.tscn"),
 		preload("res://scenes/rooms/normal/normal_room_15.tscn"),
 		preload("res://scenes/rooms/normal/normal_room_16.tscn"),
+		preload("res://scenes/rooms/normal/normal_room_17.tscn"),
+		preload("res://scenes/rooms/normal/normal_room_18.tscn"),
 	],
 	"item": [ preload("res://scenes/rooms/item/item_room_1.tscn") 
 	],
@@ -583,7 +585,6 @@ func _create_dead_end_branch(room_type: String, preferred_base: Vector2, max_att
 				if special_scene == null:
 					continue
 
-				# marcar como usado SOLO cuando ya lo colocas
 				if GameManager.has_method("mark_boss_used"):
 					GameManager.mark_boss_used(boss_id)
 			else:

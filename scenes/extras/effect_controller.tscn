@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3lui4ba8flhd"]
+
+[ext_resource type="Script" uid="uid://wcoa5fp4nxdm" path="res://scenes/extras/effect_controller.gd" id="1_2px6h"]
+
+[node name="EffectController" type="Node2D"]
+script = ExtResource("1_2px6h")

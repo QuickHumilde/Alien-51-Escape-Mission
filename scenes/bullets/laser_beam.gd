@@ -57,7 +57,7 @@ func _process(delta):
 		global_position = barrel.global_position
 		global_rotation = barrel.global_rotation
 
-	var direction : Vector2 = Vector2.RIGHT
+	var _direction : Vector2 = Vector2.RIGHT
 	var hit_result = get_valid_laser_hit()
 	var hit_pos_global : Vector2
 

@@ -1,7 +1,10 @@
 extends Bullet
 
+@export var slow_effect: SlowEffect
 @onready var sprite: Sprite2D
 var paint_color : Color = Color(0.156, 0.333, 0.603, 1.0)
+var slow_strength: float = 50.0
+var slow_duration: float = 1.0
 
 func _ready():
 	super._ready()
@@ -28,5 +31,13 @@ func _against_enemy(area):
 	var enemy_node = area.get_parent()
 	await get_tree().create_timer(0.21).timeout
 	if enemy_node != null:
+		if enemy_node.has_method("apply_effect"):
+			if slow_effect != null:
+				var e: SlowEffect = slow_effect.duplicate(true)
+				e.duration = slow_duration
+				e.multiplier = clamp(1.0 - (slow_strength / 100.0), 0.05, 1.0)
+				enemy_node.apply_effect(e)
 		if enemy_node.has_method("change_color"):
 			enemy_node.change_color(paint_color)
+
+		

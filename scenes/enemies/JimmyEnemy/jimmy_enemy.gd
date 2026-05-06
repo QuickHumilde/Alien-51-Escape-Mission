@@ -2,7 +2,7 @@ extends Enemy
 
 @onready var agent: NavigationAgent2D = $NavigationAgent2D
 @onready var sprite: AnimatedSprite2D = $Visual/AnimatedSprite2D
-@onready var bullet_scene = preload("res://scenes/bullets/spit_bullet.tscn")
+@onready var bullet_scene = preload("res://scenes/bullets/jimmy_bullet.tscn")
 
 @export var stopping_distance: float = 50.0
 var damage: float = 1.0
@@ -42,7 +42,7 @@ func _physics_process(delta):
 	if distance_to_player > stopping_distance:
 		agent.target_position = player.global_position
 		var next_point = agent.get_next_path_position()
-		move_velocity = (next_point - global_position).normalized() * speed
+		move_velocity = (next_point - global_position).normalized() * get_effective_speed()
 	else:
 		shoot_player()
 

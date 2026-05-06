@@ -61,7 +61,7 @@ func _physics_process(delta):
 			_pick_new_roam_target()
 
 		var next_point := agent.get_next_path_position()
-		move_velocity = (next_point - global_position).normalized() * speed
+		move_velocity = (next_point - global_position).normalized() * get_effective_speed()
 
 	shoot_player()
 

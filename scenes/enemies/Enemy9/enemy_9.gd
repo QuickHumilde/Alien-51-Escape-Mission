@@ -8,7 +8,7 @@ extends Enemy
 
 @onready var bullet_scene = preload("res://scenes/bullets/spit_bullet.tscn")
 
-enum State { SURFACE_CHASE, BURROW, UNDERGROUND_MOVE, EMERGE_WINDUP, ATTACK, RECOVER }
+enum State { SURFACE_CHASE, BURROW, UNDERGROUND_MOVE, EMERGE_WINDUP, EMERGE_WAIT, ATTACK, RECOVER }
 var state: State = State.SURFACE_CHASE
 var _last_state: State = State.SURFACE_CHASE
 
@@ -23,6 +23,7 @@ var _attack: AttackType = AttackType.FAN3
 @export var burrow_time: float = 0.5
 @export var underground_move_time: float = 1.0
 @export var emerge_windup_time: float = 0.45
+@export var emerge_wait_time: float = 0.50
 @export var recover_time: float = 0.75
 
 @export var attack_cooldown: float = 6.0
@@ -44,13 +45,13 @@ var _t: float = 0.0
 var _dash_target: Vector2 = Vector2.ZERO
 var _facing: Vector2 = Vector2.RIGHT
 
-
 func _ready() -> void:
 	_get_detector()
-
-	id = 9
+	
+	id = 10
 	contact_damage = 2.0
 	health = 20.0
+
 
 	speed = surface_speed
 	knockback_force = 600.0
@@ -59,10 +60,9 @@ func _ready() -> void:
 
 	agent.path_desired_distance = 4.0
 	agent.target_desired_distance = 8.0
-
+	
 	_last_state = state
 	super._ready()
-
 
 func _physics_process(delta: float) -> void:
 	if is_frozen():
@@ -83,6 +83,8 @@ func _physics_process(delta: float) -> void:
 			_process_underground_move(delta)
 		State.EMERGE_WINDUP:
 			_process_emerge_windup(delta)
+		State.EMERGE_WAIT:
+			_process_emerge_wait(delta)
 		State.ATTACK:
 			_process_attack(delta)
 		State.RECOVER:
@@ -94,13 +96,11 @@ func _physics_process(delta: float) -> void:
 
 	_update_animation()
 
-
-func _on_state_changed(from_state: State, to_state: State) -> void:
+func _on_state_changed(_from_state: State, to_state: State) -> void:
 	if to_state == State.BURROW:
 		_set_underground(true)
-	if to_state == State.ATTACK:
+	if to_state == State.EMERGE_WAIT:
 		_set_underground(false)
-
 
 func _set_underground(value: bool) -> void:
 	if is_instance_valid(sprite):
@@ -120,7 +120,6 @@ func _set_underground(value: bool) -> void:
 
 	if invulnerable_underground:
 		set_meta("invulnerable", value)
-
 
 func _process_surface_chase(delta: float) -> void:
 	var to_player: Vector2 = player.global_position - global_position
@@ -151,7 +150,6 @@ func _process_surface_chase(delta: float) -> void:
 		_cd = attack_cooldown
 		velocity = Vector2.ZERO
 
-
 func _process_burrow(_delta: float) -> void:
 	velocity = Vector2.ZERO
 	move_and_slide()
@@ -161,14 +159,12 @@ func _process_burrow(_delta: float) -> void:
 		state = State.UNDERGROUND_MOVE
 		_t = 0.0
 
-
 func _pick_underground_target() -> void:
 	var base: Vector2 = player.global_position
 	var offset = Vector2(randf_range(-140.0, 140.0), randf_range(-140.0, 140.0))
 
 	_dash_target = base + offset
 	agent.target_position = _dash_target
-
 
 func _process_underground_move(_delta: float) -> void:
 	agent.target_position = _dash_target
@@ -190,16 +186,22 @@ func _process_underground_move(_delta: float) -> void:
 		_t = 0.0
 		velocity = Vector2.ZERO
 
-
 func _process_emerge_windup(_delta: float) -> void:
 	velocity = Vector2.ZERO
 	move_and_slide()
 
 	if _t >= emerge_windup_time:
 		_choose_attack()
-		state = State.ATTACK
+		state = State.EMERGE_WAIT
 		_t = 0.0
 
+func _process_emerge_wait(_delta: float) -> void:
+	velocity = Vector2.ZERO
+	move_and_slide()
+
+	if _t >= emerge_wait_time:
+		state = State.ATTACK
+		_t = 0.0
 
 func _choose_attack() -> void:
 	var r := randf()
@@ -209,7 +211,6 @@ func _choose_attack() -> void:
 		_attack = AttackType.CARDINAL4
 	else:
 		_attack = AttackType.BURST
-
 
 func _process_attack(_delta: float) -> void:
 	velocity = Vector2.ZERO
@@ -225,7 +226,6 @@ func _process_attack(_delta: float) -> void:
 
 	state = State.RECOVER
 	_t = 0.0
-
 
 func _attack_fan3() -> void:
 	var to_player := (player.global_position - global_position)
@@ -248,7 +248,6 @@ func _attack_cardinal4() -> void:
 	for d in dirs:
 		_spawn_bullet(d)
 
-
 func _attack_burst() -> void:
 	for i in burst_count:
 		var to_player := (player.global_position - global_position)
@@ -256,12 +255,10 @@ func _attack_burst() -> void:
 		_spawn_bullet(dir)
 		await get_tree().create_timer(burst_gap).timeout
 
-
 func _spawn_bullet(dir: Vector2) -> void:
 	var bullet = bullet_scene.instantiate()
 	bullet.init(dir, global_position, damage, bullet_speed, bullet_lifetime, 100.0, "enemy")
 	get_tree().current_scene.add_child(bullet)
-
 
 func _process_recover(_delta: float) -> void:
 	velocity = Vector2.ZERO
@@ -270,7 +267,6 @@ func _process_recover(_delta: float) -> void:
 	if _t >= recover_time:
 		state = State.SURFACE_CHASE
 		_t = 0.0
-
 
 func _decay_knockback(delta: float) -> void:
 	if knockback_time > 0.0:
@@ -282,19 +278,16 @@ func _decay_knockback(delta: float) -> void:
 	else:
 		knockback = Vector2.ZERO
 
-
 func _on_damage() -> void:
 	if invulnerable_underground and get_meta("invulnerable", false) == true:
 		return
 	pass
-
 
 func _update_animation() -> void:
 	if state == State.BURROW or state == State.UNDERGROUND_MOVE or state == State.EMERGE_WINDUP:
 		return
 
 	_play_walk_4dir(_facing)
-
 
 func _play_walk_4dir(dir: Vector2) -> void:
 	if not is_instance_valid(sprite):

@@ -88,7 +88,7 @@ radius = 4.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_eako6"]
 radius = 5.0
 
-[node name="Enemy9" instance=ExtResource("1_8mlx0")]
+[node name="TurretEnemy" instance=ExtResource("1_8mlx0")]
 script = ExtResource("2_sxhke")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visual" index="0"]

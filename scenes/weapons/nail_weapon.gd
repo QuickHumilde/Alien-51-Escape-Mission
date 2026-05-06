@@ -46,7 +46,6 @@ func _on_hitbox_enter(area):
 			enemy_node.apply_knockback(knockback_direction, knockback_force)
 
 	if area.is_in_group("obstacle"):
-		print("me")
 		_against_obstacle(area)
 
 func _against_obstacle(area):

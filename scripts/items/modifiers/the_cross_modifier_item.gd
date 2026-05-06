@@ -9,6 +9,7 @@ func _init(body: Character) -> void:
 
 func revive_player() -> Array:
 	var can_revive: bool = false
+	print(revives_aviable)
 	if revives_aviable > 0:
 		can_revive = true
 		revives_aviable-=1

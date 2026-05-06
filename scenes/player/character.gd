@@ -23,6 +23,7 @@ class_name Character
 func _ready():
 	tramp_detector_area.area_entered.connect(_on_tramp_detector_area_entered)
 	Signals.player_death.connect(player_death)
+	Signals.show_death_menu.connect(_on_show_death_menu)
 	Signals.player_revive.connect(player_revive)
 	Signals.player_take_damage.connect(take_damage)
 	combat.init(weapon_holder, stats)
@@ -77,11 +78,13 @@ func take_damage(amount: float):
 		_check_overlapping_tramps()
 
 func player_death():
+	weapon_holder.hide()
+	
+func _on_show_death_menu():
 	if abilities and abilities.abilities.size() > 0:
 		for ability in abilities.abilities:
 			if is_instance_valid(ability):
 				ability.queue_free()
-	weapon_holder.hide()
 
 func apply_knockback(dir: Vector2, force: float, duration: float = 0.2):
 	if damage_timer.is_stopped():

@@ -116,12 +116,16 @@ func _orient_dash_particles(dir: Vector2) -> void:
 	dash_particles.position = back_dir * dash_particles_offset
 
 func _process_chase(_delta: float) -> void:
+	var mult := 1.0
+	if effects != null:
+		mult = effects.get_speed_multiplier()
+
 	var to_player: Vector2 = player.global_position - global_position
 	var dist := to_player.length()
 
 	if dist > 0.001:
 		var dir := to_player / dist
-		velocity = dir * chase_speed
+		velocity = dir * chase_speed * mult
 		_facing = dir
 	else:
 		velocity = Vector2.ZERO
@@ -152,7 +156,11 @@ func _process_windup(_delta: float) -> void:
 		_state_t = 0.0
 
 func _process_dash(_delta: float) -> void:
-	velocity = _dash_dir * dash_speed
+	var mult := 1.0
+	if effects != null:
+		mult = effects.get_speed_multiplier()
+
+	velocity = _dash_dir * dash_speed * mult
 	move_and_slide()
 
 	if get_slide_collision_count() > 0 or is_on_wall():

@@ -43,11 +43,9 @@ func _on_item_picked(_id: int = -1):
 	Signals.items_changed.emit()
 
 func can_revive() -> Array:
-	var returns: Array
 	for mod in get_modifiers():
-		if mod.has_method("revive_player"):
-			returns = mod.revive_player()
-			return returns
+		if mod.has_method("get_revives_quantity") and mod.get_revives_quantity() > 0:
+			return mod.revive_player()
 	return []
 
 func get_revives():
