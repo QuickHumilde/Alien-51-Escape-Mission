@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b4oe7bbfjujrv"]
+[gd_scene load_steps=9 format=3 uid="uid://b4oe7bbfjujrv"]
 
 [ext_resource type="Script" uid="uid://dmu6xagklf05g" path="res://scenes/ui/hud.gd" id="1_hqnrr"]
 [ext_resource type="Theme" uid="uid://b380oga6tlya7" path="res://assets/themes/default.tres" id="2_bo48s"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bvhligfgvpkt5" path="res://assets/sprites/ui/HealthBar2Progress.png" id="4_l20r4"]
 [ext_resource type="Texture2D" uid="uid://bdeyccmsajbgm" path="res://assets/sprites/extras/LegoCoin.png" id="5_4ed8p"]
 [ext_resource type="Texture2D" uid="uid://bq8pwdk7q8ahx" path="res://assets/images/schoolbag.png" id="5_rnyu1"]
+[ext_resource type="Texture2D" uid="uid://c8rtu74kn7uxp" path="res://assets/sprites/ui/StrenghtHUD.png" id="8_l20r4"]
 
 [node name="HUD" type="CanvasLayer" groups=["player_ui"]]
 layer = 129
@@ -161,24 +162,6 @@ offset_right = 274.0
 offset_bottom = 61.0
 stretch_mode = 2
 
-[node name="MoneyAmount" type="Label" parent="."]
-offset_left = 32.0
-offset_top = 51.0
-offset_right = 221.0
-offset_bottom = 69.0
-theme = ExtResource("2_bo48s")
-theme_override_constants/outline_size = 2
-theme_override_font_sizes/font_size = 16
-text = "Money"
-vertical_alignment = 1
-
-[node name="MoneyImage" type="TextureRect" parent="."]
-offset_left = 12.0
-offset_top = 53.0
-offset_right = 24.0
-offset_bottom = 67.76923
-texture = ExtResource("5_4ed8p")
-
 [node name="ItemAmount" type="Label" parent="."]
 visible = false
 offset_left = 32.0
@@ -199,3 +182,50 @@ offset_right = 28.0
 offset_bottom = 95.520004
 texture = ExtResource("5_rnyu1")
 expand_mode = 1
+
+[node name="Stats" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MoneyAmount" type="Label" parent="Stats"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 51.0
+offset_right = 221.0
+offset_bottom = 69.0
+theme = ExtResource("2_bo48s")
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 16
+text = "Money"
+vertical_alignment = 1
+
+[node name="MoneyImage" type="TextureRect" parent="Stats"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 53.000004
+offset_right = 22.0
+offset_bottom = 62.000004
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_4ed8p")
+
+[node name="StrenghtStatLabel" type="Label" parent="Stats"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 73.0
+offset_right = 221.0
+offset_bottom = 91.0
+theme = ExtResource("2_bo48s")
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 16
+text = "Strenght"
+vertical_alignment = 1
+
+[node name="StrenghtStatImage" type="TextureRect" parent="Stats"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 75.0
+offset_right = 26.0
+offset_bottom = 88.0
+texture = ExtResource("8_l20r4")

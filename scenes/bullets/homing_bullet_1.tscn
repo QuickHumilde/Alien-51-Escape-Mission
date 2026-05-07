@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bagboy5nbxnu8"]
+[gd_scene load_steps=8 format=3 uid="uid://bagboy5nbxnu8"]
 
 [ext_resource type="Script" uid="uid://ccvi5lkfw30bt" path="res://scripts/template/bullet/homing_bullet_1.gd" id="1_leeap"]
 [ext_resource type="Texture2D" uid="uid://dihd6juwu3lxu" path="res://assets/sprites/bullet/StarBullet.png" id="2_leeap"]
@@ -9,6 +9,19 @@ size = Vector2(8.5, 8.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_exoxf"]
 radius = 70.0
+
+[sub_resource type="GDScript" id="GDScript_mngmn"]
+resource_name = "BiggerCollisionScript"
+script/source = "extends Area2D
+
+@onready var bullet: Bullet = $\"..\"
+
+func change_direction(new_direction: Vector2, new_owner = \"\"):
+	bullet.change_direction(new_direction, new_owner)
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q72x3"]
+radius = 11.0
 
 [node name="HomingBullet1" type="Area2D"]
 collision_layer = 4
@@ -35,3 +48,11 @@ shape = SubResource("CircleShape2D_exoxf")
 
 [node name="BulletTrail" parent="." instance=ExtResource("3_mngmn")]
 default_color = Color(0.88827366, 0.00070424913, 0.9001216, 0.42352942)
+
+[node name="Area2D" type="Area2D" parent="." groups=["bullet"]]
+collision_mask = 12
+monitoring = false
+script = SubResource("GDScript_mngmn")
+
+[node name="BiggerCollision" type="CollisionShape2D" parent="Area2D" groups=["bullet"]]
+shape = SubResource("CircleShape2D_q72x3")

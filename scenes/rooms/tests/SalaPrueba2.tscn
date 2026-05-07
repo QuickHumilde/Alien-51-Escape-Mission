@@ -55,6 +55,7 @@ position = Vector2(404, -40)
 position = Vector2(476, -120)
 
 [node name="JimmyEnemy" parent="Enemies" index="0" instance=ExtResource("2_bkrbk")]
+process_mode = 4
 
 [node name="ExplodingKittensWeaponItem" parent="Obstacles" index="0" instance=ExtResource("2_esqot")]
 position = Vector2(264, 56)
@@ -153,9 +154,58 @@ position = Vector2(189, -59)
 [node name="MimicChest" parent="Pickups" index="0" instance=ExtResource("32_swimx")]
 position = Vector2(66, -146)
 activable = true
-coin_percentage = 60.0
-health_percentage = 30.0
+coin_percentage = 45.0
+health_percentage = 15.0
+shield_percentage = 25.0
+enemy1_percentage = 10.0
+
+[node name="MimicChest2" parent="Pickups" index="1" instance=ExtResource("32_swimx")]
+position = Vector2(66, -146)
+activable = true
+coin_percentage = 45.0
+health_percentage = 15.0
+shield_percentage = 25.0
+enemy1_percentage = 10.0
+
+[node name="MimicChest3" parent="Pickups" index="2" instance=ExtResource("32_swimx")]
+position = Vector2(66, -146)
+activable = true
+coin_percentage = 45.0
+health_percentage = 15.0
+shield_percentage = 25.0
+enemy1_percentage = 10.0
+
+[node name="MimicChest4" parent="Pickups" index="3" instance=ExtResource("32_swimx")]
+position = Vector2(66, -146)
+activable = true
+coin_percentage = 45.0
+health_percentage = 15.0
+shield_percentage = 25.0
+enemy1_percentage = 10.0
+
+[node name="MimicChest5" parent="Pickups" index="4" instance=ExtResource("32_swimx")]
+position = Vector2(66, -146)
+activable = true
+coin_percentage = 45.0
+health_percentage = 15.0
+shield_percentage = 25.0
+enemy1_percentage = 10.0
+
+[node name="MimicChest6" parent="Pickups" index="5" instance=ExtResource("32_swimx")]
+position = Vector2(66, -146)
+activable = true
+coin_percentage = 45.0
+health_percentage = 15.0
+shield_percentage = 25.0
+enemy1_percentage = 10.0
+
+[node name="MimicChest7" parent="Pickups" index="6" instance=ExtResource("32_swimx")]
+position = Vector2(66, -146)
+activable = true
+coin_percentage = 45.0
+health_percentage = 15.0
+shield_percentage = 25.0
 enemy1_percentage = 10.0
 
 [node name="Player" parent="." index="9" instance=ExtResource("2_kxxeq")]
-position = Vector2(256, -4)
+position = Vector2(-270, -197)

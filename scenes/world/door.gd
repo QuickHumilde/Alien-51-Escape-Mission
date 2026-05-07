@@ -45,6 +45,9 @@ func set_enabled(v: bool) -> void:
 			blocker_door_shape.set_deferred("disabled", true)
 
 func set_open(v: bool) -> void:
+	if _open == v:
+		return
+
 	_open = v
 	if not _enabled:
 		return
@@ -54,7 +57,7 @@ func set_open(v: bool) -> void:
 
 	if anim != null:
 		anim.play("open" if v else "close")
-
+	
 func _on_body_entered(body: Node) -> void:
 	if not _enabled or not _open:
 		return

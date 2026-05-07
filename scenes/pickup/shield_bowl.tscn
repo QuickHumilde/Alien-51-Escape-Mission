@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://dgkqlqwiwvi08"]
+
+[ext_resource type="PackedScene" uid="uid://k4ys0u38ybki" path="res://scenes/pickup/pickup.tscn" id="1_0d0gb"]
+[ext_resource type="Texture2D" uid="uid://cwl8r0wdn4ccs" path="res://assets/sprites/extras/ShieldBowl.png" id="2_4btib"]
+[ext_resource type="Script" uid="uid://c00krdb318tjo" path="res://scenes/pickup/shield_bowl.gd" id="2_y0k5b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y0k5b"]
+radius = 3.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r2wu8"]
+radius = 2.0
+
+[node name="ShieldBowl" instance=ExtResource("1_0d0gb")]
+script = ExtResource("2_y0k5b")
+extra_health = null
+player_collision_layer = null
+
+[node name="Sprite2D" type="Sprite2D" parent="Visual" index="0"]
+texture = ExtResource("2_4btib")
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_y0k5b")
+
+[node name="Hitbox" parent="." index="2"]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_r2wu8")

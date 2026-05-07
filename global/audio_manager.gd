@@ -2,10 +2,16 @@ extends Node
 
 var music_player: AudioStreamPlayer
 var sfx_player: AudioStreamPlayer
+
 var in_shop: bool = false
 var _shop_override_active: bool = false
 var _floor_paused_pos: float = 0.0
 var _floor_music_name: String = ""
+
+# --- NUEVO: boss state ---
+var in_boss: bool = false
+var _boss_override_active: bool = false
+var _boss_paused_pos: float = 0.0
 
 var sfx: Dictionary = {
 	"big_shot_laugh": preload("res://assets/audio/sfx/items/BigShot_Laugh.mp3"),
@@ -25,10 +31,13 @@ var music: Dictionary = {
 	"shop_1": preload("res://assets/audio/music/ShopMusic_1.mp3"),
 	"shop_2": preload("res://assets/audio/music/ShopMusic_2.mp3"),
 	"shop_3": preload("res://assets/audio/music/barbie.mp3"),
+
+	"boss_1": preload("res://assets/audio/music/barbie.mp3"),
 }
 
 var floor_music: Array[String] = ["floor_1", "floor_2", "floor_3"]
 var shop_music: Array[String] = ["shop_1", "shop_2", "shop_3"]
+var boss_music: Array[String] = ["boss_1"]
 
 func _ready() -> void:
 	music_player = AudioStreamPlayer.new()
@@ -45,7 +54,10 @@ func _ready() -> void:
 	sfx_player.autoplay = false
 	add_child(sfx_player)
 
-	Signals.room_changed.connect(_on_room_changed)
+	if not Signals.room_changed.is_connected(_on_room_changed):
+		Signals.room_changed.connect(_on_room_changed)
+	if not Signals.room_cleared.is_connected(_on_room_cleared):
+		Signals.room_cleared.connect(_on_room_cleared)
 
 func _on_room_changed(room_type: String) -> void:
 	if room_type == "shop":
@@ -53,13 +65,32 @@ func _on_room_changed(room_type: String) -> void:
 			return
 		in_shop = true
 		_enter_shop_music()
-	else:
-		if not in_shop:
-			return
+		return
+
+	if in_shop:
 		in_shop = false
 		_exit_shop_music()
 
+	# --- NUEVO: boss ---
+	if room_type == "boss":
+		if in_boss:
+			return
+		in_boss = true
+		_enter_boss_music()
+	else:
+		if in_boss:
+			in_boss = false
+			_exit_boss_music()
+
+func _on_room_cleared() -> void:
+	if in_boss:
+		in_boss = false
+		_exit_boss_music()
+
 func _enter_shop_music() -> void:
+	if _boss_override_active and music_player.playing:
+		_boss_paused_pos = music_player.get_playback_position()
+
 	if music_player.playing:
 		_floor_paused_pos = music_player.get_playback_position()
 	else:
@@ -75,6 +106,44 @@ func _exit_shop_music() -> void:
 	music_player.stop()
 	_shop_override_active = false
 
+	if in_boss:
+		_resume_boss_music()
+		return
+
+	if _floor_music_name != "":
+		play_music(_floor_music_name, true, -20.0)
+		if _floor_paused_pos > 0.0:
+			music_player.play(_floor_paused_pos)
+
+func _enter_boss_music() -> void:
+	if in_shop:
+		return
+
+	if music_player.playing:
+		_floor_paused_pos = music_player.get_playback_position()
+	else:
+		_floor_paused_pos = 0.0
+
+	play_boss_music()
+	_boss_override_active = true
+
+func _resume_boss_music() -> void:
+	play_boss_music()
+	_boss_override_active = true
+	if _boss_paused_pos > 0.0:
+		music_player.play(_boss_paused_pos)
+		_boss_paused_pos = 0.0
+
+func _exit_boss_music() -> void:
+	if not _boss_override_active:
+		return
+	if in_shop:
+		return
+
+	music_player.stop()
+	_boss_override_active = false
+
+	# volver a floor
 	if _floor_music_name != "":
 		play_music(_floor_music_name, true, -20.0)
 		if _floor_paused_pos > 0.0:
@@ -98,6 +167,11 @@ func play_floor_music() -> void:
 func play_shop_music() -> void:
 	var random_index: int = randi_range(0, shop_music.size() - 1)
 	var music_name: String = shop_music[random_index]
+	play_music(music_name, true, -20)
+
+func play_boss_music() -> void:
+	var random_index: int = randi_range(0, boss_music.size() - 1)
+	var music_name: String = boss_music[random_index]
 	play_music(music_name, true, -20)
 
 func stop_music() -> void:

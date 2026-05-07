@@ -59,6 +59,7 @@ const BOSSES: Dictionary = {
 	],
 	"boss_2": [
 		preload("res://scenes/rooms/boss/boss_room_long_arms_1.tscn"),
+		preload("res://scenes/rooms/boss/boss_room_long_arms_2.tscn"),
 	],
 }
 

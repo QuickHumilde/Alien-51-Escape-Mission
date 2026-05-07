@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bv4py25wei8wj"]
+[gd_scene load_steps=7 format=3 uid="uid://bv4py25wei8wj"]
 
 [ext_resource type="Texture2D" uid="uid://cxn8mfhkfye04" path="res://assets/sprites/bullet/SpitBullet.png" id="1_plut8"]
 [ext_resource type="Script" uid="uid://d3wq7istrmhok" path="res://scenes/bullets/spit_bullet.gd" id="1_q0wr5"]
@@ -6,6 +6,19 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g7dkb"]
 radius = 1.4142135
+
+[sub_resource type="GDScript" id="GDScript_q0wr5"]
+resource_name = "BiggerCollisionScript"
+script/source = "extends Area2D
+
+@onready var bullet: Bullet = $\"..\"
+
+func change_direction(new_direction: Vector2, new_owner = \"\"):
+	bullet.change_direction(new_direction, new_owner)
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i4me4"]
+radius = 11.0
 
 [node name="SpitBullet" type="Area2D"]
 collision_layer = 2
@@ -25,3 +38,11 @@ position = Vector2(-3, -0.5)
 width = 1.5
 default_color = Color(0.18431373, 0.57254905, 0.8, 0.7019608)
 lenght = 10
+
+[node name="Area2D" type="Area2D" parent="." groups=["bullet"]]
+collision_mask = 12
+monitoring = false
+script = SubResource("GDScript_q0wr5")
+
+[node name="BiggerCollision" type="CollisionShape2D" parent="Area2D" groups=["bullet"]]
+shape = SubResource("CircleShape2D_i4me4")

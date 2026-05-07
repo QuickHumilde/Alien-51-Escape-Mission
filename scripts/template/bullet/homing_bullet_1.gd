@@ -26,7 +26,6 @@ func _ready() -> void:
 	var first_time: bool = true
 	
 	for body in bodies:
-		print(body)
 		if target == null and body.is_in_group(target_group):
 			if first_time:
 				best_target=body

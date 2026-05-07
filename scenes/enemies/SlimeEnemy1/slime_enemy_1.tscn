@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://cy1pdn0ydx5qy"]
+[gd_scene load_steps=42 format=3 uid="uid://cy1pdn0ydx5qy"]
 
 [ext_resource type="PackedScene" uid="uid://byym4irhw1v80" path="res://scenes/templates/enemy/enemy_template.tscn" id="1_pycda"]
 [ext_resource type="Script" uid="uid://d1gywih66rvdh" path="res://scenes/enemies/SlimeEnemy1/slime_enemy_1.gd" id="2_0vi2q"]
@@ -41,6 +41,26 @@ region = Rect2(112, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4toin"]
 atlas = ExtResource("3_xji0u")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6y2v"]
+atlas = ExtResource("3_0vi2q")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_di46i"]
+atlas = ExtResource("3_0vi2q")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4tleg"]
+atlas = ExtResource("3_0vi2q")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ompf3"]
+atlas = ExtResource("3_0vi2q")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fcm07"]
+atlas = ExtResource("3_0vi2q")
 region = Rect2(128, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xji0u"]
@@ -151,6 +171,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_u6y2v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_di46i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4tleg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ompf3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fcm07")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.5
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_xji0u")
 }, {
 "duration": 1.0,
@@ -226,8 +266,8 @@ script = ExtResource("2_0vi2q")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visual" index="0"]
 position = Vector2(-9.536743e-07, 0)
 sprite_frames = SubResource("SpriteFrames_skcte")
-animation = &"front_walk"
-autoplay = "front_walk"
+autoplay = "default"
+frame_progress = 0.12860176
 
 [node name="Shadow" parent="Visual" index="1" instance=ExtResource("4_0vi2q")]
 position = Vector2(5.9604645e-08, 5.9999986)

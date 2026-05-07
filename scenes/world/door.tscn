@@ -287,7 +287,7 @@ libraries = {
 
 [node name="DoorVisual" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_snimk")
-animation = &"open"
+animation = &"close"
 
 [node name="Trigger" type="Area2D" parent="."]
 visibility_layer = 5

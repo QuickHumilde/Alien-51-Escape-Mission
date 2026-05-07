@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b8bdlnqqu3v46"]
+[gd_scene load_steps=8 format=3 uid="uid://b8bdlnqqu3v46"]
 
 [ext_resource type="Script" uid="uid://d1qkjo1hvcbtf" path="res://scenes/bullets/jimmy_bullet.gd" id="1_7n85i"]
 [ext_resource type="Texture2D" uid="uid://dhb578tgpap3a" path="res://assets/sprites/extras/LampLight.png" id="1_bo5ij"]
@@ -7,6 +7,19 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qp23i"]
 radius = 1.4142135
+
+[sub_resource type="GDScript" id="GDScript_7n85i"]
+resource_name = "BiggerCollisionScript"
+script/source = "extends Area2D
+
+@onready var bullet: Bullet = $\"..\"
+
+func change_direction(new_direction: Vector2, new_owner = \"\"):
+	bullet.change_direction(new_direction, new_owner)
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7sh3u"]
+radius = 11.0
 
 [node name="Area2D" type="Area2D"]
 collision_layer = 2
@@ -31,3 +44,11 @@ shape = SubResource("CircleShape2D_qp23i")
 position = Vector2(-3, 0)
 width = 1.5
 default_color = Color(1, 1, 0.023529412, 0.42352942)
+
+[node name="Area2D" type="Area2D" parent="." groups=["bullet"]]
+collision_mask = 12
+monitoring = false
+script = SubResource("GDScript_7n85i")
+
+[node name="BiggerCollision" type="CollisionShape2D" parent="Area2D" groups=["bullet"]]
+shape = SubResource("CircleShape2D_7sh3u")

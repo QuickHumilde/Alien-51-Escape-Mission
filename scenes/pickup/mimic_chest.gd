@@ -4,10 +4,12 @@ extends Pickup
 
 @onready var coin_scene: PackedScene = preload("res://scenes/pickup/coin.tscn")
 @onready var health_scene: PackedScene = preload("res://scenes/pickup/health.tscn")
+@onready var shield_scene: PackedScene = preload("res://scenes/pickup/shield_bowl.tscn")
 @onready var enemy1_scene: PackedScene = preload("res://scenes/enemies/stickman/stickman_enemy.tscn")
 @onready var sprite: AnimatedSprite2D = $Visual/AnimatedSprite2D
-@export var coin_percentage: float = 60.0
-@export var health_percentage: float = 30.0
+@export var coin_percentage: float = 45.0
+@export var health_percentage: float = 15.0
+@export var shield_percentage: float = 25.0
 @export var enemy1_percentage: float = 10.0
 var spawned: bool = false
 
@@ -27,9 +29,10 @@ func open_chest():
 func _pick_weighted_scene() -> PackedScene:
 	var coin = max(0.0, coin_percentage)
 	var health = max(0.0, health_percentage)
+	var shield = max(0.0, shield_percentage)
 	var enemy1 = max(0.0, enemy1_percentage)
 
-	var total = coin + health + enemy1
+	var total = coin + health + shield + enemy1
 	if total <= 0.0:
 		return null
 
@@ -39,6 +42,8 @@ func _pick_weighted_scene() -> PackedScene:
 		return coin_scene
 	elif random_number < coin + health:
 		return health_scene
+	elif random_number < coin + health + shield:
+		return shield_scene
 	else:
 		return enemy1_scene
 

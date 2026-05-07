@@ -19,6 +19,7 @@ func fill_decoration_array():
 		load("res://assets/sprites/decorations/FootprintDecoration1.png"),
 		load("res://assets/sprites/decorations/SkullDecoration1.png"),
 		load("res://assets/sprites/decorations/HoleDecoration1.png"),
+		load("res://assets/sprites/decorations/PoolBlood.png"),
 	]
 
 func fill_dictionary():
@@ -39,6 +40,11 @@ func fill_dictionary():
 			"scale": { "min": 0.95, "max": 1 }
 		},
 		"HoleDecoration1.png": {
+			"rotation": { "min": 0.0, "max": 360.0 },
+			"alpha": { "min": 0.8, "max": 0.85 },
+			"scale": { "min": 0.85, "max": 1 }
+		},
+		"PoolBlood.png": {
 			"rotation": { "min": 0.0, "max": 360.0 },
 			"alpha": { "min": 0.8, "max": 0.85 },
 			"scale": { "min": 0.85, "max": 1 }

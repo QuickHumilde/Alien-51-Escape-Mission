@@ -9,7 +9,7 @@ class_name HudPlayer
 @onready var item_desc = $ItemDescription
 @onready var item_back = $ItemBackground
 @onready var item_texture = $ItemImage
-@onready var money_amount = $MoneyAmount
+@onready var money_amount = $Stats/MoneyAmount
 @onready var items_amount = $ItemAmount
 var cache_item_name : String
 var cache_item_desc : String

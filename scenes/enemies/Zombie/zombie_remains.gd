@@ -65,7 +65,6 @@ func no_mori_jisjisjis():
 	for i in range(children_spawn):
 		var brains = zombie_scene.instantiate()
 		if brains == null:
-			print("No cerebros para ti hoy")
 			queue_free()
 			return
 
