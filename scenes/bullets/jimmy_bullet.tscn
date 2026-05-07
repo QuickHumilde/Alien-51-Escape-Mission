@@ -10,7 +10,7 @@ radius = 1.4142135
 
 [node name="Area2D" type="Area2D"]
 collision_layer = 2
-collision_mask = 13
+collision_mask = 45
 script = ExtResource("1_7n85i")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]

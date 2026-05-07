@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qri7d75g4k6u"
-path="res://.godot/imported/FakeJordans.png-7476054b20475d66105ada1db46c7135.ctex"
+uid="uid://b2e5kvd16ffn6"
+path="res://.godot/imported/LongyEnemyShoot.png-2be3fb638c74f4029c4fa003abca42c8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/provisional/FakeJordans.png"
-dest_files=["res://.godot/imported/FakeJordans.png-7476054b20475d66105ada1db46c7135.ctex"]
+source_file="res://assets/sprites/enemies/longy_boss/LongyEnemyShoot.png"
+dest_files=["res://.godot/imported/LongyEnemyShoot.png-2be3fb638c74f4029c4fa003abca42c8.ctex"]
 
 [params]
 

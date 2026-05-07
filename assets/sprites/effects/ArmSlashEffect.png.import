@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bq1kqu0qc4ly5"
-path="res://.godot/imported/ParryAbility_2.png-4718a9242d842297dfa0c0dfb50df091.ctex"
+uid="uid://c2majetciqjwk"
+path="res://.godot/imported/ArmSlashEffect.png-02e3a40e232d35dafc9ef20dea71594d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/provisional/ParryAbility_2.png"
-dest_files=["res://.godot/imported/ParryAbility_2.png-4718a9242d842297dfa0c0dfb50df091.ctex"]
+source_file="res://assets/sprites/effects/ArmSlashEffect.png"
+dest_files=["res://.godot/imported/ArmSlashEffect.png-02e3a40e232d35dafc9ef20dea71594d.ctex"]
 
 [params]
 

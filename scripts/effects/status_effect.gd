@@ -6,6 +6,7 @@ enum StackingMode { REFRESH, REPLACE, STACK }
 @export var id: String = "effect"
 @export var duration: float = 1.0
 @export var stacking_mode: StackingMode = StackingMode.REFRESH
+@export var reapply_lockout: float = 0.0
 
 func on_apply(_target: Node) -> void:
 	pass

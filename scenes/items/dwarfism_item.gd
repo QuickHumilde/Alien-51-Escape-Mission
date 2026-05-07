@@ -7,7 +7,7 @@ func _ready():
 	id = 21
 	name_key = "item_dwarfism_name"
 	desc_key = "item_dwarfism_desc"
-	item_texture = "res://assets/sprites/provisional/Dwarfism.png"
+	item_texture = "res://assets/sprites/items/Dwarfism.png"
 	super._ready()
 	
 func give_changes(body: Character):

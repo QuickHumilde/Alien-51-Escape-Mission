@@ -8,7 +8,7 @@ func _ready():
 	melee_hitbox.area_entered.connect(_on_hitbox_enter)
 	id = 1
 	damage = 1
-	knockback_force = 250.0
+	knockback_force = 200.0
 	audio_player = $AudioStreamPlayer2D
 	sounds = {
 		"shoot" : preload("res://assets/audio/sfx/player/uiuiuiADuque.mp3")
@@ -20,12 +20,12 @@ func shoot(player_damage: float, _player_lifetime: float):
 	if not $ShootCooldown.is_stopped():
 		return
 	
-	if anim.current_animation != "attack":
+	if anim.current_animation != "attacking_rework":
 		var pitch := randf_range(0.9, 1.5)
 		var volume := randf_range(-4.0, -2.5)
 		play_sound("shoot", volume, pitch)
 
-	anim.play("attack")
+	anim.play("attacking_rework")
 	await anim.animation_finished
 	$ShootCooldown.start()
 

@@ -144,7 +144,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"reloading",
-"speed": 15.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -178,5 +178,8 @@ sprite_frames = SubResource("SpriteFrames_itve6")
 animation = &"reloading"
 frame = 13
 frame_progress = 1.0
+
+[node name="ShootCooldown" parent="." index="1"]
+wait_time = 0.5
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="2"]

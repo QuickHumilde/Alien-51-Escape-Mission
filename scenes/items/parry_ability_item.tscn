@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dlnik63yjjvi4" path="res://scenes/templates/item/item_template.tscn" id="1_ukcod"]
 [ext_resource type="Script" uid="uid://biy2ugkn3gjd6" path="res://scenes/items/parry_ability_item.gd" id="2_mhi8l"]
-[ext_resource type="Texture2D" uid="uid://bq1kqu0qc4ly5" path="res://assets/sprites/provisional/ParryAbility_2.png" id="3_mhi8l"]
+[ext_resource type="Texture2D" uid="uid://c6c37arq6sclr" path="res://assets/sprites/items/ParryAbility.png" id="3_mhi8l"]
 
 [node name="ParryAbilityItem" instance=ExtResource("1_ukcod")]
 script = ExtResource("2_mhi8l")

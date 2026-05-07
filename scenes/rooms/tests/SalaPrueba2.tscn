@@ -67,7 +67,7 @@ light_mask = 1
 position = Vector2(100, 9)
 
 [node name="Football" parent="Obstacles" index="3" instance=ExtResource("5_327g5")]
-position = Vector2(65, 6)
+position = Vector2(278, -9)
 
 [node name="ParryAbilityItem" parent="Obstacles" index="4" instance=ExtResource("6_swimx")]
 position = Vector2(-264, -55)

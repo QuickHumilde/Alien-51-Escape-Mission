@@ -9,9 +9,9 @@ func _ready() -> void:
 	damage = 1
 	knockback_force = 75.0
 	self_knockback_force= 50.0
-	lifetime= 3.0
+	lifetime= 2.0
 	speed = 90.0
-	cooldown.wait_time = 1.5
+	cooldown.wait_time = 1.2
 	audio_player = $AudioStreamPlayer2D
 	sounds = {
 		"shoot": preload("res://assets/audio/sfx/Blink_1.mp3"),

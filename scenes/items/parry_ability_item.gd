@@ -8,7 +8,7 @@ func _ready():
 	id = 17
 	name_key = "item_parry_name"
 	desc_key = "item_parry_desc"
-	item_texture = "res://assets/sprites/provisional/ParryAbility_2.png"
+	item_texture = "res://assets/sprites/items/ParryAbility.png"
 	super._ready()
 
 func give_changes(body: Character):

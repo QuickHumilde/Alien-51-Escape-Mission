@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2bo2i38ftu2q"
-path="res://.godot/imported/Dwarfism.png-62f0afb651698e6fd6e022f8f5c4f070.ctex"
+uid="uid://deapg6wdt4jkm"
+path="res://.godot/imported/ArmAttack1.png-0aafe29675c3243708fcb6cd6a464c8e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/provisional/Dwarfism.png"
-dest_files=["res://.godot/imported/Dwarfism.png-62f0afb651698e6fd6e022f8f5c4f070.ctex"]
+source_file="res://assets/sprites/weapons/ArmAttack1.png"
+dest_files=["res://.godot/imported/ArmAttack1.png-0aafe29675c3243708fcb6cd6a464c8e.ctex"]
 
 [params]
 

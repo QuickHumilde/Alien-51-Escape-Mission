@@ -7,7 +7,7 @@ func _ready():
 	id = 18
 	name_key = "item_jordans_name"
 	desc_key = "item_jordans_desc"
-	item_texture = "res://assets/sprites/provisional/Jordans.png"
+	item_texture = "res://assets/sprites/items/Jordans.png"
 	super._ready()
 
 func give_changes(body: Character):

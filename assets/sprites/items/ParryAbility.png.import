@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dftqk7n2ylv4t"
-path="res://.godot/imported/Jordans.png-fa03f821dbf0cb12036a911c0581c94f.ctex"
+uid="uid://c6c37arq6sclr"
+path="res://.godot/imported/ParryAbility.png-3a29d0ad2b29f99fe9a64e52311e74cf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/items/Jordans.png"
-dest_files=["res://.godot/imported/Jordans.png-fa03f821dbf0cb12036a911c0581c94f.ctex"]
+source_file="res://assets/sprites/items/ParryAbility.png"
+dest_files=["res://.godot/imported/ParryAbility.png-3a29d0ad2b29f99fe9a64e52311e74cf.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqnqxsvvehny0"
-path="res://.godot/imported/Jordans.png-61be476f045c85a225a876a54bae20fb.ctex"
+uid="uid://cvlk61ynllslj"
+path="res://.godot/imported/Dwarfism.png-57986bbfc78f432ab4e8ebceaddc6bef.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/provisional/Jordans.png"
-dest_files=["res://.godot/imported/Jordans.png-61be476f045c85a225a876a54bae20fb.ctex"]
+source_file="res://assets/sprites/items/Dwarfism.png"
+dest_files=["res://.godot/imported/Dwarfism.png-57986bbfc78f432ab4e8ebceaddc6bef.ctex"]
 
 [params]
 
