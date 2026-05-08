@@ -72,6 +72,7 @@ func fill_item_pool():
 	register_item(23, preload("res://scenes/items/whetstone_item.tscn"))
 	register_item(24, preload("res://scenes/items/weapons/shuriken_weapon_item.tscn"))
 	register_item(25, preload("res://scenes/items/weapons/eye_of_the_witch_weapon_item.tscn"))
+	register_item(26, preload("res://scenes/items/weights_item.tscn"))
 
 func clear_removed_items():
 	removed_items.clear()

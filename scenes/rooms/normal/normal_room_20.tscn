@@ -1,0 +1,193 @@
+[gd_scene load_steps=7 format=4 uid="uid://d2kplfp5wmuyt"]
+
+[ext_resource type="PackedScene" uid="uid://641t0oysglvl" path="res://scenes/rooms/template/room_template.tscn" id="1_6tcdk"]
+[ext_resource type="PackedScene" uid="uid://chrgijw2gs6eb" path="res://scenes/world/lamp.tscn" id="2_8k466"]
+[ext_resource type="PackedScene" uid="uid://dceenhddbl8gi" path="res://scenes/enemies/Zombie/zombie_enemy.tscn" id="2_mks3k"]
+[ext_resource type="PackedScene" uid="uid://cimvey3hg741x" path="res://scenes/enemies/TurretEnemy/turret_enemy.tscn" id="3_jqvgu"]
+[ext_resource type="PackedScene" uid="uid://vwuduq2qtmsv" path="res://scenes/world/obstacle_1.tscn" id="3_q7uqp"]
+[ext_resource type="PackedScene" uid="uid://di7t2uklujror" path="res://scenes/world/spikes.tscn" id="6_lcsc3"]
+
+[node name="NormalRoom20" instance=ExtResource("1_6tcdk")]
+door_caps = {
+"down": false,
+"left": true,
+"right": false,
+"up": true
+}
+
+[node name="Background" parent="." index="0"]
+tile_map_data = PackedByteArray("AAD+/wMAAAAGAAAAAAD+/wQAAAAGAAEAAAAAAAQAAAAEAAAAAAABAAQAAAAHAAAAAAD9/wMAAAAGAAEAAAD9/wQAAAAHAAAAAAD8/wMAAAACAAYAAAD8/wQAAAACAAYAAAAEAAMAAAAGAAEAAAAEAAQAAAAGAAEAAAAFAAMAAAAIAAAAAAAFAAQAAAAGAAEAAAAGAAMAAAAHAAEAAAAGAAQAAAAGAAEAAAAHAAMAAAAGAAEAAAAHAAQAAAAEAAAAAAACAAQAAAAGAAEAAAACAAMAAAAGAAEAAAABAAMAAAAFAAAAAAAAAAMAAAAGAAEAAAD//wMAAAAGAAEAAAD//wQAAAAHAAEAAAD7/wMAAAABAAYAAAD7/wQAAAABAAYAAAAIAAMAAAAHAAYAAAAIAAQAAAAHAAYAAAD7//z/AAABAAYAAAD7//3/AAABAAYAAAD7//7/AAABAAYAAAD7////AAABAAYAAAD8//z/AAACAAYAAAD8//3/AAACAAYAAAD8//7/AAACAAYAAAD8////AAACAAYAAAD9//z/AAAGAAEAAAD9//3/AAAGAAEAAAD9//7/AAAGAAEAAAD9////AAAGAAEAAAD9/wAAAAAGAAEAAAD+//z/AAAFAAAAAAD+//3/AAAGAAEAAAD+//7/AAAFAAAAAAD+////AAAGAAAAAAD+/wAAAAAEAAAAAAD///z/AAAGAAEAAAD///3/AAAHAAEAAAD///7/AAAGAAEAAAD/////AAAEAAAAAAD//wAAAAAEAAAAAAAAAPz/AAAGAAAAAAAAAP3/AAAGAAEAAAAAAP7/AAAGAAEAAAAAAP//AAAFAAAAAAAAAAAAAAAEAAAAAAD7/wEAAAABAAYAAAD7/wIAAAABAAYAAAD8/wEAAAACAAYAAAD8/wIAAAACAAYAAAD9/wEAAAAHAAEAAAD9/wIAAAAGAAEAAAD+/wEAAAAGAAEAAAD+/wIAAAAGAAEAAAD//wEAAAAHAAAAAAD//wIAAAAHAAEAAAAAAAEAAAAGAAEAAAAAAAIAAAAGAAEAAAABAPz/AAAGAAEAAAABAP3/AAAFAAAAAAABAP7/AAAGAAEAAAABAP//AAAGAAEAAAABAAAAAAAGAAEAAAABAAEAAAAEAAAAAAABAAIAAAAEAAAAAAACAPz/AAAGAAEAAAACAP3/AAAEAAAAAAACAP7/AAAGAAAAAAACAP//AAAGAAEAAAACAAAAAAAFAAAAAAACAAEAAAAGAAEAAAACAAIAAAAGAAEAAAADAPz/AAAGAAEAAAADAP3/AAAGAAEAAAADAP7/AAAEAAAAAAADAP//AAAGAAEAAAAEAPz/AAAHAAEAAAAEAP3/AAAFAAAAAAAEAP7/AAAGAAAAAAAEAP//AAAGAAAAAAAEAAAAAAAHAAAAAAAEAAEAAAAGAAEAAAAEAAIAAAAEAAAAAAAFAPz/AAAGAAEAAAAFAP3/AAAGAAEAAAAFAP7/AAAEAAAAAAAFAP//AAAGAAEAAAAFAAAAAAAGAAEAAAAFAAEAAAAGAAEAAAAFAAIAAAAHAAAAAAAGAPz/AAAGAAEAAAAGAP3/AAAEAAAAAAAGAP7/AAAGAAEAAAAGAP//AAAHAAEAAAAGAAAAAAAGAAEAAAAGAAEAAAAEAAAAAAAGAAIAAAAEAAAAAAAHAPz/AAAFAAAAAAAHAP3/AAAGAAEAAAAHAP7/AAAGAAEAAAAHAP//AAAGAAAAAAAHAAAAAAAGAAEAAAAHAAEAAAAGAAEAAAAHAAIAAAAGAAEAAAAIAPz/AAAHAAYAAAAIAP3/AAAHAAYAAAAIAP7/AAAHAAYAAAAIAP//AAAHAAYAAAAIAAEAAAAHAAYAAAAIAAIAAAAHAAYAAAAJAPz/AAAIAAYAAAAJAP3/AAAIAAYAAAAJAP7/AAAIAAYAAAAJAP//AAAIAAYAAAAJAAEAAAAIAAYAAAAJAAIAAAAIAAYAAAAJAAMAAAAIAAYAAAAJAAQAAAAIAAYAAAADAAAAAAAHAAAAAAADAAEAAAAEAAAAAAADAAIAAAAHAAAAAAADAAMAAAAGAAEAAAADAAQAAAAHAAEAAAD9/wUAAAAEAAAAAAD+/wUAAAAGAAEAAAD//wUAAAAGAAEAAAAAAAUAAAAGAAEAAAABAAUAAAAGAAEAAAACAAUAAAAGAAEAAAADAAUAAAAGAAEAAAAEAAUAAAAGAAEAAAAFAAUAAAAEAAAAAAAGAAUAAAAGAAEAAAAHAAUAAAAHAAAAAAAIAAUAAAAHAAYAAAAJAAUAAAAIAAYAAAD7/wUAAAABAAYAAAD8/wUAAAACAAYAAAD7/wYAAAABAAkAAAD7/wcAAAABAAoAAAD8/wYAAAACAAkAAAD8/wcAAAACAAoAAAAIAAYAAAAHAAkAAAAIAAcAAAAHAAoAAAAJAAYAAAAIAAkAAAAJAAcAAAAIAAoAAAAHAAYAAAAEAAcAAAAHAAcAAAAEAAgAAAAGAAYAAAAEAAcAAAAGAAcAAAAEAAgAAAAFAAYAAAAEAAcAAAAFAAcAAAAEAAgAAAAEAAYAAAAEAAcAAAAEAAcAAAAEAAgAAAADAAYAAAAEAAcAAAADAAcAAAAEAAgAAAABAAYAAAAEAAcAAAABAAcAAAAEAAgAAAAAAAYAAAAEAAcAAAAAAAcAAAAEAAgAAAD//wYAAAAEAAcAAAD//wcAAAAEAAgAAAD+/wYAAAAEAAcAAAD+/wcAAAAEAAgAAAD9/wYAAAAEAAcAAAD9/wcAAAAEAAgAAAAIAPn/AAAHAAMAAAAIAPr/AAAHAAQAAAAJAPn/AAAIAAMAAAAJAPr/AAAIAAQAAAD7//n/AAABAAMAAAD7//r/AAABAAQAAAD8//n/AAACAAMAAAD8//r/AAACAAQAAAD7//v/AAABAAYAAAD8//v/AAACAAYAAAAIAPv/AAAHAAYAAAAJAPv/AAAIAAYAAAAHAPn/AAAEAAUAAAAHAPr/AAAEAAYAAAAGAPn/AAAEAAUAAAAGAPr/AAAEAAYAAAAFAPn/AAAEAAUAAAAFAPr/AAAEAAYAAAAEAPn/AAAEAAUAAAAEAPr/AAAEAAYAAAADAPn/AAAEAAUAAAADAPr/AAAEAAYAAAABAPn/AAAEAAUAAAABAPr/AAAEAAYAAAAAAPn/AAAEAAUAAAAAAPr/AAAEAAYAAAD///n/AAAEAAUAAAD///r/AAAEAAYAAAD+//n/AAAEAAUAAAD+//r/AAAEAAYAAAD9//n/AAAEAAUAAAD9//r/AAAEAAYAAAD9//v/AAAFAAAAAAD+//v/AAAEAAAAAAD///v/AAAGAAAAAAAAAPv/AAAEAAAAAAABAPv/AAAHAAEAAAACAPv/AAAGAAEAAAADAPv/AAAGAAEAAAAEAPv/AAAEAAAAAAAFAPv/AAAGAAEAAAAGAPv/AAAHAAEAAAAHAPv/AAAGAAAAAAACAAYAAAAEAAcAAAACAAcAAAAEAAgAAAAIAAAAAAAHAAYAAAAJAAAAAAAIAAYAAAA=")
+
+[node name="Down" parent="Doors" index="1"]
+visible = false
+
+[node name="Right" parent="Doors" index="3"]
+visible = false
+
+[node name="ZombieEnemy" parent="Enemies" index="0" instance=ExtResource("2_mks3k")]
+position = Vector2(-40, 64)
+
+[node name="ZombieEnemy2" parent="Enemies" index="1" instance=ExtResource("2_mks3k")]
+position = Vector2(104, -80)
+
+[node name="TurretEnemy" parent="Enemies" index="2" instance=ExtResource("3_jqvgu")]
+position = Vector2(-8, -40)
+
+[node name="Lamp" parent="Decorations" index="0" instance=ExtResource("2_8k466")]
+position = Vector2(-8, -88)
+
+[node name="Lamp2" parent="Decorations" index="1" instance=ExtResource("2_8k466")]
+position = Vector2(88, -88)
+
+[node name="Lamp3" parent="Decorations" index="2" instance=ExtResource("2_8k466")]
+position = Vector2(88, 104)
+rotation = 3.1415927
+
+[node name="Lamp4" parent="Decorations" index="3" instance=ExtResource("2_8k466")]
+position = Vector2(-8, 104)
+rotation = 3.1415927
+
+[node name="Lamp5" parent="Decorations" index="4" instance=ExtResource("2_8k466")]
+position = Vector2(-56, -40)
+rotation = -1.5707964
+
+[node name="Lamp6" parent="Decorations" index="5" instance=ExtResource("2_8k466")]
+position = Vector2(-56, 56)
+rotation = -1.5707964
+
+[node name="Lamp7" parent="Decorations" index="6" instance=ExtResource("2_8k466")]
+position = Vector2(136, 72)
+rotation = 1.5707964
+
+[node name="Lamp8" parent="Decorations" index="7" instance=ExtResource("2_8k466")]
+position = Vector2(136, -56)
+rotation = 1.5707964
+
+[node name="Obstacle1_1" parent="Obstacles" index="0" instance=ExtResource("3_q7uqp")]
+position = Vector2(-40, 56)
+
+[node name="Obstacle1_2" parent="Obstacles" index="1" instance=ExtResource("3_q7uqp")]
+position = Vector2(-24, 56)
+
+[node name="Obstacle1_3" parent="Obstacles" index="2" instance=ExtResource("3_q7uqp")]
+position = Vector2(-8, 56)
+
+[node name="Obstacle1_4" parent="Obstacles" index="3" instance=ExtResource("3_q7uqp")]
+position = Vector2(8, 56)
+
+[node name="Obstacle1_5" parent="Obstacles" index="4" instance=ExtResource("3_q7uqp")]
+position = Vector2(24, 56)
+
+[node name="Obstacle1_6" parent="Obstacles" index="5" instance=ExtResource("3_q7uqp")]
+position = Vector2(40, 56)
+
+[node name="Obstacle1_15" parent="Obstacles" index="6" instance=ExtResource("3_q7uqp")]
+position = Vector2(56, 56)
+
+[node name="Obstacle1_7" parent="Obstacles" index="7" instance=ExtResource("3_q7uqp")]
+position = Vector2(88, -72)
+
+[node name="Obstacle1_8" parent="Obstacles" index="8" instance=ExtResource("3_q7uqp")]
+position = Vector2(88, -56)
+
+[node name="Obstacle1_9" parent="Obstacles" index="9" instance=ExtResource("3_q7uqp")]
+position = Vector2(88, -40)
+
+[node name="Obstacle1_10" parent="Obstacles" index="10" instance=ExtResource("3_q7uqp")]
+position = Vector2(88, -24)
+
+[node name="Obstacle1_11" parent="Obstacles" index="11" instance=ExtResource("3_q7uqp")]
+position = Vector2(88, -8)
+
+[node name="Obstacle1_12" parent="Obstacles" index="12" instance=ExtResource("3_q7uqp")]
+position = Vector2(88, 8)
+
+[node name="Obstacle1_13" parent="Obstacles" index="13" instance=ExtResource("3_q7uqp")]
+position = Vector2(88, 24)
+
+[node name="Obstacle1_14" parent="Obstacles" index="14" instance=ExtResource("3_q7uqp")]
+position = Vector2(88, 24)
+
+[node name="Obstacle1_16" parent="Obstacles" index="15" instance=ExtResource("3_q7uqp")]
+position = Vector2(-40, 88)
+
+[node name="Obstacle1_17" parent="Obstacles" index="16" instance=ExtResource("3_q7uqp")]
+position = Vector2(-24, 88)
+
+[node name="Obstacle1_18" parent="Obstacles" index="17" instance=ExtResource("3_q7uqp")]
+position = Vector2(-8, 88)
+
+[node name="Obstacle1_19" parent="Obstacles" index="18" instance=ExtResource("3_q7uqp")]
+position = Vector2(8, 88)
+
+[node name="Obstacle1_20" parent="Obstacles" index="19" instance=ExtResource("3_q7uqp")]
+position = Vector2(24, 88)
+
+[node name="Obstacle1_21" parent="Obstacles" index="20" instance=ExtResource("3_q7uqp")]
+position = Vector2(40, 88)
+
+[node name="Obstacle1_22" parent="Obstacles" index="21" instance=ExtResource("3_q7uqp")]
+position = Vector2(56, 88)
+
+[node name="Obstacle1_23" parent="Obstacles" index="22" instance=ExtResource("3_q7uqp")]
+position = Vector2(120, -72)
+
+[node name="Obstacle1_24" parent="Obstacles" index="23" instance=ExtResource("3_q7uqp")]
+position = Vector2(120, -56)
+
+[node name="Obstacle1_25" parent="Obstacles" index="24" instance=ExtResource("3_q7uqp")]
+position = Vector2(120, -40)
+
+[node name="Obstacle1_26" parent="Obstacles" index="25" instance=ExtResource("3_q7uqp")]
+position = Vector2(120, -24)
+
+[node name="Obstacle1_27" parent="Obstacles" index="26" instance=ExtResource("3_q7uqp")]
+position = Vector2(120, -8)
+
+[node name="Obstacle1_28" parent="Obstacles" index="27" instance=ExtResource("3_q7uqp")]
+position = Vector2(120, 8)
+
+[node name="Obstacle1_29" parent="Obstacles" index="28" instance=ExtResource("3_q7uqp")]
+position = Vector2(120, 24)
+
+[node name="Obstacle1_30" parent="Obstacles" index="29" instance=ExtResource("3_q7uqp")]
+position = Vector2(120, 40)
+
+[node name="Obstacle1_31" parent="Obstacles" index="30" instance=ExtResource("3_q7uqp")]
+position = Vector2(104, 56)
+
+[node name="Obstacle1_32" parent="Obstacles" index="31" instance=ExtResource("3_q7uqp")]
+position = Vector2(120, 72)
+
+[node name="Obstacle1_33" parent="Obstacles" index="32" instance=ExtResource("3_q7uqp")]
+position = Vector2(88, 88)
+
+[node name="Obstacle1_34" parent="Obstacles" index="33" instance=ExtResource("3_q7uqp")]
+position = Vector2(72, 88)
+
+[node name="Obstacle1_35" parent="Obstacles" index="34" instance=ExtResource("3_q7uqp")]
+position = Vector2(88, 72)
+
+[node name="Obstacle1_36" parent="Obstacles" index="35" instance=ExtResource("3_q7uqp")]
+position = Vector2(104, 72)
+
+[node name="Obstacle1_37" parent="Obstacles" index="36" instance=ExtResource("3_q7uqp")]
+position = Vector2(120, 88)
+
+[node name="Obstacle1_38" parent="Obstacles" index="37" instance=ExtResource("3_q7uqp")]
+position = Vector2(104, 88)
+
+[node name="Obstacle1_39" parent="Obstacles" index="38" instance=ExtResource("3_q7uqp")]
+position = Vector2(120, 56)
+
+[node name="Obstacle1_40" parent="Obstacles" index="39" instance=ExtResource("3_q7uqp")]
+position = Vector2(88, 24)
+
+[node name="Spikes" parent="Obstacles" index="40" instance=ExtResource("6_lcsc3")]
+position = Vector2(-40, -72)
+
+[node name="Spikes2" parent="Obstacles" index="41" instance=ExtResource("6_lcsc3")]
+position = Vector2(-8, -72)
+
+[node name="Spikes3" parent="Obstacles" index="42" instance=ExtResource("6_lcsc3")]
+position = Vector2(-40, -40)

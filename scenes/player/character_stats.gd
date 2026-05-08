@@ -77,6 +77,7 @@ func recalc_stats():
 	_apply_size_visual(cached_size)
 	stats_variated = false
 	emit_signal("stats_changed")
+	Signals.update_hud_stats.emit()
 
 func get_speed() -> float:
 	if stats_variated:

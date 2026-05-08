@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://p6h5j4rt0t2k"]
+
+[ext_resource type="PackedScene" uid="uid://dlnik63yjjvi4" path="res://scenes/templates/item/item_template.tscn" id="1_cn3v6"]
+[ext_resource type="Script" uid="uid://dpk8er07g0c5g" path="res://scenes/items/weights_item.gd" id="2_ceevo"]
+[ext_resource type="Texture2D" uid="uid://bnwilgxmulymc" path="res://assets/sprites/items/WeightsItem.png" id="2_tjy8s"]
+
+[node name="WeightsItem" instance=ExtResource("1_cn3v6")]
+script = ExtResource("2_ceevo")
+
+[node name="Sprite2D" type="Sprite2D" parent="Visual" index="1"]
+texture = ExtResource("2_tjy8s")

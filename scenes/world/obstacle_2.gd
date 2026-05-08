@@ -5,6 +5,7 @@ var hits: int = 0
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var navigation: NavigationRegion2D = $FlyingNavigation
 @onready var collision_shape: CollisionPolygon2D = $CollisionPolygon2D
+@onready var area_shape: Area2D = $Area2D
 
 var broken: bool = false
 
@@ -32,5 +33,7 @@ func _break_obstacle():
 		remove_from_group("obstacle")
 
 	collision_shape.set_deferred("disabled", true)
+	area_shape.set_deferred("monitoring", false)
+	area_shape.set_deferred("monitorable", false)
 
 	Signals.obstacle_broken.emit(global_position)

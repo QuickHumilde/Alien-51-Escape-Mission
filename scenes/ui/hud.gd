@@ -10,6 +10,10 @@ class_name HudPlayer
 @onready var item_back = $ItemBackground
 @onready var item_texture = $ItemImage
 @onready var money_amount = $Stats/MoneyAmount
+@onready var strenght_amount = $Stats/StrenghtStatLabel
+@onready var speed_amount = $Stats/SpeedStatLabel
+@onready var lifetime_amount = $Stats/LifetimeStatLabel
+@onready var invulnerability_amount = $Stats/InvulnerabilityStatLabel
 @onready var items_amount = $ItemAmount
 var cache_item_name : String
 var cache_item_desc : String
@@ -51,6 +55,7 @@ func connect_player_signals():
 	Signals.show_death_menu.connect(_on_death)
 	Signals.items_changed.connect(_on_item_changed)
 	Signals.player_revive.connect(_on_revive_player)
+	Signals.update_hud_stats.connect(_on_update_hud_stats)
 
 func connect_item_signals():
 	Signals.show_item_information.connect(_show_item_info)
@@ -63,6 +68,9 @@ func _on_money_changed(_amount: int):
 	update_inventory()
 
 func _on_item_changed():
+	update_inventory()
+
+func _on_update_hud_stats():
 	update_inventory()
 
 func update_health():
@@ -120,6 +128,11 @@ func update_inventory():
 	
 	var items = player.inventory.get_items()
 	items_amount.text = str(items)
+
+	strenght_amount.text = str(stats.get_damage())
+	speed_amount.text = str(stats.get_speed()/10.0)
+	lifetime_amount.text = str(stats.get_lifetime())
+	invulnerability_amount.text = str(stats.get_invulnerability_time())
 
 func apply_borders():
 	var style_bg = StyleBoxFlat.new()

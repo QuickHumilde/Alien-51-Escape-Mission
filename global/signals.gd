@@ -2,9 +2,10 @@ extends Node
 
 var player_is_dead = false
 
-#region Items
+#region HUD
 signal show_item_information(item_name: String, item_description: String, item_texture: String)
 signal hide_item_information()
+signal update_hud_stats()
 #endregion
 
 #region Player
@@ -67,3 +68,4 @@ func _emit_all():
 	stats_changed.emit()
 	shake_camera.emit(0.0)
 	obstacle_broken.emit()
+	update_hud_stats.emit()

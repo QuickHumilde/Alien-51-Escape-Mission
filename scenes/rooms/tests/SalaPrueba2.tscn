@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://1k5ta205shrd"]
+[gd_scene load_steps=37 format=4 uid="uid://1k5ta205shrd"]
 
 [ext_resource type="PackedScene" uid="uid://641t0oysglvl" path="res://scenes/rooms/template/room_template.tscn" id="1_do61m"]
 [ext_resource type="PackedScene" uid="uid://dc1qcgts0k44u" path="res://scenes/enemies/JimmyEnemy/jimmy_enemy.tscn" id="2_bkrbk"]
@@ -35,6 +35,7 @@
 [ext_resource type="PackedScene" uid="uid://btakcp8d7eo58" path="res://scenes/pickup/mimic_chest.tscn" id="32_swimx"]
 [ext_resource type="PackedScene" uid="uid://x4tu7jldj560" path="res://scenes/items/weapons/shuriken_weapon_item.tscn" id="33_bkrbk"]
 [ext_resource type="PackedScene" uid="uid://bi50aklcvaewj" path="res://scenes/items/weapons/eye_of_the_witch_weapon_item.tscn" id="34_8ca48"]
+[ext_resource type="PackedScene" uid="uid://p6h5j4rt0t2k" path="res://scenes/items/weights_item.tscn" id="34_dyjxo"]
 
 [node name="SalaPrueba2" instance=ExtResource("1_do61m")]
 
@@ -55,7 +56,6 @@ position = Vector2(404, -40)
 position = Vector2(476, -120)
 
 [node name="JimmyEnemy" parent="Enemies" index="0" instance=ExtResource("2_bkrbk")]
-process_mode = 4
 
 [node name="ExplodingKittensWeaponItem" parent="Obstacles" index="0" instance=ExtResource("2_esqot")]
 position = Vector2(264, 56)
@@ -150,6 +150,9 @@ position = Vector2(72, -129)
 
 [node name="EyeOfTheWitchWeaponItem" parent="Obstacles" index="30" instance=ExtResource("34_8ca48")]
 position = Vector2(189, -59)
+
+[node name="WeightsItem" parent="Obstacles" index="31" instance=ExtResource("34_dyjxo")]
+position = Vector2(-359, -243)
 
 [node name="MimicChest" parent="Pickups" index="0" instance=ExtResource("32_swimx")]
 position = Vector2(66, -146)
