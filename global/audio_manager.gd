@@ -8,7 +8,6 @@ var _shop_override_active: bool = false
 var _floor_paused_pos: float = 0.0
 var _floor_music_name: String = ""
 
-# --- NUEVO: boss state ---
 var in_boss: bool = false
 var _boss_override_active: bool = false
 var _boss_paused_pos: float = 0.0
@@ -19,7 +18,7 @@ var sfx: Dictionary = {
 	"parry_1": preload("res://assets/audio/sfx/Parry_1.mp3"),
 	"failed_parry_1": preload("res://assets/audio/sfx/FailedParry_1.mp3"),
 	"wii_startup":preload("res://assets/audio/sfx/WiiStartupSFX.mp3"),
-	"crash_1": preload("res://assets/audio/sfx/Crash_1.mp3")
+	"crash_1": preload("res://assets/audio/sfx/Crash_1.mp3"),
 }
 
 var music: Dictionary = {
@@ -31,7 +30,6 @@ var music: Dictionary = {
 	"shop_1": preload("res://assets/audio/music/ShopMusic_1.mp3"),
 	"shop_2": preload("res://assets/audio/music/ShopMusic_2.mp3"),
 	"shop_3": preload("res://assets/audio/music/barbie.mp3"),
-
 	"boss_1": preload("res://assets/audio/music/barbie.mp3"),
 }
 
@@ -71,7 +69,6 @@ func _on_room_changed(room_type: String) -> void:
 		in_shop = false
 		_exit_shop_music()
 
-	# --- NUEVO: boss ---
 	if room_type == "boss":
 		if in_boss:
 			return

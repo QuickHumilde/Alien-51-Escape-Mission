@@ -19,7 +19,7 @@ var rng: RandomNumberGenerator
 @export var boss_min_manhattan_distance_from_start: int = 3
 
 const FLOOR_SETTINGS := [
-	{"min_rooms": 5,  "max_rooms": 8,  "item_rooms": 2, "shop_rooms": 1, "boss_dist": 3},
+	{"min_rooms": 6,  "max_rooms": 8,  "item_rooms": 2, "shop_rooms": 1, "boss_dist": 3},
 	{"min_rooms": 8,  "max_rooms": 12, "item_rooms": 2, "shop_rooms": 1, "boss_dist": 3},
 	{"min_rooms": 12, "max_rooms": 16, "item_rooms": 2, "shop_rooms": 1, "boss_dist": 4},
 ]
@@ -32,7 +32,7 @@ var room_scenes: Dictionary = {
 		preload("res://scenes/rooms/normal/normal_room_3.tscn"),
 		preload("res://scenes/rooms/normal/normal_room_4.tscn"),
 		preload("res://scenes/rooms/normal/normal_room_5.tscn"),
-		preload("res://scenes/rooms/normal/normal_room_6.tscn"),
+		#preload("res://scenes/rooms/normal/normal_room_6.tscn"),
 		preload("res://scenes/rooms/normal/normal_room_7.tscn"),
 		preload("res://scenes/rooms/normal/normal_room_8.tscn"),
 		preload("res://scenes/rooms/normal/normal_room_9.tscn"),
@@ -87,7 +87,7 @@ func _ready() -> void:
 	_place_player(current_room, "")
 
 	if minimap != null and minimap.has_method("set_data"):
-		minimap.call("set_data", map, current_room_pos)
+		minimap.call("set_data", map, current_room_pos, GameManager.get_current_floor())
 
 	print("Seed usada: ", GameManager.seed_value)
 
@@ -117,7 +117,7 @@ func next_floor() -> void:
 	_place_player(current_room, "")
 
 	if minimap != null and minimap.has_method("set_data"):
-		minimap.call("set_data", map, current_room_pos)
+		minimap.call("set_data", map, current_room_pos, GameManager.get_current_floor())
 
 	_watch_room_cleared(current_room)
 
@@ -232,7 +232,7 @@ func _transition_to(next_pos: Vector2, exit_dir: String) -> void:
 	_enemies_container = null
 
 	if minimap != null and minimap.has_method("set_data"):
-		minimap.call("set_data", map, current_room_pos)
+		minimap.call("set_data", map, current_room_pos, GameManager.get_current_floor())
 
 	transitioning = false
 

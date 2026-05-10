@@ -15,8 +15,8 @@ extends Control
 var options_instance: Control
 var languages_instance: Control
 var in_options :bool = false
-var in_language:bool=false
-var in_audio:bool=false
+var in_language:bool = false
+var in_audio:bool = false
 var last_mouse_position: Vector2
 
 @onready var options_scene := preload("res://scenes/ui/options_volume_menu.tscn")
@@ -33,10 +33,10 @@ func update_texts():
 	resume_label.text = tr("menu_resume")
 	options_label.text = tr("menu_options")
 	quit_label.text = tr("menu_quit")
-	audio_label.text=tr("menu_audio")
-	language_label.text=tr("menu_language")
-	back_label.text=tr("menu_back")
-	mouse_warning_label.text=tr("mouse_warning")
+	audio_label.text = tr("menu_audio")
+	language_label.text = tr("menu_language")
+	back_label.text = tr("menu_back")
+	mouse_warning_label.text = tr("mouse_warning")
 
 func resume():
 	get_tree().paused = false
@@ -79,11 +79,12 @@ func _on_resume_pressed():
 	resume()
 
 func _on_quit_pressed():
+	_cleanup_dynamic_instances()
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")
 
 func _on_options_pressed():
-	in_options=true
+	in_options = true
 	mouse_warning_container.hide()
 	options_panel.show()
 	pause_panel.hide()
@@ -92,8 +93,11 @@ func _on_options_closed():
 	in_options = false
 	mouse_warning_container.show()
 	if options_instance:
+		if options_instance.back_pressed.is_connected(_on_audio_closed):
+			options_instance.back_pressed.disconnect(_on_audio_closed)
 		options_instance.queue_free()
-		
+		options_instance = null
+
 	options_panel.hide()
 	pause_panel.show()
 
@@ -108,6 +112,8 @@ func _on_audio_pressed():
 func _on_audio_closed():
 	in_audio = false
 	if options_instance:
+		if options_instance.back_pressed.is_connected(_on_audio_closed):
+			options_instance.back_pressed.disconnect(_on_audio_closed)
 		options_instance.queue_free()
 		options_instance = null
 	options_panel.show()
@@ -123,10 +129,24 @@ func _on_language_pressed():
 func _on_language_closed():
 	in_language = false
 	if languages_instance:
+		if languages_instance.back_pressed.is_connected(_on_language_closed):
+			languages_instance.back_pressed.disconnect(_on_language_closed)
 		languages_instance.queue_free()
 		languages_instance = null
 	update_texts()
 	options_panel.show()
-	
+
 func _process(_delta):
 	testEsc()
+
+func _cleanup_dynamic_instances():
+	if options_instance:
+		if options_instance.back_pressed.is_connected(_on_audio_closed):
+			options_instance.back_pressed.disconnect(_on_audio_closed)
+		options_instance.queue_free()
+		options_instance = null
+	if languages_instance:
+		if languages_instance.back_pressed.is_connected(_on_language_closed):
+			languages_instance.back_pressed.disconnect(_on_language_closed)
+		languages_instance.queue_free()
+		languages_instance = null

@@ -4,12 +4,12 @@ extends Weapon
 @onready var cooldown: Timer = $ShootCooldown
 @onready var barrel: Node2D = $Barrel
 @onready var gunfire: CPUParticles2D = $Gunfire
-var min_pellets: int = 4
+var min_pellets: int = 5
 var max_pellets: int = 6
 
 func _ready() -> void:
 	id = 7
-	damage = 1.5
+	damage = 0.75
 	knockback_force = 100.0
 	self_knockback_force= 150.0
 	lifetime= 0.30

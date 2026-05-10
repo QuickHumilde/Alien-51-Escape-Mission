@@ -1,7 +1,14 @@
 extends Bullet
 
+@onready var sprite: Sprite2D
+
+func _ready():
+	super._ready()
+	speed_rotation = 500.0
+	sprite = $Visual/Sprite2D
+
 func init(new_forward, new_position, new_damage, new_knockback_force, new_lifetime, new_speed, new_bullet_owner, _extras: Dictionary = {}) -> void:
-	modifiers = ["piercing"]
+	modifiers = ["piercing", "spectral"]
 	self.global_position = new_position
 	self.bullet_direction = new_forward
 	self.damage = new_damage
@@ -9,10 +16,10 @@ func init(new_forward, new_position, new_damage, new_knockback_force, new_lifeti
 	self.lifetime = new_lifetime
 	self.speed = new_speed
 	self.bullet_owner = new_bullet_owner
-	
-	_update_sprite_rotation()
 
-func _update_sprite_rotation() -> void:
-	if bullet_direction == Vector2.ZERO:
-		return
-	self.rotation = bullet_direction.angle()
+func _process(delta: float):
+	global_position -= bullet_direction * speed * delta
+	rotation_degrees += speed_rotation * delta
+	time_left -= delta
+	if time_left <= 0.0:
+		queue_free()

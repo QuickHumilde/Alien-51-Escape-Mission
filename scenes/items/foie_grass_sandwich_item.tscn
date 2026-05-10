@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxpybyf28dv3l"]
+
+[ext_resource type="PackedScene" uid="uid://dlnik63yjjvi4" path="res://scenes/templates/item/item_template.tscn" id="1_erkde"]
+[ext_resource type="Texture2D" uid="uid://cdxd0e8dxuduy" path="res://assets/sprites/items/FoieGrasSandwichItem.png" id="2_jin1m"]
+[ext_resource type="Script" uid="uid://clipbqwikl5k" path="res://scenes/items/foie_grass_sandwich_item.gd" id="2_u84dv"]
+
+[node name="FoieGrassSandwichItem" instance=ExtResource("1_erkde")]
+script = ExtResource("2_u84dv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Visual" index="1"]
+texture = ExtResource("2_jin1m")

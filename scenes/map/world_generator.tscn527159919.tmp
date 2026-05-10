@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://clqflfp7kkgq"]
+
+[ext_resource type="Script" uid="uid://ndh2cfjl4r4k" path="res://scenes/map/map_generator.gd" id="1_15epo"]
+[ext_resource type="PackedScene" uid="uid://jygsb42krc3q" path="res://scenes/player/player.tscn" id="2_uvhrj"]
+[ext_resource type="PackedScene" uid="uid://c76d7kg8rly4b" path="res://scenes/ui/minimap.tscn" id="3_mx6t2"]
+
+[node name="Floor" type="Node2D"]
+script = ExtResource("1_15epo")
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("2_uvhrj")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 128
+
+[node name="MinimapFrame" type="Panel" parent="CanvasLayer"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = -1
+anchor_left = 0.97700006
+anchor_right = 1.0
+offset_left = -86.96002
+offset_top = 10.0
+offset_right = -7.0
+offset_bottom = 93.0
+grow_horizontal = 0
+
+[node name="Minimap" parent="CanvasLayer/MinimapFrame" instance=ExtResource("3_mx6t2")]
+layout_mode = 1
+anchors_preset = 15
+anchor_left = 0.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+cell_size = null
+padding = null
+current_inset = null
+color_normal = null
+color_start = null
+color_item = null
+color_shop = null
+color_boss = null
+color_current = null
+corridor_color = null
+corridor_width = null
+stub_len_ratio = null
+stub_inset = null
+minimap_size = null

@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://1k5ta205shrd"]
+[gd_scene load_steps=39 format=4 uid="uid://1k5ta205shrd"]
 
 [ext_resource type="PackedScene" uid="uid://641t0oysglvl" path="res://scenes/rooms/template/room_template.tscn" id="1_do61m"]
 [ext_resource type="PackedScene" uid="uid://dc1qcgts0k44u" path="res://scenes/enemies/JimmyEnemy/jimmy_enemy.tscn" id="2_bkrbk"]
@@ -36,6 +36,8 @@
 [ext_resource type="PackedScene" uid="uid://x4tu7jldj560" path="res://scenes/items/weapons/shuriken_weapon_item.tscn" id="33_bkrbk"]
 [ext_resource type="PackedScene" uid="uid://bi50aklcvaewj" path="res://scenes/items/weapons/eye_of_the_witch_weapon_item.tscn" id="34_8ca48"]
 [ext_resource type="PackedScene" uid="uid://p6h5j4rt0t2k" path="res://scenes/items/weights_item.tscn" id="34_dyjxo"]
+[ext_resource type="PackedScene" uid="uid://dk16jyjm1rtq4" path="res://scenes/items/scythe_ability_item.tscn" id="35_dyjxo"]
+[ext_resource type="PackedScene" uid="uid://bxpybyf28dv3l" path="res://scenes/items/foie_grass_sandwich_item.tscn" id="36_okcs0"]
 
 [node name="SalaPrueba2" instance=ExtResource("1_do61m")]
 
@@ -96,6 +98,9 @@ position = Vector2(-168, -56)
 
 [node name="DashAbilityItem2" parent="Obstacles" index="12" instance=ExtResource("7_bkrbk")]
 position = Vector2(-10, 62)
+ext_id = 11
+desc_key = ""
+price = 10
 
 [node name="Divisor3Item" parent="Obstacles" index="13" instance=ExtResource("15_4m4k5")]
 position = Vector2(-344, -56)
@@ -154,6 +159,12 @@ position = Vector2(189, -59)
 [node name="WeightsItem" parent="Obstacles" index="31" instance=ExtResource("34_dyjxo")]
 position = Vector2(-359, -243)
 
+[node name="ScytheItem" parent="Obstacles" index="32" instance=ExtResource("35_dyjxo")]
+position = Vector2(-488, -153)
+
+[node name="FoieGrassSandwichItem" parent="Obstacles" index="33" instance=ExtResource("36_okcs0")]
+position = Vector2(-410, -138)
+
 [node name="MimicChest" parent="Pickups" index="0" instance=ExtResource("32_swimx")]
 position = Vector2(66, -146)
 activable = true
@@ -211,4 +222,4 @@ shield_percentage = 25.0
 enemy1_percentage = 10.0
 
 [node name="Player" parent="." index="9" instance=ExtResource("2_kxxeq")]
-position = Vector2(-270, -197)
+position = Vector2(-376, -193)

@@ -83,7 +83,8 @@ func _on_enemy_tree_exited(enemy_node):
 func _against_obstacle(area):
 	if area.has_method("receive_hit"):
 		area.receive_hit()
-	destroy_bullet()
+	if not modifiers.has("spectral"):
+		destroy_bullet()
 		
 func _against_wall():
 	destroy_bullet()

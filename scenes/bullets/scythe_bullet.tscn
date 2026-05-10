@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://bl5rutwvht55b"]
+
+[ext_resource type="Script" uid="uid://bmrnb7y3m7uov" path="res://scenes/bullets/scythe_bullet.gd" id="1_6m2eu"]
+[ext_resource type="Texture2D" uid="uid://cvuq0uyorkhhv" path="res://assets/sprites/bullet/ScytheBullet.png" id="1_b4r8y"]
+[ext_resource type="PackedScene" uid="uid://chd8ttoncxpnu" path="res://scenes/extras/bullet_trail.tscn" id="2_6m2eu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n48s1"]
+radius = 5.0
+
+[sub_resource type="GDScript" id="GDScript_nkjcx"]
+resource_name = "BiggerCollisionScript"
+script/source = "extends Area2D
+
+@onready var bullet: Bullet = $\"..\"
+
+func change_direction(new_direction: Vector2, new_owner = \"\"):
+	bullet.change_direction(new_direction, new_owner)
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_un7sl"]
+radius = 13.0
+
+[node name="ScytheBullet" type="Area2D"]
+collision_mask = 45
+script = ExtResource("1_6m2eu")
+
+[node name="BulletTrail" parent="." instance=ExtResource("2_6m2eu")]
+position = Vector2(-4, -1.5)
+width = 1.0
+default_color = Color(0.029506557, 0.029506557, 0.029506557, 0.42352942)
+
+[node name="Visual" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visual"]
+texture = ExtResource("1_b4r8y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_n48s1")
+
+[node name="Area2D" type="Area2D" parent="." groups=["bullet"]]
+collision_mask = 12
+monitoring = false
+script = SubResource("GDScript_nkjcx")
+
+[node name="BiggerCollision" type="CollisionShape2D" parent="Area2D" groups=["bullet"]]
+shape = SubResource("CircleShape2D_un7sl")

@@ -103,9 +103,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -104.5
-offset_top = -83.5
+offset_top = -96.5
 offset_right = 104.5
-offset_bottom = 94.0
+offset_bottom = 81.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -140,9 +140,9 @@ text = "Quit"
 [node name="MouseWarningContainer" type="PanelContainer" parent="PauseMenu"]
 layout_mode = 0
 offset_left = -4.0
-offset_top = 233.99998
+offset_top = 227.99998
 offset_right = 506.0
-offset_bottom = 264.0
+offset_bottom = 258.0
 scale = Vector2(0.96000004, 1.04)
 
 [node name="MouseWarning" type="RichTextLabel" parent="PauseMenu/MouseWarningContainer"]
@@ -162,9 +162,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -70.5
-offset_top = -83.5
+offset_top = -97.5
 offset_right = 70.0
-offset_bottom = 109.5
+offset_bottom = 95.5
 grow_horizontal = 2
 grow_vertical = 2
 

@@ -34,7 +34,7 @@ item_the_cross_name,"La Cruz","The Cross"
 item_the_cross_desc,"Gracias al poder de Jesucristo nuestro salvador, cuando mueres te da:\n •+1 Resurrecion ","Thanks to the power of Jesus Christ our savior, when you die it gives you:\n• +1 Resurrection"
 
 item_blue_marker_weapon_name,"Rotulador azúl","Blue Marker"
-item_blue_marker_weapon_desc,"• Un rotulador que se lanza a los enemigos y los pinta de azul \n• Más que daño físico hace daño emocional","• A blue marker that can be thrown at enemies and paints them blue  \n• More than physical damage, it causes emotional damage."
+item_blue_marker_weapon_desc,"• Un rotulador que se lanza a los enemigos y los pinta de azul. \n• 0,5 de daño. \n• Realentiza a los enemigos al impacto","• A marker that is thrown at enemies and paints them blue. \n• 0.5 of damage. \n• Slows enemies on impact"
 
 item_dash_name,"Dash","Dash"
 item_dash_desc,"• Habilidad que te da un impulso hacia la direccion que estes andando.\n• Cooldown: 3.5 segundos","• Ability that gives you a dash in the direction you are moving.\n• Cooldown: 3.5 seconds"
@@ -92,3 +92,12 @@ item_eye_of_the_witch_desc,"• Dispara una estrella autoguiada hacia un enemigo
 
 item_weights_name,"Pesas","Weights"
 item_weights_desc,"• +1 de daño \n• +0.20 de tamaño","• +1 of damage \n• +0.20 of size"
+
+item_weights_name,"Pesas","Weights"
+item_weights_desc,"• +1 de daño \n• +0.20 de tamaño","• +1 of damage \n• +0.20 of size"
+
+item_scythe_ability_name,"Espiral de la muerte","Spiral of death"
+item_scythe_ability_desc,"• Habilidad que dispara 8 guadañas en distintas direcciones. \n• 1 de daño escalable con el del jugador. \n• Cooldown: 6 segundos","• Ability that shoots 8 scythes in different directions. \n• 1 damage, scalable with the player's damage. \n• Cooldown: 6 seconds"
+
+item_foie_gras_sandwich_name,"Bocadillo Fuagrás","Foie Gras Sandwich"
+item_foie_gras_sandwich_desc,"• +1 de vida máxima. \n• Cura 1 de vida.","• +1 max health. \n• Heals 1 health."

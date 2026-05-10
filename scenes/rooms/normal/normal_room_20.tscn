@@ -25,10 +25,10 @@ visible = false
 visible = false
 
 [node name="ZombieEnemy" parent="Enemies" index="0" instance=ExtResource("2_mks3k")]
-position = Vector2(-40, 64)
+position = Vector2(-8, 64)
 
 [node name="ZombieEnemy2" parent="Enemies" index="1" instance=ExtResource("2_mks3k")]
-position = Vector2(104, -80)
+position = Vector2(104, -48)
 
 [node name="TurretEnemy" parent="Enemies" index="2" instance=ExtResource("3_jqvgu")]
 position = Vector2(-8, -40)
@@ -191,3 +191,9 @@ position = Vector2(-8, -72)
 
 [node name="Spikes3" parent="Obstacles" index="42" instance=ExtResource("6_lcsc3")]
 position = Vector2(-40, -40)
+
+[node name="Obstacle1_41" parent="Obstacles" index="43" instance=ExtResource("3_q7uqp")]
+position = Vector2(-40, 72)
+
+[node name="Obstacle1_42" parent="Obstacles" index="44" instance=ExtResource("3_q7uqp")]
+position = Vector2(104, -72)
