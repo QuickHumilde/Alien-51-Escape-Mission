@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dsuoh221f3rqc"]
+
+[ext_resource type="Script" uid="uid://dsv5tutn4vlaj" path="res://scenes/familiars/familiar_1.gd" id="1_laqo1"]
+[ext_resource type="Texture2D" uid="uid://cia611rxwh0r5" path="res://assets/sprites/items/Familiar1Item.png" id="2_laqo1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xuats"]
+atlas = ExtResource("2_laqo1")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xuats"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xuats")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Familiar1" type="Node2D"]
+script = ExtResource("1_laqo1")
+
+[node name="Visual" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visual"]
+sprite_frames = SubResource("SpriteFrames_xuats")

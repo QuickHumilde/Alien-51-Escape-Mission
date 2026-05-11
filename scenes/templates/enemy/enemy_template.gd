@@ -62,6 +62,7 @@ func take_damage(damage : float) -> void:
 	health -= damage
 	await get_tree().create_timer(0.2).timeout
 	damage_ticks -= 1
+	print(health)
 
 	if damage_ticks <= 0:
 		visuals.modulate = Color(1, 1, 1)

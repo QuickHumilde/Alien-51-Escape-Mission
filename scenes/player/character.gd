@@ -90,10 +90,17 @@ func apply_knockback(dir: Vector2, force: float, duration: float = 0.2):
 	if damage_timer.is_stopped():
 		movement.apply_knockback(dir, force, duration)
 
+func take_tramp_damage(body):
+	if body.has_method("do_damage"):
+		for modifier in inventory.modifiers:
+			if modifier.has_method("avoid_tramp_damage"):
+				if modifier.avoid_tramp_damage():
+					return
+	body.do_damage(tramp_detector_area)
+
 func _on_tramp_detector_area_entered(body):
 	if body.is_in_group("trap"):
-		if body.has_method("do_damage"):
-			body.do_damage(tramp_detector_area)
+		take_tramp_damage(body)
 
 func _check_overlapping_enemies():
 	var overlapping_bodies= detector_area.get_overlapping_areas()
@@ -106,15 +113,17 @@ func _check_overlapping_tramps():
 	var overlapping_tramps= tramp_detector_area.get_overlapping_areas()
 	for body in overlapping_tramps:
 		if body.is_in_group("trap"):
-			body.do_damage(tramp_detector_area)
-			return
+			take_tramp_damage(body)
 
 func get_stats() -> CharacterStats:
 	return stats
 
+func set_tramp_inmunity():
+	tramp_detector_area.set_collision_mask_value(2, false)
+	
 func set_flying():
 	set_collision_mask_value(6, false)
-	tramp_detector_area.set_collision_mask_value(2, false)
+	set_tramp_inmunity()
 
 func player_revive():
 	weapon_holder.show()

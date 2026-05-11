@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctfs72c4r0tbs"]
+
+[ext_resource type="PackedScene" uid="uid://dlnik63yjjvi4" path="res://scenes/templates/item/item_template.tscn" id="1_kx1ou"]
+[ext_resource type="Texture2D" uid="uid://qx84nmkkwi0v" path="res://assets/sprites/items/SocksItem.png" id="2_kwx3r"]
+[ext_resource type="Script" uid="uid://2l4stwvkcbsn" path="res://scenes/items/socks_item.gd" id="2_uat5o"]
+
+[node name="SocksItem" instance=ExtResource("1_kx1ou")]
+script = ExtResource("2_uat5o")
+
+[node name="Sprite2D" type="Sprite2D" parent="Visual" index="1"]
+texture = ExtResource("2_kwx3r")

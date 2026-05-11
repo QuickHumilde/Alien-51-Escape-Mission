@@ -37,7 +37,7 @@ one_shot = true
 position = Vector2(-28.5, -0.5)
 
 [node name="Gunfire" parent="." instance=ExtResource("3_6dv4u")]
-position = Vector2(-27, -0.5)
+position = Vector2(-28, -0.5)
 lifetime = 0.25
 light_energy = 3.0
 light_scale = Vector2(1.05, 1)

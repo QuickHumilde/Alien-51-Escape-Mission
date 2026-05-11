@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=4 uid="uid://1k5ta205shrd"]
+[gd_scene load_steps=42 format=4 uid="uid://1k5ta205shrd"]
 
 [ext_resource type="PackedScene" uid="uid://641t0oysglvl" path="res://scenes/rooms/template/room_template.tscn" id="1_do61m"]
 [ext_resource type="PackedScene" uid="uid://dc1qcgts0k44u" path="res://scenes/enemies/JimmyEnemy/jimmy_enemy.tscn" id="2_bkrbk"]
@@ -41,7 +41,6 @@
 [ext_resource type="PackedScene" uid="uid://ctfs72c4r0tbs" path="res://scenes/items/socks_item.tscn" id="38_x6vjs"]
 [ext_resource type="PackedScene" uid="uid://bcrq1vtmhs7t6" path="res://scenes/items/familiar_1_item.tscn" id="39_glgcq"]
 [ext_resource type="PackedScene" uid="uid://di7t2uklujror" path="res://scenes/world/spikes.tscn" id="39_u0i4w"]
-[ext_resource type="PackedScene" uid="uid://c3vp1y5urle5b" path="res://scenes/items/summer_chair_ability_item.tscn" id="40_oe3yd"]
 
 [node name="SalaPrueba2" instance=ExtResource("1_do61m")]
 
@@ -174,12 +173,13 @@ position = Vector2(-325, -135)
 
 [node name="SocksItem" parent="Obstacles" index="35" instance=ExtResource("38_x6vjs")]
 position = Vector2(-249, -134)
+ext_id = null
+name_key = null
+desc_key = null
+price = null
 
 [node name="Spikes" parent="Obstacles" index="36" instance=ExtResource("39_u0i4w")]
 position = Vector2(-162, -176)
-
-[node name="SummerChairAbilityItem" parent="Obstacles" index="37" instance=ExtResource("40_oe3yd")]
-position = Vector2(-171, -135)
 
 [node name="MimicChest" parent="Pickups" index="0" instance=ExtResource("32_swimx")]
 position = Vector2(66, -146)

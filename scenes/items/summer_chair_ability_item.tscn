@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3vp1y5urle5b"]
+
+[ext_resource type="PackedScene" uid="uid://dlnik63yjjvi4" path="res://scenes/templates/item/item_template.tscn" id="1_m6j5t"]
+[ext_resource type="Texture2D" uid="uid://chglvvd15bs06" path="res://assets/sprites/items/SummerChairItem.png" id="2_vbbyd"]
+[ext_resource type="Script" uid="uid://dk4bgd3g10aer" path="res://scenes/items/summer_chair_ability_item.gd" id="2_ywbg3"]
+
+[node name="SummerChairAbilityItem" instance=ExtResource("1_m6j5t")]
+script = ExtResource("2_ywbg3")
+
+[node name="Sprite2D" type="Sprite2D" parent="Visual" index="1"]
+texture = ExtResource("2_vbbyd")

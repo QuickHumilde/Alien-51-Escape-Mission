@@ -25,6 +25,13 @@ func receive_hit():
 		4:
 			sprite.frame = 4
 			_break_obstacle()
+		_:
+			pass
+
+func break_now():
+	sprite.frame = 4
+	hits = 5
+	_break_obstacle()
 
 func _break_obstacle():
 	broken = true

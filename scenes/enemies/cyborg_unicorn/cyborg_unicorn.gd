@@ -164,6 +164,7 @@ func _process_dash(_delta: float) -> void:
 	move_and_slide()
 
 	if get_slide_collision_count() > 0 or is_on_wall():
+		_try_break_obstacle_on_dash()
 		_on_impact()
 		state = State.RECOVER
 		_state_t = 0.0
@@ -203,6 +204,27 @@ func _has_line_of_sight_to_player(to_player: Vector2, dist: float) -> bool:
 		return true
 
 	return charge_ray.get_collider() == player
+
+func _try_break_obstacle_on_dash() -> void:
+	var count := get_slide_collision_count()
+	for i in range(count):
+		var col := get_slide_collision(i)
+		if col == null:
+			continue
+
+		var c := col.get_collider()
+		if c == null:
+			continue
+
+		var node := c as Node
+		while node != null:
+			if node.has_method("break_now"):
+				node.call("break_now")
+				return
+			if node.has_method("receive_hit"):
+				node.call("receive_hit")
+				return
+			node = node.get_parent()
 
 func _decay_knockback(delta: float) -> void:
 	if knockback_time > 0.0:
