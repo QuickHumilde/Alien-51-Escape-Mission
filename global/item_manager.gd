@@ -77,6 +77,7 @@ func fill_item_pool():
 	register_item(28, preload("res://scenes/items/foie_grass_sandwich_item.tscn"))
 	register_item(29, preload("res://scenes/items/familiar_1_item.tscn"))
 	register_item(30, preload("res://scenes/items/socks_item.tscn"))
+	register_item(31, preload("res://scenes/items/rice_item.tscn"))
 
 func clear_removed_items():
 	removed_items.clear()

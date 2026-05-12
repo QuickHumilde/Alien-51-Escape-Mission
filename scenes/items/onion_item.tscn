@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwclgtcc0hewo"]
+
+[ext_resource type="PackedScene" uid="uid://dlnik63yjjvi4" path="res://scenes/templates/item/item_template.tscn" id="1_e0qxy"]
+[ext_resource type="Texture2D" uid="uid://ba0gy0l4rtnnt" path="res://assets/sprites/items/PurpleOnionItem.png" id="2_kxbbw"]
+
+[node name="OnionItem" instance=ExtResource("1_e0qxy")]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visual" index="1"]
+texture = ExtResource("2_kxbbw")
