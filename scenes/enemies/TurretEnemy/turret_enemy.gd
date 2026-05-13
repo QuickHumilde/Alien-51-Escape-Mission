@@ -2,15 +2,15 @@ extends Enemy
 
 @onready var agent: NavigationAgent2D = $NavigationAgent2D
 @onready var sprite: AnimatedSprite2D = $Visual/AnimatedSprite2D
-@onready var bullet_scene = preload("res://scenes/bullets/spit_bullet.tscn")
+@onready var bullet_scene = preload("res://scenes/bullets/jimmy_bullet.tscn")
 
 @export var roam_radius: float = 250.0
 @export var repath_time: float = 2.0
 
-@export var idle_min_time: float = 0.6
+@export var idle_min_time: float = 0.65
 @export var idle_max_time: float = 1.6
-@export var move_min_time: float = 1.0
-@export var move_max_time: float = 2.5
+@export var move_min_time: float = 0.8
+@export var move_max_time: float = 2.0
 
 var damage: float = 1.0
 var lifetime: float = 2.0

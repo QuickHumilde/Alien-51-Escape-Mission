@@ -1,7 +1,7 @@
 extends ItemModifier
-class_name FamiliarModifierItem
+class_name TheInheritorModifierItem
 
-const FAMILIAR_SCENE: PackedScene = preload("res://scenes/familiars/familiar_1.tscn")
+const FAMILIAR_SCENE: PackedScene = preload("res://scenes/familiars/the_inheritor.tscn")
 const FAMILIAR_BULLET_SCENE: PackedScene = preload("res://scenes/bullets/spit_bullet.tscn")
 
 var player: Character

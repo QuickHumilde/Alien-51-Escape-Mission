@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwclgtcc0hewo"]
+
+[ext_resource type="PackedScene" uid="uid://dlnik63yjjvi4" path="res://scenes/templates/item/item_template.tscn" id="1_e0qxy"]
+[ext_resource type="Script" uid="uid://c1xs4o51bmq07" path="res://scenes/items/deodorant_item.gd" id="2_qah7a"]
+[ext_resource type="Texture2D" uid="uid://bmrk0y0prcsnr" path="res://assets/sprites/items/DeodorantItem.png" id="2_uu6d0"]
+
+[node name="DeodorantItem" instance=ExtResource("1_e0qxy")]
+script = ExtResource("2_qah7a")
+
+[node name="Sprite2D" type="Sprite2D" parent="Visual" index="1"]
+texture = ExtResource("2_uu6d0")

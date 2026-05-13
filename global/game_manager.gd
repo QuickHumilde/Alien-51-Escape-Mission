@@ -7,7 +7,7 @@ var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
 var used_bosses: Array[String] = []
 @export var last_floor: int = 3
-@export var final_boss_id: String = "boss_3"
+@export var final_boss_id: String = "buffed_alien"
 
 func _ready() -> void:
 	Engine.time_scale = game_time_scale

@@ -47,6 +47,10 @@ var room_scenes: Dictionary = {
 		preload("res://scenes/rooms/normal/normal_room_18.tscn"),
 		preload("res://scenes/rooms/normal/normal_room_19.tscn"),
 		preload("res://scenes/rooms/normal/normal_room_20.tscn"),
+		preload("res://scenes/rooms/normal/normal_room_21.tscn"),
+		preload("res://scenes/rooms/normal/normal_room_22.tscn"),
+		preload("res://scenes/rooms/normal/normal_room_23.tscn"),
+		preload("res://scenes/rooms/normal/normal_room_24.tscn"),
 	],
 	"item": [ preload("res://scenes/rooms/item/item_room_1.tscn") 
 	],
@@ -55,14 +59,18 @@ var room_scenes: Dictionary = {
 }
 
 const BOSSES: Dictionary = {
-	"boss_1": [
+	"cyborg_unicorn": [
 		preload("res://scenes/rooms/boss/boss_room_cyborg_unicorn_1.tscn"),
 		preload("res://scenes/rooms/boss/boss_room_cyborg_unicorn_2.tscn"),
 	],
-	"boss_2": [
+	"long_arms": [
 		preload("res://scenes/rooms/boss/boss_room_long_arms_1.tscn"),
 		preload("res://scenes/rooms/boss/boss_room_long_arms_2.tscn"),
 	],
+	"buffed_alien":[
+		preload("res://scenes/rooms/boss/boss_room_cyborg_unicorn_2.tscn"),
+		preload("res://scenes/rooms/boss/boss_room_long_arms_2.tscn"),
+	]
 }
 
 var map: Dictionary = {}

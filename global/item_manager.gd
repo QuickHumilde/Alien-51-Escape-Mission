@@ -75,9 +75,10 @@ func fill_item_pool():
 	register_item(26, preload("res://scenes/items/weights_item.tscn"))
 	register_item(27, preload("res://scenes/items/scythe_ability_item.tscn"))
 	register_item(28, preload("res://scenes/items/foie_grass_sandwich_item.tscn"))
-	register_item(29, preload("res://scenes/items/familiar_1_item.tscn"))
+	register_item(29, preload("res://scenes/items/the_inheritor_item.tscn"))
 	register_item(30, preload("res://scenes/items/socks_item.tscn"))
 	register_item(31, preload("res://scenes/items/rice_item.tscn"))
+	register_item(32, preload("res://scenes/items/deodorant_item.tscn"))
 
 func clear_removed_items():
 	removed_items.clear()

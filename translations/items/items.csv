@@ -31,7 +31,7 @@ item_divisor_3_name,"Divisor de 3","Divisor of 3"
 item_divisor_3_desc,"• Si tu vida es divisible entre 3, te da un aumento de velocidad.","• If your health is divisible by 3, it gives you a speed boost."
 
 item_the_cross_name,"La Cruz","The Cross"
-item_the_cross_desc,"Gracias al poder de Jesucristo nuestro salvador, cuando mueres te da:\n •+1 Resurrecion ","Thanks to the power of Jesus Christ our savior, when you die it gives you:\n• +1 Resurrection"
+item_the_cross_desc,"Gracias al poder de Jesucristo nuestro salvador, cuando mueres te da:\n •+1 Resurrecion.\n• +0.1 de tiempo de invulnerabilidad. ","Thanks to the power of Jesus Christ our savior, when you die it gives you:\n •+1 Resurrection.\n• +0.1 seconds of invulnerability time."
 
 item_blue_marker_weapon_name,"Rotulador azúl","Blue Marker"
 item_blue_marker_weapon_desc,"• Un rotulador que se lanza a los enemigos y los pinta de azul. \n• 0,5 de daño. \n• Realentiza a los enemigos al impacto","• A marker that is thrown at enemies and paints them blue. \n• 0.5 of damage. \n• Slows enemies on impact"
@@ -109,3 +109,9 @@ item_summer_chair_name,"Silla de Verano","Summer Chair"
 item_summer_chair_desc,"Por decidir","To be decided"
 
 item_rice_name,"Arroz","Rice"
+
+item_deodorant_name,"Desodorante","Deodorant"
+item_deodorant_desc,"Te vas a echar todo el bote, ¿No? \n• Crea un aura (hedor) que daña a los enemigos que esten en el rango","You're going to use the whole bottle, aren't you? \n• Creates an aura (stench) that damages enemies within range"
+
+item_the_inheritor_name,"El Heredero","The Inheritor"
+item_the_inheritor_desc,"• Familiar que dispara balas cada 1.5 segundos. \n• Las balas hacen 0.5 de daño escalable con el jugador.","• Familiar that shoots bullets every 1.5 seconds. \n• Bullets do 0.5 damage, scalable with the player."

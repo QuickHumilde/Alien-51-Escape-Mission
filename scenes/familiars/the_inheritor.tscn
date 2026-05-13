@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dsuoh221f3rqc"]
 
-[ext_resource type="Script" uid="uid://dsv5tutn4vlaj" path="res://scenes/familiars/familiar_1.gd" id="1_laqo1"]
+[ext_resource type="Script" uid="uid://dsv5tutn4vlaj" path="res://scenes/familiars/the_inheritor.gd" id="1_laqo1"]
 [ext_resource type="Texture2D" uid="uid://cia611rxwh0r5" path="res://assets/sprites/items/Familiar1Item.png" id="2_laqo1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xuats"]

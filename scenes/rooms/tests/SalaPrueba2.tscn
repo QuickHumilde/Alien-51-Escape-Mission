@@ -39,11 +39,11 @@
 [ext_resource type="PackedScene" uid="uid://dk16jyjm1rtq4" path="res://scenes/items/scythe_ability_item.tscn" id="35_dyjxo"]
 [ext_resource type="PackedScene" uid="uid://bxpybyf28dv3l" path="res://scenes/items/foie_grass_sandwich_item.tscn" id="36_okcs0"]
 [ext_resource type="PackedScene" uid="uid://ctfs72c4r0tbs" path="res://scenes/items/socks_item.tscn" id="38_x6vjs"]
-[ext_resource type="PackedScene" uid="uid://bcrq1vtmhs7t6" path="res://scenes/items/familiar_1_item.tscn" id="39_glgcq"]
+[ext_resource type="PackedScene" uid="uid://bcrq1vtmhs7t6" path="res://scenes/items/the_inheritor_item.tscn" id="39_glgcq"]
 [ext_resource type="PackedScene" uid="uid://di7t2uklujror" path="res://scenes/world/spikes.tscn" id="39_u0i4w"]
 [ext_resource type="PackedScene" uid="uid://c3vp1y5urle5b" path="res://scenes/items/summer_chair_ability_item.tscn" id="40_oe3yd"]
 [ext_resource type="PackedScene" uid="uid://b5vupchk57wf5" path="res://scenes/items/rice_item.tscn" id="41_4m4k5"]
-[ext_resource type="PackedScene" uid="uid://cwclgtcc0hewo" path="res://scenes/items/onion_item.tscn" id="42_wgfmk"]
+[ext_resource type="PackedScene" uid="uid://cwclgtcc0hewo" path="res://scenes/items/deodorant_item.tscn" id="42_wgfmk"]
 
 [node name="SalaPrueba2" instance=ExtResource("1_do61m")]
 
@@ -157,7 +157,7 @@ position = Vector2(-280, -248)
 position = Vector2(-440, -248)
 
 [node name="ShurikenWeaponItem" parent="Obstacles" index="29" instance=ExtResource("33_bkrbk")]
-position = Vector2(72, -129)
+position = Vector2(183, -138)
 
 [node name="EyeOfTheWitchWeaponItem" parent="Obstacles" index="30" instance=ExtResource("34_8ca48")]
 position = Vector2(189, -59)
@@ -246,4 +246,4 @@ shield_percentage = 25.0
 enemy1_percentage = 10.0
 
 [node name="Player" parent="." index="10" instance=ExtResource("2_kxxeq")]
-position = Vector2(-129, -166)
+position = Vector2(-319, -195)

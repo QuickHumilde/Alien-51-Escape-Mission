@@ -11,7 +11,7 @@ func _process(_delta):
 func _start_flicker():
 	flickering = true
 	var original: float = energy
-	energy = original * 0.4
+	energy = original * 0.3
 	await get_tree().create_timer(flicker_time).timeout
 	energy = original
 	flickering = false
