@@ -8,6 +8,7 @@ var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 var used_bosses: Array[String] = []
 @export var last_floor: int = 3
 @export var final_boss_id: String = "buffed_alien"
+var continue_requested: bool = false
 
 func _ready() -> void:
 	Engine.time_scale = game_time_scale
@@ -19,6 +20,7 @@ func reset():
 	game_time_scale = 1.0
 	seed_value = -1
 	used_bosses.clear()
+	continue_requested = false
 	generate_seed()
 
 func generate_seed() -> int:

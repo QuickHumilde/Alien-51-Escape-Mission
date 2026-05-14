@@ -1,44 +1,64 @@
-extends Node2D
+extends Node
 class_name ParryAbility
 
 @onready var area: Area2D = $Area2D
-var parry_scene = preload("res://scenes/extras/parry_ability_scene.tscn")
-@export var damage: float = 2.0
-var player: Character
 
-signal cooldown_started(duration)
-signal cooldown_progress(progress)
+@export var damage: float = 2.0
+
+signal cooldown_started(duration: float)
+signal cooldown_progress(progress: float)
 signal cooldown_finished()
 
 var cooldown: float = 4.0
-var is_on_cooldown:bool = false
+var is_on_cooldown: bool = false
 var failed: bool = true
+var _cooldown_end_ms: int = 0
+
+var player: Character = null
+
+func get_icon_path() -> String:
+	return "res://assets/sprites/items/ParryAbility.png"
 
 func activate_with_player(_player: Character):
-	if !player.is_player_damagable():
+	# robustez: si no está seteado, usa el parámetro
+	if player == null or not is_instance_valid(player):
+		player = _player
+
+	if player == null or not is_instance_valid(player):
 		return
+
+	if not player.is_player_damagable():
+		return
+
 	if is_on_cooldown:
 		return
+
 	is_on_cooldown = true
-	emit_signal("cooldown_started")
-	start_parry(player)
-	play_sfx()
 	failed = true
+
+	emit_signal("cooldown_started", cooldown)
+	emit_signal("cooldown_progress", 0.0)
+
+	start_parry(player)
+
+	play_sfx()
+
 	start_cooldown_timer(player)
 
 func start_cooldown_timer(_player: Node) -> void:
+	_cooldown_end_ms = Time.get_ticks_msec() + int(cooldown * 1000.0)
 	is_on_cooldown = true
 
 	if player == null or not is_instance_valid(player) or not player.is_inside_tree():
 		is_on_cooldown = false
 		return
 
-	var end_timer: Timer = Timer.new()
+	var end_timer := Timer.new()
 	end_timer.one_shot = true
 	end_timer.wait_time = cooldown
 	end_timer.process_mode = Node.PROCESS_MODE_PAUSABLE
 
-	var tick: Timer = Timer.new()
+	var tick := Timer.new()
 	tick.one_shot = false
 	tick.wait_time = 0.05
 	tick.process_mode = Node.PROCESS_MODE_PAUSABLE
@@ -77,12 +97,14 @@ func start_cooldown_timer(_player: Node) -> void:
 		is_on_cooldown = false
 	, CONNECT_ONE_SHOT)
 
-	emit_signal("cooldown_progress", 0.0)
 	tick.start()
 	end_timer.start()
 
 func start_parry(_player: Character):
-	var overlapping_bodies= area.get_overlapping_areas()
+	if area == null or not is_instance_valid(area):
+		return
+
+	var overlapping_bodies = area.get_overlapping_areas()
 	for body in overlapping_bodies:
 		if body.is_in_group("enemy"):
 			failed = false
@@ -91,14 +113,40 @@ func start_parry(_player: Character):
 				body.apply_knockback(knockback_direction, 350.0)
 			if body.has_method("take_damage"):
 				body.take_damage(damage)
+
 		if body.is_in_group("bullet"):
 			failed = false
 			var new_direction = (player.global_position - body.global_position).normalized()
 			body.change_direction(new_direction, "player")
 
-func _activate_area():
-	area.set_deferred("monitoring", true)
-	area.set_deferred("monitorable", true)
+func get_save_state() -> Dictionary:
+	return {
+		"is_on_cooldown": is_on_cooldown,
+		"cooldown_remaining": get_cooldown_remaining()
+	}
+
+func load_save_state(state: Dictionary) -> void:
+	var rem := float(state.get("cooldown_remaining", 0.0))
+	if rem > 0.0:
+		is_on_cooldown = true
+		emit_signal("cooldown_started", rem)
+		emit_signal("cooldown_progress", 0.0)
+		_start_cooldown_with_remaining(player, rem)
+	else:
+		is_on_cooldown = false
+		emit_signal("cooldown_progress", 1.0)
+		emit_signal("cooldown_finished")
+
+func get_cooldown_remaining() -> float:
+	if not is_on_cooldown:
+		return 0.0
+	return max(0.0, float(_cooldown_end_ms - Time.get_ticks_msec()) / 1000.0)
+
+func _start_cooldown_with_remaining(_player: Node, remaining: float) -> void:
+	var old := cooldown
+	cooldown = remaining
+	start_cooldown_timer(player)
+	cooldown = old
 
 func get_player(body: Character):
 	player = body
@@ -117,3 +165,6 @@ func play_sfx():
 		AudioManager.play_sfx("failed_parry_1", -10, pitch)
 	else:
 		AudioManager.play_sfx("parry_1", -10, pitch)
+
+func get_ability_scene_path() -> String:
+	return "res://scenes/extras/parry_ability_scene.tscn"

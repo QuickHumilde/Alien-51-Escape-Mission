@@ -11,13 +11,9 @@ func _ready() -> void:
 	super._ready()
 
 func give_changes(body: Character):
-	var scythe_ability = ScytheAbility.new()
-	scythe_ability.get_player(body)
+	var ability := SummerChairAbility.new()
+	ability.get_player(body)
 
-	var hud = body.get_node("HUD/AbilityChargeBar")
-	hud.connect_ability(scythe_ability)
-	hud.on_ability_pick(item_texture)
+	body.abilities.change_ability(ability, self.global_position)
 
-	body.abilities.change_ability(scythe_ability, self.global_position)
-	
 	destroy_on_pickup()

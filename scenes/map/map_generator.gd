@@ -4,6 +4,7 @@ extends Node2D
 @export var transition_duration: float = 0.2
 var _enemies_container: Node = null
 var _enemies_connected: bool = false
+var _loaded_from_save: bool = false
 
 var rng: RandomNumberGenerator
 
@@ -32,7 +33,6 @@ var room_scenes: Dictionary = {
 		preload("res://scenes/rooms/normal/normal_room_3.tscn"),
 		preload("res://scenes/rooms/normal/normal_room_4.tscn"),
 		preload("res://scenes/rooms/normal/normal_room_5.tscn"),
-		#preload("res://scenes/rooms/normal/normal_room_6.tscn"),
 		preload("res://scenes/rooms/normal/normal_room_7.tscn"),
 		preload("res://scenes/rooms/normal/normal_room_8.tscn"),
 		preload("res://scenes/rooms/normal/normal_room_9.tscn"),
@@ -51,11 +51,12 @@ var room_scenes: Dictionary = {
 		preload("res://scenes/rooms/normal/normal_room_22.tscn"),
 		preload("res://scenes/rooms/normal/normal_room_23.tscn"),
 		preload("res://scenes/rooms/normal/normal_room_24.tscn"),
+		preload("res://scenes/rooms/normal/normal_room_25.tscn"),
+		preload("res://scenes/rooms/normal/normal_room_26.tscn"),
+		preload("res://scenes/rooms/normal/normal_room_27.tscn"),
 	],
-	"item": [ preload("res://scenes/rooms/item/item_room_1.tscn") 
-	],
-	"shop": [ preload("res://scenes/rooms/shop/shop_room_1.tscn") 
-	],
+	"item": [ preload("res://scenes/rooms/item/item_room_1.tscn") ],
+	"shop": [ preload("res://scenes/rooms/shop/shop_room_1.tscn") ],
 }
 
 const BOSSES: Dictionary = {
@@ -83,16 +84,31 @@ var transitioning: bool = false
 var _door_caps_cache: Dictionary = {}
 
 func _ready() -> void:
-	GameManager.generate_seed()
-	rng = GameManager.rng
-	_apply_floor_settings()
-	generate_map()
-	_print_map_type_counts()
+	_loaded_from_save = false
 
-	current_room_pos = Vector2.ZERO
+	# Try load from save
+	if GameManager.continue_requested and SaveManager.has_save():
+		_loaded_from_save = SaveManager.load_run(self, player as Character, minimap)
+		GameManager.continue_requested = false
+
+	# New run if not loaded
+	if not _loaded_from_save:
+		GameManager.generate_seed()
+		rng = GameManager.rng
+		_apply_floor_settings()
+		generate_map()
+		_print_map_type_counts()
+		current_room_pos = Vector2.ZERO
+	else:
+		rng = GameManager.rng
+		_apply_floor_settings()
+
 	current_room = await _spawn_room_at(current_room_pos)
 	_snap_camera_to_room(current_room)
-	_place_player(current_room, "")
+
+	# If loaded, do NOT overwrite player position with spawn
+	if not _loaded_from_save:
+		_place_player(current_room, "")
 
 	if minimap != null and minimap.has_method("set_data"):
 		minimap.call("set_data", map, current_room_pos, GameManager.get_current_floor())
@@ -101,13 +117,17 @@ func _ready() -> void:
 
 	_watch_room_cleared(current_room)
 
-	AudioManager.play_floor_music()
+	if not _loaded_from_save:
+		AudioManager.play_floor_music()
+
 	_emit_room_changed()
 
 func next_floor() -> void:
 	if transitioning:
 		return
 	transitioning = true
+
+	_store_current_room_runtime_state()
 
 	GameManager.next_floor()
 
@@ -143,6 +163,53 @@ func _emit_room_changed() -> void:
 	var data := map[key] as Dictionary
 	var room_type := str(data.get("type", "normal"))
 	Signals.room_changed.emit(room_type)
+
+	_store_current_room_runtime_state()
+
+	if SaveManager != null:
+		SaveManager.save_run(self, player as Character, minimap, room_type)
+
+# -----------------------
+# Room runtime state (ItemSpawner etc.)
+# -----------------------
+
+func _store_current_room_runtime_state() -> void:
+	if current_room == null:
+		return
+	var key := pos_to_key(current_room_pos)
+	if not map.has(key):
+		return
+	var d := map[key] as Dictionary
+	d["spawners"] = _capture_room_spawner_state(current_room)
+
+func _capture_room_spawner_state(room: Node) -> Dictionary:
+	var out: Dictionary = {}
+	if room == null:
+		return out
+
+	for sp in room.find_children("", "ItemSpawner", true, false):
+		if sp == null:
+			continue
+		if sp.has_method("get_spawner_key") and sp.has_method("get_save_state"):
+			out[sp.get_spawner_key()] = sp.get_save_state()
+	return out
+
+func _apply_room_spawner_state(room: Node, spawners_state: Dictionary) -> void:
+	if room == null:
+		return
+	if spawners_state == null:
+		return
+
+	for sp in room.find_children("", "ItemSpawner", true, false):
+		if sp == null:
+			continue
+		if not (sp.has_method("get_spawner_key") and sp.has_method("load_save_state")):
+			continue
+		var k = sp.get_spawner_key()
+		if spawners_state.has(k):
+			sp.load_save_state(spawners_state[k] as Dictionary)
+
+# -----------------------
 
 func _apply_floor_settings() -> void:
 	var f: int = int(GameManager.get_current_floor())
@@ -184,6 +251,11 @@ func _spawn_room_at(room_pos: Vector2) -> Node2D:
 		room.call_deferred("setup", data)
 
 	await get_tree().process_frame
+
+	# Apply spawner state after room is in tree (so its _ready ran and nodes exist)
+	var sp_state: Dictionary = data.get("spawners", {}) as Dictionary
+	_apply_room_spawner_state(room, sp_state)
+
 	return room
 
 func _instantiate_room_for(data: Dictionary) -> Node2D:
@@ -217,6 +289,9 @@ func _start_transition_deferred(next_pos: Vector2, exit_dir: String) -> void:
 	await _transition_to(next_pos, exit_dir)
 
 func _transition_to(next_pos: Vector2, exit_dir: String) -> void:
+	# Save state of room we are leaving (spawners, etc.)
+	_store_current_room_runtime_state()
+
 	var prev_room: Node2D = current_room
 	var next_room: Node2D = await _spawn_room_at(next_pos)
 

@@ -1,8 +1,8 @@
 extends Node
 class_name ScytheAbility
 
-signal cooldown_started(duration)
-signal cooldown_progress(progress)
+signal cooldown_started(duration: float)
+signal cooldown_progress(progress: float)
 signal cooldown_finished()
 
 @export var cooldown: float = 6.0
@@ -13,27 +13,38 @@ signal cooldown_finished()
 @export var bullet_lifetime: float = 1.2
 @export var bullet_speed: float = 100.0
 
-@export var spawn_offset: float = 5.0 
+@export var spawn_offset: float = 5.0
 
 var is_on_cooldown: bool = false
-var _player: Character = null
+var player: Character = null
+var _cooldown_end_ms: int = 0
+
+func get_icon_path() -> String:
+	return "res://assets/sprites/items/ScytheItem.png"
 
 func get_player(body: Character) -> void:
-	_player = body
+	player = body
 
-func activate_with_player(player: Character) -> void:
+func activate_with_player(_player: Character) -> void:
+	# robustez: si player interno no está, usa el parámetro
+	if player == null or not is_instance_valid(player):
+		player = _player
+	if player == null or not is_instance_valid(player) or not player.is_inside_tree():
+		return
+
 	if is_on_cooldown:
 		return
 
 	is_on_cooldown = true
-	emit_signal("cooldown_started")
+	emit_signal("cooldown_started", cooldown)
+	emit_signal("cooldown_progress", 0.0)
 
 	_fire_8(player)
 	_play_sound()
 
 	start_cooldown_timer(player)
 
-func _fire_8(player: Character) -> void:
+func _fire_8(_player: Character) -> void:
 	var dirs: Array[Vector2] = [
 		Vector2.RIGHT,
 		Vector2.LEFT,
@@ -50,15 +61,24 @@ func _fire_8(player: Character) -> void:
 		player.get_tree().current_scene.add_child(b)
 
 		var spawn_pos := player.global_position + d * spawn_offset
-
 		var bullet_owner = "player"
 
 		if b.has_method("init"):
-			b.init(d, spawn_pos, bullet_damage + player.stats.get_damage(), bullet_knockback, bullet_lifetime, bullet_speed, bullet_owner)
+			b.init(
+				d,
+				spawn_pos,
+				bullet_damage + player.stats.get_damage(),
+				bullet_knockback,
+				bullet_lifetime,
+				bullet_speed,
+				bullet_owner
+			)
 		else:
 			b.global_position = spawn_pos
-	
-func start_cooldown_timer(player: Node) -> void:
+
+func start_cooldown_timer(_player: Node) -> void:
+	_cooldown_end_ms = Time.get_ticks_msec() + int(cooldown * 1000.0)
+
 	if player == null or not is_instance_valid(player) or not player.is_inside_tree():
 		is_on_cooldown = false
 		return
@@ -91,9 +111,11 @@ func start_cooldown_timer(player: Node) -> void:
 		if is_instance_valid(tick):
 			tick.stop()
 			tick.queue_free()
+
 		is_on_cooldown = false
 		emit_signal("cooldown_progress", 1.0)
 		emit_signal("cooldown_finished")
+
 		end_timer.queue_free()
 	)
 
@@ -107,18 +129,46 @@ func start_cooldown_timer(player: Node) -> void:
 		is_on_cooldown = false
 	, CONNECT_ONE_SHOT)
 
-	emit_signal("cooldown_progress", 0.0)
 	tick.start()
 	end_timer.start()
+
+func get_save_state() -> Dictionary:
+	return {
+		"is_on_cooldown": is_on_cooldown,
+		"cooldown_remaining": get_cooldown_remaining()
+	}
+
+func load_save_state(state: Dictionary) -> void:
+	var rem := float(state.get("cooldown_remaining", 0.0))
+	if rem > 0.0:
+		is_on_cooldown = true
+		emit_signal("cooldown_started", rem)
+		emit_signal("cooldown_progress", 0.0)
+		_start_cooldown_with_remaining(player, rem)
+	else:
+		is_on_cooldown = false
+		emit_signal("cooldown_progress", 1.0)
+		emit_signal("cooldown_finished")
+
+func get_cooldown_remaining() -> float:
+	if not is_on_cooldown:
+		return 0.0
+	return max(0.0, float(_cooldown_end_ms - Time.get_ticks_msec()) / 1000.0)
+
+func _start_cooldown_with_remaining(_player: Node, remaining: float) -> void:
+	var old := cooldown
+	cooldown = remaining
+	start_cooldown_timer(player)
+	cooldown = old
 
 func change_ability(new_ability_position):
 	var item_scene: PackedScene = load("res://scenes/items/scythe_ability_item.tscn")
 	var inst = item_scene.instantiate()
-	_player.get_tree().current_scene.add_child(inst)
+	player.get_tree().current_scene.add_child(inst)
 	inst.global_position = new_ability_position
 	inst.disable_pickup(2.0)
-	_player.animation.player_and_weapon_changing_color(Color(1,1,1), Color(1,1,1))
-	_player.movement.clear_override_speed()
+	player.animation.player_and_weapon_changing_color(Color(1,1,1), Color(1,1,1))
+	player.movement.clear_override_speed()
 	queue_free()
 
 func _play_sound() -> void:

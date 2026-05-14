@@ -9,21 +9,29 @@ var cooldown: float = 3.5
 var dash_speed: float = 300.0
 var dash_time: float = 0.2
 var is_on_cooldown: bool = false
-var _player: Character = null
+var player: Character = null
+var _cooldown_end_ms: int = 0
 
 var jordans_item_id = 18
 
-func activate_with_player(player: Character):
+func activate_with_player(_player: Character):
+	if player == null or not is_instance_valid(player):
+		player = _player
+	if player == null or not is_instance_valid(player) or not player.is_inside_tree():
+		return
+
 	if player.velocity != Vector2.ZERO:
 		if is_on_cooldown:
 			return
 		is_on_cooldown = true
-		emit_signal("cooldown_started")
+		emit_signal("cooldown_started", cooldown)
+		emit_signal("cooldown_progress", 0.0)
 		start_dash(player)
 		play_sound()
 		start_cooldown_timer(player)
-
-func start_cooldown_timer(player: Node) -> void:
+		
+func start_cooldown_timer(_player: Node) -> void:
+	_cooldown_end_ms = Time.get_ticks_msec() + int(cooldown * 1000.0)
 	is_on_cooldown = true
 
 	if player == null or not is_instance_valid(player) or not player.is_inside_tree():
@@ -78,7 +86,7 @@ func start_cooldown_timer(player: Node) -> void:
 	tick.start()
 	end_timer.start()
 
-func start_dash(player: Character):
+func start_dash(_player: Character):
 	var base_speed := player.stats.get_speed()
 	var dash_final_speed := base_speed + dash_speed
 	player.movement.override_speed(dash_final_speed)
@@ -88,10 +96,34 @@ func start_dash(player: Character):
 	player.animation.player_and_weapon_changing_color(Color(1,1,1), Color(1,1,1))
 	player.movement.clear_override_speed()
 
-func get_player(body: Character):
-	_player = body
+func get_save_state() -> Dictionary:
+	return {
+		"is_on_cooldown": is_on_cooldown,
+		"cooldown_remaining": get_cooldown_remaining()
+	}
 
-func check_items(player: Character):
+func load_save_state(state: Dictionary) -> void:
+	var rem := float(state.get("cooldown_remaining", 0.0))
+	if rem > 0.0:
+		emit_signal("cooldown_started", rem)
+		emit_signal("cooldown_progress", 0.0)
+		_start_cooldown_with_remaining(player, rem)
+
+func get_cooldown_remaining() -> float:
+	if not is_on_cooldown:
+		return 0.0
+	return max(0.0, float(_cooldown_end_ms - Time.get_ticks_msec()) / 1000.0)
+
+func _start_cooldown_with_remaining(_player: Node, remaining: float) -> void:
+	var old := cooldown
+	cooldown = remaining
+	start_cooldown_timer(player)
+	cooldown = old
+
+func get_player(body: Character):
+	player = body
+
+func check_items(_player: Character):
 	for modifier in player.inventory.get_modifiers():
 		if modifier is JordansModifierItem:
 			_on_item_picked(jordans_item_id)
@@ -105,13 +137,16 @@ func _on_item_picked(id: int = -1):
 func change_ability(new_ability_position):
 	var item_scene: PackedScene = load("res://scenes/items/dash_ability_item.tscn")
 	var inst = item_scene.instantiate()
-	_player.get_tree().current_scene.add_child(inst)
+	player.get_tree().current_scene.add_child(inst)
 	inst.global_position = new_ability_position
 	inst.disable_pickup(2.0)
-	_player.animation.player_and_weapon_changing_color(Color(1,1,1), Color(1,1,1))
-	_player.movement.clear_override_speed()
+	player.animation.player_and_weapon_changing_color(Color(1,1,1), Color(1,1,1))
+	player.movement.clear_override_speed()
 	queue_free()
 
 func play_sound():
 	var pitch: float = randf_range(0.9, 1.2)
 	AudioManager.play_sfx("dash_1", -23.0, pitch)
+
+func get_icon_path() -> String:
+	return "res://assets/sprites/items/Dash1_Item.png"

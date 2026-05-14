@@ -44,6 +44,27 @@ rotation = -4.712389
 position = Vector2(-53, -40)
 rotation = 4.712389
 
+[node name="Lamp3" parent="Decorations" index="2" instance=ExtResource("5_pp8lu")]
+position = Vector2(264, -72)
+
+[node name="Lamp4" parent="Decorations" index="3" instance=ExtResource("5_pp8lu")]
+position = Vector2(168, -72)
+
+[node name="Lamp5" parent="Decorations" index="4" instance=ExtResource("5_pp8lu")]
+position = Vector2(72, 88)
+rotation = -3.1415927
+
+[node name="Lamp6" parent="Decorations" index="5" instance=ExtResource("5_pp8lu")]
+position = Vector2(-24, 88)
+rotation = -3.1415927
+
+[node name="Lamp7" parent="Decorations" index="6" instance=ExtResource("5_pp8lu")]
+position = Vector2(168, 88)
+rotation = -3.1415927
+
+[node name="Lamp8" parent="Decorations" index="7" instance=ExtResource("5_pp8lu")]
+position = Vector2(72, -72)
+
 [node name="Obstacle1" parent="Obstacles" index="0" instance=ExtResource("2_gf4p3")]
 position = Vector2(88, 72)
 

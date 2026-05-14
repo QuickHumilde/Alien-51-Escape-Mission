@@ -31,6 +31,7 @@ MouseController="*res://global/mouse_controller.gd"
 GameManager="*res://global/game_manager.gd"
 GlobalModifiers="*res://global/global_modifiers.gd"
 CursorDuh="*res://global/cursor_duh.tscn"
+SaveManager="*res://global/SaveManager.gd"
 
 [display]
 

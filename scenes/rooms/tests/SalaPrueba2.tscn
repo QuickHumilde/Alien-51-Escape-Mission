@@ -246,4 +246,4 @@ shield_percentage = 25.0
 enemy1_percentage = 10.0
 
 [node name="Player" parent="." index="10" instance=ExtResource("2_kxxeq")]
-position = Vector2(-319, -195)
+position = Vector2(-155, -168)

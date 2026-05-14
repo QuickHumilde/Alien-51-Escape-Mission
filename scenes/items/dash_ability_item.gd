@@ -16,10 +16,6 @@ func give_changes(body: Character):
 	Signals.item_picked.connect(dash_ability._on_item_picked)
 	dash_ability.check_items(body)
 
-	var hud = body.get_node("HUD/AbilityChargeBar")
-	hud.connect_ability(dash_ability)
-	hud.on_ability_pick(item_texture)
-
 	body.abilities.change_ability(dash_ability, self.global_position)
 	
 	destroy_on_pickup()

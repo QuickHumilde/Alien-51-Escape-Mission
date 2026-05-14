@@ -11,7 +11,6 @@ func _ready():
 	super._ready()
 	
 func give_changes(body: Character):
-	Signals.wii_pointer_activated.emit()
 	var wii_controller_modifier = WiiControllerModifierItem.new(body)
 	body.items.give_modifiers(wii_controller_modifier)
 	destroy_on_pickup()

@@ -56,11 +56,11 @@ position = Vector2(-56, 56)
 rotation = -1.5707964
 
 [node name="Lamp7" parent="Decorations" index="6" instance=ExtResource("2_8k466")]
-position = Vector2(136, 72)
+position = Vector2(136, 56)
 rotation = 1.5707964
 
 [node name="Lamp8" parent="Decorations" index="7" instance=ExtResource("2_8k466")]
-position = Vector2(136, -56)
+position = Vector2(136, -40)
 rotation = 1.5707964
 
 [node name="Obstacle1_1" parent="Obstacles" index="0" instance=ExtResource("3_q7uqp")]

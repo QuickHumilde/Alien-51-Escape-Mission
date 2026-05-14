@@ -79,6 +79,7 @@ func _on_resume_pressed():
 	resume()
 
 func _on_quit_pressed():
+	SaveManager.reset_session_flags()
 	_cleanup_dynamic_instances()
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")

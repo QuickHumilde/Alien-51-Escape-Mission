@@ -27,8 +27,31 @@ func use_ability():
 		if ability.has_method("activate_with_player"):
 			ability.activate_with_player(player)
 		
-func change_ability(new_ability, ability_position):
-	if !abilities.is_empty():
+func change_ability(new_ability, ability_position, drop_old: bool = true):
+	if drop_old and !abilities.is_empty():
 		abilities[actual_ability_index].call_deferred("change_ability", ability_position)
+
 	abilities.clear()
 	abilities.append(new_ability)
+	actual_ability_index = 0
+
+	var hud := player.get_node_or_null("HUD/AbilityChargeBar")
+	if hud != null:
+		hud.connect_ability(new_ability)
+		if new_ability != null and is_instance_valid(new_ability) and new_ability.has_method("get_icon_path"):
+			hud.on_ability_pick(new_ability.get_icon_path())
+
+		if new_ability != null and is_instance_valid(new_ability) and new_ability.has_method("sync_hud"):
+			new_ability.call("sync_hud")
+		
+func remove_ability(ability):
+	if ability in abilities:
+		abilities.erase(ability)
+		if is_instance_valid(ability) and ability is Node:
+			ability.queue_free()
+
+func remove_current_ability():
+	if abilities.is_empty():
+		return
+	var ability = abilities[actual_ability_index]
+	remove_ability(ability)

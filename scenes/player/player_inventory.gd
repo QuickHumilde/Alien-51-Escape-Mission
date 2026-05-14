@@ -3,8 +3,10 @@ class_name PlayerInventory
 
 @export var money: int = 3
 @export var items: int = 0
-var modifiers: Array = []
+@export var modifiers: Array = []
 var player: Character = null
+
+var picked_item_ids: Array[int] = []
 
 func init(p: Character):
 	player = p
@@ -38,8 +40,10 @@ func give_modifiers(modifier):
 	if player:
 		player.stats._invalidate_stats()
 
-func _on_item_picked(_id: int = -1):
+func _on_item_picked(id: int = -1):
 	items += 1
+	if id >= 0:
+		picked_item_ids.append(id)
 	Signals.items_changed.emit()
 
 func can_revive() -> Array:

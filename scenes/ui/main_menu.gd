@@ -4,6 +4,8 @@ extends Node2D
 @onready var start_button: Button = $ButtonManager/VBoxContainer/Start
 @onready var options_button: Button = $ButtonManager/VBoxContainer/Options
 @onready var quit_button: Button = $ButtonManager/VBoxContainer/Quit
+@onready var continue_button: Button = $ButtonManager/VBoxContainer/Continue
+@onready var new_game_button: Button = $ButtonManager/VBoxContainer/NewGame
 
 @onready var options_container: Control = $OptionsContainer
 @onready var audio_button: Button = $OptionsContainer/VBoxContainer/Audio
@@ -28,6 +30,7 @@ func _ready() -> void:
 	options_container.hide()
 	button_manager.show()
 	AudioManager.play_music("main_menu", true, -20.0)
+	continue_button.visible = SaveManager.has_save()
 
 func update_texts() -> void:
 	start_button.text = tr("menu_start")
@@ -75,6 +78,20 @@ func _on_back_pressed() -> void:
 	in_options = false
 	options_container.hide()
 	button_manager.show()
+
+func _on_continue_pressed() -> void:
+	AudioManager.stop_music()
+	GameManager.continue_requested = true
+	get_tree().change_scene_to_file("res://scenes/map/world_generator.tscn")
+
+func _on_new_game_pressed() -> void:
+	AudioManager.stop_music()
+	SaveManager.reset_session_flags()
+	SaveManager.clear_save()
+	GameManager.reset()
+	ItemManager.clear_removed_items()
+	GameManager.continue_requested = false
+	get_tree().change_scene_to_file("res://scenes/map/world_generator.tscn")
 
 func _on_audio_pressed() -> void:
 	if in_audio or in_language:

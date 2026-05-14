@@ -37,13 +37,19 @@ func show_menu():
 	show()
 
 func _on_quit_pressed():
+	SaveManager.reset_session_flags()
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")
 
 func _on_restart_pressed():
-	resume()
-	get_tree().reload_current_scene()
+	SaveManager.clear_save()
+	GameManager.reset()
+	ItemManager.clear_removed_items()
+	GameManager.continue_requested = false
+	get_tree().paused = false
+	Signals.player_is_dead = false
 	AudioManager.stop_music()
+	get_tree().change_scene_to_file("res://scenes/map/world_generator.tscn")
 
 func play_music():
 	AudioManager.play_music("death_menu")

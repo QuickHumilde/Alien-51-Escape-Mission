@@ -6,6 +6,7 @@ var damage_increase: float = 0.5
 var lifetime_increase: float = 0.20
 
 func _init(body: Character) -> void:
+	Signals.wii_pointer_activated.emit()
 	player = body
 
 func get_bonus(stat_name: String, _player: CharacterStats):
