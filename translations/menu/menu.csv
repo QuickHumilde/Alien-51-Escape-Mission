@@ -33,3 +33,11 @@ menu_language_es,"Español","Spanish"
 mouse_warning,"Ten cuidado, cuando reanudes el juego tu raton aparecera en su ultima posicion antes de pausar", "Be careful, when you resume the game your mouse will appear in the position it was in before pausing."
 
 menu_start,"Empezar","Start"
+
+menu_new_game,"Nueva Partida","New Game"
+
+menu_continue,"Continuar","Continue"
+
+menu_back_to_menu,"Volver al Menú","Back to Menu"
+
+win_screen_you_win,"¡Has Escapado!","You Escaped!"

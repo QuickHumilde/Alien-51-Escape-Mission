@@ -36,6 +36,8 @@ func update_texts() -> void:
 	start_button.text = tr("menu_start")
 	options_button.text = tr("menu_options")
 	quit_button.text = tr("menu_quit")
+	new_game_button.text = tr("menu_new_game")
+	continue_button.text = tr("menu_continue")
 
 	audio_button.text = tr("menu_audio")
 	language_button.text = tr("menu_language")

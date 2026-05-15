@@ -17,4 +17,4 @@ func get_bonus(stat_name: String, _player: CharacterStats):
 			return 0.0
 		
 func _on_floor_changed():
-	player.items.increase_extra_health(extra_health_increase)
+	player.stats.increase_extra_health(extra_health_increase)

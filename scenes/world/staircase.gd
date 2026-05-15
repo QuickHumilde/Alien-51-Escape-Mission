@@ -4,6 +4,7 @@ extends Node2D
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var shadow: Sprite2D = $Shadow
 @onready var timer: Timer = $Timer 
+@export var final_staircase: bool = false
 var used: bool = false
 
 func _ready() -> void:
@@ -34,9 +35,12 @@ func _on_room_cleared():
 	hitbox.monitoring = true
 
 func _do_next_floor() -> void:
-	var scene := get_tree().current_scene
-	if scene != null and scene.has_method("next_floor"):
-		await scene.next_floor()
+	if !final_staircase:
+		var scene := get_tree().current_scene
+		if scene != null and scene.has_method("next_floor"):
+			await scene.next_floor()
+	else:
+		get_tree().change_scene_to_file("res://scenes/ui/win_screen.tscn")
 	
 	#await get_tree().process_frame
 	#hitbox.set_deferred("monitoring", true)

@@ -10,6 +10,10 @@ var uses_left: int = 3
 
 var player: Character = null
 
+func _init(uses: int = -99999):
+	if uses != -99999:
+		uses_left = uses
+
 func get_player(body: Character) -> void:
 	player = body
 	if uses_left <= 0:
@@ -52,6 +56,7 @@ func refill_uses() -> void:
 func change_ability(new_ability_position):
 	var item_scene: PackedScene = load("res://scenes/items/summer_chair_ability_item.tscn")
 	var inst = item_scene.instantiate()
+	inst.change_uses(uses_left)
 	player.get_tree().current_scene.add_child(inst)
 	inst.global_position = new_ability_position
 	inst.disable_pickup(2.0)

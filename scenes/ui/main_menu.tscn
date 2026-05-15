@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://di4p0yf3oup8t"]
 
 [ext_resource type="Script" uid="uid://c7lknxhwl518d" path="res://scenes/ui/main_menu.gd" id="1_sl1te"]
-[ext_resource type="Texture2D" uid="uid://4w8ox45pa6q" path="res://assets/images/AlienCanon.png" id="2_1g8jr"]
+[ext_resource type="Texture2D" uid="uid://cm85p2mj32oys" path="res://assets/images/AlienNoCanon.png" id="2_1g8jr"]
 [ext_resource type="Theme" uid="uid://b380oga6tlya7" path="res://assets/themes/default.tres" id="2_fe2o3"]
 
 [node name="MainMenu" type="Node2D"]

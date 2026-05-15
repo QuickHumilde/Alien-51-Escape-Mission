@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://j3eee863joc5"]
+
+[ext_resource type="PackedScene" uid="uid://641t0oysglvl" path="res://scenes/rooms/template/room_template.tscn" id="1_7myp1"]
+[ext_resource type="PackedScene" uid="uid://dddx6twasspnv" path="res://scenes/enemies/BuffedAlien/buffed_alien.tscn" id="2_6np2r"]
+[ext_resource type="PackedScene" uid="uid://chrgijw2gs6eb" path="res://scenes/world/lamp.tscn" id="3_6np2r"]
+[ext_resource type="PackedScene" uid="uid://d2nsgvosc4lao" path="res://scenes/world/staircase.tscn" id="4_nc7aj"]
+
+[node name="BossRoomBuffedAlien1" instance=ExtResource("1_7myp1")]
+
+[node name="BuffedAlien" parent="Enemies" index="0" instance=ExtResource("2_6np2r")]
+position = Vector2(80, -32)
+
+[node name="LampTL" parent="Decorations" index="0" instance=ExtResource("3_6np2r")]
+position = Vector2(-18, -90)
+
+[node name="LampBR" parent="Decorations" index="1" instance=ExtResource("3_6np2r")]
+position = Vector2(97, 106)
+rotation = 3.1415925
+
+[node name="LampBL" parent="Decorations" index="2" instance=ExtResource("3_6np2r")]
+position = Vector2(-12, 106)
+rotation = 3.1415925
+
+[node name="LampTR" parent="Decorations" index="3" instance=ExtResource("3_6np2r")]
+position = Vector2(92, -90)
+
+[node name="Lamp1" parent="Decorations" index="4" instance=ExtResource("3_6np2r")]
+position = Vector2(-58, -42)
+rotation = -1.5707964
+
+[node name="Lamp2" parent="Decorations" index="5" instance=ExtResource("3_6np2r")]
+position = Vector2(-58, 54)
+rotation = -1.5707964
+
+[node name="Lamp3" parent="Decorations" index="6" instance=ExtResource("3_6np2r")]
+position = Vector2(134, -42)
+rotation = 1.5707964
+
+[node name="Lamp4" parent="Decorations" index="7" instance=ExtResource("3_6np2r")]
+position = Vector2(134, 54)
+rotation = 1.5707964
+
+[node name="Staircase" parent="." index="9" instance=ExtResource("4_nc7aj")]
+position = Vector2(40, -24)
+final_staircase = true

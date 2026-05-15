@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://es5dygpgmub5"]
+
+[ext_resource type="Script" uid="uid://dgn0w8bd0grhx" path="res://scenes/ui/win_screen.gd" id="1_xl2x5"]
+[ext_resource type="Texture2D" uid="uid://d11tlq1kvdou1" path="res://assets/images/logo_empresa.png" id="2_rc6je"]
+[ext_resource type="Theme" uid="uid://b380oga6tlya7" path="res://assets/themes/default.tres" id="3_viy0t"]
+
+[node name="WinScreen" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_xl2x5")
+
+[node name="Background" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.19607843)
+position = Vector2(240, 136.75)
+scale = Vector2(0.18, 0.5)
+texture = ExtResource("2_rc6je")
+
+[node name="YouEscaped" type="Label" parent="."]
+offset_top = 72.0
+offset_right = 480.0
+offset_bottom = 128.0
+theme = ExtResource("3_viy0t")
+theme_override_font_sizes/font_size = 52
+text = "YOU WIN"
+horizontal_alignment = 1
+
+[node name="ButtonManager" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ButtonManager"]
+layout_mode = 0
+offset_left = 168.0
+offset_top = 144.0
+offset_right = 315.0
+offset_bottom = 198.0
+pivot_offset = Vector2(4, 1)
+theme_override_constants/separation = 14
+
+[node name="GoBackToMenu" type="Button" parent="ButtonManager/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_viy0t")
+theme_override_font_sizes/font_size = 24
+text = "Go Back To Menu"
+
+[connection signal="pressed" from="ButtonManager/HBoxContainer/GoBackToMenu" to="." method="_on_go_back_to_menu_pressed"]

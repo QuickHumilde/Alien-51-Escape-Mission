@@ -2,6 +2,7 @@ extends Item
 class_name ScytheAbilityItem
 
 @export var ext_id: int = 27
+@export var cooldown_left: float
 
 func _ready():
 	id = 27
