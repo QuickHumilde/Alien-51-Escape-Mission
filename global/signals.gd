@@ -29,6 +29,7 @@ signal room_changed(room_type: String)
 signal room_cleared()
 signal floor_changed()
 signal obstacle_broken(coords: Vector2i)
+signal alien_escaped_area_51_win()
 #endregion
 
 #region Modifiers
@@ -43,6 +44,7 @@ signal vessel_code()
 signal wii_pointer_activated()
 signal purchased_shop_item()
 signal shake_camera(strength: float)
+signal back_to_main_menu()
 #endregion
 
 # Made for removing the warning
@@ -69,3 +71,5 @@ func _emit_all():
 	shake_camera.emit(0.0)
 	obstacle_broken.emit()
 	update_hud_stats.emit()
+	alien_escaped_area_51_win.emit()
+	back_to_main_menu.emit()

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://es5dygpgmub5"]
+[gd_scene load_steps=5 format=3 uid="uid://es5dygpgmub5"]
 
 [ext_resource type="Script" uid="uid://dgn0w8bd0grhx" path="res://scenes/ui/win_screen.gd" id="1_xl2x5"]
-[ext_resource type="Texture2D" uid="uid://d11tlq1kvdou1" path="res://assets/images/logo_empresa.png" id="2_rc6je"]
+[ext_resource type="Texture2D" uid="uid://bsia1akf743ae" path="res://assets/images/WhiteBackground.jpeg" id="2_rc6je"]
+[ext_resource type="Texture2D" uid="uid://b8ymmyy5ce7vl" path="res://assets/images/AlienLibre.png" id="2_xl2x5"]
 [ext_resource type="Theme" uid="uid://b380oga6tlya7" path="res://assets/themes/default.tres" id="3_viy0t"]
 
 [node name="WinScreen" type="Node2D"]
@@ -9,19 +10,33 @@ process_mode = 3
 script = ExtResource("1_xl2x5")
 
 [node name="Background" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.19607843)
-position = Vector2(240, 136.75)
-scale = Vector2(0.18, 0.5)
+modulate = Color(1, 1, 1, 0.39215687)
+position = Vector2(-171.00002, 141.25)
+scale = Vector2(2.187075, 1.8924419)
 texture = ExtResource("2_rc6je")
 
-[node name="YouEscaped" type="Label" parent="."]
-offset_top = 72.0
-offset_right = 480.0
-offset_bottom = 128.0
+[node name="Background2" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.39215687)
+position = Vector2(651, 141.25)
+scale = Vector2(2.187075, 1.8924419)
+texture = ExtResource("2_rc6je")
+
+[node name="Alien" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.39215687)
+position = Vector2(240, 136.75)
+texture = ExtResource("2_xl2x5")
+
+[node name="YouEscaped" type="RichTextLabel" parent="."]
+offset_top = 61.0
+offset_right = 481.0
+offset_bottom = 145.0
 theme = ExtResource("3_viy0t")
-theme_override_font_sizes/font_size = 52
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_font_sizes/normal_font_size = 70
 text = "YOU WIN"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ButtonManager" type="Control" parent="."]
 layout_mode = 3
@@ -41,6 +56,7 @@ theme_override_constants/separation = 14
 [node name="GoBackToMenu" type="Button" parent="ButtonManager/HBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_viy0t")
+theme_override_constants/outline_size = 7
 theme_override_font_sizes/font_size = 24
 text = "Go Back To Menu"
 

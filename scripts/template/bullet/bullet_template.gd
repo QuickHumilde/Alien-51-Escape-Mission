@@ -20,7 +20,7 @@ func _ready():
 	
 	time_left = lifetime
 
-func init(new_forward, new_position, new_damage, new_knockback_force, new_lifetime, new_speed, new_bullet_owner, _extras: Dictionary = {}) -> void:
+func init(new_forward, new_position, new_damage, new_knockback_force, new_lifetime, new_speed, new_bullet_owner, extras: Dictionary = {}) -> void:
 	self.global_position = new_position
 	self.bullet_direction = new_forward
 	self.damage = new_damage
@@ -28,6 +28,8 @@ func init(new_forward, new_position, new_damage, new_knockback_force, new_lifeti
 	self.lifetime = new_lifetime
 	self.speed = new_speed
 	self.bullet_owner = new_bullet_owner
+	if extras.has("modifiers"):
+		self.modifiers = extras.modifiers
 
 func _process(delta: float):
 	if get_tree().paused:

@@ -1,8 +1,8 @@
 extends Node2D
 
-@onready var win_message: RichTextLabel = $YouEscaped
+@onready var win_message: Label = $YouEscaped
 @onready var button_manager: Control = $ButtonManager
-@onready var back_menu_button: Button = $ButtonManager/HBoxContainer/GoBackToMenu
+@onready var back_menu_button: Button = $ButtonManager/GoBackToMenu
 
 var options_instance: Control
 var languages_instance: Control
@@ -16,7 +16,7 @@ func _ready() -> void:
 	update_texts()
 
 	button_manager.show()
-	AudioManager.play_music("victory_screen", true, -20.0)
+	AudioManager.play_music("tutorial_screen", true, -20.0)
 
 func update_texts() -> void:
 	back_menu_button.text = tr("menu_back_to_menu")

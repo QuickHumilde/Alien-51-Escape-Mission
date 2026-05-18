@@ -5,6 +5,19 @@ const SAVE_VERSION := 1
 
 var _is_loading: bool = false
 
+func _ready() -> void:
+	if Signals.has_signal("show_death_menu"):
+		Signals.show_death_menu.connect(_on_death_menu)
+
+	if Signals.has_signal("alien_escaped_area_51_win"):
+		Signals.alien_escaped_area_51_win.connect(_on_win)
+
+func _on_death_menu() -> void:
+	clear_save()
+
+func _on_win() -> void:
+	clear_save()
+
 func has_save() -> bool:
 	return FileAccess.file_exists(SAVE_PATH)
 
@@ -135,12 +148,10 @@ func _rebuild_inventory_from_picked_items(player: Character, picked_ids: Array[i
 		player.stats.recalc_stats()
 
 # -----------------------
-# Abilities save/load (FIX)
+# Abilities save/load
 # -----------------------
 
 func _serialize_ability(player: Character) -> Dictionary:
-	# Guarda la habilidad actual, aunque sea un script (.gd), usando su resource_path.
-	# También guarda state opcional (cooldown etc).
 	var out := {
 		"resource_path": "",
 		"state": {},
@@ -157,13 +168,11 @@ func _serialize_ability(player: Character) -> Dictionary:
 	if ab == null or not is_instance_valid(ab):
 		return out
 
-	# OJO: DashAbility es un Node con script. Aquí podemos guardar script.resource_path
 	if ab is Node:
 		var script = (ab as Node).get_script()
 		if script != null:
 			out.resource_path = str(script.resource_path)
 
-	# Estado opcional
 	if ab.has_method("get_save_state"):
 		out.state = ab.call("get_save_state") as Dictionary
 
@@ -209,12 +218,15 @@ func _deserialize_ability(player: Character, ability_data: Dictionary) -> void:
 		ab.call("load_save_state", st)
 
 	player.abilities.change_ability(ab, Vector2.ZERO, false)
-	
+
 # -----------------------
 # Save / Load
 # -----------------------
 
 func save_run(dungeon: Node, player: Character, minimap: Node, room_type: String = "") -> void:
+	if _is_loading:
+		return
+
 	if dungeon == null or player == null:
 		return
 
@@ -271,7 +283,6 @@ func save_run(dungeon: Node, player: Character, minimap: Node, room_type: String
 				"current_weapon_index": player.combat.current_weapon_index,
 			},
 
-			# FIX: guarda habilidad por script resource_path + state
 			"ability": _serialize_ability(player),
 		},
 
@@ -368,7 +379,6 @@ func load_run(dungeon: Node, player: Character, minimap: Node) -> bool:
 
 	Signals.money_changed.emit(player.inventory.money)
 
-	# modifiers por items (sin tocar abilities aquí)
 	_rebuild_inventory_from_picked_items(player, picked_ids)
 
 	# stats base
@@ -406,7 +416,7 @@ func load_run(dungeon: Node, player: Character, minimap: Node) -> bool:
 	if not player.combat.weapon_order.is_empty():
 		player.combat.equip_weapon(int(player.combat.weapon_order[player.combat.current_weapon_index]))
 
-	# FIX: habilidad al final, desde el save
+	# ability
 	var ability_data: Dictionary = p.get("ability", {}) as Dictionary
 	_deserialize_ability(player, ability_data)
 
@@ -432,3 +442,6 @@ func load_run(dungeon: Node, player: Character, minimap: Node) -> bool:
 
 	_is_loading = false
 	return true
+
+func is_loading() -> bool:
+	return _is_loading

@@ -7,8 +7,8 @@ extends Enemy
 @export var roam_radius: float = 250.0
 @export var repath_time: float = 2.0
 
-@export var idle_min_time: float = 0.65
-@export var idle_max_time: float = 1.6
+@export var idle_min_time: float = 0.80
+@export var idle_max_time: float = 1.8
 @export var move_min_time: float = 0.8
 @export var move_max_time: float = 2.0
 
@@ -34,7 +34,7 @@ func _ready():
 	agent.path_desired_distance = 4.0
 	agent.target_desired_distance = 8.0
 
-	sounds = {"shoot": preload("res://assets/audio/sfx/Spit_1.mp3")}
+	sounds = {"shoot": preload("res://assets/audio/sfx/TurretShoot.mp3")}
 	super._ready()
 
 	_start_move_state()
@@ -142,5 +142,5 @@ func _on_damage():
 
 func play_shoot_sound():
 	var pitch := randf_range(0.9, 1.1)
-	var volume := randf_range(-1.0, 0.0)
+	var volume := randf_range(-1.5, -0.5)
 	play_sound("shoot", volume, pitch)

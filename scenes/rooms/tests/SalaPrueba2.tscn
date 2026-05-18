@@ -1,7 +1,7 @@
-[gd_scene load_steps=44 format=4 uid="uid://1k5ta205shrd"]
+[gd_scene load_steps=46 format=4 uid="uid://1k5ta205shrd"]
 
 [ext_resource type="PackedScene" uid="uid://641t0oysglvl" path="res://scenes/rooms/template/room_template.tscn" id="1_do61m"]
-[ext_resource type="PackedScene" uid="uid://dc1qcgts0k44u" path="res://scenes/enemies/JimmyEnemy/jimmy_enemy.tscn" id="2_bkrbk"]
+[ext_resource type="PackedScene" uid="uid://dw4em1kkdblnm" path="res://scenes/enemies/stickman/stickman_enemy.tscn" id="2_3oki1"]
 [ext_resource type="PackedScene" uid="uid://dug0rdf4rqk8" path="res://scenes/items/weapons/exploding_kittens_weapon_item.tscn" id="2_esqot"]
 [ext_resource type="PackedScene" uid="uid://jygsb42krc3q" path="res://scenes/player/player.tscn" id="2_kxxeq"]
 [ext_resource type="PackedScene" uid="uid://kge2n01jvemp" path="res://scenes/pickup/coin.tscn" id="3_w4rbs"]
@@ -43,6 +43,8 @@
 [ext_resource type="PackedScene" uid="uid://c3vp1y5urle5b" path="res://scenes/items/summer_chair_ability_item.tscn" id="40_oe3yd"]
 [ext_resource type="PackedScene" uid="uid://b5vupchk57wf5" path="res://scenes/items/rice_item.tscn" id="41_4m4k5"]
 [ext_resource type="PackedScene" uid="uid://cwclgtcc0hewo" path="res://scenes/items/deodorant_item.tscn" id="42_wgfmk"]
+[ext_resource type="PackedScene" uid="uid://dmitvew1d7s8n" path="res://scenes/world/obstacle_2.tscn" id="43_3oki1"]
+[ext_resource type="PackedScene" uid="uid://vwuduq2qtmsv" path="res://scenes/world/obstacle_1.tscn" id="44_wqtyc"]
 
 [node name="SalaPrueba2" instance=ExtResource("1_do61m")]
 
@@ -62,7 +64,7 @@ position = Vector2(404, -40)
 [node name="Right" parent="Doors" index="3"]
 position = Vector2(476, -120)
 
-[node name="JimmyEnemy" parent="Enemies" index="0" instance=ExtResource("2_bkrbk")]
+[node name="StickmanEnemy" parent="Enemies" index="0" instance=ExtResource("2_3oki1")]
 
 [node name="ExplodingKittensWeaponItem" parent="Obstacles" index="0" instance=ExtResource("2_esqot")]
 position = Vector2(264, 56)
@@ -188,5 +190,11 @@ position = Vector2(-89, -136)
 [node name="DeodorantItem" parent="Obstacles" index="39" instance=ExtResource("42_wgfmk")]
 position = Vector2(-7, -133)
 
+[node name="Obstacle-2_1" parent="Obstacles" index="40" instance=ExtResource("43_3oki1")]
+position = Vector2(142, -2)
+
+[node name="Obstacle1_1" parent="Obstacles" index="41" instance=ExtResource("44_wqtyc")]
+position = Vector2(200, 8)
+
 [node name="Player" parent="." index="9" instance=ExtResource("2_kxxeq")]
-position = Vector2(-155, -168)
+position = Vector2(221, -22)

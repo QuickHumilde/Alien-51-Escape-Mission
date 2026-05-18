@@ -37,6 +37,7 @@ func show_menu():
 	show()
 
 func _on_quit_pressed():
+	Signals.player_is_dead = false
 	SaveManager.reset_session_flags()
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")

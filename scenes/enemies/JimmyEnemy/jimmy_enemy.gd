@@ -21,9 +21,7 @@ func _ready():
 	knockback_resistance = 0.0
 	agent.path_desired_distance = 4.0
 	agent.target_desired_distance = stopping_distance
-	sounds = {
-		"shoot": preload("res://assets/audio/sfx/Spit_1.mp3")
-	}
+	sounds = {"shoot": preload("res://assets/audio/sfx/LaserJimmyShoot.mp3")}
 	super._ready()
 
 func _physics_process(delta):

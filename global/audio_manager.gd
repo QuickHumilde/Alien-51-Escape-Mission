@@ -25,6 +25,7 @@ var sfx: Dictionary = {
 var music: Dictionary = {
 	"death_menu": preload("res://assets/audio/music/DeathMusic.mp3"),
 	"main_menu": preload("res://assets/audio/music/MainMenu.mp3"),
+	"tutorial_screen": preload("res://assets/audio/music/ElevatorMusic.mp3"),
 	"floor_1": preload("res://assets/audio/music/FloorMusic_1.mp3"),
 	"floor_2": preload("res://assets/audio/music/FloorMusic_2.mp3"),
 	"floor_3": preload("res://assets/audio/music/FloorMusic_3.mp3"),
@@ -32,6 +33,7 @@ var music: Dictionary = {
 	"shop_2": preload("res://assets/audio/music/ShopMusic_2.mp3"),
 	"shop_3": preload("res://assets/audio/music/barbie.mp3"),
 	"boss_1": preload("res://assets/audio/music/barbie.mp3"),
+	"victory_screen": preload("res://assets/audio/music/VictoryMusic.mp3"),
 }
 
 var floor_music: Array[String] = ["floor_1", "floor_2", "floor_3"]

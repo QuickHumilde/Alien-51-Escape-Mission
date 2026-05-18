@@ -9,6 +9,11 @@ var has_spawned: bool = false
 var was_picked: bool = false
 
 func _ready() -> void:
+	# Si estamos cargando partida, NO spawnees aquí.
+	# El dungeon aplicará load_save_state() y decidirá qué hacer.
+	if SaveManager != null and SaveManager.has_method("is_loading") and SaveManager.is_loading():
+		return
+
 	call_deferred("_spawn_item_deferred")
 
 func get_spawner_key() -> String:
@@ -26,7 +31,17 @@ func load_save_state(state: Dictionary) -> void:
 	spawned_item_id = int(state.get("spawned_item_id", -1))
 	was_picked = bool(state.get("was_picked", false))
 
-	if has_spawned and not was_picked and spawned_item_id >= 0:
+	# Si ya fue recogido, asegúrate de que no queda nada en la escena
+	if was_picked:
+		for c in get_children():
+			c.queue_free()
+		return
+
+	# Si estaba spawneado y no recogido, respawnea el item exacto
+	if has_spawned and spawned_item_id >= 0:
+		# por seguridad, limpia primero
+		for c in get_children():
+			c.queue_free()
 		_spawn_specific_item(spawned_item_id)
 
 func mark_picked() -> void:
@@ -46,7 +61,6 @@ func _spawn_item_deferred() -> void:
 		return
 
 	var rng := GameManager.rng
-
 	var item_id: int = ItemManager.pick_random_item_id(rng)
 	if item_id < 0:
 		return
@@ -55,7 +69,6 @@ func _spawn_item_deferred() -> void:
 	has_spawned = true
 
 	_spawn_specific_item(item_id)
-
 	ItemManager.mark_removed(item_id)
 
 func _spawn_specific_item(item_id: int) -> void:

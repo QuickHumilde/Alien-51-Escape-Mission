@@ -14,7 +14,7 @@ func _ready() -> void:
 	knockback_time = 0.0
 	knockback_resistance = 50
 	sounds = {
-		"damage": preload("res://assets/audio/sfx/enemies/stalkerenemy/StalkerDamage.mp3")
+		"damage": preload("res://assets/audio/sfx/HittingFlesh.mp3")
 	}
 	damage_color = Color(0.35, 0.662, 0.252, 1.0)
 	start_delayed_action()

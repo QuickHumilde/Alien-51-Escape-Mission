@@ -118,6 +118,7 @@ theme_override_constants/separation = 15
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("3_f6eus")
+theme_override_constants/outline_size = 7
 theme_override_font_sizes/font_size = 24
 text = "Resume"
 language = "menu_resume"
@@ -126,6 +127,7 @@ language = "menu_resume"
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("3_f6eus")
+theme_override_constants/outline_size = 7
 theme_override_font_sizes/font_size = 24
 text = "Options"
 language = "menu_resume"
@@ -134,6 +136,7 @@ language = "menu_resume"
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("3_f6eus")
+theme_override_constants/outline_size = 7
 theme_override_font_sizes/font_size = 24
 text = "Quit"
 
@@ -148,6 +151,7 @@ scale = Vector2(0.96000004, 1.04)
 [node name="MouseWarning" type="RichTextLabel" parent="PauseMenu/MouseWarningContainer"]
 layout_mode = 2
 theme = ExtResource("3_f6eus")
+theme_override_constants/outline_size = 3
 theme_override_font_sizes/normal_font_size = 12
 text = "Mouse warning"
 horizontal_alignment = 1
@@ -177,6 +181,7 @@ theme_override_constants/separation = 15
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("3_f6eus")
+theme_override_constants/outline_size = 7
 theme_override_font_sizes/font_size = 24
 text = "Audio
 "
@@ -186,6 +191,7 @@ language = "menu_resume"
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("3_f6eus")
+theme_override_constants/outline_size = 7
 theme_override_font_sizes/font_size = 24
 text = "Language
 "
@@ -195,6 +201,7 @@ language = "menu_resume"
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("3_f6eus")
+theme_override_constants/outline_size = 7
 theme_override_font_sizes/font_size = 24
 text = "Back"
 

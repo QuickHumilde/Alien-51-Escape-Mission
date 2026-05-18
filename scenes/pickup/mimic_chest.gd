@@ -14,17 +14,32 @@ extends Pickup
 var spawned: bool = false
 
 func open_chest():
-	if !spawned:
-		var scene: PackedScene = _pick_weighted_scene()
-		if scene == null:
-			return
+	if spawned:
+		return
 
-		var instant: Node = scene.instantiate()
-		var parent = get_parent()
-		sprite.play("open")
-		parent.add_child(instant)
-		instant.global_position = global_position
-		spawned = true
+	var scene: PackedScene = _pick_weighted_scene()
+	if scene == null:
+		return
+
+	sprite.play("open")
+
+	# Subimos hasta la sala (root del room)
+	var room := get_parent()
+	while room != null and room.get_node_or_null("Pickups") == null and room.get_parent() != null:
+		room = room.get_parent()
+
+	var pickups := room.get_node_or_null("Pickups") if room != null else null
+	if pickups == null:
+		# fallback
+		pickups = get_parent()
+
+	var instant: Node = scene.instantiate()
+	pickups.add_child(instant)
+
+	if instant is Node2D:
+		(instant as Node2D).global_position = global_position
+
+	spawned = true
 	
 func _pick_weighted_scene() -> PackedScene:
 	var coin = max(0.0, coin_percentage)

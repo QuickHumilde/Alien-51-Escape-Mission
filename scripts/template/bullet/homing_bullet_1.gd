@@ -11,6 +11,9 @@ class_name HomingBullet
 var target: Node2D = null
 
 func init(new_forward, new_position, new_damage, new_knockback_force, new_lifetime, new_speed, new_bullet_owner, extras: Dictionary = {}) -> void:
+	extras = {
+		"modifiers": ["spectral"]
+	}	
 	super.init(new_forward, new_position, new_damage, new_knockback_force, new_lifetime, new_speed, new_bullet_owner, extras)
 	if extras.has("turn_speed"):
 		turn_speed = extras.turn_speed

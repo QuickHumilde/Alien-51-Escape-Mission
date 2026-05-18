@@ -4,9 +4,15 @@ extends Enemy
 @onready var sprite = $Visual/AnimatedSprite2D
 @export var stopping_distance : float = 1.5
 
+# --- Growl settings ---
+@export var growl_min_interval: float = 2.5
+@export var growl_max_interval: float = 4.0
+@export var growl_max_distance: float = 220.0
+var _growl_timer: Timer
+
 func _ready():
 	_get_detector()
-	id = 1
+	id = 5
 	contact_damage = 1.0
 	speed = 60.0
 	health = 3.0
@@ -16,10 +22,13 @@ func _ready():
 	agent.path_desired_distance = 8.0
 	agent.target_desired_distance = stopping_distance
 	sounds = {
-		"damage": preload("res://assets/audio/sfx/enemies/stalkerenemy/StalkerDamage.mp3")
+		"growl": preload("res://assets/audio/sfx/PencilOnPaper.mp3")
 	}
 	
 	super._ready()
+
+	play_growl_sound()
+	_setup_growl_timer()
 
 func _physics_process(delta):
 	if is_frozen():
@@ -55,22 +64,50 @@ func _update_animation():
 
 	var dir = velocity.normalized()
 
-	# Movimiento horizontal dominante
 	if abs(dir.x) > abs(dir.y):
 		sprite.play("left")
 		sprite.flip_h = dir.x > 0
 
-	# Movimiento vertical dominante
 	else:
 		if dir.y > 0:
 			sprite.play("front")
 		else:
 			sprite.play("back")
 
-func _on_damage():
-	play_damage_sound()
+func _setup_growl_timer() -> void:
+	_growl_timer = Timer.new()
+	_growl_timer.one_shot = true
+	add_child(_growl_timer)
+	_growl_timer.timeout.connect(_on_growl_timeout)
+	_schedule_next_growl()
 
-func play_damage_sound():
+func _schedule_next_growl() -> void:
+	if _growl_timer == null:
+		return
+	_growl_timer.start(randf_range(growl_min_interval, growl_max_interval))
+
+func _on_growl_timeout() -> void:
+	if not is_inside_tree():
+		return
+
+	if player == null:
+		_schedule_next_growl()
+		return
+
+	if growl_max_distance > 0.0:
+		var d := global_position.distance_to(player.global_position)
+		if d > growl_max_distance:
+			_schedule_next_growl()
+			return
+
+	play_growl_sound()
+	_schedule_next_growl()
+
+func play_growl_sound():
 	var pitch := randf_range(0.9, 1.1)
-	var volume := randf_range(-1.0, 0.0)
-	play_sound("damage", volume, pitch)
+	var volume := randf_range(0.0, 3.0)
+	play_sound("growl", volume, pitch)
+
+
+func _on_damage():
+	pass

@@ -55,6 +55,28 @@ func setup(room_data: Dictionary) -> void:
 		call_deferred("_recount_enemies_and_update_doors")
 	else:
 		_set_all_doors_open(true)
+		
+	var saved_cleared := bool(room_data.get("cleared", false))
+	if saved_cleared:
+		_remove_all_enemies() # evita respawn al cargar
+	_apply_cleared_state(saved_cleared)
+
+	# continúa con tu setup normal
+	if doors == null:
+		return
+
+	_set_door_enabled("Up", "up", room_data)
+	_set_door_enabled("Down", "down", room_data)
+	_set_door_enabled("Left", "left", room_data)
+	_set_door_enabled("Right", "right", room_data)
+
+	_connect_doors_to_room_signal()
+
+	if lock_doors_until_clear:
+		_connect_enemy_signals_if_possible()
+		call_deferred("_recount_enemies_and_update_doors")
+	else:
+		_set_all_doors_open(true)
 
 # ----------------- Door wrapper -> Room signal -----------------
 
@@ -120,16 +142,19 @@ func _recount_enemies_and_update_doors() -> void:
 
 	_enemies_alive = 0
 	if enemies_root != null:
-		var children := enemies_root.get_children()
-		for c in children:
+		for c in enemies_root.get_children():
 			if c == null:
 				continue
-			_enemies_alive += 1
+			if c.is_in_group("enemy"):
+				_enemies_alive += 1
+
 	_cleared = (_enemies_alive <= 0)
 	_update_doors_open_state()
-
+	
 func _on_enemy_child_entered(child: Node) -> void:
 	if child == null:
+		return
+	if not child.is_in_group("enemy"):
 		return
 	_enemies_alive += 1
 	_cleared = false
@@ -138,10 +163,13 @@ func _on_enemy_child_entered(child: Node) -> void:
 func _on_enemy_child_exiting(child: Node) -> void:
 	if child == null:
 		return
+	if not child.is_in_group("enemy"):
+		return
+
 	_enemies_alive = max(0, _enemies_alive - 1)
 	_cleared = (_enemies_alive <= 0)
 	_update_doors_open_state()
-
+	
 func _update_doors_open_state() -> void:
 	_set_all_doors_open(_cleared)
 
@@ -190,3 +218,24 @@ func get_spawn_global(entered_from_dir: String) -> Vector2:
 		return c.global_position
 
 	return global_position
+
+func _remove_all_enemies() -> void:
+	if enemies_root == null:
+		enemies_root = get_node_or_null(enemies_node_path)
+	if enemies_root == null:
+		return
+
+	for c in enemies_root.get_children():
+		if c == null:
+			continue
+		if c.is_in_group("enemy"):
+			c.queue_free()
+		else:
+			c.queue_free()
+
+func _apply_cleared_state(is_cleared: bool) -> void:
+	cleared = is_cleared
+	_cleared = is_cleared
+
+	if lock_doors_until_clear:
+		_set_all_doors_open(is_cleared)
