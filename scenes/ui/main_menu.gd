@@ -75,6 +75,7 @@ func _on_options_pressed() -> void:
 	button_manager.hide()
 	options_container.show()
 	title_label.hide()
+	tutorial_button.hide()
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()
@@ -84,6 +85,7 @@ func _on_back_pressed() -> void:
 	options_container.hide()
 	button_manager.show()
 	title_label.show()
+	tutorial_button.show()
 
 func _on_continue_pressed() -> void:
 	AudioManager.stop_music()

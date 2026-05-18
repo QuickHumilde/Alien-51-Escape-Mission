@@ -127,7 +127,7 @@ offset_top = 216.0
 offset_right = 469.0
 offset_bottom = 251.0
 theme = ExtResource("2_fe2o3")
-theme_override_constants/outline_size = 4
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 20
 text = "Tutorial"
 

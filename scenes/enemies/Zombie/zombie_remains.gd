@@ -45,7 +45,7 @@ func _on_damage():
 
 func play_damage_sound():
 	var pitch := randf_range(0.9, 1.1)
-	var volume := randf_range(-1.0, 0.0)
+	var volume := randf_range(-3.0, -1.0)
 	play_sound("damage", volume, pitch)
 
 func start_delayed_action():
