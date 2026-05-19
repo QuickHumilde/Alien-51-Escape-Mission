@@ -30,7 +30,6 @@ func open_chest():
 
 	var pickups := room.get_node_or_null("Pickups") if room != null else null
 	if pickups == null:
-		# fallback
 		pickups = get_parent()
 
 	var instant: Node = scene.instantiate()
@@ -38,7 +37,8 @@ func open_chest():
 
 	if instant is Node2D:
 		(instant as Node2D).global_position = global_position
-
+	
+	AudioManager.play_sfx("chest_opened", -2.0)
 	spawned = true
 	
 func _pick_weighted_scene() -> PackedScene:

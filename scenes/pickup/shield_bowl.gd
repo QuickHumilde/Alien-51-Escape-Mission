@@ -7,4 +7,5 @@ func _on_pick_up(player: Character):
 	if picked == false:
 		player.stats.increase_extra_health(extra_health)
 		picked=true
+		AudioManager.play_sfx("drinking")
 		destroy()

@@ -7,6 +7,11 @@ extends Enemy
 @export var children_spawn: int = 3
 var dead: bool = false
 
+@export var growl_min_interval: float = 2.0
+@export var growl_max_interval: float = 3.0
+@export var growl_max_distance: float = 220.0
+var _growl_timer: Timer
+
 func _ready():
 	_get_detector()
 	id = 3
@@ -19,9 +24,12 @@ func _ready():
 	agent.path_desired_distance = 4.0
 	agent.target_desired_distance = stopping_distance
 	sounds = {
-		"damage": preload("res://assets/audio/sfx/enemies/stalkerenemy/StalkerDamage.mp3")
+		"growl": preload("res://assets/audio/sfx/Slime_1-SFX.mp3")
 	}
 	super._ready()
+
+	play_growl_sound()
+	_setup_growl_timer()
 
 func _physics_process(delta):
 	if is_frozen():
@@ -57,21 +65,55 @@ func _update_animation():
 
 	var dir = velocity.normalized()
 
-	# Movimiento horizontal dominante
 	if abs(dir.x) > abs(dir.y):
 		sprite.play("side_walk")
 		sprite.flip_h = dir.x > 0
-
-	# Movimiento vertical dominante
 	else:
 		if dir.y > 0:
 			sprite.play("front_walk")
 		else:
 			sprite.play("back_walk")
 
+func _setup_growl_timer() -> void:
+	_growl_timer = Timer.new()
+	_growl_timer.one_shot = true
+	add_child(_growl_timer)
+	_growl_timer.timeout.connect(_on_growl_timeout)
+	_schedule_next_growl()
+
+func _schedule_next_growl() -> void:
+	if _growl_timer == null:
+		return
+	_growl_timer.start(randf_range(growl_min_interval, growl_max_interval))
+
+func _on_growl_timeout() -> void:
+	if dead or not is_inside_tree():
+		return
+
+	if player == null:
+		_schedule_next_growl()
+		return
+
+	if growl_max_distance > 0.0:
+		var d := global_position.distance_to(player.global_position)
+		if d > growl_max_distance:
+			_schedule_next_growl()
+			return
+
+	play_growl_sound()
+	_schedule_next_growl()
+
+func play_growl_sound():
+	var pitch := randf_range(0.9, 1.1)
+	var volume := randf_range(-1.0, 0.0)
+	play_sound("growl", volume, pitch)
+
 func die():
 	if !dead:
 		dead=true
+		if _growl_timer != null:
+			_growl_timer.stop()
+
 		var enemies_container = get_parent()
 		while enemies_container != null and enemies_container.name != "Enemies":
 			enemies_container = enemies_container.get_parent()
@@ -88,9 +130,4 @@ func die():
 		queue_free()
 
 func _on_damage():
-	play_damage_sound()
-
-func play_damage_sound():
-	var pitch := randf_range(0.9, 1.1)
-	var volume := randf_range(-1.0, 0.0)
-	play_sound("damage", volume, pitch)
+	pass

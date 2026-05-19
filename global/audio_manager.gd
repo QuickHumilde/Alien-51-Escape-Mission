@@ -1,8 +1,6 @@
 extends Node
 
 var music_player: AudioStreamPlayer
-var sfx_player: AudioStreamPlayer
-
 var in_shop: bool = false
 var _shop_override_active: bool = false
 var _floor_paused_pos: float = 0.0
@@ -12,14 +10,23 @@ var in_boss: bool = false
 var _boss_override_active: bool = false
 var _boss_paused_pos: float = 0.0
 
+@export var sfx_polyphony: int = 12
+var _sfx_players: Array[AudioStreamPlayer] = []
+var _sfx_next_index: int = 0
+
 var sfx: Dictionary = {
 	"big_shot_laugh": preload("res://assets/audio/sfx/items/BigShot_Laugh.mp3"),
 	"dash_1": preload("res://assets/audio/sfx/Dash_1.mp3"),
 	"parry_1": preload("res://assets/audio/sfx/Parry_1.mp3"),
 	"failed_parry_1": preload("res://assets/audio/sfx/FailedParry_1.mp3"),
-	"wii_startup":preload("res://assets/audio/sfx/WiiStartupSFX.mp3"),
+	"wii_startup": preload("res://assets/audio/sfx/WiiStartupSFX.mp3"),
 	"crash_1": preload("res://assets/audio/sfx/Crash_1.mp3"),
-	"oars_on_water": preload("res://assets/audio/sfx/OarsOnWater.mp3")
+	"oars_on_water": preload("res://assets/audio/sfx/OarsOnWater.mp3"),
+	"scythe_1": preload("res://assets/audio/sfx/ScytheSFX.mp3"),
+	"coin_collected": preload("res://assets/audio/sfx/CoinCollectedSFX.mp3"),
+	"health_collected": preload("res://assets/audio/sfx/EggEatenSFX.mp3"),
+	"chest_opened": preload("res://assets/audio/sfx/ChestOpeningSFX.mp3"),
+	"drinking": preload("res://assets/audio/sfx/DrinkingSFX.mp3"),
 }
 
 var music: Dictionary = {
@@ -32,13 +39,14 @@ var music: Dictionary = {
 	"shop_1": preload("res://assets/audio/music/ShopMusic_1.mp3"),
 	"shop_2": preload("res://assets/audio/music/ShopMusic_2.mp3"),
 	"shop_3": preload("res://assets/audio/music/barbie.mp3"),
-	"boss_1": preload("res://assets/audio/music/barbie.mp3"),
+	"boss_1": preload("res://assets/audio/music/DarkBoss3-Music.mp3"),
+	"boss_2": preload("res://assets/audio/music/SonicBoss-Music.mp3"),
 	"victory_screen": preload("res://assets/audio/music/VictoryMusic.mp3"),
 }
 
 var floor_music: Array[String] = ["floor_1", "floor_2", "floor_3"]
 var shop_music: Array[String] = ["shop_1", "shop_2", "shop_3"]
-var boss_music: Array[String] = ["boss_1"]
+var boss_music: Array[String] = ["boss_1", "boss_2"]
 
 func _ready() -> void:
 	music_player = AudioStreamPlayer.new()
@@ -48,17 +56,22 @@ func _ready() -> void:
 	music_player.autoplay = false
 	add_child(music_player)
 
-	sfx_player = AudioStreamPlayer.new()
-	sfx_player.name = "SFXPlayer"
-	sfx_player.bus = "SFX"
-	sfx_player.stream_paused = false
-	sfx_player.autoplay = false
-	add_child(sfx_player)
+	_setup_sfx_players()
 
 	if not Signals.room_changed.is_connected(_on_room_changed):
 		Signals.room_changed.connect(_on_room_changed)
 	if not Signals.room_cleared.is_connected(_on_room_cleared):
 		Signals.room_cleared.connect(_on_room_cleared)
+
+func _setup_sfx_players() -> void:
+	for i in range(maxi(sfx_polyphony, 1)):
+		var p := AudioStreamPlayer.new()
+		p.name = "SFXPlayer_%d" % i
+		p.bus = "SFX"
+		p.stream_paused = false
+		p.autoplay = false
+		add_child(p)
+		_sfx_players.append(p)
 
 func _on_room_changed(room_type: String) -> void:
 	if room_type == "shop":
@@ -143,7 +156,6 @@ func _exit_boss_music() -> void:
 	music_player.stop()
 	_boss_override_active = false
 
-	# volver a floor
 	if _floor_music_name != "":
 		play_music(_floor_music_name, true, -20.0)
 		if _floor_paused_pos > 0.0:
@@ -181,13 +193,34 @@ func play_sfx(sfx_name: String, volume_db := 0.0, pitch := 1.0) -> void:
 	if not sfx.has(sfx_name):
 		push_warning("SFX '" + sfx_name + "' no encontrado.")
 		return
-	sfx_player.stream = sfx[sfx_name]
-	sfx_player.volume_db = volume_db
-	sfx_player.pitch_scale = pitch
-	sfx_player.play()
+
+	var p := _get_sfx_player()
+	if p == null:
+		return
+
+	p.stream = sfx[sfx_name]
+	p.volume_db = volume_db
+	p.pitch_scale = pitch
+	p.play()
+
+func _get_sfx_player() -> AudioStreamPlayer:
+	if _sfx_players.is_empty():
+		return null
+
+	for i in range(_sfx_players.size()):
+		var idx := (_sfx_next_index + i) % _sfx_players.size()
+		var p := _sfx_players[idx]
+		if not p.playing:
+			_sfx_next_index = (idx + 1) % _sfx_players.size()
+			return p
+
+	var p := _sfx_players[_sfx_next_index]
+	_sfx_next_index = (_sfx_next_index + 1) % _sfx_players.size()
+	return p
 
 func set_music_volume(db: float) -> void:
 	music_player.volume_db = db
 
 func set_sfx_volume(db: float) -> void:
-	sfx_player.volume_db = db
+	for p in _sfx_players:
+		p.volume_db = db

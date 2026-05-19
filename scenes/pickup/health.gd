@@ -11,6 +11,7 @@ func _ready() -> void:
 func _on_pick_up(player: Character):
 	if picked == false and player.stats.heal(health):
 		picked=true
+		AudioManager.play_sfx("health_collected")
 		destroy()
 	else:
 		change_visibility()

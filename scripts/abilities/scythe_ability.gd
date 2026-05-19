@@ -173,4 +173,4 @@ func change_ability(new_ability_position):
 
 func _play_sound() -> void:
 	var pitch: float = randf_range(0.95, 1.1)
-	AudioManager.play_sfx("wii_startup", -18.0, pitch)
+	AudioManager.play_sfx("scythe_1", -2.0, pitch)

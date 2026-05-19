@@ -27,6 +27,7 @@ offset_top = 224.0
 offset_right = 147.0
 offset_bottom = 262.0
 theme = ExtResource("3_03icu")
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 24
 text = "Go Back To Menu"
 

@@ -136,6 +136,7 @@ offset_right = 358.0
 offset_bottom = 212.0
 size_flags_horizontal = 4
 theme = ExtResource("4_23tc5")
+theme_override_constants/outline_size = 7
 theme_override_font_sizes/font_size = 34
 text = "Restart"
 
@@ -148,6 +149,7 @@ offset_bottom = 279.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("4_23tc5")
+theme_override_constants/outline_size = 7
 theme_override_font_sizes/font_size = 34
 text = "Quit"
 
@@ -158,6 +160,7 @@ offset_top = 24.0
 offset_right = 480.0
 offset_bottom = 110.0
 theme = ExtResource("4_23tc5")
+theme_override_constants/outline_size = 7
 theme_override_font_sizes/normal_font_size = 79
 bbcode_enabled = true
 text = "SKILL ISSUE?"

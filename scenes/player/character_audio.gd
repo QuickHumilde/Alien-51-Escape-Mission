@@ -30,7 +30,7 @@ func _play_sound(sound_name: String, volume_db: float = 0.0, pitch: float = 1.0)
 	
 func play_damage(): 
 	var pitch := randf_range(0.9, 1.1)
-	var volume := randf_range(-2.0, 0.0)
+	var volume := randf_range(0.0, 0.4)
 	_play_sound("damage", volume, pitch)
 
 func play_death(): _play_sound("death")

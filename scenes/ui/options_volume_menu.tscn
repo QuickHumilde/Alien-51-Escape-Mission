@@ -39,9 +39,9 @@ grow_vertical = 2
 process_mode = 3
 layout_mode = 0
 offset_left = 60.0
-offset_top = 64.0
+offset_top = 52.0
 offset_right = 425.0
-offset_bottom = 213.0
+offset_bottom = 201.0
 
 [node name="MasterLabel" type="RichTextLabel" parent="AudioOptions/VBoxContainer"]
 layout_mode = 2
@@ -96,6 +96,7 @@ offset_top = 238.0
 offset_right = 413.0
 offset_bottom = 264.0
 theme = ExtResource("3_l1rcc")
+theme_override_constants/outline_size = 4
 text = "Apply"
 
 [node name="Back" type="Button" parent="."]
@@ -106,6 +107,7 @@ offset_top = 238.0
 offset_right = 467.0
 offset_bottom = 264.0
 theme = ExtResource("3_l1rcc")
+theme_override_constants/outline_size = 4
 text = "Back
 "
 

@@ -37,6 +37,7 @@ offset_top = 62.0
 offset_right = 321.0
 offset_bottom = 244.0
 theme_override_constants/separation = 14
+alignment = 1
 
 [node name="NewGame" type="Button" parent="ButtonManager/VBoxContainer"]
 layout_mode = 2

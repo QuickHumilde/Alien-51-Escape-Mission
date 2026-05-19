@@ -2,7 +2,7 @@ extends Node2D
 class_name Staircase
 
 @onready var hitbox: Area2D = $Area2D
-@onready var sprite: Sprite2D = $Sprite2D
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var shadow: Sprite2D = $Shadow
 @onready var timer: Timer = $Timer
 
@@ -38,6 +38,8 @@ func load_save_state(state: Dictionary) -> void:
 func _apply_visual_state() -> void:
 	sprite.visible = revealed and not used
 	shadow.visible = revealed and not used
+	if final_staircase:
+		sprite.frame = 1
 
 	var enabled := revealed and not used
 	hitbox.set_deferred("monitoring", enabled)
