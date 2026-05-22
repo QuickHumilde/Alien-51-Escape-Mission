@@ -1,16 +1,28 @@
 extends Enemy
 
+# =============================================================================
+# REFERENCIAS A NODOS
+# =============================================================================
+
 @onready var agent: NavigationAgent2D = $NavigationAgent2D
 @onready var sprite: AnimatedSprite2D = $Visual/AnimatedSprite2D
 @onready var visual = $Visual
 @onready var hitbox: CollisionShape2D = $Hitbox
 @onready var detector: Area2D = $Detector
 @onready var detector_shape: CollisionShape2D = $Detector/CollisionShape2D
+# Rayo usado para detectar obstáculos antes de lanzar el dash
 @onready var charge_ray: RayCast2D = $ChargeRay
+# Partículas emitidas durante el dash
 @onready var dash_particles: GPUParticles2D = $DashParticles
-
+# Escena del proyectil disparado en los ataques
 @onready var bullet_scene: PackedScene = preload("res://scenes/bullets/player_bullet.tscn")
 
+
+# =============================================================================
+# MÁQUINA DE ESTADOS
+# =============================================================================
+
+# Estados de la IA del boss
 enum State {
 	CHASE,
 	BURROW,
@@ -22,92 +34,131 @@ enum State {
 	REST
 }
 
+# Tipos de ataque al emerger
 enum AttackType { FAN3, CARDINAL4, BURST }
+# Patrones de disparo durante el descanso
 enum RestPattern { CARDINAL4, DIAGONAL4, RANDOM }
 
 var state: State = State.CHASE
+# Guarda el estado anterior para detectar transiciones
 var _last_state: State = State.CHASE
 var _attack: AttackType = AttackType.FAN3
 var _rest_pattern: RestPattern = RestPattern.CARDINAL4
 
+
+# =============================================================================
+# PARÁMETROS EXPORTADOS
+# =============================================================================
+
+# Velocidades de movimiento en superficie y bajo tierra
 @export var surface_speed: float = 45.0
 @export var underground_speed: float = 140.0
+# Distancia a la que el boss deja de perseguir e inicia el combo
 @export var stopping_distance: float = 220.0
 
+# Tiempos de cada fase de la secuencia de emergencia
 @export var burrow_time: float = 0.45
 @export var underground_move_time: float = 0.8
 @export var emerge_windup_time: float = 0.35
 @export var emerge_wait_time: float = 0.40
 
+# Parámetros del dash
 @export var dash_speed: float = 300.0
 @export var dash_time: float = 0.35
 @export var dash_windup_time: float = 0.18
+# Si es true, las partículas se emiten de forma continua durante el dash
 @export var dash_particles_continuous: bool = true
 
+# Acumulador de tiempo del dash y dirección tomada
 var _dash_t: float = 0.0
 var _dash_dir: Vector2 = Vector2.RIGHT
 
+# Número de dashes por combo (aleatorio entre min y max)
 @export var combo_min_repeats: int = 2
 @export var combo_max_repeats: int = 5
+# Tiempo de descanso entre combos
 @export var rest_time: float = 3.0
 
+# Contadores del combo actual
 var _combo_target_repeats: int = 0
 var _combo_done_repeats: int = 0
 
+# Margen y radio para elegir posiciones aleatorias bajo tierra
 @export var random_target_margin: float = 64.0
 @export var random_target_radius: Vector2 = Vector2(260, 170)
 
+# Acumulador de tiempo general de estado
 var _t: float = 0.0
+# Posición objetivo bajo tierra
 var _dash_target: Vector2 = Vector2.ZERO
+# Última dirección de movimiento (orienta los ataques)
 var _facing: Vector2 = Vector2.RIGHT
 
+# Parámetros de los proyectiles
 @export var damage: float = 1.0
 @export var bullet_speed: float = 95.0
 @export var bullet_lifetime: float = 2.0
+# Dispersión del abanico de 3 proyectiles en grados
 @export var fan_spread_deg: float = 18.0
+# Parámetros del ataque en ráfaga
 @export var burst_count: int = 4
 @export var burst_gap: float = 0.12
 
+# Si es true, dispara al inicio de cada dash del combo
 @export var shoot_on_each_dash_start: bool = true
 
+# Control de disparos durante el estado de descanso
 @export var rest_shoot_on_enter: bool = true
 @export var rest_shoot_interval: float = 0.0
 
+# Rango de disparos/balas para el patrón aleatorio del descanso
 @export var rest_random_min_shots: int = 4
 @export var rest_random_max_shots: int = 7
-
 @export var rest_random_min_bullets: int = 6
 @export var rest_random_max_bullets: int = 12
 
+# Flags internos del disparo de descanso
 var _rest_shot_done: bool = false
 var _rest_shot_timer: float = 0.0
 
+# Si es true, el boss es invulnerable y sin colisión mientras está bajo tierra
 @export var invulnerable_underground: bool = true
 @export var disable_collision_underground: bool = true
 
+# Nombres de animaciones clave
 @export var anim_burrow: StringName = &"burrow"
 @export var anim_emerge: StringName = &"emerge"
 @export var anim_dash: StringName = &"dash"
 @export var anim_shoot: StringName = &"shoot"
 
+# Duración de los fundidos al entrar/salir del suelo
 @export var fade_out_time: float = 0.1
 @export var fade_in_time: float = 0.1
 
+# Intensidad del temblor de cámara en dash e impacto
 @export var dash_shake_amount: float = 6.0
 @export var impact_shake_amount: float = 8.0
 
+# Parámetros de audio del dash
 @export var dash_accel_volume_db: float = -5.0
 @export var dash_accel_pitch_min: float = 0.6
 @export var dash_accel_pitch_max: float = 0.8
 
+# Parámetros de audio del impacto
 @export var impact_volume_db: float = 0.0
 @export var impact_pitch_min: float = 0.9
 @export var impact_pitch_max: float = 1.1
 
+# Estado interno del fundido de alpha
 var _fading: bool = false
 var _fade_t: float = 0.0
 var _fade_from: float = 1.0
 var _fade_to: float = 1.0
+
+
+# =============================================================================
+# INICIALIZACIÓN
+# =============================================================================
 
 func _ready() -> void:
 	_get_detector()
@@ -121,6 +172,7 @@ func _ready() -> void:
 	speed = surface_speed
 	knockback_force = 800.0
 	knockback_time = 0.0
+	# Resistencia al knockback prácticamente infinita
 	knockback_resistance = 100000000.0
 
 	agent.path_desired_distance = 4.0
@@ -138,6 +190,13 @@ func _ready() -> void:
 	_last_state = state
 	super._ready()
 
+
+# =============================================================================
+# BUCLE PRINCIPAL DE FÍSICA
+# =============================================================================
+
+# Actualiza el acumulador de tiempo, el fundido y despacha el estado activo.
+# Detecta transiciones de estado y actualiza la animación cada frame.
 func _physics_process(delta: float) -> void:
 	if is_frozen():
 		process_frozen()
@@ -172,6 +231,12 @@ func _physics_process(delta: float) -> void:
 
 	_update_animation()
 
+
+# =============================================================================
+# TRANSICIONES DE ESTADO
+# =============================================================================
+
+# Gestiona efectos de entrada/salida de cada estado: animaciones, fundidos y FX.
 func _on_state_changed(from_state: State, to_state: State) -> void:
 	if to_state == State.BURROW:
 		_play_anim_if_exists(anim_burrow)
@@ -194,6 +259,7 @@ func _on_state_changed(from_state: State, to_state: State) -> void:
 	if from_state == State.DASH and to_state != State.DASH:
 		_fx_dash_end()
 
+# Reproduce una animación solo si el sprite y la animación son válidos.
 func _play_anim_if_exists(anim: StringName) -> void:
 	if not is_instance_valid(sprite):
 		return
@@ -206,6 +272,7 @@ func _play_anim_if_exists(anim: StringName) -> void:
 	if sprite.animation != anim:
 		sprite.play(anim)
 
+# Activa o desactiva el modo subterráneo: colisiones, detector, daño e invulnerabilidad.
 func _set_underground(value: bool) -> void:
 	if disable_collision_underground and is_instance_valid(hitbox):
 		hitbox.set_deferred("disabled", value)
@@ -221,6 +288,12 @@ func _set_underground(value: bool) -> void:
 	if invulnerable_underground:
 		set_meta("invulnerable", value)
 
+
+# =============================================================================
+# EFECTOS VISUALES DEL DASH
+# =============================================================================
+
+# Activa las partículas del dash al iniciar el estado DASH.
 func _fx_dash_start() -> void:
 	if not is_instance_valid(dash_particles):
 		return
@@ -232,11 +305,18 @@ func _fx_dash_start() -> void:
 		dash_particles.restart()
 		dash_particles.emitting = true
 
+# Detiene las partículas al salir del estado DASH.
 func _fx_dash_end() -> void:
 	if not is_instance_valid(dash_particles):
 		return
 	dash_particles.emitting = false
 
+
+# =============================================================================
+# ESTADOS DE IA
+# =============================================================================
+
+# CHASE: persigue al jugador en superficie. Inicia un combo cuando está suficientemente cerca.
 func _process_chase(delta: float) -> void:
 	var to_player: Vector2 = player.global_position - global_position
 	var dist := to_player.length()
@@ -265,10 +345,12 @@ func _process_chase(delta: float) -> void:
 		_t = 0.0
 		velocity = Vector2.ZERO
 
+# Inicializa los contadores del combo eligiendo un número aleatorio de dashes.
 func _start_combo() -> void:
 	_combo_done_repeats = 0
 	_combo_target_repeats = randi_range(combo_min_repeats, combo_max_repeats)
 
+# BURROW: quieto mientras dura la animación de excavar; luego elige destino bajo tierra.
 func _process_burrow(_delta: float) -> void:
 	velocity = Vector2.ZERO
 	move_and_slide()
@@ -278,6 +360,7 @@ func _process_burrow(_delta: float) -> void:
 		state = State.UNDERGROUND_MOVE
 		_t = 0.0
 
+# Elige una posición aleatoria dentro de los límites de la sala como destino bajo tierra.
 func _pick_random_room_target() -> void:
 	var rect := _get_room_bounds()
 
@@ -297,9 +380,11 @@ func _pick_random_room_target() -> void:
 
 	agent.target_position = _dash_target
 
+# Devuelve los límites de la sala actual (stub; retorna Rect2 vacío por defecto).
 func _get_room_bounds() -> Rect2:
 	return Rect2(Vector2.ZERO, Vector2.ZERO)
 
+# UNDERGROUND_MOVE: navega bajo tierra hacia _dash_target usando el agente de navegación.
 func _process_underground_move(_delta: float) -> void:
 	agent.target_position = _dash_target
 	var next_point := agent.get_next_path_position()
@@ -320,6 +405,7 @@ func _process_underground_move(_delta: float) -> void:
 		_t = 0.0
 		velocity = Vector2.ZERO
 
+# EMERGE_WINDUP: pausa breve antes de emerger; elige el tipo de ataque.
 func _process_emerge_windup(_delta: float) -> void:
 	velocity = Vector2.ZERO
 	move_and_slide()
@@ -329,6 +415,7 @@ func _process_emerge_windup(_delta: float) -> void:
 		state = State.EMERGE_WAIT
 		_t = 0.0
 
+# EMERGE_WAIT: el boss ha emergido y espera antes de lanzar el dash.
 func _process_emerge_wait(_delta: float) -> void:
 	velocity = Vector2.ZERO
 	move_and_slide()
@@ -337,6 +424,7 @@ func _process_emerge_wait(_delta: float) -> void:
 		state = State.DASH_WINDUP
 		_t = 0.0
 
+# DASH_WINDUP: pausa de telegrafía antes del dash; fija la dirección hacia el jugador.
 func _process_dash_windup(_delta: float) -> void:
 	velocity = Vector2.ZERO
 	move_and_slide()
@@ -349,6 +437,8 @@ func _process_dash_windup(_delta: float) -> void:
 		state = State.DASH
 		_t = 0.0
 
+# DASH: el boss se lanza en línea recta; dispara al inicio si está configurado.
+# Termina al chocar con una pared o al superar dash_time.
 func _process_dash(delta: float) -> void:
 	_dash_t += delta
 
@@ -367,6 +457,8 @@ func _process_dash(delta: float) -> void:
 	if _dash_t >= dash_time:
 		_end_dash_after_impact()
 
+# Incrementa el contador de dashes del combo; si se completaron todos, pasa a REST,
+# si no, vuelve a excavar para el siguiente dash.
 func _end_dash_after_impact() -> void:
 	_combo_done_repeats += 1
 
@@ -382,6 +474,8 @@ func _end_dash_after_impact() -> void:
 	_t = 0.0
 	velocity = Vector2.ZERO
 
+# REST: el boss descansa y dispara patrones de proyectiles según la configuración.
+# Vuelve a CHASE al expirar rest_time.
 func _process_rest(delta: float) -> void:
 	velocity = Vector2.ZERO
 	move_and_slide()
@@ -403,6 +497,12 @@ func _process_rest(delta: float) -> void:
 		state = State.CHASE
 		_t = 0.0
 
+
+# =============================================================================
+# ATAQUES
+# =============================================================================
+
+# Elige aleatoriamente el tipo de ataque con probabilidades ponderadas.
 func _choose_attack() -> void:
 	var r := randf()
 	if r < 0.40:
@@ -412,6 +512,7 @@ func _choose_attack() -> void:
 	else:
 		_attack = AttackType.BURST
 
+# Ejecuta el patrón de ataque elegido con su animación.
 func _do_attack_pattern() -> void:
 	_play_anim_if_exists(anim_shoot)
 	match _attack:
@@ -422,6 +523,7 @@ func _do_attack_pattern() -> void:
 		AttackType.BURST:
 			await _attack_burst()
 
+# Dispara 3 proyectiles en abanico hacia el jugador.
 func _attack_fan3() -> void:
 	var to_player := (player.global_position - global_position)
 	var base_dir := to_player.normalized() if to_player.length() > 0.001 else _facing
@@ -430,11 +532,13 @@ func _attack_fan3() -> void:
 	for d in dirs:
 		_spawn_bullet(d)
 
+# Dispara 4 proyectiles en las 4 direcciones cardinales.
 func _attack_cardinal4() -> void:
 	var dirs := [Vector2.UP, Vector2.DOWN, Vector2.LEFT, Vector2.RIGHT]
 	for d in dirs:
 		_spawn_bullet(d)
 
+# Dispara burst_count proyectiles hacia el jugador con burst_gap de pausa entre cada uno.
 func _attack_burst() -> void:
 	for i in range(burst_count):
 		var to_player := (player.global_position - global_position)
@@ -442,6 +546,7 @@ func _attack_burst() -> void:
 		_spawn_bullet(dir)
 		await get_tree().create_timer(burst_gap).timeout
 
+# Elige y ejecuta un patrón de disparo durante el estado de descanso.
 func _fire_rest_pattern() -> void:
 	_choose_rest_pattern()
 	match _rest_pattern:
@@ -452,6 +557,7 @@ func _fire_rest_pattern() -> void:
 		RestPattern.RANDOM:
 			_fire_random()
 
+# Elige aleatoriamente el patrón de disparo del descanso.
 func _choose_rest_pattern() -> void:
 	var r := randf()
 	if r < 0.34:
@@ -461,11 +567,13 @@ func _choose_rest_pattern() -> void:
 	else:
 		_rest_pattern = RestPattern.RANDOM
 
+# Patrón de descanso: 4 proyectiles en direcciones cardinales.
 func _fire_cardinal4() -> void:
 	var dirs := [Vector2.UP, Vector2.DOWN, Vector2.LEFT, Vector2.RIGHT]
 	for d in dirs:
 		_spawn_bullet(d)
 
+# Patrón de descanso: 4 proyectiles en direcciones diagonales.
 func _fire_diagonal4() -> void:
 	var dirs := [
 		Vector2(-1, -1).normalized(),
@@ -476,6 +584,7 @@ func _fire_diagonal4() -> void:
 	for d in dirs:
 		_spawn_bullet(d)
 
+# Patrón de descanso: número aleatorio de proyectiles en direcciones completamente aleatorias.
 func _fire_random() -> void:
 	var n := randi_range(rest_random_min_bullets, rest_random_max_bullets)
 	for i in range(n):
@@ -483,11 +592,14 @@ func _fire_random() -> void:
 		var d := Vector2(cos(a), sin(a))
 		_spawn_bullet(d)
 
+# Instancia y lanza un proyectil en la dirección indicada.
 func _spawn_bullet(dir: Vector2) -> void:
 	var bullet = bullet_scene.instantiate()
 	bullet.init(dir, global_position, damage, bullet_speed, bullet_lifetime, 100.0, "enemy")
 	get_tree().current_scene.add_child(bullet)
 
+# Intenta romper o golpear el obstáculo con el que colisionó el dash
+# recorriendo la jerarquía del nodo colisionado.
 func _try_break_obstacle_on_dash() -> void:
 	var count := get_slide_collision_count()
 	for i in range(count):
@@ -509,16 +621,29 @@ func _try_break_obstacle_on_dash() -> void:
 				return
 			node = node.get_parent()
 
+
+# =============================================================================
+# EFECTOS DE SONIDO Y CÁMARA
+# =============================================================================
+
+# Emite el temblor de cámara y reproduce el SFX de aceleración al inicio del dash_windup.
 func _on_acceleration() -> void:
 	Signals.shake_camera.emit(dash_shake_amount)
 	var pitch: float = randf_range(dash_accel_pitch_min, dash_accel_pitch_max)
 	play_sound("acceleration_1", dash_accel_volume_db, pitch)
 
+# Emite el temblor de cámara y reproduce el SFX de impacto al chocar durante el dash.
 func _on_impact() -> void:
 	Signals.shake_camera.emit(impact_shake_amount)
 	var pitch: float = randf_range(impact_pitch_min, impact_pitch_max)
 	AudioManager.play_sfx("crash_1", impact_volume_db, pitch)
 
+
+# =============================================================================
+# FUNDIDO DE ALPHA
+# =============================================================================
+
+# Inicia un fundido del alpha visual del boss hacia el valor indicado en el tiempo dado.
 func _start_fade_to(alpha: float, time: float) -> void:
 	if not is_instance_valid(visual):
 		return
@@ -530,6 +655,7 @@ func _start_fade_to(alpha: float, time: float) -> void:
 		_set_visual_alpha(_fade_to)
 		_fading = false
 
+# Interpola el alpha visual del boss cada frame mientras _fading es true.
 func _process_fade(delta: float) -> void:
 	if not _fading or not is_instance_valid(visual):
 		return
@@ -545,6 +671,7 @@ func _process_fade(delta: float) -> void:
 	if t01 >= 1.0:
 		_fading = false
 
+# Asigna directamente el canal alpha del nodo visual.
 func _set_visual_alpha(a: float) -> void:
 	if not is_instance_valid(visual):
 		return
@@ -552,6 +679,12 @@ func _set_visual_alpha(a: float) -> void:
 	m.a = clampf(a, 0.0, 1.0)
 	visual.modulate = m
 
+
+# =============================================================================
+# KNOCKBACK Y DAÑO
+# =============================================================================
+
+# Reduce gradualmente el knockback hasta cero a lo largo de knockback_time.
 func _decay_knockback(delta: float) -> void:
 	if knockback_time > 0.0:
 		knockback_time -= delta
@@ -562,11 +695,18 @@ func _decay_knockback(delta: float) -> void:
 	else:
 		knockback = Vector2.ZERO
 
+# Implementación de _on_damage: ignora el daño si está bajo tierra e invulnerable.
 func _on_damage() -> void:
 	if invulnerable_underground and get_meta("invulnerable", false) == true:
 		return
 	pass
 
+
+# =============================================================================
+# ANIMACIÓN
+# =============================================================================
+
+# Selecciona la animación correcta según el estado activo del boss.
 func _update_animation() -> void:
 	match state:
 		State.BURROW:
@@ -596,6 +736,8 @@ func _update_animation() -> void:
 		_:
 			return
 
+# Reproduce la animación de caminar correcta según la dirección de movimiento,
+# aplicando flip horizontal cuando se mueve hacia la derecha.
 func _play_walk_from_dir(dir_in: Vector2) -> void:
 	if not is_instance_valid(sprite):
 		return

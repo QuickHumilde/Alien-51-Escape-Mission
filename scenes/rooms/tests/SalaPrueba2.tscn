@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://641t0oysglvl" path="res://scenes/rooms/template/room_template.tscn" id="1_do61m"]
 [ext_resource type="PackedScene" uid="uid://dug0rdf4rqk8" path="res://scenes/items/weapons/exploding_kittens_weapon_item.tscn" id="2_esqot"]
 [ext_resource type="PackedScene" uid="uid://jygsb42krc3q" path="res://scenes/player/player.tscn" id="2_kxxeq"]
-[ext_resource type="PackedScene" uid="uid://btakcp8d7eo58" path="res://scenes/pickup/mimic_chest.tscn" id="2_wqtyc"]
+[ext_resource type="PackedScene" uid="uid://dc1qcgts0k44u" path="res://scenes/enemies/JimmyEnemy/jimmy_enemy.tscn" id="2_wqtyc"]
 [ext_resource type="PackedScene" uid="uid://kge2n01jvemp" path="res://scenes/pickup/coin.tscn" id="3_w4rbs"]
 [ext_resource type="PackedScene" uid="uid://dxitdlogd57rg" path="res://scenes/pickup/health.tscn" id="4_nng34"]
 [ext_resource type="PackedScene" uid="uid://bns8nphp5sx17" path="res://scenes/extras/football_ball.tscn" id="5_327g5"]
@@ -65,13 +65,7 @@ position = Vector2(404, -40)
 [node name="Right" parent="Doors" index="3"]
 position = Vector2(476, -120)
 
-[node name="MimicChest" parent="Enemies" index="0" instance=ExtResource("2_wqtyc")]
-position = Vector2(73, 2)
-activable = true
-coin_percentage = 45.0
-health_percentage = 15.0
-shield_percentage = 25.0
-enemy1_percentage = 10.0
+[node name="JimmyEnemy" parent="Enemies" index="0" instance=ExtResource("2_wqtyc")]
 
 [node name="ExplodingKittensWeaponItem" parent="Obstacles" index="0" instance=ExtResource("2_esqot")]
 position = Vector2(264, 56)

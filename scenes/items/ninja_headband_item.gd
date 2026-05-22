@@ -1,6 +1,6 @@
 extends Item
 
-var speed_increase: float = 25.0
+var speed_increase: float = 10.0
 @export var ext_id: int = 4
 
 func _ready():

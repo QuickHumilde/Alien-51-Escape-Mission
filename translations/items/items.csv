@@ -16,7 +16,7 @@ item_ufo_name,"OVNI","UFO"
 item_ufo_desc,"• Un objeto volador no identificado.\n• Te permite volar.","• An unidentified flying object. \n• Allows you to fly."
 
 item_ninja_headband_name,"Bandana Ninja","Ninja Headband"
-item_ninja_headband_desc,"• Una bandana que te permite moverte más rápido.","• A headband that allows you to move faster."
+item_ninja_headband_desc,"Una bandana perteneciente a un famoso ninja.\n• +1.0 de velocidad.","A headband belonging to a famous ninja.\n• +1.0 of speed."
 
 item_ant_man_helmet_name,"Casco Hormiga","Ant Helmet"
 item_ant_man_helmet_desc,"• Un casco que te hace más pequeño.","• A helmet that makes you smaller."
@@ -75,7 +75,7 @@ item_console_controller_desc,"• Modifica la apariencia del puntero.\n• +0.5 
 item_black_knife_weapon_name,"Cuchillo Oscuro","Black Knife"
 item_black_knife_weapon_desc,"Descripción del objeto predeterminado.","Default item description."
 
-item_massive_rage_name,"Encabronamiento Masivo","Massive Rage"
+item_massive_rage_name,"Encabronamiento","Massive Rage"
 item_massive_rage_desc,"• Das y recibes el doble de daño.","• You deal and receive double damage."
 
 item_interior_peace_name,"Paz Interior","Interior Peace"

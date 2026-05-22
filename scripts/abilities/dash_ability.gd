@@ -1,25 +1,45 @@
 extends Node
 class_name DashAbility
 
+# Señales para sincronizar la barra de cooldown del HUD
 signal cooldown_started(duration)
 signal cooldown_progress(progress)
 signal cooldown_finished()
 
+
+# =============================================================================
+# PARÁMETROS Y ESTADO
+# =============================================================================
+
+# Duración del cooldown en segundos
 var cooldown: float = 3.5
+# Velocidad adicional aplicada al jugador durante el dash
 var dash_speed: float = 300.0
+# Duración del dash en segundos
 var dash_time: float = 0.2
+# Indica si la habilidad está en cooldown y no puede usarse
 var is_on_cooldown: bool = false
+# Referencia al jugador propietario de esta habilidad
 var player: Character = null
+# Timestamp en ms del fin del cooldown (para calcular tiempo restante)
 var _cooldown_end_ms: int = 0
 
+# ID del ítem "Jordans" que potencia el dash al estar en el inventario
 var jordans_item_id = 18
 
+
+# =============================================================================
+# ACTIVACIÓN
+# =============================================================================
+
+# Activa el dash si el jugador se está moviendo y la habilidad no está en cooldown.
 func activate_with_player(_player: Character):
 	if player == null or not is_instance_valid(player):
 		player = _player
 	if player == null or not is_instance_valid(player) or not player.is_inside_tree():
 		return
 
+	# El dash solo se activa si el jugador está en movimiento
 	if player.velocity != Vector2.ZERO:
 		if is_on_cooldown:
 			return
@@ -29,7 +49,14 @@ func activate_with_player(_player: Character):
 		start_dash(player)
 		play_sound()
 		start_cooldown_timer(player)
-		
+
+
+# =============================================================================
+# COOLDOWN
+# =============================================================================
+
+# Crea dos timers en el jugador: tick (progreso HUD cada 0.05 s) y end_timer (fin cooldown).
+# Ambos se limpian solos al terminar o si el jugador sale del árbol.
 func start_cooldown_timer(_player: Node) -> void:
 	_cooldown_end_ms = Time.get_ticks_msec() + int(cooldown * 1000.0)
 	is_on_cooldown = true
@@ -54,6 +81,7 @@ func start_cooldown_timer(_player: Node) -> void:
 	var started_at := Time.get_ticks_msec()
 	var cooldown_ms := int(cooldown * 1000.0)
 
+	# Actualiza la barra de cooldown del HUD en cada tick
 	tick.timeout.connect(func ():
 		if not is_instance_valid(end_timer):
 			return
@@ -62,6 +90,7 @@ func start_cooldown_timer(_player: Node) -> void:
 		emit_signal("cooldown_progress", progress)
 	)
 
+	# Al terminar el cooldown, limpia los timers y notifica al HUD
 	end_timer.timeout.connect(func ():
 		if is_instance_valid(tick):
 			tick.stop()
@@ -72,6 +101,7 @@ func start_cooldown_timer(_player: Node) -> void:
 		end_timer.queue_free()
 	)
 
+	# Si el jugador sale del árbol, cancela los timers para evitar errores
 	player.tree_exited.connect(func ():
 		if is_instance_valid(end_timer):
 			end_timer.stop()
@@ -86,22 +116,37 @@ func start_cooldown_timer(_player: Node) -> void:
 	tick.start()
 	end_timer.start()
 
+
+# =============================================================================
+# LÓGICA DEL DASH
+# =============================================================================
+
+# Aplica la velocidad de dash al movimiento, activa la invulnerabilidad temporal,
+# cambia el color del personaje y lo restaura todo al terminar el dash.
 func start_dash(_player: Character):
 	var base_speed := player.stats.get_speed()
 	var dash_final_speed := base_speed + dash_speed
 	player.movement.override_speed(dash_final_speed)
 	player.change_player_damagable_timer(false, dash_time + 0.2)
+	# Tinte cian semi-transparente durante el dash
 	player.animation.player_and_weapon_changing_color(Color(0.842, 2.433, 2.285, 0.549),Color(0.842, 2.433, 2.285, 0.549))
 	await player.get_tree().create_timer(dash_time).timeout
 	player.animation.player_and_weapon_changing_color(Color(1,1,1), Color(1,1,1))
 	player.movement.clear_override_speed()
 
+
+# =============================================================================
+# GUARDADO Y CARGA
+# =============================================================================
+
+# Serializa el estado del cooldown para el sistema de save.
 func get_save_state() -> Dictionary:
 	return {
 		"is_on_cooldown": is_on_cooldown,
 		"cooldown_remaining": get_cooldown_remaining()
 	}
 
+# Restaura el cooldown desde un save si quedaba tiempo pendiente.
 func load_save_state(state: Dictionary) -> void:
 	var rem := float(state.get("cooldown_remaining", 0.0))
 	if rem > 0.0:
@@ -109,31 +154,48 @@ func load_save_state(state: Dictionary) -> void:
 		emit_signal("cooldown_progress", 0.0)
 		_start_cooldown_with_remaining(player, rem)
 
+# Devuelve los segundos restantes del cooldown (0.0 si no está activo).
 func get_cooldown_remaining() -> float:
 	if not is_on_cooldown:
 		return 0.0
 	return max(0.0, float(_cooldown_end_ms - Time.get_ticks_msec()) / 1000.0)
 
+# Inicia un cooldown con el tiempo restante del save usando un cooldown temporal.
 func _start_cooldown_with_remaining(_player: Node, remaining: float) -> void:
 	var old := cooldown
 	cooldown = remaining
 	start_cooldown_timer(player)
 	cooldown = old
 
+
+# =============================================================================
+# REFERENCIA AL JUGADOR E INTERACCIÓN CON ÍTEMS
+# =============================================================================
+
+# Asigna la referencia al jugador (llamado desde CharacterAbilities al equipar).
 func get_player(body: Character):
 	player = body
 
+# Comprueba si el jugador tiene el ítem Jordans y aplica sus bonificaciones al dash.
 func check_items(_player: Character):
 	for modifier in player.inventory.get_modifiers():
 		if modifier is JordansModifierItem:
 			_on_item_picked(jordans_item_id)
 
+# Al detectar el ítem Jordans, reduce el cooldown y aumenta velocidad y duración del dash.
 func _on_item_picked(id: int = -1):
 	if id == jordans_item_id:
 		cooldown -= 0.5
 		dash_speed += 100
 		dash_time += 0.075
 
+
+# =============================================================================
+# CAMBIO DE HABILIDAD Y AUDIO
+# =============================================================================
+
+# Al cambiar de habilidad, suelta el ítem físico en el mundo y destruye este nodo.
+# Restaura el color y la velocidad del jugador por si quedaron alterados.
 func change_ability(new_ability_position):
 	var item_scene: PackedScene = load("res://scenes/items/dash_ability_item.tscn")
 	var inst = item_scene.instantiate()
@@ -144,9 +206,11 @@ func change_ability(new_ability_position):
 	player.movement.clear_override_speed()
 	queue_free()
 
+# Reproduce el SFX del dash con pitch aleatorio leve.
 func play_sound():
 	var pitch: float = randf_range(0.9, 1.2)
 	AudioManager.play_sfx("dash_1", -23.0, pitch)
 
+# Devuelve la ruta de la textura del icono de esta habilidad para el HUD.
 func get_icon_path() -> String:
 	return "res://assets/sprites/items/Dash1_Item.png"

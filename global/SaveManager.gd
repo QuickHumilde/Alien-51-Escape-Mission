@@ -1,11 +1,24 @@
 extends Node
 
+# =============================================================================
+# CONSTANTES Y FLAGS DE SESIÓN
+# =============================================================================
+
+# Ruta del archivo de guardado en el directorio de usuario
 const SAVE_PATH := "user://run_save.json"
+# Versión del formato de guardado; si no coincide al cargar, el save se descarta
 const SAVE_VERSION := 1
 
+# Flag para evitar que save_run se ejecute mientras se está cargando un save
 var _is_loading: bool = false
 
+
+# =============================================================================
+# INICIALIZACIÓN Y LIMPIEZA AUTOMÁTICA
+# =============================================================================
+
 func _ready() -> void:
+	# Borra el save al morir o al ganar (la run ha terminado)
 	if Signals.has_signal("show_death_menu"):
 		Signals.show_death_menu.connect(_on_death_menu)
 
@@ -18,23 +31,30 @@ func _on_death_menu() -> void:
 func _on_win() -> void:
 	clear_save()
 
+# Comprueba si existe un archivo de guardado válido.
 func has_save() -> bool:
 	return FileAccess.file_exists(SAVE_PATH)
 
+# Elimina el archivo de guardado del disco.
 func clear_save() -> void:
 	if FileAccess.file_exists(SAVE_PATH):
 		DirAccess.remove_absolute(SAVE_PATH)
 
+# Resetea el flag de carga (por si una carga queda interrumpida).
 func reset_session_flags() -> void:
 	_is_loading = false
 
-# -----------------------
-# Vector2 JSON helpers
-# -----------------------
 
+# =============================================================================
+# HELPERS DE SERIALIZACIÓN DE VECTOR2
+# =============================================================================
+
+# Convierte un Vector2 a un diccionario JSON-compatible {x, y}.
 func _v2_to_json(v: Vector2) -> Dictionary:
 	return {"x": v.x, "y": v.y}
 
+# Convierte varios formatos posibles (Dictionary, Array, String, Vector2 nativo) a Vector2.
+# Devuelve default_value si no puede interpretar el dato.
 func _json_to_v2(value: Variant, default_value: Vector2 = Vector2.ZERO) -> Vector2:
 	if typeof(value) == TYPE_VECTOR2:
 		return value
@@ -57,10 +77,13 @@ func _json_to_v2(value: Variant, default_value: Vector2 = Vector2.ZERO) -> Vecto
 
 	return default_value
 
-# -----------------------
-# Map serialization helpers
-# -----------------------
 
+# =============================================================================
+# HELPERS DE SERIALIZACIÓN DEL MAPA
+# =============================================================================
+
+# Convierte el mapa del dungeon a un formato seguro para JSON,
+# transformando los campos Vector2 ("pos") a diccionarios {x, y}.
 func _serialize_map(raw_map: Dictionary) -> Dictionary:
 	var out: Dictionary = {}
 
@@ -79,6 +102,8 @@ func _serialize_map(raw_map: Dictionary) -> Dictionary:
 
 	return out
 
+# Convierte el mapa guardado en JSON de vuelta al formato de runtime,
+# restaurando los campos "pos" como Vector2.
 func _deserialize_map(saved_map: Dictionary) -> Dictionary:
 	var out: Dictionary = {}
 
@@ -97,10 +122,13 @@ func _deserialize_map(saved_map: Dictionary) -> Dictionary:
 
 	return out
 
-# -----------------------
-# Inventory reconstruction (modifiers from picked items)
-# -----------------------
 
+# =============================================================================
+# RECONSTRUCCIÓN DE INVENTARIO (MODIFICADORES DE ÍTEMS RECOGIDOS)
+# =============================================================================
+
+# Destruye y elimina todos los modificadores activos del inventario del jugador
+# para evitar duplicados antes de volver a aplicarlos desde el save.
 func _cleanup_existing_modifiers(player: Character) -> void:
 	if player == null or not is_instance_valid(player):
 		return
@@ -119,6 +147,8 @@ func _cleanup_existing_modifiers(player: Character) -> void:
 
 	player.inventory.modifiers.clear()
 
+# Reconstruye los efectos pasivos del jugador a partir de los IDs de ítems recogidos
+# instanciando cada ítem y llamando a give_changes para aplicar sus modificadores.
 func _rebuild_inventory_from_picked_items(player: Character, picked_ids: Array[int]) -> void:
 	if player == null or not is_instance_valid(player):
 		return
@@ -143,14 +173,17 @@ func _rebuild_inventory_from_picked_items(player: Character, picked_ids: Array[i
 		if is_instance_valid(inst):
 			inst.queue_free()
 
+	# Recalcula las stats tras aplicar todos los modificadores
 	if player.stats != null and is_instance_valid(player.stats):
 		player.stats._invalidate_stats()
 		player.stats.recalc_stats()
 
-# -----------------------
-# Abilities save/load
-# -----------------------
 
+# =============================================================================
+# SERIALIZACIÓN Y DESERIALIZACIÓN DE HABILIDAD ACTIVA
+# =============================================================================
+
+# Guarda la habilidad activa del jugador: ruta del script y estado interno serializado.
 func _serialize_ability(player: Character) -> Dictionary:
 	var out := {
 		"resource_path": "",
@@ -178,6 +211,8 @@ func _serialize_ability(player: Character) -> Dictionary:
 
 	return out
 
+# Restaura la habilidad activa del jugador a partir de los datos guardados,
+# instanciando la escena o el script correspondiente y aplicando su estado.
 func _deserialize_ability(player: Character, ability_data: Dictionary) -> void:
 	if player == null or not is_instance_valid(player):
 		return
@@ -196,6 +231,7 @@ func _deserialize_ability(player: Character, ability_data: Dictionary) -> void:
 
 	var ab: Node = null
 
+	# Intenta instanciar la habilidad desde su escena asociada (si el script la declara)
 	var probe := Node.new()
 	probe.set_script(scr)
 	if probe != null and probe.has_method("get_ability_scene_path"):
@@ -206,6 +242,7 @@ func _deserialize_ability(player: Character, ability_data: Dictionary) -> void:
 				ab = ps.instantiate()
 	probe.queue_free()
 
+	# Si no hay escena, instancia directamente desde el script
 	if ab == null:
 		ab = Node.new()
 		ab.set_script(scr)
@@ -219,10 +256,13 @@ func _deserialize_ability(player: Character, ability_data: Dictionary) -> void:
 
 	player.abilities.change_ability(ab, Vector2.ZERO, false)
 
-# -----------------------
-# Save / Load
-# -----------------------
 
+# =============================================================================
+# GUARDADO DE LA PARTIDA
+# =============================================================================
+
+# Serializa el estado completo de la run (GameManager, mapa, jugador, audio)
+# y lo escribe en disco como JSON.
 func save_run(dungeon: Node, player: Character, minimap: Node, room_type: String = "") -> void:
 	if _is_loading:
 		return
@@ -299,6 +339,15 @@ func save_run(dungeon: Node, player: Character, minimap: Node, room_type: String
 	if f:
 		f.store_string(json)
 
+
+# =============================================================================
+# CARGA DE LA PARTIDA
+# =============================================================================
+
+# Lee el JSON del disco y restaura el estado completo de la run en el orden correcto:
+# GameManager → ItemManager → Dungeon → Minimap → Jugador (inventario, stats, combate,
+# habilidad, posición) → Audio.
+# Devuelve true si la carga fue exitosa, false en caso contrario.
 func load_run(dungeon: Node, player: Character, minimap: Node) -> bool:
 	if _is_loading:
 		return false
@@ -319,6 +368,7 @@ func load_run(dungeon: Node, player: Character, minimap: Node) -> bool:
 		return false
 	var data: Dictionary = parsed
 
+	# Descarta el save si fue creado con una versión de formato distinta
 	if int(data.get("version", 0)) != SAVE_VERSION:
 		_is_loading = false
 		return false
@@ -330,6 +380,7 @@ func load_run(dungeon: Node, player: Character, minimap: Node) -> bool:
 	GameManager.seed_value = int(g.get("seed_value", -1))
 	GameManager.generate_seed()
 
+	# Restaura el estado exacto del RNG para reproducibilidad
 	if g.has("rng_state"):
 		GameManager.rng.state = int(g.get("rng_state"))
 
@@ -362,7 +413,7 @@ func load_run(dungeon: Node, player: Character, minimap: Node) -> bool:
 	# --- PLAYER ---
 	var p: Dictionary = data.get("player", {})
 
-	# inventory first
+	# Inventario primero: el dinero y los ítems deben existir antes de reconstruir modificadores
 	var inv: Dictionary = p.get("inventory", {})
 	player.inventory.money = int(inv.get("money", player.inventory.money))
 	player.inventory.items = int(inv.get("items_count", player.inventory.items))
@@ -379,9 +430,10 @@ func load_run(dungeon: Node, player: Character, minimap: Node) -> bool:
 
 	Signals.money_changed.emit(player.inventory.money)
 
+	# Reconstruye los modificadores pasivos de cada ítem recogido
 	_rebuild_inventory_from_picked_items(player, picked_ids)
 
-	# stats base
+	# Stats base (se aplican después de los modificadores para no pisarlos)
 	var s: Dictionary = p.get("stats", {})
 	player.stats.max_health = float(s.get("max_health", player.stats.max_health))
 	player.stats.health = float(s.get("health", player.stats.health))
@@ -397,7 +449,7 @@ func load_run(dungeon: Node, player: Character, minimap: Node) -> bool:
 	player.stats.recalc_stats()
 	Signals.health_changed.emit(player.stats.health, player.stats.max_health, player.stats.extra_health, player.stats.get_revives())
 
-	# combat
+	# Combate: restaura el orden de armas y equipa la que estaba activa
 	var c: Dictionary = p.get("combat", {})
 	player.combat.weapon_order.clear()
 	var raw_order = c.get("weapon_order", [1])
@@ -416,18 +468,18 @@ func load_run(dungeon: Node, player: Character, minimap: Node) -> bool:
 	if not player.combat.weapon_order.is_empty():
 		player.combat.equip_weapon(int(player.combat.weapon_order[player.combat.current_weapon_index]))
 
-	# ability
+	# Habilidad activa
 	var ability_data: Dictionary = p.get("ability", {}) as Dictionary
 	_deserialize_ability(player, ability_data)
 
-	# player position
+	# Posición del jugador en el mundo
 	player.global_position = _json_to_v2(p.get("global_position"), player.global_position)
 
-	# minimap redraw
+	# Fuerza el redibujado del minimapa con los datos restaurados
 	if minimap != null and minimap.has_method("set_data"):
 		minimap.call("set_data", dungeon.map, dungeon.current_room_pos, GameManager.get_current_floor())
 
-	# audio
+	# Audio: retoma la música según el tipo de sala en que se guardó
 	var a: Dictionary = data.get("audio", {})
 	AudioManager._floor_music_name = str(a.get("floor_music_name", ""))
 	var room_type := str(a.get("room_type", ""))
@@ -443,5 +495,11 @@ func load_run(dungeon: Node, player: Character, minimap: Node) -> bool:
 	_is_loading = false
 	return true
 
+
+# =============================================================================
+# UTILIDAD
+# =============================================================================
+
+# Devuelve true mientras hay una carga en curso (evita guardados simultáneos).
 func is_loading() -> bool:
 	return _is_loading

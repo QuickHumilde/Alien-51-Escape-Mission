@@ -1,5 +1,10 @@
 extends Node2D
 
+# =============================================================================
+# REFERENCIAS A NODOS
+# =============================================================================
+
+# Contenedor principal de botones del menú
 @onready var button_manager: Control = $ButtonManager
 @onready var start_button: Button = $ButtonManager/VBoxContainer/Start
 @onready var options_button: Button = $ButtonManager/VBoxContainer/Options
@@ -8,21 +13,30 @@ extends Node2D
 @onready var new_game_button: Button = $ButtonManager/VBoxContainer/NewGame
 @onready var title_label: RichTextLabel = $Title
 
+# Contenedor del submenú de opciones
 @onready var options_container: Control = $OptionsContainer
 @onready var audio_button: Button = $OptionsContainer/VBoxContainer/Audio
 @onready var language_button: Button = $OptionsContainer/VBoxContainer/Language
 @onready var back_button: Button = $OptionsContainer/VBoxContainer/Back
 @onready var tutorial_button: Button = $TutorialButton
 
+# Escenas precargadas de los submenús de ajustes
 @onready var options_scene := preload("res://scenes/ui/options_volume_menu.tscn")
 @onready var languages_scene := preload("res://scenes/ui/language_menu.tscn")
 
+# Instancias activas de los submenús (null si no están abiertos)
 var options_instance: Control
 var languages_instance: Control
 
+# Flags de estado para saber en qué nivel del menú está el jugador
 var in_options: bool = false
 var in_audio: bool = false
 var in_language: bool = false
+
+
+# =============================================================================
+# INICIALIZACIÓN
+# =============================================================================
 
 func _ready() -> void:
 	add_to_group("localizable")
@@ -31,9 +45,23 @@ func _ready() -> void:
 
 	options_container.hide()
 	button_manager.show()
-	AudioManager.play_music("main_menu", true, -20.0)
+	
+	var choice := randi_range(1, 2)
+
+	if choice == 1:
+		AudioManager.play_music("main_menu", true, -20.0)
+	else:
+		AudioManager.play_music("main_menu_2", true, -20.0)
+		
+	# El botón de continuar solo se muestra si hay una partida guardada
 	continue_button.visible = SaveManager.has_save()
 
+
+# =============================================================================
+# LOCALIZACIÓN
+# =============================================================================
+
+# Actualiza todos los textos traducibles del menú principal y del submenú de opciones.
 func update_texts() -> void:
 	start_button.text = tr("menu_start")
 	options_button.text = tr("menu_options")
@@ -45,6 +73,12 @@ func update_texts() -> void:
 	language_button.text = tr("menu_language")
 	back_button.text = tr("menu_back")
 
+
+# =============================================================================
+# INPUT
+# =============================================================================
+
+# Cierra el submenú activo al pulsar Escape, respetando el nivel de profundidad actual.
 func _unhandled_input(event: InputEvent) -> void:
 	if not event.is_action_pressed("escape"):
 		return
@@ -66,10 +100,17 @@ func _unhandled_input(event: InputEvent) -> void:
 
 	get_viewport().set_input_as_handled()
 
+
+# =============================================================================
+# BOTONES DEL MENÚ PRINCIPAL
+# =============================================================================
+
+# Detiene la música e inicia una partida nueva.
 func _on_start_pressed() -> void:
 	AudioManager.stop_music()
 	get_tree().change_scene_to_file("res://scenes/map/world_generator.tscn")
 
+# Abre el submenú de opciones y oculta el menú principal.
 func _on_options_pressed() -> void:
 	in_options = true
 	button_manager.hide()
@@ -77,9 +118,11 @@ func _on_options_pressed() -> void:
 	title_label.hide()
 	tutorial_button.hide()
 
+# Cierra la aplicación.
 func _on_quit_pressed() -> void:
 	get_tree().quit()
 
+# Vuelve al menú principal desde el submenú de opciones.
 func _on_back_pressed() -> void:
 	in_options = false
 	options_container.hide()
@@ -87,11 +130,13 @@ func _on_back_pressed() -> void:
 	title_label.show()
 	tutorial_button.show()
 
+# Retoma la partida guardada: activa el flag de continue y carga el generador de mundo.
 func _on_continue_pressed() -> void:
 	AudioManager.stop_music()
 	GameManager.continue_requested = true
 	get_tree().change_scene_to_file("res://scenes/map/world_generator.tscn")
 
+# Limpia cualquier save y estado previo antes de iniciar una partida completamente nueva.
 func _on_new_game_pressed() -> void:
 	AudioManager.stop_music()
 	SaveManager.reset_session_flags()
@@ -101,6 +146,12 @@ func _on_new_game_pressed() -> void:
 	GameManager.continue_requested = false
 	get_tree().change_scene_to_file("res://scenes/map/world_generator.tscn")
 
+
+# =============================================================================
+# SUBMENÚ DE AUDIO
+# =============================================================================
+
+# Instancia y muestra el menú de volumen; evita abrir dos submenús a la vez.
 func _on_audio_pressed() -> void:
 	if in_audio or in_language:
 		return
@@ -109,18 +160,23 @@ func _on_audio_pressed() -> void:
 	options_instance = options_scene.instantiate()
 	options_instance.back_pressed.connect(_on_audio_closed)
 	add_child(options_instance)
-
 	options_instance.show()
 	options_container.hide()
 
+# Destruye el menú de volumen y vuelve al submenú de opciones.
 func _on_audio_closed() -> void:
 	in_audio = false
 	if options_instance:
 		options_instance.queue_free()
 		options_instance = null
-
 	options_container.show()
 
+
+# =============================================================================
+# SUBMENÚ DE IDIOMA
+# =============================================================================
+
+# Instancia y muestra el menú de idioma a pantalla completa; evita abrir dos submenús.
 func _on_language_pressed() -> void:
 	if in_audio or in_language:
 		return
@@ -134,15 +190,20 @@ func _on_language_pressed() -> void:
 	languages_instance.show()
 	options_container.hide()
 
+# Destruye el menú de idioma, relocaliza los textos y vuelve al submenú de opciones.
 func _on_language_closed() -> void:
 	in_language = false
 	if languages_instance:
 		languages_instance.queue_free()
 		languages_instance = null
-
 	update_texts()
 	options_container.show()
 
 
+# =============================================================================
+# TUTORIAL
+# =============================================================================
+
+# Navega a la pantalla de tutorial.
 func _on_tutorial_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/ui/tutorial_screen.tscn")
