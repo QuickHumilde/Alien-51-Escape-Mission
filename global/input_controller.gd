@@ -12,3 +12,7 @@ func _input(event):
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 		else:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	
+	# FIX: emitir señal al pulsar Enter
+	if event.is_action_pressed("ui_accept"):
+		Signals.show_full_map.emit()

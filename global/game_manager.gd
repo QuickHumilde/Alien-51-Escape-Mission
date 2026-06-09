@@ -16,7 +16,7 @@ var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 var used_bosses: Array[String] = []
 
 # Número de piso que se considera el último (activa el boss final)
-@export var last_floor: int = 3
+@export var last_floor: int = 4
 # ID del boss final reservado para el último piso
 @export var final_boss_id: String = "buffed_alien"
 
@@ -87,11 +87,14 @@ func calculate_enemy_health(base_health: float, floor: int = current_floor) -> f
 		1:
 			health_multiplier = 1.0
 		2:
-			health_multiplier = 1.5 
+			health_multiplier = 1.0
+			#health_multiplier = 1.25
 		3:
-			health_multiplier = 2.25
+			health_multiplier = 1.0
+			#health_multiplier = 1.75
 		_:
-			health_multiplier = 1.75 + (0.25 * (floor - 3))
+			health_multiplier = 1.0
+			#health_multiplier = 1.75 + (0.25 * (floor - 3))
 	return base_health * health_multiplier
 
 # =============================================================================

@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=4 uid="uid://1k5ta205shrd"]
+[gd_scene load_steps=48 format=4 uid="uid://1k5ta205shrd"]
 
 [ext_resource type="PackedScene" uid="uid://641t0oysglvl" path="res://scenes/rooms/template/room_template.tscn" id="1_do61m"]
 [ext_resource type="PackedScene" uid="uid://dug0rdf4rqk8" path="res://scenes/items/weapons/exploding_kittens_weapon_item.tscn" id="2_esqot"]
@@ -46,6 +46,7 @@
 [ext_resource type="PackedScene" uid="uid://dmitvew1d7s8n" path="res://scenes/world/obstacle_2.tscn" id="43_3oki1"]
 [ext_resource type="PackedScene" uid="uid://vwuduq2qtmsv" path="res://scenes/world/obstacle_1.tscn" id="44_wqtyc"]
 [ext_resource type="PackedScene" uid="uid://dgkqlqwiwvi08" path="res://scenes/pickup/shield_bowl.tscn" id="46_rdm6m"]
+[ext_resource type="PackedScene" uid="uid://btakcp8d7eo58" path="res://scenes/pickup/mimic_chest.tscn" id="47_rdm6m"]
 
 [node name="SalaPrueba2" instance=ExtResource("1_do61m")]
 
@@ -198,7 +199,7 @@ position = Vector2(142, -2)
 position = Vector2(200, 8)
 
 [node name="Player" parent="." index="9" instance=ExtResource("2_kxxeq")]
-position = Vector2(221, -22)
+position = Vector2(131, -146)
 
 [node name="ShieldBowl" parent="." index="10" instance=ExtResource("46_rdm6m")]
 extra_health = 1
@@ -206,3 +207,43 @@ player_collision_layer = 3
 
 [node name="Spikes" parent="." index="11" instance=ExtResource("39_u0i4w")]
 position = Vector2(158, 8)
+
+[node name="MimicChest" parent="." index="12" instance=ExtResource("47_rdm6m")]
+position = Vector2(56, -181)
+activable = true
+coin_percentage = 25.0
+health_percentage = 15.0
+shield_percentage = 50.0
+enemy1_percentage = 10.0
+min_extra_coins = 1
+max_extra_coins = 2
+
+[node name="MimicChest2" parent="." index="13" instance=ExtResource("47_rdm6m")]
+position = Vector2(89, -189)
+activable = true
+coin_percentage = 25.0
+health_percentage = 15.0
+shield_percentage = 50.0
+enemy1_percentage = 10.0
+min_extra_coins = 1
+max_extra_coins = 2
+
+[node name="MimicChest3" parent="." index="14" instance=ExtResource("47_rdm6m")]
+position = Vector2(24, -190)
+activable = true
+coin_percentage = 25.0
+health_percentage = 15.0
+shield_percentage = 50.0
+enemy1_percentage = 10.0
+min_extra_coins = 1
+max_extra_coins = 2
+
+[node name="MimicChest4" parent="." index="15" instance=ExtResource("47_rdm6m")]
+position = Vector2(113, -212)
+activable = true
+coin_percentage = 25.0
+health_percentage = 15.0
+shield_percentage = 50.0
+enemy1_percentage = 10.0
+min_extra_coins = 1
+max_extra_coins = 2

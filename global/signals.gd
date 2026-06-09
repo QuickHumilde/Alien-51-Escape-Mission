@@ -30,6 +30,7 @@ signal room_cleared()
 signal floor_changed()
 signal obstacle_broken(coords: Vector2i)
 signal alien_escaped_area_51_win()
+signal show_full_map
 #endregion
 
 #region Modifiers

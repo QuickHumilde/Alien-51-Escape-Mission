@@ -8,9 +8,9 @@ class_name RewardSpawner
 # Si es false, el spawner está desactivado y no hará nada
 @export var activable: bool = true
 # Probabilidades ponderadas de cada tipo de recompensa (no necesitan sumar 100)
-@export var coin_percentage: float = 60.0
+@export var coin_percentage: float = 50.0
 @export var health_percentage: float = 30.0
-@export var mimic_chest_percentage: float = 10.0
+@export var mimic_chest_percentage: float = 20.0
 
 
 # =============================================================================
