@@ -12,13 +12,14 @@ class_name Enemy
 @export var speed: float = 50.0
 # Puntos de vida
 @export var health: float = 3.0
+# Puntos de vida maximos
+@export var max_health: float = 3.0
 # Daño aplicado al jugador por contacto
 @export var contact_damage: float = 0.0
 # Tiempo en segundos que el enemigo permanece congelado tras spawnear
 @export var spawn_freeze_time: float = 0.75
 # Fuerza del knockback que este enemigo aplica al jugador
 @export var knockback_force: float = 0.0
-
 
 # =============================================================================
 # REFERENCIAS A NODOS
@@ -32,7 +33,6 @@ class_name Enemy
 @onready var navigation: NavigationAgent2D = $NavigationAgent2D
 # Controlador de efectos de estado (veneno, ralentización, etc.)
 @onready var effects: EffectController = EffectController.new()
-
 
 # =============================================================================
 # VARIABLES DE ESTADO INTERNO
@@ -71,6 +71,7 @@ func _ready() -> void:
 	setup_audio()
 	navigation.radius = 3.0
 	health = GameManager.calculate_enemy_health(health)
+	max_health = health
 	# Congela el enemigo brevemente al aparecer para evitar daño instantáneo al spawn
 	if spawn_freeze_time > 0.0:
 		freeze_for(spawn_freeze_time)

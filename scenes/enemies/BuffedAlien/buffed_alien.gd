@@ -165,15 +165,15 @@ func _ready() -> void:
 
 	id = 9
 	contact_damage = 2.0
-	health = 45.0
+	health = 55.0
 
 	sounds = { "acceleration_1" : load("res://assets/audio/sfx/Dash_1.mp3") }
 
 	speed = surface_speed
 	knockback_force = 800.0
 	knockback_time = 0.0
-	# Resistencia al knockback prácticamente infinita
-	knockback_resistance = 100000000.0
+	knockback_resistance = 100000000000000000000000000000000000000000000000000000000.0
+	Signals.boss_detected.emit(self, "Buffed Alien")
 
 	agent.path_desired_distance = 4.0
 	agent.target_desired_distance = 8.0
@@ -763,3 +763,7 @@ func _play_walk_from_dir(dir_in: Vector2) -> void:
 	if sprite.animation != anim:
 		sprite.play(anim)
 	sprite.flip_h = flip_h
+
+func die() -> void:
+	Signals.boss_died.emit()
+	super.die()

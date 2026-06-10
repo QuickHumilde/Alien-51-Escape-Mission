@@ -18,14 +18,15 @@ func receive_hit():
 	hits += 1
 
 	match hits:
+		#1:
+		#	sprite.frame = 1
+		#2:
+		#	sprite.frame = 2
 		1:
-			sprite.frame = 1
-		2:
-			sprite.frame = 2
-		3:
 			sprite.frame = 3
-		4:
+		2:
 			sprite.frame = 4
+			hits = 5
 			_break_obstacle()
 		_:
 			pass

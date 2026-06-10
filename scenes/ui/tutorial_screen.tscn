@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bh4qjt314qbcr"]
+[gd_scene load_steps=14 format=3 uid="uid://bh4qjt314qbcr"]
 
 [ext_resource type="Script" uid="uid://sbt4el44wqxc" path="res://scenes/ui/tutorial_screen.gd" id="1_4unk4"]
 [ext_resource type="Texture2D" uid="uid://km133588d422" path="res://assets/images/MovementTutorial.png" id="2_4unk4"]
@@ -10,6 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://xxnc8ivcjym3" path="res://assets/images/WeaponChangeTutorial2.png" id="8_m745q"]
 [ext_resource type="Texture2D" uid="uid://d24bfnwqsvj0e" path="res://assets/images/Arrow.png" id="9_m745q"]
 [ext_resource type="Texture2D" uid="uid://cll2c7j3rb7lf" path="res://assets/images/AbilitiesTutorial.png" id="10_w2l2m"]
+[ext_resource type="Texture2D" uid="uid://dkyt6h84cc0yf" path="res://assets/sprites/enemies/ghosty/Ghost.png" id="11_058ru"]
+[ext_resource type="Texture2D" uid="uid://blt1rsoh1d4w7" path="res://assets/sprites/cursor/cursor1.png" id="12_q6qnk"]
+[ext_resource type="Texture2D" uid="uid://01e8rswk0jtm" path="res://assets/images/MapTutorial.png" id="13_q6qnk"]
 
 [node name="TutorialScreen" type="Node2D"]
 process_mode = 3
@@ -209,10 +212,22 @@ scale = Vector2(0.04, 0.04)
 texture = ExtResource("9_m745q")
 
 [node name="Pag5" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="Right" type="Button" parent="Pag5"]
+layout_mode = 0
+offset_left = 440.0
+offset_top = 104.0
+offset_right = 472.0
+offset_bottom = 167.0
+theme = ExtResource("3_03icu")
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 50
+text = ">"
 
 [node name="AbilitiesTutorialLabel" type="RichTextLabel" parent="Pag5"]
 layout_mode = 0
@@ -241,5 +256,93 @@ text = "<"
 [node name="AbilitiesTutorial" type="Sprite2D" parent="Pag5"]
 position = Vector2(248, 72)
 texture = ExtResource("10_w2l2m")
+
+[node name="Pag6" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Right" type="Button" parent="Pag6"]
+layout_mode = 0
+offset_left = 440.0
+offset_top = 104.0
+offset_right = 472.0
+offset_bottom = 167.0
+theme = ExtResource("3_03icu")
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 50
+text = ">"
+
+[node name="GhostyText" type="RichTextLabel" parent="Pag6"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 128.0
+offset_right = 416.0
+offset_bottom = 224.0
+theme = ExtResource("3_03icu")
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/normal_font_size = 20
+text = "CUIDADO CON EL FANTASMILLA, SEGUIRÁ TU CURSOR HASTA MATARTE."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Left" type="Button" parent="Pag6"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 104.0
+offset_right = 40.0
+offset_bottom = 167.0
+theme = ExtResource("3_03icu")
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 50
+text = "<"
+
+[node name="Ghosty" type="Sprite2D" parent="Pag6"]
+position = Vector2(304, 56.000008)
+rotation = -0.2443461
+scale = Vector2(5, 5)
+texture = ExtResource("11_058ru")
+
+[node name="Cursor" type="Sprite2D" parent="Pag6"]
+position = Vector2(208, 80)
+scale = Vector2(2, 2)
+texture = ExtResource("12_q6qnk")
+
+[node name="Pag7" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MapText" type="RichTextLabel" parent="Pag7"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 128.0
+offset_right = 416.0
+offset_bottom = 224.0
+theme = ExtResource("3_03icu")
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "mapa chido"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Left" type="Button" parent="Pag7"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 104.0
+offset_right = 40.0
+offset_bottom = 167.0
+theme = ExtResource("3_03icu")
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 50
+text = "<"
+
+[node name="Ghosty" type="Sprite2D" parent="Pag7"]
+position = Vector2(224, 72)
+texture = ExtResource("13_q6qnk")
 
 [connection signal="pressed" from="ButtonManager/GoBackToMenu" to="." method="_on_go_back_to_menu_pressed"]

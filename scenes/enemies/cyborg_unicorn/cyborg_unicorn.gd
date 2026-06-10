@@ -42,6 +42,7 @@ func _ready() -> void:
 	knockback_force = 700.0
 	knockback_time = 0.0
 	knockback_resistance = 0.2
+	Signals.boss_detected.emit(self, "Cyborg Unicorn")
 	
 	if charge_ray != null:
 		charge_ray.add_exception(self)
@@ -272,3 +273,7 @@ func _play_walk_4dir(dir: Vector2) -> void:
 	if sprite.animation != anim:
 		sprite.play(anim)
 	sprite.flip_h = flip_h
+
+func die() -> void:
+	Signals.boss_died.emit()
+	super.die()

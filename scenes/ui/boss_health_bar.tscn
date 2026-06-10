@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://628sgu8f3tb8"]
+
+[ext_resource type="Script" uid="uid://ceiq7ylhsb10k" path="res://scenes/ui/boss_health_bar.gd" id="1_70265"]
+[ext_resource type="Theme" uid="uid://b380oga6tlya7" path="res://assets/themes/default.tres" id="2_p4u1e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p4u1e"]
+bg_color = Color(0.11024321, 0.0071458756, 0.009534518, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7nbs0"]
+bg_color = Color(0.75686276, 0.047058824, 0.18431373, 1)
+
+[node name="BossHealthBar" type="CanvasLayer"]
+script = ExtResource("1_70265")
+
+[node name="HealthBarContainer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HealthBarContainer"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 216.0
+offset_right = 384.0
+offset_bottom = 232.0
+theme = ExtResource("2_p4u1e")
+theme_override_colors/default_color = Color(0.9968409, 0.1550625, 0.16648, 0.88235295)
+theme_override_colors/font_outline_color = Color(0.14901961, 0, 0.003921569, 0.88235295)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/normal_font_size = 14
+text = "Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="HealthBarContainer"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 232.0
+offset_right = 384.0
+offset_bottom = 251.0
+theme = ExtResource("2_p4u1e")
+theme_override_colors/font_outline_color = Color(0.1254902, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_p4u1e")
+theme_override_styles/fill = SubResource("StyleBoxFlat_7nbs0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

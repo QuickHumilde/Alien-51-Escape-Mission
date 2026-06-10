@@ -90,6 +90,7 @@ func _ready() -> void:
 	knockback_time = 0.0
 	# Resistencia al knockback prácticamente infinita (no puede ser empujado)
 	knockback_resistance = 100000000.0
+	Signals.boss_detected.emit(self, "Long Arms")
 	agent.path_desired_distance = 4.0
 	agent.target_desired_distance = 8.0
 	_last_state = state
@@ -360,3 +361,7 @@ func _update_animation() -> void:
 	if state == State.ATTACK:
 		_play_anim_if_exists(anim_shoot)
 		return
+
+func die() -> void:
+	Signals.boss_died.emit()
+	super.die()

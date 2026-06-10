@@ -18,6 +18,11 @@ signal weapon_changed()
 signal stats_changed()
 #endregion
 
+#region Boss
+signal boss_detected(boss: Enemy, boss_name: String)
+signal boss_died()
+#endregion
+
 #region Inventory
 signal money_changed(money: int)
 signal item_picked(id: int)

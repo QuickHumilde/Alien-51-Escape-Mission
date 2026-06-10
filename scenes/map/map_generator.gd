@@ -36,8 +36,8 @@ var rng: RandomNumberGenerator
 const FLOOR_SETTINGS := [
 	{"min_rooms": 6,  "max_rooms": 8,  "item_rooms": 2, "shop_rooms": 1, "boss_dist": 3},
 	{"min_rooms": 8,  "max_rooms": 12, "item_rooms": 2, "shop_rooms": 1, "boss_dist": 3},
+	{"min_rooms": 10, "max_rooms": 14, "item_rooms": 2, "shop_rooms": 1, "boss_dist": 4},
 	{"min_rooms": 12, "max_rooms": 16, "item_rooms": 2, "shop_rooms": 1, "boss_dist": 4},
-	{"min_rooms": 15, "max_rooms": 18, "item_rooms": 2, "shop_rooms": 1, "boss_dist": 4},
 ]
 
 # Diccionario con las escenas de sala agrupadas por tipo
@@ -88,9 +88,8 @@ const BOSSES: Dictionary = {
 		preload("res://scenes/rooms/boss/boss_room_long_arms_1.tscn"),
 		preload("res://scenes/rooms/boss/boss_room_long_arms_2.tscn"),
 	],
-	"mefcagi": [
-		preload("res://scenes/rooms/boss/boss_room_long_arms_1.tscn"),
-		preload("res://scenes/rooms/boss/boss_room_long_arms_2.tscn"),
+	"bouncybouncy": [
+		preload("res://scenes/rooms/boss/boss_room_bouncybouncy_1.tscn"),
 	],
 	"buffed_alien": [
 		preload("res://scenes/rooms/boss/boss_room_buffed_alien_1.tscn"),

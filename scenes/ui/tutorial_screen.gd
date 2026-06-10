@@ -6,6 +6,7 @@ extends Node2D
 
 # Contenedor de botones de navegación del tutorial
 @onready var button_manager: Control = $ButtonManager
+
 # Botón para volver al menú principal
 @onready var back_menu_button: Button = $ButtonManager/GoBackToMenu
 
@@ -14,13 +15,14 @@ extends Node2D
 @onready var item_label: RichTextLabel = $Pag3/ItemsTutorialLabel
 @onready var weapon_label: RichTextLabel = $Pag4/ItemsTutorialLabel
 @onready var abilities_label: RichTextLabel = $Pag5/AbilitiesTutorialLabel
+@onready var ghosty_label: RichTextLabel = $Pag6/GhostyText
+@onready var map_label: RichTextLabel = $Pag7/MapText
 
 # Array con todas las páginas del tutorial en orden
-@onready var pages: Array[Node] = [$Pag1, $Pag2, $Pag3, $Pag4, $Pag5]
+@onready var pages: Array[Node] = [$Pag1, $Pag2, $Pag3, $Pag4, $Pag5, $Pag6, $Pag7]
 
 # Página actualmente visible (1-indexada)
 var current_page: int = 1
-
 
 # =============================================================================
 # INICIALIZACIÓN
@@ -35,7 +37,6 @@ func _ready() -> void:
 	_connect_page_arrows()
 	_show_page(1)
 
-
 # =============================================================================
 # LOCALIZACIÓN
 # =============================================================================
@@ -47,7 +48,8 @@ func update_texts() -> void:
 	item_label.text = tr("item_tutorial_label")
 	weapon_label.text = tr("weapon_change_tutorial_label")
 	abilities_label.text = tr("abilities_tutorial_label")
-
+	ghosty_label.text =  tr("ghosty_tutorial_label")
+	map_label.text =  tr("map_tutorial_label")
 
 # =============================================================================
 # INPUT
@@ -58,7 +60,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	if not event.is_action_pressed("escape"):
 		return
 	get_viewport().set_input_as_handled()
-
 
 # =============================================================================
 # NAVEGACIÓN
