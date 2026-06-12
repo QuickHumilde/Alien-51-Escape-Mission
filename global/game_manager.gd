@@ -16,7 +16,7 @@ var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 var used_bosses: Array[String] = []
 
 # Número de piso que se considera el último (activa el boss final)
-@export var last_floor: int = 4
+@export var last_floor: int = 5
 # ID del boss final reservado para el último piso
 @export var final_boss_id: String = "buffed_alien"
 

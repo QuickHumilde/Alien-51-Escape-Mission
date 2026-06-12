@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://dprd1ugvxlnhe"]
+
+[ext_resource type="PackedScene" uid="uid://byym4irhw1v80" path="res://scenes/templates/enemy/enemy_template.tscn" id="1_ait7o"]
+[ext_resource type="Script" uid="uid://cturj7374awyf" path="res://scenes/enemies/FernandoBoss/fernmarker_boss.gd" id="2_60rws"]
+[ext_resource type="Texture2D" uid="uid://bp6orc88m2pod" path="res://assets/sprites/enemies/fernmarker/Fernmanker.png" id="3_3mvwp"]
+[ext_resource type="PackedScene" uid="uid://7rhvgxjf42md" path="res://scenes/extras/shadow.tscn" id="4_n6h21"]
+[ext_resource type="Texture2D" uid="uid://bf5qqc4y32b1m" path="res://assets/images/clean_architecture.png" id="5_n6h21"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6h21"]
+atlas = ExtResource("3_3mvwp")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n6h21"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n6h21")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n6h21"]
+radius = 7.0
+height = 24.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_itw8h"]
+radius = 7.0
+height = 40.0
+
+[node name="FernmankerBoss" instance=ExtResource("1_ait7o")]
+script = ExtResource("2_60rws")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visual" index="0"]
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_n6h21")
+
+[node name="Shadow" parent="Visual" index="1" instance=ExtResource("4_n6h21")]
+position = Vector2(-0.5000005, 23.509178)
+scale = Vector2(3.0625, 0.6886473)
+
+[node name="Hitbox" parent="." index="1"]
+shape = SubResource("CapsuleShape2D_n6h21")
+
+[node name="CollisionShape2D" parent="Detector" index="0"]
+shape = SubResource("CapsuleShape2D_itw8h")
+
+[node name="ShootLight" type="PointLight2D" parent="." index="5"]
+position = Vector2(9.536743e-07, 2.2737368e-13)
+scale = Vector2(0.47370744, 0.44444445)
+color = Color(1, 1, 1, 0.34901962)
+energy = 0.38
+texture = ExtResource("5_n6h21")
+texture_scale = 0.1
+
+[node name="Hitbox2" type="CollisionShape2D" parent="." index="6"]
+position = Vector2(-14, 9)
+shape = SubResource("CapsuleShape2D_n6h21")
+
+[node name="Hitbox3" type="CollisionShape2D" parent="." index="7"]
+position = Vector2(14, 9)
+shape = SubResource("CapsuleShape2D_n6h21")

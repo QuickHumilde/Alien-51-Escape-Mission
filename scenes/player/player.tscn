@@ -1,4 +1,4 @@
-[gd_scene load_steps=128 format=3 uid="uid://jygsb42krc3q"]
+[gd_scene load_steps=129 format=3 uid="uid://jygsb42krc3q"]
 
 [ext_resource type="Script" uid="uid://c05bk0i1ljchi" path="res://scenes/player/character.gd" id="1_t61fv"]
 [ext_resource type="Script" uid="uid://dafi2suj354gl" path="res://scenes/player/player_camera.gd" id="2_007i1"]
@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://ddmkkd4lvgb5g" path="res://scenes/ui/pause_menu.tscn" id="21_yj68g"]
 [ext_resource type="PackedScene" uid="uid://byrp3wtch5b76" path="res://scenes/ui/death_menu.tscn" id="22_ioxgp"]
 [ext_resource type="Script" uid="uid://dypft4j8xsgv1" path="res://scenes/player/player_inventory.gd" id="24_cnsyf"]
+[ext_resource type="PackedScene" uid="uid://c3lui4ba8flhd" path="res://scenes/extras/effect_controller.tscn" id="26_6cv16"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_myrg7"]
 atlas = ExtResource("2_fcs02")
@@ -882,3 +883,5 @@ metadata/_custom_type_script = "uid://dypft4j8xsgv1"
 
 [node name="DamageTimer" type="Timer" parent="Logic"]
 one_shot = true
+
+[node name="EffectController" parent="." instance=ExtResource("26_6cv16")]

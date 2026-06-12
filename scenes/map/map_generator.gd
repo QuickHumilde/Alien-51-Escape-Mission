@@ -37,6 +37,7 @@ const FLOOR_SETTINGS := [
 	{"min_rooms": 6,  "max_rooms": 8,  "item_rooms": 2, "shop_rooms": 1, "boss_dist": 3},
 	{"min_rooms": 8,  "max_rooms": 12, "item_rooms": 2, "shop_rooms": 1, "boss_dist": 3},
 	{"min_rooms": 10, "max_rooms": 14, "item_rooms": 2, "shop_rooms": 1, "boss_dist": 4},
+	{"min_rooms": 10, "max_rooms": 16, "item_rooms": 2, "shop_rooms": 1, "boss_dist": 4},
 	{"min_rooms": 12, "max_rooms": 16, "item_rooms": 2, "shop_rooms": 1, "boss_dist": 4},
 ]
 
@@ -90,6 +91,9 @@ const BOSSES: Dictionary = {
 	],
 	"bouncybouncy": [
 		preload("res://scenes/rooms/boss/boss_room_bouncybouncy_1.tscn"),
+	],
+	"fernmarnker": [
+		preload("res://scenes/rooms/boss/boss_room_fernando.tscn"),
 	],
 	"buffed_alien": [
 		preload("res://scenes/rooms/boss/boss_room_buffed_alien_1.tscn"),

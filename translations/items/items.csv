@@ -34,7 +34,7 @@ item_the_cross_name,"La Cruz","The Cross"
 item_the_cross_desc,"Gracias al poder de Jesucristo nuestro salvador, cuando mueres te da:\n •+1 Resurrecion.\n• +0.1 de tiempo de invulnerabilidad. ","Thanks to the power of Jesus Christ our savior, when you die it gives you:\n •+1 Resurrection.\n• +0.1 seconds of invulnerability time."
 
 item_blue_marker_weapon_name,"Rotulador azúl","Blue Marker"
-item_blue_marker_weapon_desc,"• Un rotulador que se lanza a los enemigos y los pinta de azul. \n• 0,5 de daño. \n• Realentiza a los enemigos al impacto","• A marker that is thrown at enemies and paints them blue. \n• 0.5 of damage. \n• Slows enemies on impact"
+item_blue_marker_weapon_desc,"• Un rotulador que se lanza a los enemigos y los pinta de azul. \n• 1.0 de daño. \n• Realentiza a los enemigos al impacto","• A marker that is thrown at enemies and paints them blue. \n• 1.0 of damage. \n• Slows enemies on impact"
 
 item_dash_name,"Dash","Dash"
 item_dash_desc,"• Habilidad que te da un impulso hacia la direccion que estes andando.\n• Cooldown: 3.5 segundos","• Ability that gives you a dash in the direction you are moving.\n• Cooldown: 3.5 seconds"

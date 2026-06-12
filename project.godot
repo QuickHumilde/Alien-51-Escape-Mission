@@ -15,7 +15,7 @@ run/main_scene="uid://di4p0yf3oup8t"
 config/features=PackedStringArray("4.5", "Forward Plus")
 boot_splash/bg_color=Color(1, 1, 1, 1)
 boot_splash/image="uid://4w8ox45pa6q"
-config/icon="uid://btog1hgjp6uno"
+config/icon="uid://bxhm0hv8gpdxi"
 
 [audio]
 
@@ -39,7 +39,6 @@ InputController="*res://global/input_controller.gd"
 
 window/size/viewport_width=480
 window/size/viewport_height=270
-window/size/borderless=true
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"

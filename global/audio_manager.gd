@@ -48,6 +48,8 @@ var music: Dictionary = {
 	"floor_1": preload("res://assets/audio/music/FloorMusic_1.mp3"),
 	"floor_2": preload("res://assets/audio/music/FloorMusic_2.mp3"),
 	"floor_3": preload("res://assets/audio/music/FloorMusic_3.mp3"),
+	"floor_4": preload("res://assets/audio/music/FloorMusic_4.mp3"),
+	"floor_5": preload("res://assets/audio/music/FloorMusic_5.mp3"),
 	"shop_1": preload("res://assets/audio/music/ShopMusic_1.mp3"),
 	"shop_2": preload("res://assets/audio/music/ShopMusic_2.mp3"),
 	"boss_1": preload("res://assets/audio/music/DarkBoss3-Music.mp3"),
@@ -55,7 +57,7 @@ var music: Dictionary = {
 	"victory_screen": preload("res://assets/audio/music/VictoryMusic.mp3"),
 }
 
-var floor_music: Array[String] = ["floor_1", "floor_2", "floor_3"]
+var floor_music: Array[String] = ["floor_1", "floor_2", "floor_3", "floor_4", "floor_5"]
 var shop_music: Array[String] = ["shop_1", "shop_2"]
 var boss_music: Array[String] = ["boss_1", "boss_2"]
 

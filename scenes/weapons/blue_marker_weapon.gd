@@ -5,7 +5,7 @@ extends Weapon
 
 func _ready():
 	id=3
-	damage = 0.5
+	damage = 1.0
 	knockback_force = 400.0
 	self_knockback_force=0.0
 	lifetime=1.0
